@@ -17,12 +17,12 @@ const Solution=()=>{
                 {/* {sample.map((items, index)=>(
                     <SolutionCart key={index} />
                 ))} */}
-                <SolutionCart />
-                <div className='xl:-mt-36'><SolutionCart /></div>
-                <SolutionCart />
-                <SolutionCart />
-                <div className='xl:-mt-36'><SolutionCart /></div>
-                <SolutionCart />
+                <div className='drop-shadow-2xl'><SolutionCart /></div>
+                <div className='xl:-mt-36 drop-shadow-2xl'><SolutionCart /></div>
+                <div className='drop-shadow-2xl'><SolutionCart /></div>
+                <div className='drop-shadow-2xl'><SolutionCart /></div>
+                <div className='xl:-mt-36 drop-shadow-2xl'><SolutionCart /></div>
+                <div className='drop-shadow-2xl'><SolutionCart /></div>
             </div>
             <Link href=""><a className='xl:-mt-12 md:mt-16 mt-10 drop-shadow-xl flex sm:w-auto items-center xl:text-lg text-base xl:py-6 md:py-3 xl:px-10 md:px-5 py-3 px-3 rounded-lg bg-gradient-to-r from-blueOne to-blueTwo sm:mr-6 mr-0'><span className='md:ml-4 ml-3 text-white mr-4'>Our Solution</span> <HiOutlineArrowNarrowRight style={{color:"white"}}/></a></Link>
         </div>

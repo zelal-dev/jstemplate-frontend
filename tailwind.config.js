@@ -16,6 +16,7 @@ module.exports = {
         '2xl': '1.5rem',
         '3xl': '1.875rem',
         '4xl': '2.25rem',
+        '4xxl': '2.5rem',
         '5xl': '3rem',
         '6xl': '4rem',
       },
@@ -40,6 +41,7 @@ module.exports = {
       },
       lineHeight: {
         'extra-loose': '4rem',
+        '12':"3rem",
       },
       dropShadow: {
         '3xl': '0px 4px 16px -2px rgba(5, 107, 241, 0.5)',

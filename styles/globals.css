@@ -20,6 +20,11 @@
   
 }
 
+.prod-contact-part{
+  background-image: url("./../public/contactusBg.svg");
+  background-size: cover;
+}
+
 *{
   font-family: 'Lato', sans-serif;
 }
