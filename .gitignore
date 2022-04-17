@@ -12,6 +12,8 @@
 /.next/
 /out/
 
+.yarn/cache
+
 # production
 /build
 
