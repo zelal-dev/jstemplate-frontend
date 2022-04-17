@@ -9,6 +9,7 @@ module.exports = {
     fontSize:{
         '5xxl': "3.5rem",
         'xs': '.75rem',
+        'xxs': '.625rem',
         'sm': '.875rem',
         'base': '1rem',
         'lg': '1.125rem',
@@ -18,7 +19,10 @@ module.exports = {
         '4xl': '2.25rem',
         '4xxl': '2.5rem',
         '5xl': '3rem',
+        '5xxl': '3.5rem',
         '6xl': '4rem',
+        '7xl': '4.5rem',
+        '7xxl': '5rem',
       },
     extend: {
       colors: {
@@ -29,11 +33,16 @@ module.exports = {
         'blueTwo': '#056BF1',
         'backgroundGray': '#F6F7FB',
         'backgroundGrayOne': '#F7F8FC',
+        'grayLight': '#DDE6F5',
         'cartImageBgOne': '#E9F0FB',
         'purpleLight': '#B593FF',
         'purpleDark': '#6726F2',
         'greenLight': '#67E5A3',
         'greenDark': '#08994D',
+        'greenSecondaryLight': '#70C276',
+        'greenSecondaryDark': '#3E9645',
+        'templateColor': '#55B05C',
+        'templateBackground': '#E5E5E5',
         'yellowLight': '#FFD470',
         'yellowDark': '#FB9600',
         'redLight': '#FF7E85',
@@ -42,6 +51,8 @@ module.exports = {
       lineHeight: {
         'extra-loose': '4rem',
         '12':"3rem",
+        '16':"4.125rem",
+        '24':"6rem"
       },
       dropShadow: {
         '3xl': '0px 4px 16px -2px rgba(5, 107, 241, 0.5)',

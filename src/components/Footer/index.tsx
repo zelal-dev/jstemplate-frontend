@@ -21,8 +21,8 @@ const Footer=()=> {
                 </div>
                 <Link href=""><a className=' drop-shadow-xl flex sm:w-auto items-center xl:text-lg text-base xl:py-6 md:py-3 xl:px-10 md:px-5 py-3 px-3 rounded-lg bg-gradient-to-r from-orangeOne to-orangeTwo mt-8 lg:mt-0'><span className='md:ml-4 ml-3 text-white mr-4'>View All Solution</span> <HiOutlineArrowNarrowRight style={{color:"white"}}/></a></Link>
             </div>
-            <div className='flex items-start justify-between flex-wrap xl:pt-60 lg:pt-56 md:pt-48 sm:pt-44 pt-40'>
-                <div>
+            <div className='flex items-start justify-between flex-wrap xl:pt-52 lg:pt-48 md:pt-40 sm:pt-36 pt-32'>
+                <div className='pt-8'>
                     <h1 className='text-3xl font-bold text-gray-100'>Brand Logo</h1>
                     <article className='text-xl text-gray-400 w-80'>Lorem Ipsum is simply dummy text of the printing and typesetting industry.  Lorem Ipsum Dummy Text</article>
                     <div className='flex items-center mt-7'>
@@ -32,7 +32,7 @@ const Footer=()=> {
                         <span className='mr-5 cursor-pointer'><FaInstagram color='#AEB6BF' width="10.71" height="20" /></span>
                     </div>
                 </div>
-                <div>
+                <div className='pt-8'>
                     <h3 className='text-lg font-bold text-gray-100'>Menu</h3>
                     <div className='mt-4 flex flex-col '>
                         <Link href=""><a className='text-gray-400 font-sm'>Home</a></Link>
@@ -42,7 +42,7 @@ const Footer=()=> {
                         <Link href=""><a className='text-gray-400 font-sm mt-2'>Faq’s</a></Link>
                     </div>
                 </div>
-                <div>
+                <div className='pt-8'>
                     <h3 className='text-lg font-bold text-gray-100'>Quick Link</h3>
                     <div className='mt-4 flex flex-col '>
                         <Link href=""><a className='text-gray-400 font-sm'>Contact Us</a></Link>
@@ -52,7 +52,7 @@ const Footer=()=> {
                         <Link href=""><a className='text-gray-400 font-sm mt-2'>Help</a></Link>
                     </div>
                 </div>
-                <div>
+                <div className='pt-8'>
                     <h3 className='text-lg font-bold text-gray-100'>Our Solution</h3>
                     <div className='mt-4 flex flex-col '>
                         <Link href=""><a className='text-gray-400 font-sm'>Meta Jobs</a></Link>
@@ -61,7 +61,7 @@ const Footer=()=> {
                         <Link href=""><a className='text-gray-400 font-sm mt-2'>Meta Lancer</a></Link>
                     </div>
                 </div>
-                <div>
+                <div className='pt-8'>
                     <div>
                         <h3 className='text-lg font-bold text-gray-100'>Headless CMS</h3>
                         <div className='mt-4 flex flex-col '>

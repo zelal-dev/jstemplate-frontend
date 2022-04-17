@@ -10,7 +10,7 @@ const ProductPage=()=>{
     <section>
         <div className='bg-backgroundGray'>
             <div className='header-part'>
-                <Navbar />
+                <Navbar.DefaultNavbar />
                 <Header />
             </div>
             <Products />

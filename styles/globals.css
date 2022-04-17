@@ -25,6 +25,16 @@
   background-size: cover;
 }
 
+.service-hire-part{
+  background-image: url("./../public/hireBg.svg");
+  background-size: cover;
+}
+
+.service-part{
+  background-image: url("./../public//serviceHeadBg.svg");
+  background-size: cover;
+}
+
 *{
   font-family: 'Lato', sans-serif;
 }

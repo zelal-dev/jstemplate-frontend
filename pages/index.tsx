@@ -16,7 +16,7 @@ const Homepage: NextPage = () => {
     <section className="">
       <div className='bg-backgroundGray'>
         <div className='header-part'>
-          <Navbar />
+          <Navbar.DefaultNavbar />
           <Header />
         </div>
         <KnowUs />

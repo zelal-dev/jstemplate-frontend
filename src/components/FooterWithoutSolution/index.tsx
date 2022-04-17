@@ -8,8 +8,8 @@ const FooterWithoutSolution=()=> {
   return (
     <div className='bg-gray-800 relative px-5'>
         <div className='container mx-auto'>
-            <div className='flex items-start justify-between flex-wrap  pt-12'>
-                <div className='pt-4'>
+            <div className='flex items-start justify-between flex-wrap  pt-8'>
+                <div className='pt-8'>
                     <h1 className='text-3xl font-bold text-gray-100'>Brand Logo</h1>
                     <article className='text-xl text-gray-400 w-80'>Lorem Ipsum is simply dummy text of the printing and typesetting industry.  Lorem Ipsum Dummy Text</article>
                     <div className='flex items-center mt-7'>
@@ -19,7 +19,7 @@ const FooterWithoutSolution=()=> {
                         <span className='mr-5 cursor-pointer'><FaInstagram color='#AEB6BF' width="10.71" height="20" /></span>
                     </div>
                 </div>
-                <div className='pt-4'>
+                <div className='pt-8'>
                     <h3 className='text-lg font-bold text-gray-100'>Menu</h3>
                     <div className='mt-4 flex flex-col '>
                         <Link href=""><a className='text-gray-400 font-sm'>Home</a></Link>
@@ -29,7 +29,7 @@ const FooterWithoutSolution=()=> {
                         <Link href=""><a className='text-gray-400 font-sm mt-2'>Faq’s</a></Link>
                     </div>
                 </div>
-                <div className='pt-4'>
+                <div className='pt-8'>
                     <h3 className='text-lg font-bold text-gray-100'>Quick Link</h3>
                     <div className='mt-4 flex flex-col '>
                         <Link href=""><a className='text-gray-400 font-sm'>Contact Us</a></Link>
@@ -39,7 +39,7 @@ const FooterWithoutSolution=()=> {
                         <Link href=""><a className='text-gray-400 font-sm mt-2'>Help</a></Link>
                     </div>
                 </div>
-                <div className='pt-4'>
+                <div className='pt-8'>
                     <h3 className='text-lg font-bold text-gray-100'>Our Solution</h3>
                     <div className='mt-4 flex flex-col '>
                         <Link href=""><a className='text-gray-400 font-sm'>Meta Jobs</a></Link>
@@ -48,7 +48,7 @@ const FooterWithoutSolution=()=> {
                         <Link href=""><a className='text-gray-400 font-sm mt-2'>Meta Lancer</a></Link>
                     </div>
                 </div>
-                <div className='pt-4'>
+                <div className='pt-8'>
                     <div>
                         <h3 className='text-lg font-bold text-gray-100'>Headless CMS</h3>
                         <div className='mt-4 flex flex-col '>
