@@ -54,10 +54,23 @@ module.exports = {
         '16':"4.125rem",
         '24':"6rem"
       },
-      dropShadow: {
+      boxShadow: {
         '3xl': '0px 4px 16px -2px rgba(5, 107, 241, 0.5)',
-        '4xl': '0px 4px 16px -2px rgba(255, 67, 7, 0.5)'
+        '4xl': '0px 4px 16px -2px rgba(255, 67, 7, 0.5)',
+        'purple': '0px 4px 16px -2px rgba(103, 38, 242, 0.5)',
+        'green': '0px 4px 16px -2px rgba(4, 174, 84, 0.5)',
+        'yellow': '0px 4px 16px -2px rgba(255, 179, 0, 0.5)',
+        'red': '0px 4px 16px -2px rgba(250, 79, 88, 0.5)',
       }
+    },
+    container: {
+      screens: {
+        sm: '600px',
+        md: '728px',
+        lg: '984px',
+        xl: '1240px',
+        '2xl': '1350px',
+      },
     },
   },
   plugins: [],

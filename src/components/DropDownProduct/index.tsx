@@ -50,45 +50,45 @@ const DropDownProduct=()=>{
                 <div className={`xl:w-44 lg:w-36 md:w-28 sm:w-24 h-px duration-200 ease-in bg-${figmaColor}`} />
             </div>
             <div className=' lg:px-8 md:px-7 sm:px-6 lg:py-8 md:py-7 sm:py-6  grid xl:grid-cols-2 lg:grid-cols-1 container gap-3'>
-                <div className='flex items-start p-5 rounded-lg hover:bg-backgroundGray cursor-pointer ease-in duration-200 border border-white hover:border-cartImageBgOne'>
+                <div className='flex items-start group p-5 rounded-lg hover:bg-backgroundGray cursor-pointer ease-in duration-200 border border-white hover:border-cartImageBgOne'>
                     <div className='shadow-lg rounded-lg bg-white p-3 mr-6'><FaShoppingCart className='w-6 h-6 drop-shadow-lg text-blueTwo' /></div>
                     <div>
-                        <h1 className='text-lg text-blueTwo font-semibold'>MetaJobs- Job Board Theme</h1>
+                        <h1 className='text-lg text-gray-900 group-hover:text-blueTwo font-semibold'>MetaJobs- Job Board Theme</h1>
                         <article className='text-gray-700 text-sm w-4/5 mt-2'>Lorem Ipsum is simply dummy text of the printing and typesetting industry. </article>
                     </div>
                 </div>
-                <div className='flex items-start p-5 rounded-lg hover:bg-backgroundGray cursor-pointer ease-in duration-200 border border-white hover:border-cartImageBgOne'>
+                <div className='flex items-start group p-5 rounded-lg hover:bg-backgroundGray cursor-pointer ease-in duration-200 border border-white hover:border-cartImageBgOne'>
                     <div className='shadow-lg rounded-lg bg-white p-3 mr-6'><FaShoppingCart className='w-6 h-6 drop-shadow-lg text-orangeTwo' /></div>
                     <div>
-                        <h1 className='text-lg text-blueTwo font-semibold'>Meta Ads- Classified Ads Theme </h1>
+                        <h1 className='text-lg text-gray-900 group-hover:text-blueTwo font-semibold'>Meta Ads- Classified Ads Theme </h1>
                         <article className='text-gray-700 text-sm w-4/5 mt-2'>Lorem Ipsum is simply dummy text of the printing and typesetting industry. </article>
                     </div>
                 </div>
-                <div className='flex items-start p-5 rounded-lg hover:bg-backgroundGray cursor-pointer ease-in duration-200 border border-white hover:border-cartImageBgOne'>
+                <div className='flex items-start group p-5 rounded-lg hover:bg-backgroundGray cursor-pointer ease-in duration-200 border border-white hover:border-cartImageBgOne'>
                     <div className='shadow-lg rounded-lg bg-white p-3 mr-6'><FaShoppingCart className='w-6 h-6 drop-shadow-lg text-greenDark' /></div>
                     <div>
-                        <h1 className='text-lg text-blueTwo font-semibold'>Metalancer- Freelancer marketplace </h1>
+                        <h1 className='text-lg text-gray-900 group-hover:text-blueTwo font-semibold'>Metalancer- Freelancer marketplace </h1>
                         <article className='text-gray-700 text-sm w-4/5 mt-2'>Lorem Ipsum is simply dummy text of the printing and typesetting industry. </article>
                     </div>
                 </div>
-                <div className='flex items-start p-5 rounded-lg hover:bg-backgroundGray cursor-pointer ease-in duration-200 border border-white hover:border-cartImageBgOne'>
+                <div className='flex items-start group p-5 rounded-lg hover:bg-backgroundGray cursor-pointer ease-in duration-200 border border-white hover:border-cartImageBgOne'>
                     <div className='shadow-lg rounded-lg bg-white p-3 mr-6'><FaShoppingCart className='w-6 h-6 drop-shadow-lg text-yellowDark' /></div>
                     <div>
-                        <h1 className='text-lg text-blueTwo font-semibold'>MetaList- Directory & Listing Theme</h1>
+                        <h1 className='text-lg text-gray-900 group-hover:text-blueTwo font-semibold'>MetaList- Directory & Listing Theme</h1>
                         <article className='text-gray-700 text-sm w-4/5 mt-2'>Lorem Ipsum is simply dummy text of the printing and typesetting industry. </article>
                     </div>
                 </div>
-                <div className='flex items-start p-5 rounded-lg hover:bg-backgroundGray cursor-pointer ease-in duration-200 border border-white hover:border-cartImageBgOne'>
+                <div className='flex items-start group p-5 rounded-lg hover:bg-backgroundGray cursor-pointer ease-in duration-200 border border-white hover:border-cartImageBgOne'>
                     <div className='shadow-lg rounded-lg bg-white p-3 mr-6'><FaShoppingCart className='w-6 h-6 drop-shadow-lg text-redDark' /></div>
                     <div>
-                        <h1 className='text-lg text-blueTwo font-semibold'>Short Product Title Here</h1>
+                        <h1 className='text-lg text-gray-900 group-hover:text-blueTwo font-semibold'>Short Product Title Here</h1>
                         <article className='text-gray-700 text-sm w-4/5 mt-2'>Lorem Ipsum is simply dummy text of the printing and typesetting industry. </article>
                     </div>
                 </div>
-                <div className='flex items-start p-5 rounded-lg hover:bg-backgroundGray cursor-pointer ease-in duration-200 border border-white hover:border-cartImageBgOne'>
+                <div className='flex items-start group p-5 rounded-lg hover:bg-backgroundGray cursor-pointer ease-in duration-200 border border-white hover:border-cartImageBgOne'>
                     <div className='shadow-lg rounded-lg bg-white p-3 mr-6'><FaShoppingCart className='w-6 h-6 drop-shadow-lg text-purpleDark' /></div>
                     <div>
-                        <h1 className='text-lg text-blueTwo font-semibold'>Short Product Title Here</h1>
+                        <h1 className='text-lg text-gray-900 group-hover:text-blueTwo font-semibold'>Short Product Title Here</h1>
                         <article className='text-gray-700 text-sm w-4/5 mt-2'>Lorem Ipsum is simply dummy text of the printing and typesetting industry. </article>
                     </div>
                 </div>
@@ -99,7 +99,7 @@ const DropDownProduct=()=>{
                     <h2 className='text-gray-900 text-base font-semibold xl:text-left text-center'>We have total 10 Solution</h2>
                     <article className='text-gray-600 text-sm'>Lorem Ipsum has been the industrys standard dummy text</article>
                 </div>
-                <Link href=""><a className='mt-3 drop-shadow-xl flex sm:w-auto items-center xl:text-lg text-base xl:py-3 md:py-2 xl:px-4 md:px-3 py-2.5 px-3 rounded-lg bg-gradient-to-r from-blueOne to-blueTwo '><span className='md:ml-2 ml-1 text-white mr-2'>View All Solution</span> <HiOutlineArrowNarrowRight style={{color:"white"}}/></a></Link>
+                <Link href=""><a className='mt-3 shadow-3xl flex sm:w-auto items-center xl:text-lg text-base xl:py-3 md:py-2 xl:px-4 md:px-3 py-2.5 px-3 rounded-lg bg-gradient-to-br from-blueOne to-blueTwo '><span className='md:ml-2 ml-1 text-white mr-2'>View All Solution</span> <HiOutlineArrowNarrowRight style={{color:"white"}}/></a></Link>
             </div>
         </div>
         <div className='arrow bg-white m-0 border-0 w-10 h-6 absolute -top-4 2xl:left-72 xl:left-44 lg:left-28 md:left-20 sm:left-10' />

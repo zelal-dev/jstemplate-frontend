@@ -9,6 +9,11 @@
   background-size: cover;
 }
 
+.product-header-part{
+  background-image: url("./../public/prodHeadBg.svg");
+  background-size: cover;
+}
+
 .footer-part{
   background-image: url("./../public/footerBg.svg");
   background-size: contain;

@@ -10,16 +10,18 @@ const Footer=()=> {
   return (
     <div className='bg-gray-800 relative px-5'>
         <div className='container mx-auto'>
-            <div style={{backgroundImage:`url(${footerBg})`, backgroundSize:"cover"}} className=' bg-white absolute -top-40 left-5 right-5 sm:left-auto sm:right-auto sm:container xl:p-24 lg:p-20 md:p-16 sm:p-12 p-8 flex lg:flex-row flex-col items-center rounded-lg'>
+            <div style={{backgroundImage:`url(${footerBg})`, backgroundSize:"cover"}} className=' bg-white drop-shadow-2xl absolute -top-40 left-5 right-5 sm:left-auto sm:right-auto sm:container xl:p-24 lg:p-20 md:p-16 sm:p-12 p-8 flex lg:flex-row flex-col items-center justify-between rounded-lg'>
                 {/* <Image src={footerBg} /> */}
-                <div className='flex items-start'>
-                    <div className='xl:w-24 xl:h-24 md:w-20 md:h-16 sm:w-16 w-32 h-14 rounded-md bg-gradient-to-r from-blueOne to-blueTwo lg:mr-10 sm:mr-6 mr-3' />
+                <div className='flex items-start w-3/4'>
+                    <div className='xl:w-24 xl:h-24 md:w-20 md:h-16 sm:w-16 w-32 h-14 rounded-md bg-gradient-to-br from-blueOne to-blueTwo lg:mr-10 sm:mr-6 mr-3 shadow-3xl' />
                     <div>
                         <h1 className='text-gray-900 font-bold xl:text-3xl lg:text-2xl md:text-xl w-auto'>Why are you waiting ?</h1>
                         <article className='text-gray-600 xl:text-lg lg:text-base text-sm lg:w-3/4 w-full mt-2'>Lorem Ipsum is simply dummy text of the printing and typesetting industry.  Lorem Ipsum Dummy Text</article>
                     </div>
                 </div>
-                <Link href=""><a className=' drop-shadow-xl flex sm:w-auto items-center xl:text-lg text-base xl:py-6 md:py-3 xl:px-10 md:px-5 py-3 px-3 rounded-lg bg-gradient-to-r from-orangeOne to-orangeTwo mt-8 lg:mt-0'><span className='md:ml-4 ml-3 text-white mr-4'>View All Solution</span> <HiOutlineArrowNarrowRight style={{color:"white"}}/></a></Link>
+                <div className=' flex items-center justify-center'>
+                    <Link href=""><a className='flex-1 shadow-4xl flex items-center xl:text-lg text-base xl:py-6 md:py-3 xl:px-10 md:px-5 py-3 px-3 rounded-lg bg-gradient-to-br from-orangeOne to-orangeTwo mt-8 lg:mt-0'><span className=' text-white mr-4'>View All Solution</span> <HiOutlineArrowNarrowRight style={{color:"white"}}/></a></Link>
+                </div>
             </div>
             <div className='flex items-start justify-between flex-wrap xl:pt-52 lg:pt-48 md:pt-40 sm:pt-36 pt-32'>
                 <div className='pt-8'>
@@ -81,7 +83,7 @@ const Footer=()=> {
             </div>
             <div className='bg-gray-700 py-6 px-10 rounded-md flex md:flex-row flex-col items-center justify-between mt-16'>
                 <div className='flex items-center'>
-                    <div className='md:p-4 p-2 rounded-full bg-gradient-to-r from-greenLight to-greenDark xl:mr-8 lg:mr-6 md:mr-5 sm:mr-4 mr-3'><FaCheck className='text-gray-100 xl:w-6 xl:h-5 lg:w-5 lg:h-4 md:w-4 md:h-3 w-3 h-2' /></div>
+                    <div className='md:p-4 p-2 rounded-full bg-gradient-to-br from-greenLight to-greenDark xl:mr-8 lg:mr-6 md:mr-5 sm:mr-4 mr-3'><FaCheck className='text-gray-100 xl:w-6 xl:h-5 lg:w-5 lg:h-4 md:w-4 md:h-3 w-3 h-2' /></div>
                     <h2 className='text-gray-100 xl:text-2xl lg:text-xl md:text-lg text-base font-bold'>Guaranted Safe Checkout</h2>
                 </div>
                 <div className='flex items-center mt-8 md:mt-0'>

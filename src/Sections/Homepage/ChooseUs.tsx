@@ -60,7 +60,7 @@ const ChooseUs=()=>{
             </article>
             <div className='grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-11 container mx-auto xl:my-16 md:mt-12 mt-8 px-5 lg:px-28 sm:px-16'>
                 <div className='bg-backgroundGrayOne p-10 rounded-lg flex flex-col items-center justify-center hover:bg-white hover:drop-shadow-xl ease-in duration-200' style={{boxShadow:`${boxShadowOne}`}} onMouseOver={handleMouseOverOne} onMouseOut={handleMouseOutOne}>
-                    <div className='p-5 rounded-md bg-gradient-to-r from-blueOne to-blueTwo'><FaUsers style={{color:"white", width:"30px", height:"30px"}} /></div>
+                    <div className='p-5 rounded-md bg-gradient-to-br from-blueOne to-blueTwo shadow-3xl'><FaUsers style={{color:"white", width:"30px", height:"30px"}} /></div>
                     <h5 className='text-xl font-bold mt-7 text-gray-900 text-center'>Dedicated Teams</h5>
                     <article className='text-lg text-gray-600 mt-4 text-center'>
                         Lorem Ipsum has been the industrys standard dummy text ever since the 1500s
@@ -68,35 +68,35 @@ const ChooseUs=()=>{
                 </div>
                 
                 <div className='bg-backgroundGrayOne p-10 rounded-lg flex flex-col items-center justify-center  hover:bg-white hover:drop-shadow-xl ease-in duration-200' style={{boxShadow:`${boxShadowTwo}`}} onMouseOver={handleMouseOverTwo} onMouseOut={handleMouseOutTwo}>
-                    <div className='p-5 rounded-md bg-gradient-to-r from-orangeOne to-orangeTwo'><BsFillEmojiSmileFill style={{color:"white", width:"30px", height:"30px"}} /></div>
+                    <div className='p-5 rounded-md bg-gradient-to-br from-orangeOne to-orangeTwo shadow-4xl'><BsFillEmojiSmileFill style={{color:"white", width:"30px", height:"30px"}} /></div>
                     <h5 className='text-xl font-bold mt-7 text-gray-900 text-center'>Highly Rated Support</h5>
                     <article className='text-lg text-gray-600 mt-4 text-center'>
                         Lorem Ipsum has been the industrys standard dummy text ever since the 1500s
                     </article>
                 </div>
                 <div className='bg-backgroundGrayOne p-10 rounded-lg flex flex-col items-center justify-center  hover:bg-white hover:drop-shadow-xl ease-in duration-200' style={{boxShadow:`${boxShadowThree}`}} onMouseOver={handleMouseOverThree} onMouseOut={handleMouseOutThree}>
-                    <div className='p-5 rounded-md bg-gradient-to-r from-purpleLight to-purpleDark'><BsShieldFillCheck style={{color:"white", width:"30px", height:"30px"}} /></div>
+                    <div className='p-5 rounded-md bg-gradient-to-br from-purpleLight to-purpleDark shadow-purple'><BsShieldFillCheck style={{color:"white", width:"30px", height:"30px"}} /></div>
                     <h5 className='text-xl font-bold mt-7 text-gray-900 text-center'>High Quality & Availability</h5>
                     <article className='text-lg text-gray-600 mt-4 text-center'>
                         Lorem Ipsum has been the industrys standard dummy text ever since the 1500s
                     </article>
                 </div>
                 <div className='bg-backgroundGrayOne p-10 rounded-lg flex flex-col items-center justify-center  hover:bg-white hover:drop-shadow-xl ease-in duration-200' style={{boxShadow:`${boxShadowFour}`}} onMouseOver={handleMouseOverFour} onMouseOut={handleMouseOutFour}>
-                    <div className='p-5 rounded-md bg-gradient-to-r from-greenLight to-greenDark'><DiJavascript1 style={{color:"white", width:"30px", height:"30px"}} /></div>
+                    <div className='p-5 rounded-md bg-gradient-to-br from-greenLight to-greenDark shadow-green'><DiJavascript1 style={{color:"white", width:"30px", height:"30px"}} /></div>
                     <h5 className='text-xl font-bold mt-7 text-gray-900 text-center'>High Quality & Availability</h5>
                     <article className='text-lg text-gray-600 mt-4 text-center'>
                         Lorem Ipsum has been the industrys standard dummy text ever since the 1500s
                     </article>
                 </div>
                 <div className='bg-backgroundGrayOne p-10 rounded-lg flex flex-col items-center justify-center  hover:bg-white hover:drop-shadow-xl ease-in duration-200' style={{boxShadow:`${boxShadowFive}`}} onMouseOver={handleMouseOverFive} onMouseOut={handleMouseOutFive}>
-                    <div className='p-5 rounded-md bg-gradient-to-r from-yellowLight to-yellowDark'><Image src={treatment} alt="treatment" /></div>
+                    <div className='p-5 rounded-md bg-gradient-to-br from-yellowLight to-yellowDark shadow-yellow'><Image src={treatment} alt="treatment" /></div>
                     <h5 className='text-xl font-bold mt-7 text-gray-900 text-center'>High Quality & Availability</h5>
                     <article className='text-lg text-gray-600 mt-4 text-center'>
                         Lorem Ipsum has been the industrys standard dummy text ever since the 1500s
                     </article>
                 </div>
                 <div className='bg-backgroundGrayOne p-10 rounded-lg flex flex-col items-center justify-center  hover:bg-white hover:drop-shadow-xl ease-in duration-200' style={{boxShadow:`${boxShadowSix}`}} onMouseOver={handleMouseOverSix} onMouseOut={handleMouseOutSix}>
-                    <div className='p-5 rounded-md bg-gradient-to-r from-redLight to-redDark'><BiDollar style={{color:"white", width:"30px", height:"30px"}} /></div>
+                    <div className='p-5 rounded-md bg-gradient-to-br from-redLight to-redDark shadow-red'><BiDollar style={{color:"white", width:"30px", height:"30px"}} /></div>
                     <h5 className='text-xl font-bold mt-7 text-gray-900 text-center'>High Quality & Availability</h5>
                     <article className='text-lg text-gray-600 mt-4 text-center'>
                         Lorem Ipsum has been the industrys standard dummy text ever since the 1500s
