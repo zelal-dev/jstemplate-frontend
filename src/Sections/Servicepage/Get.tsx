@@ -15,7 +15,7 @@ const Get=()=> {
                     <GetCart key={index} />
                 ))}
             </div>
-            <button className='text-base font-semibold drop-shadow-lg mt-16 text-gray-100 flex items-center bg-gradient-to-r from-greenSecondaryLight to-greenSecondaryDark py-4 px-6 rounded-lg'><IoChatbubbles className='mr-4' /> Start a Project</button>
+            <button className='text-base font-semibold shadow-3xl mt-16 text-gray-100 flex items-center bg-gradient-to-r from-greenSecondaryLight to-greenSecondaryDark py-4 px-6 rounded-lg'><IoChatbubbles className='mr-4' /> Start a Project</button>
         </div>
     </div>
   )

@@ -23,7 +23,7 @@ export default Question
 const QuestionCart = ({id}:any) =>{
     console.log("hello",id)
     return(
-        <div className='xl:p-8 lg:p-7 md:p-6 p-5  mb-5 rounded-lg border border-gray-300 sm:w-3/4 w-full mx-auto'>
+        <div className='xl:p-8 lg:p-7 md:p-6 p-5  mb-5 rounded-lg shadow-md hover:shadow-grayLight duration-200 sm:w-3/4 w-full mx-auto'>
             <div className='flex justify-between items-center'>
                 <h1 className='xl:text-lg md:text-base text-sm  tex-gray-900 font-bold'>Simple and Awesome Question Title Here ?</h1>
                 <button className='group'>+</button>

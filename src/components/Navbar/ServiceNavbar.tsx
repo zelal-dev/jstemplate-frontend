@@ -46,7 +46,7 @@ const ServiceNavbar =()=> {
     }
   }
   return (
-    <div className='flex items-center justify-between container mx-auto px-5 sm:px-0 xl:py-10 md:py-7 sm:py-6 py-5'>
+    <div className='flex items-center justify-between container mx-auto px-5 sm:px-0 xl:py-6 md:py-7 sm:py-6 py-5'>
         <Link href="/"><a className='lg:text-2xl sm:text-xl font-bold text-gray-100'>Brand <span>Logo</span></a></Link>
         <div className='sm:flex items-center hidden'>
             <div onClick={productDropdown} className={`flex items-center lg:text-base sm:text-sm ease-in duration-200 ${proColor} cursor-pointer`}><span className='mr-3'>Products</span><IoIosArrowDown /></div>
@@ -56,10 +56,10 @@ const ServiceNavbar =()=> {
             <Link href=""><a className=' lg:text-base sm:text-sm text-gray-100 cursor-pointer'>Contact us</a></Link>
         </div>
         <div className='sm:flex items-center hidden'>
-            <div className='p-3 rounded-md bg-gray-100 mr-4 drop-shadow-4xl'><FaShoppingCart style={{color:"#3E9645", width:"18px", height:"18px"}}/></div>
-            <div className='p-3 rounded-md bg-gray-100 drop-shadow-3xl'><RiUserFill  style={{color:"#3E9645", width:"18px", height:"18px"}} /></div>
+            <div className='p-3 rounded-md bg-gray-100 mr-4 drop-shadow-4xl cursor-pointer'><FaShoppingCart style={{color:"#3E9645", width:"18px", height:"18px"}}/></div>
+            <div className='p-3 rounded-md bg-gray-100 drop-shadow-3xl cursor-pointer'><RiUserFill  style={{color:"#3E9645", width:"18px", height:"18px"}} /></div>
         </div>
-        <div className='p-3 rounded-md bg-gray-100 drop-shadow-3xl sm:hidden block'><BsList  style={{color:"#3E9645", width:"18px", height:"15.5px"}}/></div>
+        <div className='p-3 rounded-md bg-gray-100 drop-shadow-3xl sm:hidden block cursor-pointer'><BsList  style={{color:"#3E9645", width:"18px", height:"15.5px"}}/></div>
         <div className={`absolute hidden top-28 lg:left-1/4 md:left-40 sm:left-28 z-20 ease-out duration-700 sm:${proDis}`}>
           <DropDownProduct />
         </div>

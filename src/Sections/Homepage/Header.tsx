@@ -6,7 +6,7 @@ import {FaShoppingCart} from 'react-icons/fa';
 const Header=()=>{
   return (
     <div className='z-0 xl:py-32 lg:py-28 md:py-24 sm:py-20 py-16 flex flex-col justify-center items-center'>
-        <div className=' flex flex-col justify-center items-center xl:leading-extra-loose md:leading-10 sm:leading-8'>
+        <div className=' flex flex-col justify-center items-center xl:leading-16 md:leading-10 sm:leading-8'>
             <h1 className='2xl:text-5xxl xl:text-5xl lg:text-4xl md:text-3xl sm:text-2xl text-xl font-semibold'>Buy Our Ready-Made Web Solution</h1>
             <h1 className='2xl:text-5xxl xl:text-5xl lg:text-4xl md:text-3xl sm:text-2xl text-xl font-semibold'>Grow Your Business Faster</h1>
         </div>

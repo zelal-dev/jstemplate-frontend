@@ -28,7 +28,7 @@ const ServicePage=()=> {
         <Question />
         <Hire />
         <Testimonials />
-        <Footer />
+        <Footer  boxToColor='greenDark' boxFromColor='greenLight' shadowBox='green' buttonToColor='greenDark' buttonFromColor='greenLight' shadowButton='green' />
     </div>
   )
 }

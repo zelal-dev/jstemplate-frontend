@@ -1,5 +1,6 @@
 import React from 'react'
 import SolutionCart from '../../components/SolutionCart'
+import {HiOutlineArrowNarrowRight} from 'react-icons/hi'
 
 const Products=()=> {
     const smample = [1, 2, 3]
@@ -13,9 +14,10 @@ const Products=()=> {
                 </article>
                 <div className='mt-16 grid xl:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-11 container mx-auto px-5 sm:px-0'>
                     {smample.map((item, index)=>(
-                        <div className='drop-shadow-2xl' key={index}><SolutionCart /></div>
+                        <div className='shadow-grayLight duration-200' key={index}><SolutionCart toColor="greenLight" fromColor='greenDark'  /></div>
                     ))}
                 </div>
+                <button className='text-base font-semibold shadow-3xl mt-16 text-gray-100 flex items-center bg-gradient-to-r from-greenSecondaryLight to-greenSecondaryDark py-4 px-6 rounded-lg'><span className='md:ml-4 ml-3 text-white mr-4'>View All Solution</span> <HiOutlineArrowNarrowRight style={{color:"white"}}/></button>
             </div>
         </div>
     </div>

@@ -24,6 +24,17 @@ module.exports = {
         '7xl': '4.5rem',
         '7xxl': '5rem',
       },
+      letterSpacing: {
+        tightest: '-.075em',
+        tighter: '-.05em',
+        tight: '-.025em',
+        normal: '0',
+        wide: '.025em',
+        wider: '.05em',
+        widest: '.25em',
+        largest: '.75em',
+        
+      },
     extend: {
       colors: {
         'secondary': '#FF7043',
@@ -34,9 +45,12 @@ module.exports = {
         'backgroundGray': '#F6F7FB',
         'backgroundGrayOne': '#F7F8FC',
         'grayLight': '#DDE6F5',
+        'secondaryGrayLight': '#FCFDFE',
+        'secondaryGrayLighter': '#DCE6F6',
         'cartImageBgOne': '#E9F0FB',
         'purpleLight': '#B593FF',
         'purpleDark': '#6726F2',
+        'primaryGreen': '#4AAD4E',
         'greenLight': '#67E5A3',
         'greenDark': '#08994D',
         'greenSecondaryLight': '#70C276',
@@ -47,6 +61,8 @@ module.exports = {
         'yellowDark': '#FB9600',
         'redLight': '#FF7E85',
         'redDark': '#FF2632',
+        'secondaryTemplateColorDark': '#068179',
+        'secondaryTemplateColorLight': '#54BAB3',
       },
       lineHeight: {
         'extra-loose': '4rem',
@@ -61,6 +77,13 @@ module.exports = {
         'green': '0px 4px 16px -2px rgba(4, 174, 84, 0.5)',
         'yellow': '0px 4px 16px -2px rgba(255, 179, 0, 0.5)',
         'red': '0px 4px 16px -2px rgba(250, 79, 88, 0.5)',
+        'grayLight': '0px 40px 50px #E7ECF3',
+        'darkLight': ' 0px 24px 24px -4px #006D66',
+        'secondaryTemplate': '0px 4px 16px -2px rgba(6, 129, 121, 0.5)',
+      },
+      backgroundImage: {
+        'cart-bg':'linear-gradient(180deg, #139A91 0%, #027971 100%)',
+        'cart-bg-bottom':'linear-gradient(180deg, #027971 0%, #139A91 100%)'
       }
     },
     container: {

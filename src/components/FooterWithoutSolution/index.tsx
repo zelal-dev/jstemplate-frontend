@@ -68,7 +68,7 @@ const FooterWithoutSolution=()=> {
             </div>
             <div className='bg-gray-700 py-6 px-10 rounded-md flex md:flex-row flex-col items-center justify-between mt-16'>
                 <div className='flex items-center'>
-                    <div className='md:p-4 p-2 rounded-full bg-gradient-to-r from-greenLight to-greenDark xl:mr-8 lg:mr-6 md:mr-5 sm:mr-4 mr-3'><FaCheck className='text-gray-100 xl:w-6 xl:h-5 lg:w-5 lg:h-4 md:w-4 md:h-3 w-3 h-2' /></div>
+                    <div className='md:p-4 p-2 rounded-full bg-gradient-to-br from-greenLight shadow-green to-greenDark xl:mr-8 lg:mr-6 md:mr-5 sm:mr-4 mr-3'><FaCheck className='text-gray-100 xl:w-6 xl:h-5 lg:w-5 lg:h-4 md:w-4 md:h-3 w-3 h-2' /></div>
                     <h2 className='text-gray-100 xl:text-2xl lg:text-xl md:text-lg text-base font-bold'>Guaranted Safe Checkout</h2>
                 </div>
                 <div className='flex items-center mt-8 md:mt-0'>

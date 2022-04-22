@@ -35,6 +35,24 @@
   background-size: cover;
 }
 
+.single-product-hire-part{
+  background-image: url("./../public/prodSingleBg.svg");
+  background-size: cover;
+}
+
+.single-product-header-part{
+  background-image: url("./../public/productSingleHeaderBg.svg");
+  background-size: cover;
+}
+
+.benefit-cart-bg{
+  background-image: url("./../public/benefitCartBg.svg");
+  background-size:cover;
+  height: 100%;
+  width: 100%;
+  /* background-repeat: no-repeat; */
+}
+
 .service-part{
   background-image: url("./../public//serviceHeadBg.svg");
   background-size: cover;

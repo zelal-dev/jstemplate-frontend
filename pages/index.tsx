@@ -25,7 +25,7 @@ const Homepage: NextPage = () => {
       <ChooseUs />
       <Customer />
       <Testimonials />
-      <Footer />
+      <Footer boxToColor='blueTwo' boxFromColor='blueOne' shadowBox='3xl' buttonToColor='orangeTwo' buttonFromColor='orangeOne' shadowButton='4xl' />
     </section>
   )
 }
