@@ -80,6 +80,7 @@ module.exports = {
         'grayLight': '0px 40px 50px #E7ECF3',
         'darkLight': ' 0px 24px 24px -4px #006D66',
         'secondaryTemplate': '0px 4px 16px -2px rgba(6, 129, 121, 0.5)',
+        'secondaryGrayLight': '0px 40px 50px -12px #E7ECF3, inset 3px 0px 0px #068179',
       },
       backgroundImage: {
         'cart-bg':'linear-gradient(180deg, #139A91 0%, #027971 100%)',
