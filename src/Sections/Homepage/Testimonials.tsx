@@ -4,7 +4,7 @@ import TestimonialsCart from '../../components/TestimonialsCart'
 const Testimonials=()=> {
     const sample = [1, 2, 3, 4, 5, 6, 7, 8]
   return (
-    <div className='bg-backgroundGrayOne'>
+    <div className='bg-backgroundGrayOne relative z-0'>
         <div className='container mx-auto'>
             <div className='xl:py-24 sm:py-16 py-14 flex flex-col items-center justify-center'>
                 <h5 className='xl:text-base md:text-sm text-xs text-secondary'>Testimonials</h5>

@@ -51,7 +51,7 @@ const ChooseUs=()=>{
         setBoxShadowSix("inset 0px 8px 4px -4px #E9F0FB")
     }
   return (
-    <div className='container mx-auto'>
+    <div className='container mx-auto relative z-0'>
         <div className='xl:py-24 sm:py-16 py-14 flex flex-col items-center justify-center'>
             <h5 className='xl:text-base md:text-sm text-xs text-secondary'>Features</h5>
             <h1 className='2xl:text-4xl xl:text-3xl lg:text-2xl md:text-xl sm:text-lg text-base font-bold lg:mt-4 sm:mt-3 mt-2 text-gray-900'>Why Choose Us ?</h1>

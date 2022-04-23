@@ -2,21 +2,27 @@ import React from 'react'
 import Footer from '../src/components/Footer'
 import Navbar from '../src/components/Navbar'
 import Testimonials from '../src/Sections/Homepage/Testimonials'
-import Benefits from '../src/Sections/ProductSinglePage/Benefits'
 import Header from '../src/Sections/ProductSinglePage/Header'
-import Hire from '../src/Sections/ProductSinglePage/Hire'
-import MangeWebsite from '../src/Sections/ProductSinglePage/ManageWebsite'
+import Heading from '../src/Sections/ProductSinglePage/Heading'
+import SimpleTitleFirst from '../src/Sections/ProductSinglePage/SimpleTitleFirst'
+import SimpleTitleSecond from '../src/Sections/ProductSinglePage/SimpleTitleSecond'
+import SimpleTitleThird from '../src/Sections/ProductSinglePage/SimpleTitleThird'
+import Hire from '../src/Sections/PreSalePage/Hire'
+import MangeWebsite from '../src/Sections/PreSalePage/ManageWebsite'
 import Question from '../src/Sections/Servicepage/Question'
 
-const ProductSinglePage = () => {
+const PreSalePage = () => {
   return (
     <div>
-      <div className='single-product-header-part'>
-        <Navbar.SingleProductNavbar />
-        <Header />
-      </div>
+        <div className="sm:bg-[url('/productSingleHeaderBg.svg')] bg-no-repeat bg-secondaryTemplateColorDark">
+            <Navbar.SingleProductNavbar />
+            <Header />
+        </div>
         <MangeWebsite />
-        <Benefits />
+        <SimpleTitleFirst />
+        <SimpleTitleSecond />
+        <SimpleTitleThird />
+        <Heading />
         <Hire />
         <Question />
         <Testimonials />
@@ -25,4 +31,4 @@ const ProductSinglePage = () => {
   )
 }
 
-export default ProductSinglePage
+export default PreSalePage

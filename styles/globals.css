@@ -25,6 +25,10 @@
   
 }
 
+.arrow-timeline{
+  clip-path: polygon(100% 50%, 0 0, 0 100%);
+}
+
 .prod-contact-part{
   background-image: url("./../public/contactusBg.svg");
   background-size: cover;

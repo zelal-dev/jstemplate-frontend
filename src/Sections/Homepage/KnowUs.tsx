@@ -9,7 +9,7 @@ import Image from 'next/image';
 const KnowUs=()=>{
   return (
     <div>
-        <div className='container mx-auto '>
+        <div className='container mx-auto relative z-0'>
           <div className='bg-white rounded-ld xl:py-20 sm:py-16 py-14 flex flex-col items-center justify-center drop-shadow-xl rounded-xl'>
             <h5 className='xl:text-base md:text-sm text-xs text-secondary'>Statistics</h5>
             <h1 className='2xl:text-4xl xl:text-3xl lg:text-2xl md:text-xl sm:text-lg text-base font-bold lg:mt-4 sm:mt-3 mt-2 text-gray-900'>Get To Know Us</h1>

@@ -9,7 +9,7 @@ import {ImCross} from 'react-icons/im'
 
 const Benefits = () => {
   return (
-    <div className='container mx-auto bg-white w-full shadow-xl xl:p-24 lg:p-16 md:p-10 sm:p-8 p-6 rounded-xl'>
+    <div className='container mx-auto lg:-mt-[25rem] bg-white w-full shadow-xl xl:p-24 lg:p-16 md:p-10 sm:p-8 p-6 rounded-xl'>
         <div className='flex flex-col items-center'>
           <h1 className='2xl:text-4xl xl:text-3xl lg:text-2xl md:text-xl sm:text-lg text-base font-bold lg:mt-4 sm:mt-3 mt-2 text-gray-900 text-center'>Get Pre-Sale Benefits</h1>
           <article className='mt-5 text-gray-600 md:w-3/5 w-3/4 text-center xl:text-lg md:text-base text-sm'>

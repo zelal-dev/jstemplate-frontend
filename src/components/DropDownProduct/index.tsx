@@ -35,8 +35,8 @@ const DropDownProduct=()=>{
         setHeadlessColor("")
     }
   return (
-    <div className='bg-white w-10/12 drop-shadow-xl rounded-lg'>
-        <div className='pt-8'>
+    <div className='bg-white xl:w-[55.625rem] w-10/12 h-auto xl:h-[35rem] drop-shadow-xl rounded-lg'>
+        <div className='pt-7'>
             <div className=' lg:px-8 md:px-7 sm:px-6 flex items-center'>
                 <button onClick={mern} className={`xl:pb-5 xl:px-8 lg:pb-3 lg:px-4 md:pb-2 md:px-3 sm:pb-2 sm:px-1 lg:text-base sm:text-xs text-gray-700 peer cursor-pointer text-${mernColor} duration-200 ease-in`}>Mern Stack</button>
                 <button onClick={headless} className={`xl:pb-5 xl:px-8 lg:pb-3 lg:px-4 md:pb-2 md:px-3 sm:pb-2 sm:px-1  lg:text-base sm:text-xs text-gray-700 cursor-pointer text-${headlessColor} duration-200 ease-in`}>Headless CMS</button>
@@ -49,7 +49,7 @@ const DropDownProduct=()=>{
                 <div className={`xl:w-40 lg:w-32 md:w-24 sm:w-20 h-px duration-200 ease-in bg-${reactColor} mr-2`} />
                 <div className={`xl:w-44 lg:w-36 md:w-28 sm:w-24 h-px duration-200 ease-in bg-${figmaColor}`} />
             </div>
-            <div className=' lg:px-8 md:px-7 sm:px-6 lg:py-8 md:py-7 sm:py-6  grid xl:grid-cols-2 lg:grid-cols-1 container gap-3'>
+            <div className=' lg:px-8 md:px-7 sm:px-6  md:py-7 sm:py-6  grid xl:grid-cols-2 lg:grid-cols-1 container gap-2'>
                 <div className='flex items-start group p-5 rounded-lg hover:bg-backgroundGray cursor-pointer ease-in duration-200 border border-white hover:border-cartImageBgOne'>
                     <div className='shadow-lg rounded-lg bg-white p-3 mr-6'><FaShoppingCart className='w-6 h-6 drop-shadow-lg text-blueTwo' /></div>
                     <div>
@@ -94,7 +94,7 @@ const DropDownProduct=()=>{
                 </div>
 
             </div>
-            <div className=' lg:px-8 md:px-7 sm:px-6 lg:py-8 md:py-7 sm:py-6  bg-backgroundGrayOne flex flex-col xl:flex-row justify-between items-center rounded-b-lg'>
+            <div className=' lg:px-8 md:px-7 sm:px-6 md:py-7 sm:py-6  bg-backgroundGrayOne flex flex-col xl:flex-row justify-between items-center rounded-b-lg'>
                 <div>
                     <h2 className='text-gray-900 text-base font-semibold xl:text-left text-center'>We have total 10 Solution</h2>
                     <article className='text-gray-600 text-sm'>Lorem Ipsum has been the industrys standard dummy text</article>

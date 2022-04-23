@@ -6,7 +6,7 @@ import {HiOutlineArrowNarrowRight} from 'react-icons/hi'
 const Solution=()=>{
     const sample = [1, 2, 3]
   return (
-    <div className='container mx-auto'>
+    <div className='container mx-auto relative z-0'>
         <div className='xl:py-24 sm:py-16 py-14 flex flex-col items-center justify-center'>
             <h5 className='xl:text-base md:text-sm text-xs text-secondary'>Statistics</h5>
             <h1 className='2xl:text-4xl xl:text-3xl lg:text-2xl md:text-xl sm:text-lg text-base font-bold lg:mt-4 sm:mt-3 mt-2 text-gray-900'>Our Creative Solution</h1>
