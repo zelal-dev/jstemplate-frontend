@@ -92,8 +92,8 @@ const DefaultNavbar =()=> {
             <Link href=""><a className=' lg:text-base sm:text-sm text-gray-700 cursor-pointer'>Contact us</a></Link>
         </div>
         <div className='sm:flex items-center hidden'>
-            <div className='p-3 rounded-md bg-gradient-to-br from-orangeOne to-orangeTwo mr-4 shadow-4xl cursor-pointer'><FaShoppingCart style={{color:"white", width:"18px", height:"18px"}}/></div>
-            <div className='p-3 rounded-md bg-gradient-to-br from-blueOne to-blueTwo shadow-3xl cursor-pointer'><RiUserFill  style={{color:"white", width:"18px", height:"18px"}} /></div>
+            <Link href="/preSalePage"><a className='p-3 rounded-md bg-gradient-to-br from-orangeOne to-orangeTwo mr-4 shadow-4xl cursor-pointer'><FaShoppingCart style={{color:"white", width:"18px", height:"18px"}}/></a></Link>
+            <Link href=""><a className='p-3 rounded-md bg-gradient-to-br from-blueOne to-blueTwo shadow-3xl cursor-pointer'><RiUserFill  style={{color:"white", width:"18px", height:"18px"}} /></a></Link>
         </div>
         <div className='p-3 rounded-md bg-gradient-to-r from-blueOne to-blueTwo shadow-3xl sm:hidden block cursor-pointer' onClick={handleSidebar}><BsList  style={{color:"white", width:"18px", height:"15.5px"}}/></div>
         <div className={`absolute hidden top-24 lg:left-1/4 md:left-40 sm:left-28 z-20 ease-out duration-700 sm:${proDis}`}>

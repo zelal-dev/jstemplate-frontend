@@ -20,7 +20,7 @@ const Footer=({boxToColor, boxFromColor, shadowBox, buttonToColor, buttonFromCol
                     </div>
                 </div>
                 <div className=' flex items-center justify-center'>
-                    <Link href=""><a className={`flex-1 shadow-${shadowButton} flex items-center xl:text-lg text-base xl:py-6 md:py-3 xl:px-10 md:px-5 py-3 px-3 rounded-lg bg-gradient-to-br from-${buttonFromColor} to-${buttonToColor} mt-8 lg:mt-0`}><span className=' text-white mr-4'>View All Solution</span> <HiOutlineArrowNarrowRight style={{color:"white"}}/></a></Link>
+                    <Link href="/productPage"><a className={`flex-1 shadow-${shadowButton} flex items-center xl:text-lg text-base xl:py-6 md:py-3 xl:px-10 md:px-5 py-3 px-3 rounded-lg bg-gradient-to-br from-${buttonFromColor} to-${buttonToColor} mt-8 lg:mt-0`}><span className=' text-white mr-4'>View All Solution</span> <HiOutlineArrowNarrowRight style={{color:"white"}}/></a></Link>
                 </div>
             </div>
             <div className='flex items-start justify-between flex-wrap xl:pt-52 lg:pt-48 md:pt-40 sm:pt-36 pt-32'>

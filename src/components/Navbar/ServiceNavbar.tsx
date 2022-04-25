@@ -56,7 +56,7 @@ const ServiceNavbar =()=> {
             <Link href=""><a className=' lg:text-base sm:text-sm text-gray-100 cursor-pointer'>Contact us</a></Link>
         </div>
         <div className='sm:flex items-center hidden'>
-            <div className='p-3 rounded-md bg-gray-100 mr-4 drop-shadow-4xl cursor-pointer'><FaShoppingCart style={{color:"#3E9645", width:"18px", height:"18px"}}/></div>
+            <Link href="/preSalePage"><a className='p-3 rounded-md bg-gray-100 mr-4 drop-shadow-4xl cursor-pointer'><FaShoppingCart style={{color:"#3E9645", width:"18px", height:"18px"}}/></a></Link>
             <div className='p-3 rounded-md bg-gray-100 drop-shadow-3xl cursor-pointer'><RiUserFill  style={{color:"#3E9645", width:"18px", height:"18px"}} /></div>
         </div>
         <div className='p-3 rounded-md bg-gray-100 drop-shadow-3xl sm:hidden block cursor-pointer'><BsList  style={{color:"#3E9645", width:"18px", height:"15.5px"}}/></div>

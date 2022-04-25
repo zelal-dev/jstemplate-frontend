@@ -17,12 +17,12 @@ const Solution=()=>{
                 {/* {sample.map((items, index)=>(
                     <SolutionCart key={index} />
                 ))} */}
-                <div className='shadow-grayLight'><SolutionCart toColor="blueOne" fromColor='blueTwo' /></div>
-                <div className='xl:-mt-36 shadow-grayLight h-min'><SolutionCart toColor="blueOne" fromColor='blueTwo'  /></div>
-                <div className='shadow-grayLight'><SolutionCart  toColor="blueOne" fromColor='blueTwo'  /></div>
-                <div className='shadow-grayLight'><SolutionCart  toColor="blueOne" fromColor='blueTwo'  /></div>
-                <div className='xl:-mt-36 shadow-grayLight h-min'><SolutionCart  toColor="blueOne" fromColor='blueTwo'  /></div>
-                <div className='shadow-grayLight'><SolutionCart  toColor="blueOne" fromColor='blueTwo'  /></div>
+                <div className='shadow-grayLight'><Link href="/preSalePage"><a><SolutionCart toColor="blueOne" fromColor='blueTwo' /></a></Link></div>
+                <div className='xl:-mt-36 shadow-grayLight h-min'><Link href="/preSalePage"><a><SolutionCart toColor="blueOne" fromColor='blueTwo' /></a></Link></div>
+                <div className='shadow-grayLight'><Link href="/preSalePage"><a><SolutionCart toColor="blueOne" fromColor='blueTwo' /></a></Link></div>
+                <div className='shadow-grayLight'><Link href="/preSalePage"><a><SolutionCart toColor="blueOne" fromColor='blueTwo' /></a></Link></div>
+                <div className='xl:-mt-36 shadow-grayLight h-min'><Link href="/preSalePage"><a><SolutionCart toColor="blueOne" fromColor='blueTwo' /></a></Link></div>
+                <div className='shadow-grayLight'><Link href="/preSalePage"><a><SolutionCart toColor="blueOne" fromColor='blueTwo' /></a></Link></div>
             </div>
             <Link href=""><a className='xl:-mt-12 md:mt-16 mt-10 shadow-3xl flex sm:w-auto items-center xl:text-lg text-base xl:py-6 md:py-3 xl:px-10 md:px-5 py-3 px-3 rounded-lg bg-gradient-to-br from-blueOne to-blueTwo sm:mr-6 mr-0'><span className='md:ml-4 ml-3 text-white mr-4'>View All Solution</span> <HiOutlineArrowNarrowRight style={{color:"white"}}/></a></Link>
         </div>
