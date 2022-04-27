@@ -1,8 +1,5 @@
-import React from 'react'
-import Navbar from './../../../src/components/Navbar'
-import {FaShoppingCart, FaReceipt} from 'react-icons/fa'
-import {BsFillFileDiffFill, BsCheckLg} from 'react-icons/bs';
-import {HiOutlineDownload} from 'react-icons/hi';
+import React from 'react';
+import Navbar from './../../../src/components/Navbar';
 
 const PreSale = () => {
   const sample = [1, 2, 3, 4]

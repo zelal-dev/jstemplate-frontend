@@ -1,8 +1,6 @@
-import React from 'react'
-import Navbar from './../../../src/components/Navbar'
-import {FaShoppingCart, FaReceipt} from 'react-icons/fa'
-import {BsThreeDotsVertical, BsFillTriangleFill} from 'react-icons/bs';
-import Link from 'next/link';
+import React from 'react';
+import { BsThreeDotsVertical } from 'react-icons/bs';
+import Navbar from './../../../src/components/Navbar';
 
 const Downloads = () => {
   const sample = [1, 2, 3, 4]
