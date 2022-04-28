@@ -83,7 +83,8 @@ const DefaultNavbar =()=> {
 
   return (
     <div className='flex items-center container mx-auto justify-between xl:py-10 md:py-7 sm:py-6 py-5 px-5 sm:px-0'>
-        <Link href="/"><a className='lg:text-2xl sm:text-xl font-bold'>Brand <span className='text-blue-600'>Logo</span></a></Link>
+        {/* <Link href="/"><a className='lg:text-2xl sm:text-xl font-bold'>Brand <span className='text-blue-600'>Logo</span></a></Link> */}
+        <Link href="/"><a><Image src="/brandLogo.svg" alt='' width="136" height="42" /></a></Link>
         <div className='sm:flex items-center hidden'>
             <div onClick={productDropdown} className={`flex items-center lg:text-base sm:text-sm ease-in duration-200 ${proColor} cursor-pointer`}><span className='mr-3'>Products</span><IoIosArrowDown /></div>
             <div  onClick={serviceDropdown} className={`mx-7 flex items-center lg:text-base sm:text-sm ease-in duration-200 ${serColor} cursor-pointer`}><span className='mr-3'>Service</span><IoIosArrowDown /></div>

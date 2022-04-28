@@ -5,6 +5,7 @@ import Link from 'next/link'
 import {HiOutlineArrowNarrowRight} from 'react-icons/hi';
 // import Image from 'next/image'
 import footerBg from './../../../public/footerBg.svg'
+import Image from 'next/image';
 
 const Footer=({boxToColor, boxFromColor, shadowBox, buttonToColor, buttonFromColor, shadowButton}:{boxToColor:string, boxFromColor:string, shadowBox:string, buttonToColor:string, buttonFromColor:string, shadowButton:string})=> {
   return (
@@ -25,8 +26,9 @@ const Footer=({boxToColor, boxFromColor, shadowBox, buttonToColor, buttonFromCol
             </div>
             <div className='flex items-start justify-between flex-wrap xl:pt-52 lg:pt-48 md:pt-40 sm:pt-36 pt-32'>
                 <div className='pt-8'>
-                    <h1 className='text-3xl font-bold text-gray-100'>Brand Logo</h1>
-                    <article className='text-xl text-gray-400 w-80'>Lorem Ipsum is simply dummy text of the printing and typesetting industry.  Lorem Ipsum Dummy Text</article>
+                    {/* <h1 className='text-3xl font-bold text-gray-100'>Brand Logo</h1> */}
+                    <Link href="/"><a><Image src="/footerBrandLogo.svg" alt='' width="136" height="42" /></a></Link>
+                    <article className='text-xl text-gray-400 w-80 mt-5'>Lorem Ipsum is simply dummy text of the printing and typesetting industry.  Lorem Ipsum Dummy Text</article>
                     <div className='flex items-center mt-7'>
                         <span className='mr-5 cursor-pointer'><FaFacebookF color='#AEB6BF' width="10.71" height="20" /></span>
                         <span className='mr-5 cursor-pointer'><FaTwitter color='#AEB6BF' width="10.71" height="20" /></span>
