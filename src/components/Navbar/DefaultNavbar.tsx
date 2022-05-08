@@ -8,6 +8,7 @@ import { ImCross } from "react-icons/im";
 import { IoIosArrowDown } from "react-icons/io";
 import { MdKeyboardArrowDown, MdKeyboardArrowUp } from "react-icons/md";
 import { RiUserFill } from "react-icons/ri";
+import ForgetPassword from "../../Sections/Authentication/ForgetPassword";
 import Login from "../../Sections/Authentication/Login";
 import Registration from "../../Sections/Authentication/Registration";
 import DropDownProduct from "../DropDownProduct";
@@ -19,29 +20,39 @@ const DefaultNavbar = () => {
   const [proColor, setProColor] = useState("text-gray-700");
   const [serColor, setSerColor] = useState("text-gray-700");
   const [sideBarContent, setSideBarContent] = useState<string>("hidden");
-  const [loginModal, setLoginModal] = useState<string>("hidden")
+  const [loginModal, setLoginModal] = useState<string>("hidden");
   const [signUpModal, setSignUpModal] = useState<string>("hidden");
+  const [forgetPassModal, setForgetPassModal] = useState<string>("hidden");
   const [sideBarServiceContent, setSideBarServiceContent] =
     useState<string>("hidden");
   const [sideBar, setSideBar] = useState<string>("-left-full");
 
-  const handleLoginModal = () =>{
-    setSignUpModal("hidden")
-    if(loginModal === "hidden"){
+  const handleLoginModal = () => {
+    setSignUpModal("hidden");
+    if (loginModal === "hidden") {
       setLoginModal("flex");
+    } else {
+      setLoginModal("hidden");
     }
-    else {
-      setLoginModal("hidden")
-    }
-  }
-  const handleRegModal = () =>{
-    setLoginModal("hidden")
+  };
+  const handleRegModal = () => {
+    setLoginModal("hidden");
     if (signUpModal === "hidden") {
       setSignUpModal("flex");
     } else {
       setSignUpModal("hidden");
     }
-  }
+  };
+
+  const handelForgetPassModal = (e:any) => {
+    e.preventDefault();
+    setLoginModal("hidden");
+    if (forgetPassModal === "hidden") {
+      setForgetPassModal("flex");
+    } else {
+      setForgetPassModal("hidden");
+    }
+  };
 
   const productDropdown = () => {
     setSerDis("hidden");
@@ -178,6 +189,7 @@ const DefaultNavbar = () => {
         <Login
           handleLoginModal={handleLoginModal}
           handleRegModal={handleRegModal}
+          handelForgetPassModal={handelForgetPassModal}
         />
       </div>
       <div
@@ -190,6 +202,14 @@ const DefaultNavbar = () => {
           handleLoginModal={handleLoginModal}
           handleRegModal={handleRegModal}
         />
+      </div>
+      <div
+        className={`fixed top-0 left-0 right-0 h-screen ${forgetPassModal} bg-black opacity-80 z-40`}
+      />
+      <div
+        className={`fixed top-0 left-0 right-0 h-screen z-50 ${forgetPassModal} items-center justify-center`}
+      >
+        <ForgetPassword handelForgetPassModal={handelForgetPassModal} />
       </div>
       <div
         className={`fixed ${sideBar} ease-in duration-300 z-20 top-0 w-full h-screen bg-gray-800 p-10 overflow-auto`}

@@ -85,6 +85,20 @@ module.exports = {
       backgroundImage: {
         'cart-bg':'linear-gradient(180deg, #139A91 0%, #027971 100%)',
         'cart-bg-bottom':'linear-gradient(180deg, #027971 0%, #139A91 100%)'
+      },
+      animation: {
+        'testimonial-xl': 'moveTestimonialShow 4s linear infinite',
+        'testimonial-lg': 'moveTestimonialShow 6s linear infinite',
+        'testimonial-sm': 'moveTestimonialShow 8s linear infinite',
+        'testimonial-xs': 'moveTestimonialShow 10s linear infinite',
+      },
+      keyframes: {
+        moveTestimonialShow: {
+          '100%': { transform: 'translateY(-40%)' },
+        }
+      },
+      transform:{
+        "moveTestimonialShow": {transform: "translate3d(0, 0, 0)"}
       }
     },
     container: {

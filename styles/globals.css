@@ -2,68 +2,84 @@
 @tailwind components;
 @tailwind utilities;
 
-@import url('https://fonts.googleapis.com/css2?family=Lato&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Lato&display=swap");
 
-.header-part{
+.header-part {
   background-image: url("./../public/headerBg.svg");
   background-size: cover;
 }
 
-.product-header-part{
+.product-header-part {
   background-image: url("./../public/prodHeadBg.svg");
   background-size: cover;
 }
 
-.footer-part{
+.footer-part {
   background-image: url("./../public/footerBg.svg");
   background-size: contain;
   background-repeat: no-repeat;
 }
 
-.arrow{
+.arrow {
   clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
-  
 }
 
-.arrow-timeline{
+.arrow-timeline {
   clip-path: polygon(100% 50%, 0 0, 0 100%);
 }
 
-.prod-contact-part{
+.prod-contact-part {
   background-image: url("./../public/contactusBg.svg");
   background-size: cover;
 }
 
-.service-hire-part{
+.service-hire-part {
   background-image: url("./../public/hireBg.svg");
   background-size: cover;
 }
 
-.single-product-hire-part{
+.single-product-hire-part {
   background-image: url("./../public/prodSingleBg.svg");
   background-size: cover;
 }
 
-.single-product-header-part{
+.single-product-header-part {
   background-image: url("./../public/productSingleHeaderBg.svg");
   background-size: cover;
 }
 
-.benefit-cart-bg{
+.benefit-cart-bg {
   background-image: url("./../public/benefitCartBg.svg");
-  background-size:cover;
+  background-size: cover;
   height: 100%;
   width: 100%;
   /* background-repeat: no-repeat; */
 }
 
-.service-part{
+.service-part {
   background-image: url("./../public//serviceHeadBg.svg");
   background-size: cover;
 }
 
-*{
-  font-family: 'Lato', sans-serif;
+/* .testimonials-container {
+  transform: translate3d(0, 0, 0);
+}
+.testimonials-cart {
+  transform: translate3d(0, 0, 0);
+} */
+
+/* .testimonials-container .testimonials-cart {
+  animation: moveSlideshow 8s linear infinite;
+}
+
+@keyframes moveSlideshow {
+  100% {
+    transform: translateY(-40%);
+  }
+} */
+
+* {
+  font-family: "Lato", sans-serif;
 }
 
 /* html,

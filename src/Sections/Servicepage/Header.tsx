@@ -13,7 +13,9 @@ type uxPageTypeDataT = {
 
 const Header = () => {
   const [totalCost, setTotalCost] = useState<number>(0);
-  const [disUx, setDisUx] = useState("hidden");
+  const [disUx, setDisUx] = useState("block");
+  const [disFront1, setDisFront1] = useState("hidden");
+  const [disFront2, setDisFront2] = useState("hidden");
   const [ux, setUx] = useState<boolean>();
   const [uxCost, setUxCost] = useState<number>(0);
   const [uxPageNo, setUxPageNo] = useState<number>(0);
@@ -40,6 +42,20 @@ const Header = () => {
       setDisUx("block");
     } else {
       setDisUx("hidden");
+    }
+  };
+  const handleDisplayFront1 = () => {
+    if (disFront1 === "hidden") {
+      setDisFront1("block");
+    } else {
+      setDisFront1("hidden");
+    }
+  };
+  const handleDisplayFront2 = () => {
+    if (disFront2 === "hidden") {
+      setDisFront2("block");
+    } else {
+      setDisFront2("hidden");
     }
   };
 
@@ -307,8 +323,23 @@ const Header = () => {
                 $234
               </h4>
             </div>
-            <div>
-              <IoIosArrowDown className="text-gray-500 w-2.5 h-2.5" />
+            <button>
+              {disFront1 === "hidden" ? (
+                <IoIosArrowDown
+                  className="text-gray-500 w-2.5 h-2.5 cursor-pointer"
+                  onClick={handleDisplayFront1}
+                />
+              ) : (
+                <IoIosArrowUp
+                  className="text-gray-500 w-2.5 h-2.5 cursor-pointer"
+                  onClick={handleDisplayFront1}
+                />
+              )}
+            </button>
+          </div>
+          <div className={`${disFront1} duration-700`}>
+            <div className="mt-5 flex justify-between items-center">
+              <h3 className="text-sm text-gray-700">Will be soon</h3>
             </div>
           </div>
         </div>
@@ -325,8 +356,23 @@ const Header = () => {
                 $234
               </h4>
             </div>
-            <div>
-              <IoIosArrowDown className="text-gray-500 w-2.5 h-2.5" />
+            <button>
+              {disFront2 === "hidden" ? (
+                <IoIosArrowDown
+                  className="text-gray-500 w-2.5 h-2.5 cursor-pointer"
+                  onClick={handleDisplayFront2}
+                />
+              ) : (
+                <IoIosArrowUp
+                  className="text-gray-500 w-2.5 h-2.5 cursor-pointer"
+                  onClick={handleDisplayFront2}
+                />
+              )}
+            </button>
+          </div>
+          <div className={`${disFront2} duration-700`}>
+            <div className="mt-5 flex justify-between items-center">
+              <h3 className="text-sm text-gray-700">Will be soon</h3>
             </div>
           </div>
         </div>

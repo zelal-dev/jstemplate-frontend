@@ -4,19 +4,21 @@ import { ImCross } from "react-icons/im";
 const Login = ({
   handleLoginModal,
   handleRegModal,
+  handelForgetPassModal,
 }: {
   handleLoginModal: any;
   handleRegModal: any;
+  handelForgetPassModal:any
 }) => {
   return (
     <div className="bg-white rounded-lg">
       <div className=" xl:p-8 lg:p-7 md:p-6 sm:p-5 p-4 flex items-center justify-between">
         <h3 className="xl:text-3xl md:text-2xl text-xl font-bold">Login</h3>
         <button
-          className="xl:p-3.5 md:p-3 p-2 rounded-lg bg-black hover:bg-blueTwo"
+          className=" md:p-2.5 p-1.5 rounded-lg bg-black hover:bg-blueTwo"
           onClick={handleLoginModal}
         >
-          <ImCross className="xl:text-xl md:text-lg text-base text-gray-100" />
+          <ImCross className=" md:text-base text-sm text-gray-100" />
         </button>
       </div>
       <hr className="xl:w-[35rem] lg:w-[32rem] md:w-[28rem] sm:w-96 w-72" />
@@ -45,9 +47,9 @@ const Login = ({
                 Remember me
               </h1>
             </div>
-            <h3 className="md:text-sm text-xs text-blueTwo">
+            <button onClick={handelForgetPassModal} className="md:text-sm text-xs text-blueTwo hover:underline">
               Forget Password?
-            </h3>
+            </button>
           </div>
           <button className="md:py-3 py-2 rounded-md bg-gradient-to-br from-blueOne to-blueTwo md:text-base text-sm font-semibold text-white mt-8">
             Login
