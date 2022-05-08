@@ -1,165 +1,165 @@
-import React, { useEffect, useState } from "react";
-import { IoIosArrowDown, IoIosArrowUp } from "react-icons/io";
+import React, { useEffect, useState } from 'react'
+import { IoIosArrowDown, IoIosArrowUp } from 'react-icons/io'
 
 type uxPlatformDataT = {
-  desktop: number;
-  mobile: number;
-  tablet: number;
-};
+  desktop: number
+  mobile: number
+  tablet: number
+}
 type uxPageTypeDataT = {
-  landing: number;
-  dashboard: number;
-};
+  landing: number
+  dashboard: number
+}
 
 const Header = () => {
-  const [totalCost, setTotalCost] = useState<number>(0);
-  const [disUx, setDisUx] = useState("hidden");
-  const [ux, setUx] = useState<boolean>();
-  const [uxCost, setUxCost] = useState<number>(0);
-  const [uxPageNo, setUxPageNo] = useState<number>(0);
+  const [totalCost, setTotalCost] = useState<number>(0)
+  const [disUx, setDisUx] = useState('hidden')
+  const [ux, setUx] = useState<boolean>()
+  const [uxCost, setUxCost] = useState<number>(0)
+  const [uxPageNo, setUxPageNo] = useState<number>(0)
   const [uxPlatform, setUxPlatform] = useState<uxPlatformDataT>({
     desktop: 500,
     mobile: 400,
     tablet: 300,
-  });
+  })
   const [uxPageType, setUxPageType] = useState<uxPageTypeDataT>({
     landing: 2000,
     dashboard: 2500,
-  });
+  })
 
   useEffect(() => {
-    handleTotalCost();
-  }, [uxCost]);
+    handleTotalCost()
+  }, [uxCost])
 
   const handleTotalCost = () => {
-    setTotalCost(uxCost);
-  };
+    setTotalCost(uxCost)
+  }
 
   const handleDisplayUx = () => {
-    if (disUx === "hidden") {
-      setDisUx("block");
+    if (disUx === 'hidden') {
+      setDisUx('block')
     } else {
-      setDisUx("hidden");
+      setDisUx('hidden')
     }
-  };
+  }
 
   const handleUx = () => {
-    const ux = document.getElementById("uxCheck") as HTMLInputElement;
+    const ux = document.getElementById('uxCheck') as HTMLInputElement
     if (ux.checked === false) {
-      setUx(false);
-      setTotalCost(0);
+      setUx(false)
+      setTotalCost(0)
     } else {
-      setUx(true);
-      setTotalCost(uxCost);
+      setUx(true)
+      setTotalCost(uxCost)
     }
-  };
+  }
 
   const handleUxPageNoInc = () => {
     if (uxPageNo > 0) {
-      const singlePageCost = uxCost / uxPageNo;
-      setUxCost(uxCost + singlePageCost);
+      const singlePageCost = uxCost / uxPageNo
+      setUxCost(uxCost + singlePageCost)
     }
     // console.log(uxCost, uxPageNo);
     // console.log(singlePageCost);
-    setUxPageNo(uxPageNo + 1);
-  };
+    setUxPageNo(uxPageNo + 1)
+  }
 
   const handleUxPageNoDec = () => {
     if (uxPageNo > 0) {
-      setUxPageNo(uxPageNo - 1);
-      const singlePageCost = uxCost / uxPageNo;
-      setUxCost(uxCost - singlePageCost);
+      setUxPageNo(uxPageNo - 1)
+      const singlePageCost = uxCost / uxPageNo
+      setUxCost(uxCost - singlePageCost)
     }
     if (uxPageNo === 1) {
-      const desk = document.getElementById("uxDesk") as HTMLInputElement;
-      const mob = document.getElementById("uxMob") as HTMLInputElement;
-      const tab = document.getElementById("uxTab") as HTMLInputElement;
-      const dash = document.getElementById("uxDash") as HTMLInputElement;
-      const landing = document.getElementById("uxLanding") as HTMLInputElement;
-      desk.checked = false;
-      mob.checked = false;
-      tab.checked = false;
-      dash.checked = false;
-      landing.checked = false;
+      const desk = document.getElementById('uxDesk') as HTMLInputElement
+      const mob = document.getElementById('uxMob') as HTMLInputElement
+      const tab = document.getElementById('uxTab') as HTMLInputElement
+      const dash = document.getElementById('uxDash') as HTMLInputElement
+      const landing = document.getElementById('uxLanding') as HTMLInputElement
+      desk.checked = false
+      mob.checked = false
+      tab.checked = false
+      dash.checked = false
+      landing.checked = false
     }
-  };
+  }
 
   const handleUxPlatformDesk = () => {
-    const desk = document.getElementById("uxDesk") as HTMLInputElement;
+    const desk = document.getElementById('uxDesk') as HTMLInputElement
     if (desk !== null) {
       if (desk.checked === true) {
         // console.log(uxPlatform.desktop)
         if (uxPageNo > 0) {
-          setUxCost(uxCost + uxPlatform.desktop * uxPageNo);
+          setUxCost(uxCost + uxPlatform.desktop * uxPageNo)
         } else {
-          setUxCost(uxCost + uxPlatform.desktop);
+          setUxCost(uxCost + uxPlatform.desktop)
         }
       } else {
-        setUxCost(uxCost - uxPlatform.desktop * uxPageNo);
+        setUxCost(uxCost - uxPlatform.desktop * uxPageNo)
       }
     }
-  };
+  }
   const handleUxPlatformMob = () => {
-    const mob = document.getElementById("uxMob") as HTMLInputElement;
+    const mob = document.getElementById('uxMob') as HTMLInputElement
     if (mob !== null) {
       if (mob.checked === true) {
         // console.log(uxPlatform.desktop)
         if (uxPageNo > 0) {
-          setUxCost(uxCost + uxPlatform.mobile * uxPageNo);
+          setUxCost(uxCost + uxPlatform.mobile * uxPageNo)
         } else {
-          setUxCost(uxCost + uxPlatform.mobile);
+          setUxCost(uxCost + uxPlatform.mobile)
         }
       } else {
-        setUxCost(uxCost - uxPlatform.mobile * uxPageNo);
+        setUxCost(uxCost - uxPlatform.mobile * uxPageNo)
       }
     }
-  };
+  }
   const handleUxPlatformTab = () => {
-    const tab = document.getElementById("uxTab") as HTMLInputElement;
+    const tab = document.getElementById('uxTab') as HTMLInputElement
     if (tab !== null) {
       if (tab.checked === true) {
         // console.log(uxPlatform.desktop)
         if (uxPageNo > 0) {
-          setUxCost(uxCost + uxPlatform.tablet * uxPageNo);
+          setUxCost(uxCost + uxPlatform.tablet * uxPageNo)
         } else {
-          setUxCost(uxCost + uxPlatform.tablet);
+          setUxCost(uxCost + uxPlatform.tablet)
         }
       } else {
-        setUxCost(uxCost - uxPlatform.tablet * uxPageNo);
+        setUxCost(uxCost - uxPlatform.tablet * uxPageNo)
       }
     }
-  };
+  }
 
   const handleUxPageLanding = () => {
-    const box = document.getElementById("uxLanding") as HTMLInputElement;
+    const box = document.getElementById('uxLanding') as HTMLInputElement
     if (box !== null) {
       if (box.checked === true) {
         // console.log(uxPlatform.desktop)
-        setUxCost(uxCost + uxPageType.landing * uxPageNo);
+        setUxCost(uxCost + uxPageType.landing * uxPageNo)
       } else {
-        setUxCost(uxCost - uxPageType.landing * uxPageNo);
+        setUxCost(uxCost - uxPageType.landing * uxPageNo)
       }
     }
-  };
+  }
 
   const handleUxPageDash = () => {
-    const box = document.getElementById("uxDash") as HTMLInputElement;
+    const box = document.getElementById('uxDash') as HTMLInputElement
     if (box !== null) {
       if (box.checked === true) {
         // console.log(uxPlatform.desktop)
-        setUxCost(uxCost + uxPageType.dashboard * uxPageNo);
+        setUxCost(uxCost + uxPageType.dashboard * uxPageNo)
       } else {
-        setUxCost(uxCost - uxPageType.dashboard * uxPageNo);
+        setUxCost(uxCost - uxPageType.dashboard * uxPageNo)
       }
     }
-  };
+  }
 
   return (
     <div className="xl:py-20 lg:py-28 md:py-24 sm:py-20 py-16 px-5 sm:px-0 flex items-center flex-col lg:flex-row justify-between container mx-auto">
       <div className="lg:w-3/5 sm:w-4/5 w-full m:mr-16 mr-0  lg:pr-20 pr-0">
         <h1
           className="2xl:text-7xxl xl:text-7xl lg:text-5xl md:text-4xl sm:text-3xl text-2xl text-gray-100 xl:leading-24 lg:leading-16 md:leading-10 sm:leading-9 leading-8 font-bold text-center lg:text-left"
-          style={{ textShadow: "8px 8px 0px #459B4B" }}
+          style={{ textShadow: '8px 8px 0px #459B4B' }}
         >
           MERN Stack Web Development
         </h1>
@@ -191,7 +191,7 @@ const Header = () => {
               <div className="flex items-center">
                 <input type="checkbox" id="uxCheck" onClick={handleUx} />
                 <h4 className="text-gray-700 font-bold text-sm xl:ml-5 md:ml-3 ml-1.5">
-                  I need UI/UX Design in Figma{" "}
+                  I need UI/UX Design in Figma
                 </h4>
               </div>
               <h4 className="text-gray-700 font-bold text-sm mt-2 sm:mt-0 ml-5 sm:ml-0">
@@ -199,7 +199,7 @@ const Header = () => {
               </h4>
             </div>
             <button>
-              {disUx === "hidden" ? (
+              {disUx === 'hidden' ? (
                 <IoIosArrowDown
                   className="text-gray-500 w-2.5 h-2.5 cursor-pointer"
                   onClick={handleDisplayUx}
@@ -343,7 +343,7 @@ const Header = () => {
         </div>
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default Header;
+export default Header
