@@ -1,10 +1,19 @@
-import DefaultNavbar from "./DefaultNavbar";
-import ServiceNavbar from "./ServiceNavbar";
-import SingleProductNavbar from "./SingleProductNavbar";
+import AdminNavbar from "./AdminNavbar";
 import DashboardPrimaryNavbar from "./DashboardPrimaryNavbar";
 import DashboardSecondaryNavbar from "./DashboardSecondaryNavbar";
-import AdminNavbar from "./AdminNavbar";
+import DefaultNavbar from "./DefaultNavbar";
+import SecondaryDefaultNavbar from "./SecondaryDefaultNavbar";
+import ServiceNavbar from "./ServiceNavbar";
+import SingleProductNavbar from "./SingleProductNavbar";
 
-const Navbar = {DefaultNavbar, ServiceNavbar, SingleProductNavbar, DashboardPrimaryNavbar, DashboardSecondaryNavbar, AdminNavbar};
+const Navbar = {
+  DefaultNavbar,
+  SecondaryDefaultNavbar,
+  ServiceNavbar,
+  SingleProductNavbar,
+  DashboardPrimaryNavbar,
+  DashboardSecondaryNavbar,
+  AdminNavbar,
+};
 
 export default Navbar;

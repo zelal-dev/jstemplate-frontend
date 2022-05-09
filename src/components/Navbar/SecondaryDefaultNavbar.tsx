@@ -14,7 +14,7 @@ import Registration from "../../Sections/Authentication/Registration";
 import DropDownProduct from "../DropDownProduct";
 import DropDownService from "../DropDownService";
 
-const DefaultNavbar = () => {
+const SecondaryDefaultNavbar = () => {
   const [proDis, setProdDis] = useState<string>("hidden");
   const [serDis, setSerDis] = useState<string>("hidden");
   const [proColor, setProColor] = useState("text-gray-700");
@@ -44,7 +44,7 @@ const DefaultNavbar = () => {
     }
   };
 
-  const handelForgetPassModal = (e:any) => {
+  const handelForgetPassModal = (e: any) => {
     e.preventDefault();
     setLoginModal("hidden");
     if (forgetPassModal === "hidden") {
@@ -107,7 +107,7 @@ const DefaultNavbar = () => {
   };
 
   return (
-    <div className="flex items-center container mx-auto justify-between xl:py-10 md:py-7 sm:py-6 py-5 px-5 sm:px-0">
+    <div className="flex items-center container mx-auto justify-between py-5 px-5 sm:px-0">
       {/* <Link href="/"><a className='lg:text-2xl sm:text-xl font-bold'>Brand <span className='text-blue-600'>Logo</span></a></Link> */}
       <Link href="/">
         <a>
@@ -365,4 +365,4 @@ const DefaultNavbar = () => {
   );
 };
 
-export default DefaultNavbar;
+export default SecondaryDefaultNavbar;

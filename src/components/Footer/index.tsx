@@ -155,7 +155,7 @@ const Footer = ({
                   Terms & Condition
                 </a>
               </Link>
-              <Link href="">
+              <Link href="/privacy-policy">
                 <a className="text-gray-400 hover:text-blueTwo font-sm mt-2">
                   Privacy Policy
                 </a>

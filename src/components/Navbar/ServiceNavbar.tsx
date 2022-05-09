@@ -103,12 +103,12 @@ const ServiceNavbar = () => {
             About
           </a>
         </Link>
-        <Link href="">
+        <Link href="/blog">
           <a className="mx-7 lg:text-base sm:text-sm text-gray-100 cursor-pointer">
             Blog
           </a>
         </Link>
-        <Link href="">
+        <Link href="/contact-us">
           <a className=" lg:text-base sm:text-sm text-gray-100 cursor-pointer">
             Contact us
           </a>
