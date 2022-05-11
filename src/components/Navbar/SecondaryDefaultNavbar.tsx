@@ -1,6 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { BsList } from "react-icons/bs";
 import { FaShoppingCart } from "react-icons/fa";
 import { HiOutlineArrowNarrowRight } from "react-icons/hi";
@@ -11,6 +11,7 @@ import { RiUserFill } from "react-icons/ri";
 import ForgetPassword from "../../Sections/Authentication/ForgetPassword";
 import Login from "../../Sections/Authentication/Login";
 import Registration from "../../Sections/Authentication/Registration";
+import { localGet } from "../../utils/localStorage";
 import DropDownProduct from "../DropDownProduct";
 import DropDownService from "../DropDownService";
 
@@ -26,6 +27,23 @@ const SecondaryDefaultNavbar = () => {
   const [sideBarServiceContent, setSideBarServiceContent] =
     useState<string>("hidden");
   const [sideBar, setSideBar] = useState<string>("-left-full");
+  const [userInfo, setUserInfo] = useState<any>();
+  const [toggle, setToggle] = useState<boolean>(false);
+  // const local = localGet("jst_u_info");
+  // if (local !== null) {
+  //   console.log(local.token);
+  // }
+  useEffect(() => {
+    setUserInfo(localGet("jst_u_info"));
+  }, [toggle]);
+
+  const handleUserImageShow = () => {
+    if (toggle) {
+      setToggle(false);
+    } else {
+      setToggle(true);
+    }
+  };
 
   const handleLoginModal = () => {
     setSignUpModal("hidden");
@@ -153,16 +171,24 @@ const SecondaryDefaultNavbar = () => {
             />
           </a>
         </Link>
-        <Link href="">
-          <a
-            className="p-3 rounded-md bg-gradient-to-br from-blueOne to-blueTwo shadow-3xl cursor-pointer"
-            onClick={handleLoginModal}
-          >
-            <RiUserFill
-              style={{ color: "white", width: "18px", height: "18px" }}
-            />
-          </a>
-        </Link>
+        {userInfo?.token ? (
+          <Link href="">
+            <a className="cursor-pointer flex items-end">
+              <Image src="/man.svg" alt="" width="42" height="42" />
+            </a>
+          </Link>
+        ) : (
+          <Link href="">
+            <a
+              className="p-3 rounded-md bg-gradient-to-br from-blueOne to-blueTwo shadow-3xl cursor-pointer"
+              onClick={handleLoginModal}
+            >
+              <RiUserFill
+                style={{ color: "white", width: "18px", height: "18px" }}
+              />
+            </a>
+          </Link>
+        )}
       </div>
       <div
         className="p-3 rounded-md bg-gradient-to-r from-blueOne to-blueTwo shadow-3xl sm:hidden block cursor-pointer"
@@ -190,6 +216,7 @@ const SecondaryDefaultNavbar = () => {
           handleLoginModal={handleLoginModal}
           handleRegModal={handleRegModal}
           handelForgetPassModal={handelForgetPassModal}
+          handleUserImageShow={handleUserImageShow}
         />
       </div>
       <div

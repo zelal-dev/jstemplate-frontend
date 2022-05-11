@@ -1,6 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { BsList } from "react-icons/bs";
 import { FaShoppingCart } from "react-icons/fa";
 import { HiOutlineArrowNarrowRight } from "react-icons/hi";
@@ -8,9 +8,11 @@ import { ImCross } from "react-icons/im";
 import { IoIosArrowDown } from "react-icons/io";
 import { MdKeyboardArrowDown, MdKeyboardArrowUp } from "react-icons/md";
 import { RiUserFill } from "react-icons/ri";
+import { ToastProvider } from "react-toast-notifications";
 import ForgetPassword from "../../Sections/Authentication/ForgetPassword";
 import Login from "../../Sections/Authentication/Login";
 import Registration from "../../Sections/Authentication/Registration";
+import { localGet } from "../../utils/localStorage";
 import DropDownProduct from "../DropDownProduct";
 import DropDownService from "../DropDownService";
 
@@ -26,7 +28,24 @@ const DefaultNavbar = () => {
   const [sideBarServiceContent, setSideBarServiceContent] =
     useState<string>("hidden");
   const [sideBar, setSideBar] = useState<string>("-left-full");
+  const [userInfo, setUserInfo] = useState<any>()
+  const [toggle, setToggle] = useState<boolean>(false)
+  // const local = localGet("jst_u_info");
+  // if (local !== null) {
+  //   console.log(local.token);
+  // }
+  useEffect(()=>{
+    setUserInfo(localGet("jst_u_info"));
+  }, [toggle])
 
+  const handleUserImageShow = () =>{
+    if(toggle){
+      setToggle(false)
+    }
+    else{
+      setToggle(true)
+    }
+  }
   const handleLoginModal = () => {
     setSignUpModal("hidden");
     if (loginModal === "hidden") {
@@ -44,7 +63,7 @@ const DefaultNavbar = () => {
     }
   };
 
-  const handelForgetPassModal = (e:any) => {
+  const handelForgetPassModal = (e: any) => {
     e.preventDefault();
     setLoginModal("hidden");
     if (forgetPassModal === "hidden") {
@@ -153,16 +172,24 @@ const DefaultNavbar = () => {
             />
           </a>
         </Link>
-        <Link href="">
-          <a
-            className="p-3 rounded-md bg-gradient-to-br from-blueOne to-blueTwo shadow-3xl cursor-pointer"
-            onClick={handleLoginModal}
-          >
-            <RiUserFill
-              style={{ color: "white", width: "18px", height: "18px" }}
-            />
-          </a>
-        </Link>
+        {userInfo?.token ? (
+          <Link href="">
+            <a className="cursor-pointer flex items-end">
+              <Image src="/man.svg" alt="" width="42" height="42" />
+            </a>
+          </Link>
+        ) : (
+          <Link href="">
+            <a
+              className="p-3 rounded-md bg-gradient-to-br from-blueOne to-blueTwo shadow-3xl cursor-pointer"
+              onClick={handleLoginModal}
+            >
+              <RiUserFill
+                style={{ color: "white", width: "18px", height: "18px" }}
+              />
+            </a>
+          </Link>
+        )}
       </div>
       <div
         className="p-3 rounded-md bg-gradient-to-r from-blueOne to-blueTwo shadow-3xl sm:hidden block cursor-pointer"
@@ -186,11 +213,14 @@ const DefaultNavbar = () => {
       <div
         className={`fixed top-0 left-0 right-0 h-screen z-50 ${loginModal} items-center justify-center`}
       >
-        <Login
-          handleLoginModal={handleLoginModal}
-          handleRegModal={handleRegModal}
-          handelForgetPassModal={handelForgetPassModal}
-        />
+        <ToastProvider>
+          <Login
+            handleLoginModal={handleLoginModal}
+            handleRegModal={handleRegModal}
+            handelForgetPassModal={handelForgetPassModal}
+            handleUserImageShow={handleUserImageShow}
+          />
+        </ToastProvider>
       </div>
       <div
         className={`fixed top-0 left-0 right-0 h-screen ${signUpModal} bg-black opacity-80 z-40`}

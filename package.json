@@ -10,12 +10,15 @@
   },
   "dependencies": {
     "@react-icons/all-files": "^4.1.0",
+    "axios": "^0.27.2",
     "flat-icons": "^1.0.0",
     "next": "12.1.4",
     "react": "18.0.0",
     "react-animations": "^1.0.0",
     "react-dom": "18.0.0",
-    "react-icons": "^4.3.1"
+    "react-hook-form": "^7.31.1",
+    "react-icons": "^4.3.1",
+    "react-toast-notifications": "^2.5.1"
   },
   "devDependencies": {
     "@types/node": "17.0.23",
