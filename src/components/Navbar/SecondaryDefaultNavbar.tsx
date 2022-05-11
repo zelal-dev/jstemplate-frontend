@@ -8,7 +8,6 @@ import { ImCross } from "react-icons/im";
 import { IoIosArrowDown } from "react-icons/io";
 import { MdKeyboardArrowDown, MdKeyboardArrowUp } from "react-icons/md";
 import { RiUserFill } from "react-icons/ri";
-import { ToastProvider } from "react-toast-notifications";
 import ForgetPassword from "../../Sections/Authentication/ForgetPassword";
 import Login from "../../Sections/Authentication/Login";
 import Registration from "../../Sections/Authentication/Registration";
@@ -16,7 +15,7 @@ import { localGet } from "../../utils/localStorage";
 import DropDownProduct from "../DropDownProduct";
 import DropDownService from "../DropDownService";
 
-const DefaultNavbar = () => {
+const SecondaryDefaultNavbar = () => {
   const [proDis, setProdDis] = useState<string>("hidden");
   const [serDis, setSerDis] = useState<string>("hidden");
   const [proColor, setProColor] = useState("text-gray-700");
@@ -28,24 +27,24 @@ const DefaultNavbar = () => {
   const [sideBarServiceContent, setSideBarServiceContent] =
     useState<string>("hidden");
   const [sideBar, setSideBar] = useState<string>("-left-full");
-  const [userInfo, setUserInfo] = useState<any>()
-  const [toggle, setToggle] = useState<boolean>(false)
+  const [userInfo, setUserInfo] = useState<any>();
+  const [toggle, setToggle] = useState<boolean>(false);
   // const local = localGet("jst_u_info");
   // if (local !== null) {
   //   console.log(local.token);
   // }
-  useEffect(()=>{
+  useEffect(() => {
     setUserInfo(localGet("jst_u_info"));
-  }, [toggle])
+  }, [toggle]);
 
-  const handleUserImageShow = () =>{
-    if(toggle){
-      setToggle(false)
+  const handleUserImageShow = () => {
+    if (toggle) {
+      setToggle(false);
+    } else {
+      setToggle(true);
     }
-    else{
-      setToggle(true)
-    }
-  }
+  };
+
   const handleLoginModal = () => {
     setSignUpModal("hidden");
     if (loginModal === "hidden") {
@@ -126,7 +125,7 @@ const DefaultNavbar = () => {
   };
 
   return (
-    <div className="flex items-center container mx-auto justify-between xl:py-10 md:py-7 sm:py-6 py-5 px-5 sm:px-0">
+    <div className="flex items-center container mx-auto justify-between py-5 px-5 sm:px-0">
       {/* <Link href="/"><a className='lg:text-2xl sm:text-xl font-bold'>Brand <span className='text-blue-600'>Logo</span></a></Link> */}
       <Link href="/">
         <a>
@@ -213,14 +212,12 @@ const DefaultNavbar = () => {
       <div
         className={`fixed top-0 left-0 right-0 h-screen z-50 ${loginModal} items-center justify-center`}
       >
-        <ToastProvider>
-          <Login
-            handleLoginModal={handleLoginModal}
-            handleRegModal={handleRegModal}
-            handelForgetPassModal={handelForgetPassModal}
-            handleUserImageShow={handleUserImageShow}
-          />
-        </ToastProvider>
+        <Login
+          handleLoginModal={handleLoginModal}
+          handleRegModal={handleRegModal}
+          handelForgetPassModal={handelForgetPassModal}
+          handleUserImageShow={handleUserImageShow}
+        />
       </div>
       <div
         className={`fixed top-0 left-0 right-0 h-screen ${signUpModal} bg-black opacity-80 z-40`}
@@ -395,4 +392,4 @@ const DefaultNavbar = () => {
   );
 };
 
-export default DefaultNavbar;
+export default SecondaryDefaultNavbar;
