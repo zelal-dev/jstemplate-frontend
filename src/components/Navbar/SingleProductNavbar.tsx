@@ -5,6 +5,7 @@ import { BsList } from "react-icons/bs";
 import { FaShoppingCart } from "react-icons/fa";
 import { IoIosArrowDown } from "react-icons/io";
 import { RiUserFill } from "react-icons/ri";
+import { ToastProvider } from "react-toast-notifications";
 import ForgetPassword from "../../Sections/Authentication/ForgetPassword";
 import Login from "../../Sections/Authentication/Login";
 import Registration from "../../Sections/Authentication/Registration";
@@ -178,12 +179,14 @@ const SingleProductNavbar = () => {
       <div
         className={`fixed top-0 left-0 right-0 h-screen z-50 ${loginModal} items-center justify-center`}
       >
-        <Login
-          handleLoginModal={handleLoginModal}
-          handleRegModal={handleRegModal}
-          handelForgetPassModal={handelForgetPassModal}
-          handleUserImageShow={handleUserImageShow}
-        />
+        <ToastProvider>
+          <Login
+            handleLoginModal={handleLoginModal}
+            handleRegModal={handleRegModal}
+            handelForgetPassModal={handelForgetPassModal}
+            handleUserImageShow={handleUserImageShow}
+          />
+        </ToastProvider>
       </div>
       <div
         className={`fixed top-0 left-0 right-0 h-screen ${signUpModal} bg-black opacity-80 z-40`}
@@ -191,10 +194,12 @@ const SingleProductNavbar = () => {
       <div
         className={`fixed top-0 left-0 right-0 h-screen z-50 ${signUpModal} items-center justify-center`}
       >
-        <Registration
-          handleLoginModal={handleLoginModal}
-          handleRegModal={handleRegModal}
-        />
+        <ToastProvider>
+          <Registration
+            handleLoginModal={handleLoginModal}
+            handleRegModal={handleRegModal}
+          />
+        </ToastProvider>
       </div>
       <div
         className={`fixed top-0 left-0 right-0 h-screen ${forgetPassModal} bg-black opacity-80 z-40`}

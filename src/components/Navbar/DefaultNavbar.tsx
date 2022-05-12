@@ -28,24 +28,23 @@ const DefaultNavbar = () => {
   const [sideBarServiceContent, setSideBarServiceContent] =
     useState<string>("hidden");
   const [sideBar, setSideBar] = useState<string>("-left-full");
-  const [userInfo, setUserInfo] = useState<any>()
-  const [toggle, setToggle] = useState<boolean>(false)
+  const [userInfo, setUserInfo] = useState<any>();
+  const [toggle, setToggle] = useState<boolean>(false);
   // const local = localGet("jst_u_info");
   // if (local !== null) {
   //   console.log(local.token);
   // }
-  useEffect(()=>{
+  useEffect(() => {
     setUserInfo(localGet("jst_u_info"));
-  }, [toggle])
+  }, [toggle]);
 
-  const handleUserImageShow = () =>{
-    if(toggle){
-      setToggle(false)
+  const handleUserImageShow = () => {
+    if (toggle) {
+      setToggle(false);
+    } else {
+      setToggle(true);
     }
-    else{
-      setToggle(true)
-    }
-  }
+  };
   const handleLoginModal = () => {
     setSignUpModal("hidden");
     if (loginModal === "hidden") {
@@ -228,10 +227,12 @@ const DefaultNavbar = () => {
       <div
         className={`fixed top-0 left-0 right-0 h-screen z-50 ${signUpModal} items-center justify-center`}
       >
-        <Registration
-          handleLoginModal={handleLoginModal}
-          handleRegModal={handleRegModal}
-        />
+        <ToastProvider>
+          <Registration
+            handleLoginModal={handleLoginModal}
+            handleRegModal={handleRegModal}
+          />
+        </ToastProvider>
       </div>
       <div
         className={`fixed top-0 left-0 right-0 h-screen ${forgetPassModal} bg-black opacity-80 z-40`}
