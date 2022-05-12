@@ -74,7 +74,7 @@ const DropDownService=()=> {
                 </a>
             </Link>
         </div>
-        <div className='arrow bg-white m-0 border-0 w-10 h-6 absolute -top-4 2xl:left-96 xl:left-64 lg:left-52 md:left-56 sm:left-40' />
+        <div className='arrow bg-white m-0 border-0 w-10 h-6 absolute -top-4 xl:left-96 lg:left-52 md:left-56 sm:left-40' />
     </div>
   )
 }

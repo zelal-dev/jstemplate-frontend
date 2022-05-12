@@ -1,12 +1,15 @@
 import Image from "next/image";
 import Link from "next/link";
+import { useRouter } from "next/router";
 import React, { useState } from "react";
 import { BsList } from "react-icons/bs";
 import { FaShoppingCart } from "react-icons/fa";
-import { HiOutlineArrowNarrowRight } from "react-icons/hi";
+import { HiOutlineArrowNarrowRight, HiOutlineLogout } from "react-icons/hi";
 import { ImCross } from "react-icons/im";
 import { IoIosArrowDown } from "react-icons/io";
 import { MdKeyboardArrowDown, MdKeyboardArrowUp } from "react-icons/md";
+import { RiSettings3Fill, RiUserFill } from "react-icons/ri";
+import { localRemove } from "../../utils/localStorage";
 import DropDownProduct from "../DropDownProduct";
 import DropDownService from "../DropDownService";
 
@@ -16,9 +19,33 @@ const DashboardPrimaryNavbar = () => {
   const [proColor, setProColor] = useState("text-gray-700");
   const [serColor, setSerColor] = useState("text-gray-700");
   const [sideBarContent, setSideBarContent] = useState<string>("hidden");
+  const [profileDropdown, setProfileDropdown] = useState<string>("hidden");
   const [sideBarServiceContent, setSideBarServiceContent] =
     useState<string>("hidden");
   const [sideBar, setSideBar] = useState<string>("-left-full");
+  const router = useRouter();
+
+  const styleDash =
+    router.asPath === "/dashboard"
+      ? "text-sm text-white p-4 rounded-lg bg-blueTwo flex items-center"
+      : "text-sm text-gray-600 p-4 rounded-lg flex items-center";
+  const styleSettings =
+    router.asPath === "/dashboard/accounts-settings"
+      ? "text-sm text-white p-4 rounded-lg bg-blueTwo flex items-center"
+      : "text-sm text-gray-600 p-4 rounded-lg flex items-center";
+
+  const handleLogout = () =>{
+    localRemove("jst_u_info");
+    router.push("/")
+  }
+
+  const handleProfileDropdown = () => {
+    if (profileDropdown === "hidden") {
+      setProfileDropdown("block");
+    } else {
+      setProfileDropdown("hidden");
+    }
+  };
 
   const productDropdown = () => {
     setSerDis("hidden");
@@ -74,7 +101,7 @@ const DashboardPrimaryNavbar = () => {
 
   return (
     <div className="bg-white">
-      <div className=" flex items-center container mx-auto justify-between xl:py-7 sm:py-6 py-5 px-5 sm:px-0">
+      <div className=" flex items-center container mx-auto justify-between xl:py-7 sm:py-6 py-5 px-5 sm:px-0 relative">
         <Link href="/">
           <a>
             <Image src="/brandLogo.svg" alt="" width="136" height="42" />
@@ -119,11 +146,33 @@ const DashboardPrimaryNavbar = () => {
               />
             </a>
           </Link>
-          <Link href="">
+          <button onClick={handleProfileDropdown}>
             <a className="cursor-pointer flex items-end">
               <Image src="/man.svg" alt="" width="42" height="42" />
             </a>
+          </button>
+        </div>
+        <div
+          className={`absolute p-2.5 ${profileDropdown} rounded-lg drop-shadow-xl bg-white top-24 right-0 ml-auto z-40`}
+        >
+          <Link href="/dashboard">
+            <a className={`${styleDash}`}>
+              <RiUserFill className="w-5 h-5 mr-4" /> <span>My Dashboard</span>
+            </a>
           </Link>
+          <Link href="/dashboard/accounts-settings">
+            <a className={`${styleSettings} mt-1.5`}>
+              <RiSettings3Fill className="w-5 h-5 mr-4" />{" "}
+              <span>Accounts Settings</span>
+            </a>
+          </Link>
+          <button onClick={handleLogout}>
+            <a
+              className={`text-sm text-gray-600 p-4 rounded-lg flex items-center mt-1.5`}
+            >
+              <HiOutlineLogout className="w-5 h-5 mr-4" /> <span>Logout</span>
+            </a>
+          </button>
         </div>
         <div
           className="p-3 rounded-md bg-gradient-to-r from-blueOne to-blueTwo shadow-3xl sm:hidden block cursor-pointer"
@@ -142,7 +191,7 @@ const DashboardPrimaryNavbar = () => {
           <DropDownService />
         </div>
         <div
-          className={`fixed ${sideBar} ease-in duration-300 z-20 top-0 w-full h-screen bg-gray-800 p-10 overflow-auto`}
+          className={`fixed ${sideBar} ease-in duration-300 z-50 top-0 w-full h-screen bg-gray-800 p-10 overflow-auto`}
         >
           <div className="flex justify-between items-center">
             <h1 className="text-xl font-bold text-gray-100">Brand Logo</h1>

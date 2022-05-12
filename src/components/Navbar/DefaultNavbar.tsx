@@ -1,18 +1,19 @@
 import Image from "next/image";
 import Link from "next/link";
+import { useRouter } from "next/router";
 import React, { useEffect, useState } from "react";
 import { BsList } from "react-icons/bs";
 import { FaShoppingCart } from "react-icons/fa";
-import { HiOutlineArrowNarrowRight } from "react-icons/hi";
+import { HiOutlineArrowNarrowRight, HiOutlineLogout } from "react-icons/hi";
 import { ImCross } from "react-icons/im";
 import { IoIosArrowDown } from "react-icons/io";
 import { MdKeyboardArrowDown, MdKeyboardArrowUp } from "react-icons/md";
-import { RiUserFill } from "react-icons/ri";
+import { RiSettings3Fill, RiUserFill } from "react-icons/ri";
 import { ToastProvider } from "react-toast-notifications";
 import ForgetPassword from "../../Sections/Authentication/ForgetPassword";
 import Login from "../../Sections/Authentication/Login";
 import Registration from "../../Sections/Authentication/Registration";
-import { localGet } from "../../utils/localStorage";
+import { localGet, localRemove } from "../../utils/localStorage";
 import DropDownProduct from "../DropDownProduct";
 import DropDownService from "../DropDownService";
 
@@ -25,15 +26,37 @@ const DefaultNavbar = () => {
   const [loginModal, setLoginModal] = useState<string>("hidden");
   const [signUpModal, setSignUpModal] = useState<string>("hidden");
   const [forgetPassModal, setForgetPassModal] = useState<string>("hidden");
+  const [profileDropdown, setProfileDropdown] = useState<string>("hidden");
   const [sideBarServiceContent, setSideBarServiceContent] =
     useState<string>("hidden");
   const [sideBar, setSideBar] = useState<string>("-left-full");
   const [userInfo, setUserInfo] = useState<any>();
   const [toggle, setToggle] = useState<boolean>(false);
-  // const local = localGet("jst_u_info");
-  // if (local !== null) {
-  //   console.log(local.token);
-  // }
+  const router = useRouter();
+
+  const styleDash =
+    router.asPath === "/dashboard"
+      ? "text-sm text-white p-4 rounded-lg bg-blueTwo flex items-center"
+      : "text-sm text-gray-600 p-4 rounded-lg flex items-center";
+  const styleSettings =
+    router.asPath === "/dashboard/accounts-settings"
+      ? "text-sm text-white p-4 rounded-lg bg-blueTwo flex items-center"
+      : "text-sm text-gray-600 p-4 rounded-lg flex items-center";
+
+  const handleLogout = () => {
+    localRemove("jst_u_info");
+    setProfileDropdown("hidden");
+    handleUserImageShow();
+    router.push("/");
+  };
+  
+  const handleProfileDropdown = () => {
+    if (profileDropdown === "hidden") {
+      setProfileDropdown("block");
+    } else {
+      setProfileDropdown("hidden");
+    }
+  };
   useEffect(() => {
     setUserInfo(localGet("jst_u_info"));
   }, [toggle]);
@@ -125,7 +148,7 @@ const DefaultNavbar = () => {
   };
 
   return (
-    <div className="flex items-center container mx-auto justify-between xl:py-10 md:py-7 sm:py-6 py-5 px-5 sm:px-0">
+    <div className="flex items-center container mx-auto justify-between xl:py-10 md:py-7 sm:py-6 py-5 px-5 sm:px-0 relative">
       {/* <Link href="/"><a className='lg:text-2xl sm:text-xl font-bold'>Brand <span className='text-blue-600'>Logo</span></a></Link> */}
       <Link href="/">
         <a>
@@ -172,11 +195,11 @@ const DefaultNavbar = () => {
           </a>
         </Link>
         {userInfo?.token ? (
-          <Link href="">
+          <button onClick={handleProfileDropdown}>
             <a className="cursor-pointer flex items-end">
               <Image src="/man.svg" alt="" width="42" height="42" />
             </a>
-          </Link>
+          </button>
         ) : (
           <Link href="">
             <a
@@ -191,18 +214,40 @@ const DefaultNavbar = () => {
         )}
       </div>
       <div
+        className={`absolute p-2.5 ${profileDropdown} rounded-lg drop-shadow-xl bg-white top-24 right-0 ml-auto z-40`}
+      >
+        <Link href="/dashboard">
+          <a className={`${styleDash}`}>
+            <RiUserFill className="w-5 h-5 mr-4" /> <span>My Dashboard</span>
+          </a>
+        </Link>
+        <Link href="/dashboard/accounts-settings">
+          <a className={`${styleSettings} mt-1.5`}>
+            <RiSettings3Fill className="w-5 h-5 mr-4" />{" "}
+            <span>Accounts Settings</span>
+          </a>
+        </Link>
+        <button onClick={handleLogout}>
+          <a
+            className={`text-sm text-gray-600 p-4 rounded-lg flex items-center mt-1.5`}
+          >
+            <HiOutlineLogout className="w-5 h-5 mr-4" /> <span>Logout</span>
+          </a>
+        </button>
+      </div>
+      <div
         className="p-3 rounded-md bg-gradient-to-r from-blueOne to-blueTwo shadow-3xl sm:hidden block cursor-pointer"
         onClick={handleSidebar}
       >
         <BsList style={{ color: "white", width: "18px", height: "15.5px" }} />
       </div>
       <div
-        className={`absolute hidden top-24 lg:left-1/4 md:left-40 sm:left-28 z-20 ease-out duration-700 sm:${proDis}`}
+        className={`absolute hidden top-24  lg:left-56 sm:left-28 z-20 ease-out duration-700 sm:${proDis}`}
       >
         <DropDownProduct />
       </div>
       <div
-        className={`absolute hidden top-24 lg:left-1/4 md:left-40 sm:left-28 z-20 ease-out duration-700 sm:${serDis}`}
+        className={`absolute hidden top-24 lg:left-56 sm:left-28 z-20 ease-out duration-700 sm:${serDis}`}
       >
         <DropDownService />
       </div>
@@ -243,7 +288,7 @@ const DefaultNavbar = () => {
         <ForgetPassword handelForgetPassModal={handelForgetPassModal} />
       </div>
       <div
-        className={`fixed ${sideBar} ease-in duration-300 z-20 top-0 w-full h-screen bg-gray-800 p-10 overflow-auto`}
+        className={`fixed ${sideBar} ease-in duration-300 z-50 top-0 w-full h-screen bg-gray-800 p-10 overflow-auto`}
       >
         <div className="flex justify-between items-center">
           <h1 className="text-xl font-bold text-gray-100">Brand Logo</h1>
