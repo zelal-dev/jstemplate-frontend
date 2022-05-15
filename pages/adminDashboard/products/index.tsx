@@ -1,17 +1,68 @@
-import { GetServerSideProps } from "next";
 import Link from "next/link";
-import useSWR from "swr";
-import React from "react";
+import React, { useState } from "react";
 import { BiSearchAlt2 } from "react-icons/bi";
 import { BsThreeDotsVertical } from "react-icons/bs";
+import { useToasts } from "react-toast-notifications";
+import useSWR, { mutate } from "swr";
 import Layout from "../../../src/components/Layout";
 import { authAxios } from "../../../src/utils/axiosKits";
 
-const fetchProduct = (url:any) => authAxios(url).then((res) => res.data.data);
+const fetchProduct = (url: any) =>
+  authAxios(url).then((res) => res.data.products);
 
-const Products = ({ products }: { products: any }) => {
-    const { data, error } = useSWR(`api/v1/product`, fetchProduct);
-  console.log("products", data);
+const Products = () => {
+  const [products, setProducts] = useState([]);
+  const [action, setAction] = useState<number>();
+  const [loading, setLoading] = useState<boolean>(false);
+  const { addToast } = useToasts();
+  const { data, error } = useSWR(`api/v1/product`, fetchProduct, {
+    refreshInterval: 1000,
+  });
+
+  const handleActionVisible = (value: number) => {
+    if (action === value) {
+      setAction(-1);
+    } else {
+      setAction(value);
+    }
+  };
+
+  const handleProductDelete = async (id: number) => {
+    console.log("id.........", id);
+    // call swr to delete the component
+    setLoading(true);
+    await authAxios({
+      method: "DELETE",
+      url: `/api/v1/product/${id}`,
+    })
+      .then((res) => {
+        mutate(`api/v1/product/`);
+        addToast(res.data.message, {
+          appearance: "success",
+          autoDismiss: true,
+          autoDismissTimeout: 3000,
+        });
+        setAction(-1);
+        setLoading(false);
+      })
+      .catch((err) => {
+        setLoading(false);
+        err
+          ? addToast(err.response.data.message, {
+              appearance: "error",
+              autoDismiss: true,
+              autoDismissTimeout: 3000,
+            })
+          : addToast("Something went wrong", {
+              appearance: "error",
+              autoDismiss: true,
+              autoDismissTimeout: 3000,
+            });
+      });
+  };
+
+  //   console.log("products", data);
+  //   setProducts(data);
   return (
     <div>
       <Layout.AdminDashboard>
@@ -98,7 +149,7 @@ const Products = ({ products }: { products: any }) => {
                 </div>
               </div>
             </div>
-            <div className="2xl:grid grid-cols-12 mt-8 hidden">
+            <div className="2xl:grid grid-cols-12 mt-8 hidden relative">
               <div className="col-span-1 py-4 pl-4 bg-backgroundGrayOne">
                 <h3 className="text-sm text-gray-900">#</h3>
               </div>
@@ -122,101 +173,161 @@ const Products = ({ products }: { products: any }) => {
                   Action
                 </h3>
               </div>
-
-              <div className="col-span-1 py-6 my-auto">
-                <h3 className="text-sm text-gray-900">1</h3>
-              </div>
-              <div className="col-span-3 py-6 my-auto ">
-                <h3 className="text-sm text-blueTwo">
-                  Product Title Here Lorem Ipsum
-                </h3>
-              </div>
-              <div className="col-span-3 py-6 my-auto  flex items-center">
-                <h3 className="text-sm text-gray-700 mr-12">$100</h3>
-                <h3 className="text-sm text-gray-700 mr-12">$100</h3>
-                <h3 className="text-sm text-gray-700">$100</h3>
-              </div>
-              <div className="col-span-1 py-6 my-auto ">
-                <h3 className="text-sm text-gray-700">$100</h3>
-              </div>
-              <div className="col-span-2 py-6  my-auto ">
-                <h3 className="text-sm text-gray-700">12 June 2022</h3>
-              </div>
-              <div className="col-span-1 py-6 pl-3 my-auto ">
-                <h3 className="text-white py-0.5 px-2.5 rounded-full text-xs bg-gradient-to-br from-orangeOne to-orangeTwo inline">
-                  Pre-Sale
-                </h3>
-              </div>
-              <div className="col-span-1 py-6 my-auto ml-auto">
-                <div className="border border-grayLight bg-backgroundGrayOne p-3 rounded-lg ">
-                  <BsThreeDotsVertical className="w-5 h-5" />
-                </div>
-              </div>
-              <div className="col-span-12">
-                <hr className="w-full bg-backgroundGrayOne" />
-              </div>
+              {data?.map((items: any, index: number) => (
+                <>
+                  <div className="col-span-1 py-6 my-auto">
+                    <h3 className="text-sm text-gray-900">{index + 1}</h3>
+                  </div>
+                  <div className="col-span-3 py-6 my-auto ">
+                    <h3 className="text-sm text-blueTwo">{items.title}</h3>
+                  </div>
+                  <div className="col-span-3 py-6 my-auto  flex items-center">
+                    <h3 className="text-sm text-gray-700 mr-12">
+                      ${items.price.standart}
+                    </h3>
+                    <h3 className="text-sm text-gray-700 mr-12">
+                      ${items.price.standartPlus}
+                    </h3>
+                    <h3 className="text-sm text-gray-700">
+                      ${items.price.extended}
+                    </h3>
+                  </div>
+                  <div className="col-span-1 py-6 my-auto ">
+                    <h3 className="text-sm text-gray-700">$0</h3>
+                  </div>
+                  <div className="col-span-2 py-6  my-auto ">
+                    <h3 className="text-sm text-gray-700">
+                      {items.expectedDelivery}
+                    </h3>
+                  </div>
+                  <div className="col-span-1 py-6 pl-3 my-auto ">
+                    <h3
+                      className={`text-white py-0.5 px-2.5 rounded-full text-xs bg-gradient-to-br ${
+                        items.status.isPublished
+                          ? "from-orangeOne to-orangeTwo"
+                          : "from-[#67E5A3] to-[#08994D]"
+                      } inline`}
+                    >
+                      {items.status.isPublished ? "Pre-Sale" : "Completed"}
+                    </h3>
+                  </div>
+                  <div className="col-span-1 py-6 my-auto ml-auto">
+                    <button
+                      onClick={() => handleActionVisible(index)}
+                      className="border border-grayLight bg-backgroundGrayOne p-3 rounded-lg "
+                    >
+                      <BsThreeDotsVertical className="w-5 h-5" />
+                    </button>
+                    <div
+                      className={`absolute ${
+                        action === index ? "block" : "hidden"
+                      } right-0 shadow-xl p-2 rounded-lg flex flex-col bg-white`}
+                    >
+                      <button className="py-2.5 px-8">Edit</button>
+                      <button
+                        onClick={() => handleProductDelete(items._id)}
+                        className="py-2.5 px-8 mt-1"
+                      >
+                        Delete
+                      </button>
+                    </div>
+                  </div>
+                  <div className="col-span-12">
+                    <hr className="w-full bg-backgroundGrayOne" />
+                  </div>
+                </>
+              ))}
             </div>
 
             <hr className="w-full mt-10 block 2xl:hidden" />
-            <div className="grid grid-cols-12 container md:mt-5 mt-4 2xl:hidden">
-              <div className="col-span-4 p-4 ">
-                <h3 className="text-sm text-gray-900">#</h3>
-              </div>
-              <div className="col-span-8 p-4 ">
-                <h3 className="text-sm text-gray-900">1</h3>
-              </div>
-              <div className="col-span-4 p-4 ">
-                <h3 className="text-sm text-gray-900">Product Name</h3>
-              </div>
-              <div className="col-span-8 p-4 ">
-                <h3 className="text-sm text-blueTwo">
-                  Product Title Here Lorem Ipsum
-                </h3>
-              </div>
-              <div className="col-span-4 p-4 ">
-                <h3 className="text-sm text-gray-900">Pricing</h3>
-              </div>
-              <div className="col-span-8 p-4 flex items-center">
-                <h3 className="text-sm text-gray-700 md:mr-12 sm:mr-7 mr-5">
-                  $100
-                </h3>
-                <h3 className="text-sm text-gray-700 md:mr-12 sm:mr-7 mr-5">
-                  $100
-                </h3>
-                <h3 className="text-sm text-gray-700">$100</h3>
-              </div>
-              <div className="col-span-4 p-4 ">
-                <h3 className="text-sm text-gray-900">Total Sale</h3>
-              </div>
-              <div className="col-span-8 p-4 ">
-                <h3 className="text-sm text-gray-700">$100</h3>
-              </div>
-              <div className="col-span-4 p-4 ">
-                <h3 className="text-sm text-gray-900">Expected Delivery</h3>
-              </div>
-              <div className="col-span-8 p-4 ">
-                <h3 className="text-sm text-gray-700">12 June 2022</h3>
-              </div>
-              <div className="col-span-4 p-4 ">
-                <h3 className="text-sm text-gray-900">Product Type</h3>
-              </div>
-              <div className="col-span-8 p-4 ">
-                <h3 className="text-white py-0.5 px-2.5 rounded-full text-xs bg-gradient-to-br from-orangeOne to-orangeTwo inline">
-                  Pre-Sale
-                </h3>
-              </div>
-              <div className="col-span-4 p-4 ">
-                <h3 className="text-sm text-gray-900">Action</h3>
-              </div>
-              <div className="col-span-8 p-4 mr-auto">
-                <div className="border border-grayLight bg-backgroundGrayOne p-3 rounded-lg ">
-                  <BsThreeDotsVertical className="w-5 h-5" />
+            {data?.map((items: any, index: number) => (
+              <div
+                key={index}
+                className="grid grid-cols-12 container md:mt-5 mt-4 2xl:hidden"
+              >
+                <div className="col-span-4 p-4 ">
+                  <h3 className="text-sm text-gray-900">#</h3>
+                </div>
+                <div className="col-span-8 p-4 ">
+                  <h3 className="text-sm text-gray-900">{index + 1}</h3>
+                </div>
+                <div className="col-span-4 p-4 ">
+                  <h3 className="text-sm text-gray-900">Product Name</h3>
+                </div>
+                <div className="col-span-8 p-4 ">
+                  <h3 className="text-sm text-blueTwo">{items.title}</h3>
+                </div>
+                <div className="col-span-4 p-4 ">
+                  <h3 className="text-sm text-gray-900">Pricing</h3>
+                </div>
+                <div className="col-span-8 p-4 flex items-center">
+                  <h3 className="text-sm text-gray-700 md:mr-12 sm:mr-7 mr-5">
+                    ${items.price.standart}
+                  </h3>
+                  <h3 className="text-sm text-gray-700 md:mr-12 sm:mr-7 mr-5">
+                    ${items.price.standartPlus}
+                  </h3>
+                  <h3 className="text-sm text-gray-700">
+                    ${items.price.extended}
+                  </h3>
+                </div>
+                <div className="col-span-4 p-4 ">
+                  <h3 className="text-sm text-gray-900">Total Sale</h3>
+                </div>
+                <div className="col-span-8 p-4 ">
+                  <h3 className="text-sm text-gray-700">$0</h3>
+                </div>
+                <div className="col-span-4 p-4 ">
+                  <h3 className="text-sm text-gray-900">Expected Delivery</h3>
+                </div>
+                <div className="col-span-8 p-4 ">
+                  <h3 className="text-sm text-gray-700">
+                    {items.expectedDelivery}
+                  </h3>
+                </div>
+                <div className="col-span-4 p-4 ">
+                  <h3 className="text-sm text-gray-900">Product Type</h3>
+                </div>
+                <div className="col-span-8 p-4 ">
+                  <h3
+                    className={`text-white py-0.5 px-2.5 rounded-full text-xs bg-gradient-to-br ${
+                      items.status.isPublished
+                        ? "from-orangeOne to-orangeTwo"
+                        : "from-[#67E5A3] to-[#08994D]"
+                    } inline`}
+                  >
+                    {items.status.isPublished ? "Pre-Sale" : "Completed"}
+                  </h3>
+                </div>
+                <div className="col-span-4 p-4 ">
+                  <h3 className="text-sm text-gray-900">Action</h3>
+                </div>
+                <div className="col-span-8 p-4 mr-auto relative">
+                  <button
+                    onClick={() => handleActionVisible(index)}
+                    className="border border-grayLight bg-backgroundGrayOne p-3 rounded-lg "
+                  >
+                    <BsThreeDotsVertical className="w-5 h-5" />
+                  </button>
+                  <div
+                    className={`absolute ${
+                      action === index ? "block" : "hidden"
+                    } shadow-xl p-2 rounded-lg flex flex-col bg-white`}
+                  >
+                    <button className="py-2.5 px-8">Edit</button>
+                    <button
+                      onClick={() => handleProductDelete(items._id)}
+                      className="py-2.5 px-8 mt-1"
+                    >
+                      Delete
+                    </button>
+                  </div>
+                </div>
+                <div className="col-span-12">
+                  <hr className="w-full bg-backgroundGrayOne" />
                 </div>
               </div>
-              <div className="col-span-12">
-                <hr className="w-full bg-backgroundGrayOne" />
-              </div>
-            </div>
+            ))}
             <div className="flex sm:flex-row flex-col justify-between items-center mt-6">
               <h2 className="tex-base font-bold text-gray-700">
                 Total 1234 Products

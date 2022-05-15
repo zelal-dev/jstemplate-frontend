@@ -48,34 +48,33 @@ const AddNewProducts = () => {
             standartPlus: data.standardPlus,
             extended: data.business,
           },
-          category:[
-              data.category
-          ]
+          category: [data.category],
+          expectedDelivery: data.expectedDelivery
         },
       })
         .then((res) => {
-            console.log(res.data);
-            addToast(res.data.message, {
-              appearance: "success",
-              autoDismiss: true,
-              autoDismissTimeout: 3000,
-            });
+          console.log(res.data);
+          addToast(res.data.message, {
+            appearance: "success",
+            autoDismiss: true,
+            autoDismissTimeout: 3000,
+          });
           setLoading(false);
           router.push("/adminDashboard/products");
         })
         .catch((err) => {
           setLoading(false);
-            err
-              ? addToast(err.response.data.message, {
-                  appearance: "error",
-                  autoDismiss: true,
-                  autoDismissTimeout: 3000,
-                })
-              : addToast("Something went wrong", {
-                  appearance: "error",
-                  autoDismiss: true,
-                  autoDismissTimeout: 3000,
-                });
+          err
+            ? addToast(err.response.data.message, {
+                appearance: "error",
+                autoDismiss: true,
+                autoDismissTimeout: 3000,
+              })
+            : addToast("Something went wrong", {
+                appearance: "error",
+                autoDismiss: true,
+                autoDismissTimeout: 3000,
+              });
         });
   };
   return (
