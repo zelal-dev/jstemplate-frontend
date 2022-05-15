@@ -57,7 +57,7 @@ const DashboardSecondaryNavbar = () => {
       ? "text-sm text-white p-4 rounded-lg bg-blueTwo flex items-center mr-3"
       : "text-sm text-gray-600 p-4 rounded-lg flex items-center mr-3";
   return (
-    <div className="bg-white mt-1 drop-shadow-sm">
+    <div className="bg-white mt-1 drop-shadow-sm relative z-30">
       <div className="container relative mx-auto flex items-center justify-between py-2 px-5 sm:px-0">
         <VscListSelection
           className="w-6 h-6 block lg:hidden"
@@ -99,7 +99,7 @@ const DashboardSecondaryNavbar = () => {
           Start Your Project Free
         </button>
         <div
-          className={`absolute ${sidebar} lg:hidden rounded-lg shadow-xl p-3 top-20 bg-white w-60`}
+          className={`absolute ${sidebar} z-50 lg:hidden rounded-lg shadow-xl p-3 top-20 bg-white w-60`}
         >
           <div className="flex flex-col">
             <Link href="/dashboard">
