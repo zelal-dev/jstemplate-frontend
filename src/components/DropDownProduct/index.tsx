@@ -220,7 +220,7 @@ const DropDownProduct = () => {
           </Link>
         </div>
       </div>
-      <div className="arrow bg-white m-0 border-0 w-10 h-6 absolute -top-4 2xl:left-72 xl:left-44 lg:left-28 md:left-20 sm:left-10" />
+      <div className="arrow bg-white m-0 border-0 w-10 h-6 absolute -top-4 2xl:left-72 xl:left-64 lg:left-28 md:left-20 sm:left-10" />
     </div>
   );
 };

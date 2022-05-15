@@ -93,6 +93,7 @@ const Login = ({
       setLoading(false);
     }, 10000);
     if (data.remember) {
+      console.log("dhukeche")
       localSave("jst_l_info", data);
     }
     if (data.remember === false && local) {
