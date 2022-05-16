@@ -15,8 +15,11 @@ const Header = () => {
         </h1>
       </div>
       <article className="sm:w-2/5 w-4/5 text-gray-600 xl:mt-6 md:mt-5 mt-3 text-center 2xl:text-xl lg:text-lg sm:text-base text-sm">
-        Lorem Ipsum is simply dummy text of the printing and typesetting
-        industry. Lorem Ipsum has been the industry standard dummy text
+        MERN Stack Theme, React.js, Next.js Landing page and dashboard template,
+        Headless CMS template built on best teck stack{' '}
+        <span className="bold text-black">
+          Tailwind CSS, React.js, Next.js, Mongodb, Node.js, Express.js .
+        </span>
       </article>
       <div className="flex sm:flex-row flex-col items-center xl:mt-12 lg:mt-10 md:mt-9 sm:mt-8 mt-7 ">
         <Link href="/productPage">
@@ -32,7 +35,7 @@ const Header = () => {
             <FaShoppingCart
               style={{ color: 'white', width: '18px', height: '18px' }}
             />
-            <span className="md:ml-4 ml-3 text-white">Pre Sale</span>{' '}
+            <span className="md:ml-4 ml-3 text-white">Pre Sale</span>
           </a>
         </Link>
       </div>
