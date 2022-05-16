@@ -4,8 +4,10 @@ import { BiSearchAlt2 } from "react-icons/bi";
 import { BsThreeDotsVertical } from "react-icons/bs";
 import { useToasts } from "react-toast-notifications";
 import useSWR, { mutate } from "swr";
+import { useRouter } from "next/router";
 import Layout from "../../../src/components/Layout";
 import { authAxios } from "../../../src/utils/axiosKits";
+import { SubmitHandler, useForm } from "react-hook-form";
 
 const fetchProduct = (url: any) =>
   authAxios(url).then((res) => res.data.products);
@@ -14,6 +16,8 @@ const Products = () => {
   const [products, setProducts] = useState([]);
   const [action, setAction] = useState<number>();
   const [loading, setLoading] = useState<boolean>(false);
+  const [editVisibility, setEditVisibility] = useState<boolean>(false);
+  const router = useRouter();
   const { addToast } = useToasts();
   const { data, error } = useSWR(`api/v1/product`, fetchProduct, {
     refreshInterval: 1000,
@@ -25,6 +29,10 @@ const Products = () => {
     } else {
       setAction(value);
     }
+  };
+
+  const handleEditVisibility = (id:any) => {
+   router.push(`/adminDashboard/products/${id}`)
   };
 
   const handleProductDelete = async (id: number) => {
@@ -223,7 +231,12 @@ const Products = () => {
                         action === index ? "block" : "hidden"
                       } right-0 shadow-xl p-2 rounded-lg flex flex-col bg-white`}
                     >
-                      <button className="py-2.5 px-8">Edit</button>
+                      <button
+                        onClick={() => handleEditVisibility(items._id)}
+                        className="py-2.5 px-8"
+                      >
+                        Edit
+                      </button>
                       <button
                         onClick={() => handleProductDelete(items._id)}
                         className="py-2.5 px-8 mt-1"
@@ -314,7 +327,12 @@ const Products = () => {
                       action === index ? "block" : "hidden"
                     } shadow-xl p-2 rounded-lg flex flex-col bg-white`}
                   >
-                    <button className="py-2.5 px-8">Edit</button>
+                    <button
+                      onClick={() => handleEditVisibility(items._id)}
+                      className="py-2.5 px-8"
+                    >
+                      Edit
+                    </button>
                     <button
                       onClick={() => handleProductDelete(items._id)}
                       className="py-2.5 px-8 mt-1"
@@ -354,17 +372,178 @@ const Products = () => {
   );
 };
 
-// export const getServerSideProps: GetServerSideProps = async (context) => {
-//   const res = await authAxios({
-//     method: "GET",
-//     url: `api/v1/product`,
-//   });
-
-//   return {
-//     props: {
-//       products: res.data,
-//     },
-//   };
-// };
-
 export default Products;
+
+type Inputs = {
+  title: string;
+  status: string;
+  description: string;
+  expectedDelivery: string;
+  category: string;
+  standard: number;
+  standardPlus: number;
+  business: number;
+};
+
+const ProductUpdate = () => {
+  const {
+    register,
+    handleSubmit,
+    watch,
+    formState: { errors },
+  } = useForm<Inputs>();
+
+  const [loading, setLoading] = useState<boolean>(false);
+//   const router = useRouter();
+  const { addToast } = useToasts();
+
+  const onSubmit: SubmitHandler<Inputs> = async (data) => {};
+  return (
+    <div className="flex items-center justify-center">
+      <div className=" lg:w-auto w-full md:p-10 sm:p-7 p-5 rounded-lg bg-white">
+        <div className="flex items-center justify-between">
+          <h1 className="md:text-2xl sm:text-xl text-base text-gray-900 font-bold">
+            Add New Products
+          </h1>
+          <Link href="/adminDashboard/products">
+            <a className="py-2.5 px-4 rounded-md bg-gray-500 text-gray-100 md:text-sm text-xs">
+              Back
+            </a>
+          </Link>
+        </div>
+        <form
+          onSubmit={handleSubmit(onSubmit)}
+          className="grid grid-cols-12 gap-5 mt-10"
+        >
+          <div className="sm:col-span-8 col-span-12">
+            <input
+              {...register("title", { required: true })}
+              className="border border-[#DDE6F5] p-4 rounded-md w-full text-sm outline-none"
+              placeholder="Product Title"
+            />
+            {errors?.title && (
+              <span className="text-xss italic text-red-500">
+                This field is required
+              </span>
+            )}
+          </div>
+          <div className="sm:col-span-4 col-span-12">
+            <div className="border border-[#DDE6F5] p-4 rounded-md ">
+              <select
+                {...register("status", { required: true })}
+                className="w-full text-sm outline-none"
+              >
+                <option value="pre-sale" className="text-sm">
+                  Pre-Sale
+                </option>
+                <option value="ready" className="text-sm">
+                  Ready
+                </option>
+              </select>
+            </div>
+            {errors?.status && (
+              <span className="text-xss italic text-red-500">
+                This field is required
+              </span>
+            )}
+          </div>
+          <div className="col-span-12">
+            <textarea
+              {...register("description", { required: true })}
+              className="border border-[#DDE6F5] p-4 rounded-md w-full text-sm outline-none h-24 resize-none"
+              placeholder="Product Description"
+            />
+            {errors?.description && (
+              <span className="text-xss italic text-red-500">
+                This field is required
+              </span>
+            )}
+          </div>
+          <div className="sm:col-span-6 col-span-12">
+            <div className="border border-[#DDE6F5] p-4 rounded-md ">
+              <input
+                type="date"
+                {...register("expectedDelivery", { required: true })}
+                className="w-full text-sm outline-none"
+              />
+            </div>
+            {errors?.expectedDelivery && (
+              <span className="text-xss italic text-red-500">
+                This field is required
+              </span>
+            )}
+          </div>
+          <div className="sm:col-span-6 col-span-12">
+            <div className="border border-[#DDE6F5] p-4 rounded-md ">
+              <select
+                {...register("category", { required: true })}
+                className="w-full text-sm outline-none"
+              >
+                <option value="MERN" className="text-sm">
+                  MERN
+                </option>
+                <option value="Headless" className="text-sm">
+                  Headless
+                </option>
+                <option value="React" className="text-sm">
+                  React
+                </option>
+                <option value="Figma" className="text-sm">
+                  Figma
+                </option>
+              </select>
+            </div>
+          </div>
+          <h1 className="text-sm text-gray-900 col-span-12 mt-3">
+            PRICING PLAN
+          </h1>
+          <div className="md:col-span-4 sm:col-span-6 col-span-12">
+            <input
+              type="number"
+              {...register("standard", { required: true })}
+              className="border border-[#DDE6F5] p-4 rounded-md w-full text-sm outline-none"
+              placeholder="Standard"
+            />
+            {errors?.standard && (
+              <span className="text-xss italic text-red-500">
+                This field is required
+              </span>
+            )}
+          </div>
+          <div className="md:col-span-4 sm:col-span-6 col-span-12">
+            <input
+              type="number"
+              {...register("standardPlus", { required: true })}
+              className="border border-[#DDE6F5] p-4 rounded-md w-full text-sm outline-none"
+              placeholder="Standard Plus"
+            />
+            {errors?.standardPlus && (
+              <span className="text-xss italic text-red-500">
+                This field is required
+              </span>
+            )}
+          </div>
+          <div className="md:col-span-4 sm:col-span-6 col-span-12">
+            <input
+              type="number"
+              {...register("business", { required: true })}
+              className="border border-[#DDE6F5] p-4 rounded-md w-full text-sm outline-none"
+              placeholder="Business"
+            />
+            {errors?.business && (
+              <span className="text-xss italic text-red-500">
+                This field is required
+              </span>
+            )}
+          </div>
+          <button
+            type="submit"
+            className="md:text-sm text-xs py-3 px-5 rounded-md bg-blueTwo md:col-span-3 sm:col-span-4 col-span-8 text-gray-100"
+          >
+            {loading ? "Please Wait..." : "Add Product"}
+          </button>
+        </form>
+      </div>
+    </div>
+  );
+};
