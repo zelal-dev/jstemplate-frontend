@@ -1,39 +1,39 @@
-import Link from "next/link";
-import React, { useState } from "react";
-import { FaShoppingCart } from "react-icons/fa";
-import { HiOutlineArrowNarrowRight } from "react-icons/hi";
+import Link from 'next/link'
+import React, { useState } from 'react'
+import { FaShoppingCart } from 'react-icons/fa'
+import { HiOutlineArrowNarrowRight } from 'react-icons/hi'
 // import Image from 'next/image'
 // import cart from './../../../public/cart.svg';
 
 const DropDownProduct = () => {
-  const [mernColor, setMernColor] = useState<string>("secondary");
-  const [headlessColor, setHeadlessColor] = useState<string>();
-  const [reactColor, setReactColor] = useState<string>();
-  const [figmaColor, setFigmaColor] = useState<string>();
+  const [mernColor, setMernColor] = useState<string>('secondary')
+  const [headlessColor, setHeadlessColor] = useState<string>()
+  const [reactColor, setReactColor] = useState<string>()
+  const [figmaColor, setFigmaColor] = useState<string>()
   const mern = () => {
-    setMernColor("secondary");
-    setReactColor("");
-    setFigmaColor("");
-    setHeadlessColor("");
-  };
+    setMernColor('secondary')
+    setReactColor('')
+    setFigmaColor('')
+    setHeadlessColor('')
+  }
   const headless = () => {
-    setHeadlessColor("secondary");
-    setMernColor("");
-    setReactColor("");
-    setFigmaColor("");
-  };
+    setHeadlessColor('secondary')
+    setMernColor('')
+    setReactColor('')
+    setFigmaColor('')
+  }
   const react = () => {
-    setReactColor("secondary");
-    setMernColor("");
-    setFigmaColor("");
-    setHeadlessColor("");
-  };
+    setReactColor('secondary')
+    setMernColor('')
+    setFigmaColor('')
+    setHeadlessColor('')
+  }
   const figma = () => {
-    setFigmaColor("secondary");
-    setReactColor("");
-    setMernColor("");
-    setHeadlessColor("");
-  };
+    setFigmaColor('secondary')
+    setReactColor('')
+    setMernColor('')
+    setHeadlessColor('')
+  }
   return (
     <div className="bg-white xl:w-[55.625rem] w-10/12 h-auto drop-shadow-xl rounded-lg">
       <div className="pt-7">
@@ -48,7 +48,7 @@ const DropDownProduct = () => {
             onClick={headless}
             className={`xl:pb-5 xl:px-8 lg:pb-3 lg:px-4 md:pb-2 md:px-3 sm:pb-2 sm:px-1  lg:text-base sm:text-xs text-gray-700 cursor-pointer text-${headlessColor} duration-200 ease-in`}
           >
-            Headless CMS
+            Frontity Theme
           </button>
           <button
             onClick={react}
@@ -60,7 +60,7 @@ const DropDownProduct = () => {
             onClick={figma}
             className={`xl:pb-5 xl:px-8 lg:pb-3 lg:px-4 md:pb-2 md:px-3 sm:pb-2 sm:px-1  lg:text-base sm:text-xs text-gray-700 cursor-pointer text-${figmaColor} duration-200 ease-in`}
           >
-            Figma Template
+            Tailwind CSS
           </button>
         </div>
         <div className="bg-gray-200  lg:px-8 md:px-7 sm:px-6  flex items-center">
@@ -79,25 +79,28 @@ const DropDownProduct = () => {
         </div>
         <div
           className={`lg:px-8 md:px-7 sm:px-6  md:py-7 sm:py-6 ${
-            mernColor === "secondary" ? "grid" : "hidden"
+            mernColor === 'secondary' ? 'grid' : 'hidden'
           } xl:grid-cols-2 lg:grid-cols-1 container gap-2`}
         >
           <ButtonLayout
             title="MetaJobs- Job Board Theme"
             url="/productSinglePage"
+            shortDescription="The best job portal website template. Secure, fast and scaleable."
           >
             <FaShoppingCart className="w-6 h-6 drop-shadow-lg text-blueTwo" />
           </ButtonLayout>
           <ButtonLayout
-            title="Meta Ads- Classified Ads Theme"
+            title="MetaAds- Classified Ads Theme"
             url="/productSinglePage"
+            shortDescription="Build a classified ads website with a clean and modern design."
           >
             <FaShoppingCart className="w-6 h-6 drop-shadow-lg text-orangeTwo" />
           </ButtonLayout>
 
           <ButtonLayout
-            title="Metalancer- Freelancer marketplace"
+            title="Freelancer marketplace theme"
             url="/productSinglePage"
+            shortDescription="Build a freelancer marketplace website with a clean and modern design."
           >
             <FaShoppingCart className="w-6 h-6 drop-shadow-lg text-greenDark" />
           </ButtonLayout>
@@ -105,98 +108,108 @@ const DropDownProduct = () => {
           <ButtonLayout
             title="MetaList- Directory & Listing Theme"
             url="/productSinglePage"
+            shortDescription="Build a directory & listing website with a clean and modern design."
           >
             <FaShoppingCart className="w-6 h-6 drop-shadow-lg text-yellowDark" />
           </ButtonLayout>
 
-          <ButtonLayout
+          {/* <ButtonLayout
             title="Short Product Title Here"
             url="/productSinglePage"
           >
             <FaShoppingCart className="w-6 h-6 drop-shadow-lg text-redDark" />
-          </ButtonLayout>
+          </ButtonLayout> */}
 
-          <ButtonLayout
+          {/* <ButtonLayout
             title="Short Product Title Here"
             url="/productSinglePage"
           >
             <FaShoppingCart className="w-6 h-6 drop-shadow-lg text-purpleDark" />
-          </ButtonLayout>
+          </ButtonLayout> */}
         </div>
         <div
           className={`lg:px-8 md:px-7 sm:px-6  md:py-7 sm:py-6 ${
-            headlessColor === "secondary" ? "grid" : "hidden"
+            headlessColor === 'secondary' ? 'grid' : 'hidden'
           } xl:grid-cols-2 lg:grid-cols-1 container gap-2`}
         >
           <ButtonLayout
-            title="MetaJobs- Job Board Theme"
+            title="Portfo- Personal Portfolio Theme"
             url="/productSinglePage"
+            shortDescription="Portfo- Frontity Personal Portfolio Theme"
           >
             <FaShoppingCart className="w-6 h-6 drop-shadow-lg text-blueTwo" />
           </ButtonLayout>
 
           <ButtonLayout
-            title="Meta Ads- Classified Ads Theme"
+            title="Frontity Blog, News Theme"
             url="/productSinglePage"
+            shortDescription="Frontity Multipurpose Blog Theme"
           >
             <FaShoppingCart className="w-6 h-6 drop-shadow-lg text-orangeTwo" />
           </ButtonLayout>
-
+          {/* 
           <ButtonLayout
-            title="Metalancer- Freelancer marketplace"
+            title="Creative Multipurpose Frontity Theme"
             url="/productSinglePage"
+            shortDescription="Build a freelancer marketplace website with a clean and modern design."
           >
             <FaShoppingCart className="w-6 h-6 drop-shadow-lg text-greenDark" />
-          </ButtonLayout>
+          </ButtonLayout> */}
 
-          <ButtonLayout
-            title="MetaList- Directory & Listing Theme"
+          {/* <ButtonLayout
+            title="Frontity Multipurpose WooCommerce Theme"
             url="/productSinglePage"
+            shortDescription="Build a directory & listing website with a clean and modern design."
           >
             <FaShoppingCart className="w-6 h-6 drop-shadow-lg text-yellowDark" />
-          </ButtonLayout>
+          </ButtonLayout> */}
         </div>
         <div
           className={`lg:px-8 md:px-7 sm:px-6  md:py-7 sm:py-6 ${
-            reactColor === "secondary" ? "grid" : "hidden"
+            reactColor === 'secondary' ? 'grid' : 'hidden'
           } xl:grid-cols-2 lg:grid-cols-1 container gap-2`}
         >
           <ButtonLayout
-            title="MetaJobs- Job Board Theme"
+            title="Digiency- Multipurpose Agency Template"
             url="/productSinglePage"
+            shortDescription="Multipurpose React Agency Template"
           >
             <FaShoppingCart className="w-6 h-6 drop-shadow-lg text-blueTwo" />
           </ButtonLayout>
 
           <ButtonLayout
-            title="Meta Ads- Classified Ads Theme"
+            title="MetaDash- React Dashboard Template"
             url="/productSinglePage"
+            shortDescription="Build a React Dashboard Template"
           >
             <FaShoppingCart className="w-6 h-6 drop-shadow-lg text-orangeTwo" />
           </ButtonLayout>
 
-          <ButtonLayout
+          {/* <ButtonLayout
             title="Metalancer- Freelancer marketplace"
             url="/productSinglePage"
+            shortDescription="Build a freelancer marketplace website with a clean and modern design."
           >
             <FaShoppingCart className="w-6 h-6 drop-shadow-lg text-greenDark" />
-          </ButtonLayout>
+          </ButtonLayout> */}
         </div>
         <div
           className={`lg:px-8 md:px-7 sm:px-6  md:py-7 sm:py-6 ${
-            figmaColor === "secondary" ? "grid" : "hidden"
+            figmaColor === 'secondary' ? 'grid' : 'hidden'
           } xl:grid-cols-2 lg:grid-cols-1 container gap-2`}
         >
           <ButtonLayout
-            title="MetaJobs- Job Board Theme"
+            title="SEO Agency Landing Page Template"
             url="/productSinglePage"
+            shortDescription="Build a SEO Agency Landing Page Template"
           >
             <FaShoppingCart className="w-6 h-6 drop-shadow-lg text-blueTwo" />
           </ButtonLayout>
 
           <ButtonLayout
-            title="Meta Ads- Classified Ads Theme"
+            title="Tailwind CSS Blog Template"
             url="/productSinglePage"
+            shortDescription="Build a Tailwind CSS Blog Template"
           >
             <FaShoppingCart className="w-6 h-6 drop-shadow-lg text-orangeTwo" />
           </ButtonLayout>
@@ -204,37 +217,39 @@ const DropDownProduct = () => {
         <div className=" lg:px-8 md:px-7 sm:px-6 md:py-7 sm:py-6  bg-backgroundGrayOne flex flex-col xl:flex-row justify-between items-center rounded-b-lg">
           <div>
             <h2 className="text-gray-900 text-base font-semibold xl:text-left text-center">
-              We have total 10 Solution
+              You will love our solutions
             </h2>
             <article className="text-gray-600 text-sm">
-              Lorem Ipsum has been the industrys standard dummy text
+              Lightning fast speed, secure and scale your website as you need
             </article>
           </div>
           <Link href="">
             <a className="mt-3 shadow-3xl flex sm:w-auto items-center xl:text-lg text-base xl:py-3 md:py-2 xl:px-4 md:px-3 py-2.5 px-3 rounded-lg bg-gradient-to-br from-blueOne to-blueTwo ">
               <span className="md:ml-2 ml-1 text-white mr-2">
                 View All Solution
-              </span>{" "}
-              <HiOutlineArrowNarrowRight style={{ color: "white" }} />
+              </span>{' '}
+              <HiOutlineArrowNarrowRight style={{ color: 'white' }} />
             </a>
           </Link>
         </div>
       </div>
       <div className="arrow bg-white m-0 border-0 w-10 h-6 absolute -top-4 2xl:left-72 xl:left-64 lg:left-28 md:left-20 sm:left-10" />
     </div>
-  );
-};
+  )
+}
 
-export default DropDownProduct;
+export default DropDownProduct
 
 const ButtonLayout = ({
   children,
   title,
   url,
+  shortDescription,
 }: {
-  children: any;
-  title: string;
-  url: string;
+  children: any
+  title: string
+  url: string
+  shortDescription: string
 }) => {
   return (
     <Link href={`${url}`}>
@@ -248,12 +263,11 @@ const ButtonLayout = ({
               {title}
             </h1>
             <article className="text-gray-700 text-sm w-4/5 mt-2">
-              Lorem Ipsum is simply dummy text of the printing and typesetting
-              industry.{" "}
+              {shortDescription}
             </article>
           </div>
         </div>
       </a>
     </Link>
-  );
-};
+  )
+}
