@@ -42,7 +42,7 @@ const Footer = ({
             />
             <div>
               <h1 className="text-gray-900 font-bold xl:text-3xl lg:text-2xl md:text-xl w-auto">
-                Why are you waiting ?
+                You`ll love our solutions
               </h1>
               <article className="text-gray-600 xl:text-lg lg:text-base text-sm lg:w-3/4 w-full mt-2">
                 Buy Our Ready-Made Web Solution Grow Your Business Faster
@@ -74,8 +74,8 @@ const Footer = ({
               </a>
             </Link>
             <article className="text-xl text-gray-400 w-80 mt-5">
-              Download teh top of Tailwind CSS, React.js, Next.js, Mongodb,
-              Node.js, Express.js ready solutions, themes and template
+              Top of Tailwind CSS, React.js, Next.js, Mongodb, Node.js,
+              Express.js, Typescript themes and templates
             </article>
             <div className="flex items-center mt-7">
               <span className="mr-5 cursor-pointer">
@@ -250,7 +250,7 @@ const Footer = ({
           </div>
         </div>
         <p className="text-base text-gray-400 text-center py-7">
-          © 2022 <span className="text-white">JS-Template</span>, All Right
+          © 2022 <span className="text-white">js template</span>. All Right
           Reserved
         </p>
       </div>
