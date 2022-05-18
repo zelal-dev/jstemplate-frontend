@@ -1,6 +1,6 @@
-import Image from "next/image";
-import Link from "next/link";
-import React from "react";
+import Image from 'next/image'
+import Link from 'next/link'
+import React from 'react'
 import {
   FaCcDiscover,
   FaCcJcb,
@@ -12,8 +12,8 @@ import {
   FaInstagram,
   FaLinkedinIn,
   FaTwitter,
-} from "react-icons/fa";
-import { SiAmericanexpress } from "react-icons/si";
+} from 'react-icons/fa'
+import { SiAmericanexpress } from 'react-icons/si'
 
 const FooterWithoutSolution = () => {
   return (
@@ -79,7 +79,7 @@ const FooterWithoutSolution = () => {
               </Link>
               <Link href="">
                 <a className="text-gray-400 hover:text-blueTwo font-sm mt-2">
-                  About
+                  Resources
                 </a>
               </Link>
               <Link href="">
@@ -213,7 +213,7 @@ const FooterWithoutSolution = () => {
         </p>
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default FooterWithoutSolution;
+export default FooterWithoutSolution
