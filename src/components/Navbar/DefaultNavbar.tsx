@@ -1,151 +1,151 @@
-import Image from "next/image";
-import Link from "next/link";
-import { useRouter } from "next/router";
-import React, { useEffect, useState } from "react";
-import { BsList } from "react-icons/bs";
-import { FaShoppingCart } from "react-icons/fa";
-import { HiOutlineArrowNarrowRight, HiOutlineLogout } from "react-icons/hi";
-import { ImCross } from "react-icons/im";
-import { IoIosArrowDown } from "react-icons/io";
-import { MdKeyboardArrowDown, MdKeyboardArrowUp } from "react-icons/md";
-import { RiSettings3Fill, RiUserFill } from "react-icons/ri";
-import { ToastProvider } from "react-toast-notifications";
-import ForgetPassword from "../../Sections/Authentication/ForgetPassword";
-import Login from "../../Sections/Authentication/Login";
-import Registration from "../../Sections/Authentication/Registration";
-import { localGet, localRemove } from "../../utils/localStorage";
-import DropDownProduct from "../DropDownProduct";
-import DropDownService from "../DropDownService";
+import Image from 'next/image'
+import Link from 'next/link'
+import { useRouter } from 'next/router'
+import React, { useEffect, useState } from 'react'
+import { BsList } from 'react-icons/bs'
+import { FaShoppingCart } from 'react-icons/fa'
+import { HiOutlineArrowNarrowRight, HiOutlineLogout } from 'react-icons/hi'
+import { ImCross } from 'react-icons/im'
+import { IoIosArrowDown } from 'react-icons/io'
+import { MdKeyboardArrowDown, MdKeyboardArrowUp } from 'react-icons/md'
+import { RiSettings3Fill, RiUserFill } from 'react-icons/ri'
+import { ToastProvider } from 'react-toast-notifications'
+import ForgetPassword from '../../Sections/Authentication/ForgetPassword'
+import Login from '../../Sections/Authentication/Login'
+import Registration from '../../Sections/Authentication/Registration'
+import { localGet, localRemove } from '../../utils/localStorage'
+import DropDownProduct from '../DropDownProduct'
+import DropDownService from '../DropDownService'
 
 const DefaultNavbar = () => {
-  const [proDis, setProdDis] = useState<string>("hidden");
-  const [serDis, setSerDis] = useState<string>("hidden");
-  const [proColor, setProColor] = useState("text-gray-700");
-  const [serColor, setSerColor] = useState("text-gray-700");
-  const [sideBarContent, setSideBarContent] = useState<string>("hidden");
-  const [loginModal, setLoginModal] = useState<string>("hidden");
-  const [signUpModal, setSignUpModal] = useState<string>("hidden");
-  const [forgetPassModal, setForgetPassModal] = useState<string>("hidden");
-  const [profileDropdown, setProfileDropdown] = useState<string>("hidden");
+  const [proDis, setProdDis] = useState<string>('hidden')
+  const [serDis, setSerDis] = useState<string>('hidden')
+  const [proColor, setProColor] = useState('text-gray-700')
+  const [serColor, setSerColor] = useState('text-gray-700')
+  const [sideBarContent, setSideBarContent] = useState<string>('hidden')
+  const [loginModal, setLoginModal] = useState<string>('hidden')
+  const [signUpModal, setSignUpModal] = useState<string>('hidden')
+  const [forgetPassModal, setForgetPassModal] = useState<string>('hidden')
+  const [profileDropdown, setProfileDropdown] = useState<string>('hidden')
   const [sideBarServiceContent, setSideBarServiceContent] =
-    useState<string>("hidden");
-  const [sideBar, setSideBar] = useState<string>("-left-full");
-  const [userInfo, setUserInfo] = useState<any>();
-  const [toggle, setToggle] = useState<boolean>(false);
-  const router = useRouter();
+    useState<string>('hidden')
+  const [sideBar, setSideBar] = useState<string>('-left-full')
+  const [userInfo, setUserInfo] = useState<any>()
+  const [toggle, setToggle] = useState<boolean>(false)
+  const router = useRouter()
 
   const styleDash =
-    router.asPath === "/dashboard"
-      ? "text-sm text-white p-4 rounded-lg bg-blueTwo flex items-center"
-      : "text-sm text-gray-600 p-4 rounded-lg flex items-center";
+    router.asPath === '/dashboard'
+      ? 'text-sm text-white p-4 rounded-lg bg-blueTwo flex items-center'
+      : 'text-sm text-gray-600 p-4 rounded-lg flex items-center'
   const styleSettings =
-    router.asPath === "/dashboard/accounts-settings"
-      ? "text-sm text-white p-4 rounded-lg bg-blueTwo flex items-center"
-      : "text-sm text-gray-600 p-4 rounded-lg flex items-center";
+    router.asPath === '/dashboard/accounts-settings'
+      ? 'text-sm text-white p-4 rounded-lg bg-blueTwo flex items-center'
+      : 'text-sm text-gray-600 p-4 rounded-lg flex items-center'
 
   const handleLogout = () => {
-    localRemove("jst_u_info");
-    setProfileDropdown("hidden");
-    handleUserImageShow();
-    router.push("/");
-  };
-  
+    localRemove('jst_u_info')
+    setProfileDropdown('hidden')
+    handleUserImageShow()
+    router.push('/')
+  }
+
   const handleProfileDropdown = () => {
-    if (profileDropdown === "hidden") {
-      setProfileDropdown("block");
+    if (profileDropdown === 'hidden') {
+      setProfileDropdown('block')
     } else {
-      setProfileDropdown("hidden");
+      setProfileDropdown('hidden')
     }
-  };
+  }
   useEffect(() => {
-    setUserInfo(localGet("jst_u_info"));
-  }, [toggle]);
+    setUserInfo(localGet('jst_u_info'))
+  }, [toggle])
 
   const handleUserImageShow = () => {
     if (toggle) {
-      setToggle(false);
+      setToggle(false)
     } else {
-      setToggle(true);
+      setToggle(true)
     }
-  };
+  }
   const handleLoginModal = () => {
-    setSignUpModal("hidden");
-    if (loginModal === "hidden") {
-      setLoginModal("flex");
+    setSignUpModal('hidden')
+    if (loginModal === 'hidden') {
+      setLoginModal('flex')
     } else {
-      setLoginModal("hidden");
+      setLoginModal('hidden')
     }
-  };
+  }
   const handleRegModal = () => {
-    setLoginModal("hidden");
-    if (signUpModal === "hidden") {
-      setSignUpModal("flex");
+    setLoginModal('hidden')
+    if (signUpModal === 'hidden') {
+      setSignUpModal('flex')
     } else {
-      setSignUpModal("hidden");
+      setSignUpModal('hidden')
     }
-  };
+  }
 
   const handelForgetPassModal = (e: any) => {
-    e.preventDefault();
-    setLoginModal("hidden");
-    if (forgetPassModal === "hidden") {
-      setForgetPassModal("flex");
+    e.preventDefault()
+    setLoginModal('hidden')
+    if (forgetPassModal === 'hidden') {
+      setForgetPassModal('flex')
     } else {
-      setForgetPassModal("hidden");
+      setForgetPassModal('hidden')
     }
-  };
+  }
 
   const productDropdown = () => {
-    setSerDis("hidden");
-    setSerColor("text-gray-700");
-    if (proColor === "text-gray-700") {
-      setProColor("text-secondary");
+    setSerDis('hidden')
+    setSerColor('text-gray-700')
+    if (proColor === 'text-gray-700') {
+      setProColor('text-secondary')
     } else {
-      setProColor("text-gray-700");
+      setProColor('text-gray-700')
     }
-    if (proDis === "hidden") {
-      setProdDis("block");
+    if (proDis === 'hidden') {
+      setProdDis('block')
     } else {
-      setProdDis("hidden");
+      setProdDis('hidden')
     }
-  };
+  }
   const serviceDropdown = () => {
-    setProdDis("hidden");
-    setProColor("text-gray-700");
-    if (serColor === "text-gray-700") {
-      setSerColor("text-secondary");
+    setProdDis('hidden')
+    setProColor('text-gray-700')
+    if (serColor === 'text-gray-700') {
+      setSerColor('text-secondary')
     } else {
-      setSerColor("text-gray-700");
+      setSerColor('text-gray-700')
     }
-    if (serDis === "hidden") {
-      setSerDis("block");
+    if (serDis === 'hidden') {
+      setSerDis('block')
     } else {
-      setSerDis("hidden");
+      setSerDis('hidden')
     }
-  };
+  }
 
   const handleSidebar = () => {
-    if (sideBar === "-left-full") {
-      setSideBar("left-0");
+    if (sideBar === '-left-full') {
+      setSideBar('left-0')
     } else {
-      setSideBar("-left-full");
+      setSideBar('-left-full')
     }
-  };
+  }
 
   const handleSidebarContent = () => {
-    if (sideBarContent === "hidden") {
-      setSideBarContent("block");
-    } else if (sideBarContent === "block") {
-      setSideBarContent("hidden");
+    if (sideBarContent === 'hidden') {
+      setSideBarContent('block')
+    } else if (sideBarContent === 'block') {
+      setSideBarContent('hidden')
     }
-  };
+  }
   const handleServiceSidebarContent = () => {
-    if (sideBarServiceContent === "hidden") {
-      setSideBarServiceContent("block");
-    } else if (sideBarServiceContent === "block") {
-      setSideBarServiceContent("hidden");
+    if (sideBarServiceContent === 'hidden') {
+      setSideBarServiceContent('block')
+    } else if (sideBarServiceContent === 'block') {
+      setSideBarServiceContent('hidden')
     }
-  };
+  }
 
   return (
     <div className="flex items-center container mx-auto justify-between xl:py-10 md:py-7 sm:py-6 py-5 px-5 sm:px-0 relative">
@@ -172,7 +172,7 @@ const DefaultNavbar = () => {
         </div>
         <Link href="">
           <a className=" lg:text-base sm:text-sm text-gray-700 cursor-pointer">
-            About
+            Resources
           </a>
         </Link>
         <Link href="/blog">
@@ -190,7 +190,7 @@ const DefaultNavbar = () => {
         <Link href="/preSalePage">
           <a className="p-3 rounded-md bg-gradient-to-br from-orangeOne to-orangeTwo mr-4 shadow-4xl cursor-pointer">
             <FaShoppingCart
-              style={{ color: "white", width: "18px", height: "18px" }}
+              style={{ color: 'white', width: '18px', height: '18px' }}
             />
           </a>
         </Link>
@@ -207,7 +207,7 @@ const DefaultNavbar = () => {
               onClick={handleLoginModal}
             >
               <RiUserFill
-                style={{ color: "white", width: "18px", height: "18px" }}
+                style={{ color: 'white', width: '18px', height: '18px' }}
               />
             </a>
           </Link>
@@ -223,7 +223,7 @@ const DefaultNavbar = () => {
         </Link>
         <Link href="/dashboard/accounts-settings">
           <a className={`${styleSettings} mt-1.5`}>
-            <RiSettings3Fill className="w-5 h-5 mr-4" />{" "}
+            <RiSettings3Fill className="w-5 h-5 mr-4" />{' '}
             <span>Accounts Settings</span>
           </a>
         </Link>
@@ -239,7 +239,7 @@ const DefaultNavbar = () => {
         className="p-3 rounded-md bg-gradient-to-r from-blueOne to-blueTwo shadow-3xl sm:hidden block cursor-pointer"
         onClick={handleSidebar}
       >
-        <BsList style={{ color: "white", width: "18px", height: "15.5px" }} />
+        <BsList style={{ color: 'white', width: '18px', height: '15.5px' }} />
       </div>
       <div
         className={`absolute hidden top-24  lg:left-56 sm:left-28 z-20 ease-out duration-700 sm:${proDis}`}
@@ -301,7 +301,7 @@ const DefaultNavbar = () => {
               onClick={handleSidebarContent}
             >
               <h3 className="text-base text-gray-300">Product</h3>
-              {sideBarContent === "hidden" ? (
+              {sideBarContent === 'hidden' ? (
                 <MdKeyboardArrowDown className="text-base text-gray-300 cursor-pointer" />
               ) : (
                 <MdKeyboardArrowUp className="text-base text-gray-300 cursor-pointer" />
@@ -361,7 +361,7 @@ const DefaultNavbar = () => {
               onClick={handleServiceSidebarContent}
             >
               <h3 className="text-base text-gray-300">Product</h3>
-              {sideBarServiceContent === "hidden" ? (
+              {sideBarServiceContent === 'hidden' ? (
                 <MdKeyboardArrowDown className="text-base text-gray-300 cursor-pointer" />
               ) : (
                 <MdKeyboardArrowUp className="text-base text-gray-300 cursor-pointer" />
@@ -438,7 +438,7 @@ const DefaultNavbar = () => {
         </div>
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default DefaultNavbar;
+export default DefaultNavbar
