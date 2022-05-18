@@ -3,33 +3,7 @@ import SolutionCart from '../../components/SolutionCart'
 import Link from 'next/link'
 import { HiOutlineArrowNarrowRight } from 'react-icons/hi'
 
-const megaMenuProducts = {
-  category: [
-    {
-      title: 'Mern Stack',
-      products: [
-        {
-          title: 'MetaJobs- Job Board Theme',
-          description:
-            'MetaJobs is a job board theme for your website. It is a perfect solution for job seekers and employers.',
-        },
-        {
-          title: 'Metaads- Classified Ads Theme',
-          description:
-            'Metaads is a classified ads theme for your website. It is a perfect solution for job seekers and employers.',
-        },
-        {
-          title: 'Metalancer- Freelancer Marketplace',
-          description:
-            'Metalancer is a marketplace theme for your website. It is a perfect solution for job seekers and employers.',
-        },
-      ],
-    },
-  ],
-}
-
 const Solution = () => {
-  const sample = [1, 2, 3]
   return (
     <div className="container mx-auto relative z-0">
       <div className="xl:py-24 sm:py-16 py-14 flex flex-col items-center justify-center">
