@@ -1,7 +1,7 @@
-import React from "react";
-import { RiPhoneLine } from "react-icons/ri";
-import FooterWithoutSolution from "../src/components/FooterWithoutSolution";
-import Navbar from "../src/components/Navbar";
+import React from 'react'
+import { RiPhoneLine } from 'react-icons/ri'
+import FooterWithoutSolution from '../src/components/FooterWithoutSolution'
+import Navbar from '../src/components/Navbar'
 
 const ContactUs = () => {
   return (
@@ -19,8 +19,7 @@ const ContactUs = () => {
                     Get in Touch
                   </h1>
                   <p className="text-lg font-normal text-white pt-2">
-                    We&acute; love to hear from you. Our friendly team is always
-                    here to chat.
+                    We bring good things to your busines and work
                   </p>
                 </div>
                 <div className="flex gap-5">
@@ -37,15 +36,16 @@ const ContactUs = () => {
                     />
                   </svg>
                   <div>
-                    <h3 className="text-xl text-white font-normal">
-                      Mail To Us
-                    </h3>
-                    <p className="text-base font-normal text-[#EAECEE]">
-                      info@example.com
-                    </p>
+                    <h3 className="text-xl text-white font-normal">Email us</h3>
+                    <a
+                      className="text-base font-normal text-[#EAECEE]"
+                      href="mailto:info@jstemplate.net"
+                    >
+                      info@jstemplate.net
+                    </a>
                   </div>
                 </div>
-                <div className="flex gap-5">
+                {/* <div className="flex gap-5">
                   <RiPhoneLine className="text-3xl text-white" />
                   <div>
                     <h3 className="text-xl text-white font-normal">Call Us</h3>
@@ -53,7 +53,7 @@ const ContactUs = () => {
                       +1 123 456 789
                     </p>
                   </div>
-                </div>
+                </div> */}
                 <div className="flex gap-5">
                   <svg
                     width="32"
@@ -72,7 +72,7 @@ const ContactUs = () => {
                       Office Location
                     </h3>
                     <p className="text-base font-normal text-[#EAECEE] lg:w-8/12">
-                      1294 Longview Avenue, Forest Hills, New York
+                      B-29/A Malibagh chowdhury Para, Dhaka-1219, Bangladesh
                     </p>
                   </div>
                 </div>
@@ -80,12 +80,9 @@ const ContactUs = () => {
 
               <div className="col-span-2 md:col-span-3 bg-white rounded-2xl shadow px-12 md:px-24 2xl:px-36  py-12 w-full text-center">
                 <h1 className="text-2xl font-bold text-[#001324] m-0">
-                  Level Up Your Work
+                  Hello, We have been expecting you.
                 </h1>
-                <p className="text-base font-normal text-[#001324] pt-2">
-                  You can reach us any time via
-                </p>
-                <strong className="text-[#001324]">info@example.com</strong>
+
                 <div className="pt-6">
                   <form className="grid">
                     {/* <form className="grid gap-4" onSubmit={handleSubmit(onSubmitHandler)}> */}
@@ -158,7 +155,7 @@ const ContactUs = () => {
       </section>
       <FooterWithoutSolution />
     </>
-  );
-};
+  )
+}
 
-export default ContactUs;
+export default ContactUs
