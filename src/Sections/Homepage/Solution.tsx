@@ -2,8 +2,10 @@ import React from 'react'
 import SolutionCart from '../../components/SolutionCart'
 import Link from 'next/link'
 import { HiOutlineArrowNarrowRight } from 'react-icons/hi'
+import { ProductDocument } from '../../../pages/shop'
 
-const Solution = () => {
+const Solution = ({ data }: { data: ProductDocument }) => {
+  console.log('data from solution', data)
   return (
     <div className="container mx-auto relative z-0">
       <div className="xl:py-24 sm:py-16 py-14 flex flex-col items-center justify-center">
@@ -25,51 +27,75 @@ const Solution = () => {
           <div className="shadow-grayLight">
             <Link href="/preSalePage">
               <a>
-                <SolutionCart toColor="blueOne" fromColor="blueTwo" />
+                <SolutionCart
+                  toColor="blueOne"
+                  fromColor="blueTwo"
+                  item={undefined}
+                />
               </a>
             </Link>
           </div>
           <div className="xl:-mt-36 shadow-grayLight h-min">
             <Link href="/preSalePage">
               <a>
-                <SolutionCart toColor="blueOne" fromColor="blueTwo" />
+                <SolutionCart
+                  toColor="blueOne"
+                  fromColor="blueTwo"
+                  item={undefined}
+                />
               </a>
             </Link>
           </div>
           <div className="shadow-grayLight">
             <Link href="/preSalePage">
               <a>
-                <SolutionCart toColor="blueOne" fromColor="blueTwo" />
+                <SolutionCart
+                  toColor="blueOne"
+                  fromColor="blueTwo"
+                  item={undefined}
+                />
               </a>
             </Link>
           </div>
           <div className="shadow-grayLight">
             <Link href="/preSalePage">
               <a>
-                <SolutionCart toColor="blueOne" fromColor="blueTwo" />
+                <SolutionCart
+                  toColor="blueOne"
+                  fromColor="blueTwo"
+                  item={undefined}
+                />
               </a>
             </Link>
           </div>
           <div className="xl:-mt-36 shadow-grayLight h-min">
             <Link href="/preSalePage">
               <a>
-                <SolutionCart toColor="blueOne" fromColor="blueTwo" />
+                <SolutionCart
+                  toColor="blueOne"
+                  fromColor="blueTwo"
+                  item={undefined}
+                />
               </a>
             </Link>
           </div>
           <div className="shadow-grayLight">
             <Link href="/preSalePage">
               <a>
-                <SolutionCart toColor="blueOne" fromColor="blueTwo" />
+                <SolutionCart
+                  toColor="blueOne"
+                  fromColor="blueTwo"
+                  item={undefined}
+                />
               </a>
             </Link>
           </div>
         </div>
-        <Link href="">
+        <Link href="/shop">
           <a className="xl:-mt-12 md:mt-16 mt-10 shadow-3xl flex sm:w-auto items-center xl:text-lg text-base xl:py-6 md:py-3 xl:px-10 md:px-5 py-3 px-3 rounded-lg bg-gradient-to-br from-blueOne to-blueTwo sm:mr-6 mr-0">
             <span className="md:ml-4 ml-3 text-white mr-4">
               View All Solution
-            </span>{' '}
+            </span>
             <HiOutlineArrowNarrowRight style={{ color: 'white' }} />
           </a>
         </Link>
