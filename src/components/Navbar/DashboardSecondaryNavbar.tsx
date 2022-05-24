@@ -149,7 +149,7 @@ const DashboardSecondaryNavbar = () => {
             <div className="xl:w-96 lg:w-80 md:w-72 w-64 py-4 px-5 rounded-lg border border-[#DDE6F5]">
               <select
                 name="cars"
-                id="cars"
+                aria-label="cars"
                 className="w-full text-gray-700 border-none outline-none"
               >
                 <option value="volvo">Select Category</option>

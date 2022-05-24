@@ -1,6 +1,6 @@
-import React from 'react'
-import { FaNodeJs, FaReact } from 'react-icons/fa'
-import { SiMongodb, SiExpress } from 'react-icons/si'
+import React from "react";
+import { FaNodeJs, FaReact } from "react-icons/fa";
+import { SiMongodb, SiExpress } from "react-icons/si";
 
 const Header = () => {
   return (
@@ -15,10 +15,16 @@ const Header = () => {
         industry. Lorem Ipsum has been the industrys standard dummy text
       </article>
       <div className="xl:my-14 lg:my-12 md:my-10 sm:my-9 my-8 flex flex-col sm:flex-row items-center">
-        <button className="text-base font-semibold py-3 px-7 border-2 border-gray-100 bg-gray-100 rounded-lg text-secondaryTemplateColorDark sm:mr-4 mb-3 sm:mb-0">
+        <button
+          type="button"
+          className="text-base font-semibold py-3 px-7 border-2 border-gray-100 bg-gray-100 rounded-lg text-secondaryTemplateColorDark sm:mr-4 mb-3 sm:mb-0"
+        >
           Live Preview
         </button>
-        <button className="text-base font-semibold py-3 px-7 border-2 border-gray-100 rounded-lg text-white">
+        <button
+          type="button"
+          className="text-base font-semibold py-3 px-7 border-2 border-gray-100 rounded-lg text-white"
+        >
           Pricing
         </button>
       </div>
@@ -38,12 +44,12 @@ const Header = () => {
         <div className="rounded-lg md:p-5 p-4 bg-gray-100 shadow-darkLight mr-5">
           <FaReact
             className="xl:w-6 md:w-5 w-[1.0625rem] xl:h-6 md:h-5 h-[1.0625rem]"
-            style={{ color: '#00D8FF' }}
+            style={{ color: "#00D8FF" }}
           />
         </div>
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default Header
+export default Header;

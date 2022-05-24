@@ -28,29 +28,29 @@ const AdminDashboard = ({ children }: { children: any }) => {
   };
 
   const styleDash =
-    router.asPath === "/adminDashboard"
+    router.asPath === "/admin-dashboard"
       ? "text-sm text-white p-4 rounded-lg bg-blueTwo flex items-center"
       : "text-sm text-gray-700 p-4 rounded-lg flex items-center";
   const styleClient =
-    router.asPath === "/adminDashboard/clients"
+    router.asPath === "/admin-dashboard/clients"
       ? "text-sm text-white p-4 rounded-lg bg-blueTwo flex items-center mt-1"
       : "text-sm text-gray-700 p-4 rounded-lg flex items-center mt-1";
   const styleLeads =
-    router.asPath === "/adminDashboard/leads"
+    router.asPath === "/admin-dashboard/leads"
       ? "text-sm text-white p-4 rounded-lg bg-blueTwo flex items-center"
       : "text-sm text-gray-700 p-4 rounded-lg flex items-center";
   const styleProducts =
-    router.asPath === "/adminDashboard/products" ||
-    router.asPath === "/adminDashboard/products/add-new-products"
+    router.asPath === "/admin-dashboard/products" ||
+    router.asPath === "/admin-dashboard/products/add-new-products"
       ? "text-sm text-white p-4 rounded-lg bg-blueTwo flex items-center"
       : "text-sm text-gray-700 p-4 rounded-lg flex items-center";
   const styleProjects =
-    router.asPath === "/adminDashboard/projects" ||
-    router.asPath === "/adminDashboard/projects/details"
+    router.asPath === "/admin-dashboard/projects" ||
+    router.asPath === "/admin-dashboard/projects/details"
       ? "text-sm text-white p-4 rounded-lg bg-blueTwo flex items-center"
       : "text-sm text-gray-700 p-4 rounded-lg flex items-center";
   const styleTickets =
-    router.asPath === "/adminDashboard/tickets"
+    router.asPath === "/admin-dashboard/tickets"
       ? "text-sm text-white p-4 rounded-lg bg-blueTwo flex items-center"
       : "text-sm text-gray-700 p-4 rounded-lg flex items-center";
 
@@ -65,34 +65,34 @@ const AdminDashboard = ({ children }: { children: any }) => {
           >
             <h2 className="text-xs text-gray-500">MENU</h2>
             <div className="mt-3">
-              <Link href="/adminDashboard">
+              <Link href="/admin-dashboard">
                 <a className={`${styleDash}`}>
                   <RiAppsLine className="w-5 h-5 mr-4" />{" "}
                   <span>My Dashboard</span>
                 </a>
               </Link>
-              <Link href="/adminDashboard/clients">
+              <Link href="/admin-dashboard/clients">
                 <a className={`${styleClient}`}>
                   <IoBagRemoveOutline className="w-5 h-5 mr-4" />{" "}
                   <span>Client</span>
                 </a>
               </Link>
-              <Link href="/adminDashboard/leads">
+              <Link href="/admin-dashboard/leads">
                 <a className={`${styleLeads}`}>
                   <FiUsers className="w-5 h-5 mr-4" /> <span>Leads</span>
                 </a>
               </Link>
-              <Link href="/adminDashboard/products">
+              <Link href="/admin-dashboard/products">
                 <a className={`${styleProducts}`}>
                   <CgBox className="w-5 h-5 mr-4" /> <span>Products</span>
                 </a>
               </Link>
-              <Link href="/adminDashboard/projects">
+              <Link href="/admin-dashboard/projects">
                 <a className={`${styleProjects}`}>
                   <BsFilePlus className="w-5 h-5 mr-4" /> <span>Projects</span>
                 </a>
               </Link>
-              <Link href="/adminDashboard/tickets">
+              <Link href="/admin-dashboard/tickets">
                 <a className={`${styleTickets}`}>
                   <FaReceipt className="w-5 h-5 mr-4" /> <span>Tickets</span>
                 </a>
@@ -121,34 +121,34 @@ const AdminDashboard = ({ children }: { children: any }) => {
           </div>
           <hr className="w-full text-cartImageBgOne mt-5" />
           <div className="mt-5">
-            <Link href="/adminDashboard">
+            <Link href="/admin-dashboard">
               <a className={`${styleDash}`}>
                 <RiAppsLine className="w-5 h-5 mr-4" />{" "}
                 <span>My Dashboard</span>
               </a>
             </Link>
-            <Link href="/adminDashboard/client">
+            <Link href="/admin-dashboard/client">
               <a className={`${styleClient}`}>
                 <IoBagRemoveOutline className="w-5 h-5 mr-4" />{" "}
                 <span>Client</span>
               </a>
             </Link>
-            <Link href="/adminDashboard/leads">
+            <Link href="/admin-dashboard/leads">
               <a className={`${styleLeads}`}>
                 <FiUsers className="w-5 h-5 mr-4" /> <span>Leads</span>
               </a>
             </Link>
-            <Link href="/adminDashboard/products">
+            <Link href="/admin-dashboard/products">
               <a className={`${styleProducts}`}>
                 <CgBox className="w-5 h-5 mr-4" /> <span>Products</span>
               </a>
             </Link>
-            <Link href="/adminDashboard/projects">
+            <Link href="/admin-dashboard/projects">
               <a className={`${styleProjects}`}>
                 <BsFilePlus className="w-5 h-5 mr-4" /> <span>Projects</span>
               </a>
             </Link>
-            <Link href="/adminDashboard/tickets">
+            <Link href="/admin-dashboard/tickets">
               <a className={`${styleTickets}`}>
                 <FaReceipt className="w-5 h-5 mr-4" /> <span>Tickets</span>
               </a>

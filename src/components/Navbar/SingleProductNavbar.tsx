@@ -6,7 +6,7 @@ import { BsList } from "react-icons/bs";
 import { FaShoppingCart } from "react-icons/fa";
 import { HiOutlineLogout } from "react-icons/hi";
 import { IoIosArrowDown } from "react-icons/io";
-import { RiSettings3Fill, RiUserFill } from "react-icons/ri";
+import { RiLoginCircleLine, RiSettings3Fill, RiUserFill } from "react-icons/ri";
 import { ToastProvider } from "react-toast-notifications";
 import ForgetPassword from "../../Sections/Authentication/ForgetPassword";
 import Login from "../../Sections/Authentication/Login";
@@ -157,27 +157,27 @@ const SingleProductNavbar = () => {
       </div>
       <div className="sm:flex items-center hidden">
         <Link href="/preSalePage">
-          <a className="p-3 rounded-md bg-gradient-to-br from-orangeOne to-orangeTwo mr-4 shadow-4xl cursor-pointer">
-            <FaShoppingCart
-              style={{ color: "white", width: "18px", height: "18px" }}
-            />
+          <a className="w-10 h-10 grid justify-center items-center rounded-md bg-gradient-to-br from-orangeOne to-orangeTwo mr-4 shadow-4xl cursor-pointer">
+            <FaShoppingCart className="text-white text-xl" />
           </a>
         </Link>
         {userInfo?.token ? (
-          <button onClick={handleProfileDropdown}>
+          <button
+            type="button"
+            aria-label="user"
+            onClick={handleProfileDropdown}
+          >
             <a className="cursor-pointer flex items-end">
-              <Image src="/man.svg" alt="" width="42" height="42" />
+              <Image src="/man.svg" alt="" width="40" height="40" />
             </a>
           </button>
         ) : (
           <Link href="">
             <a
-              className="p-3 rounded-md bg-gradient-to-br from-blueOne to-blueTwo shadow-3xl cursor-pointer"
+              className="w-10 h-10 grid justify-center items-center rounded-md bg-gradient-to-br from-blueOne to-blueTwo shadow-3xl cursor-pointer"
               onClick={handleLoginModal}
             >
-              <RiUserFill
-                style={{ color: "white", width: "18px", height: "18px" }}
-              />
+              <RiLoginCircleLine className="text-white text-2xl" />
             </a>
           </Link>
         )}

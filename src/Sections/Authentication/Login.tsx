@@ -20,7 +20,7 @@ const Login = ({
   handleLoginModal: any;
   handleRegModal: any;
   handelForgetPassModal: any;
-  handleUserImageShow:any;
+  handleUserImageShow: any;
 }) => {
   const {
     register,
@@ -36,7 +36,6 @@ const Login = ({
 
   useEffect(() => {
     const local = localGet("jst_l_info");
-    console.log("hello");
     if (local) {
       const { email, password } = local;
       setValue("email", email);
@@ -58,7 +57,6 @@ const Login = ({
     })
       .then((res) => {
         if (res.status === 200 || res.status === 201) {
-          console.log(res.data);
           localSave("jst_u_info", {
             ...res.data,
             login_at: new Date(),
@@ -68,8 +66,9 @@ const Login = ({
           addToast(res.data.message, {
             appearance: "success",
             autoDismiss: true,
+            autoDismissTimeout: 1500,
           });
-          handleUserImageShow()
+          handleUserImageShow();
           setLoading(false);
           reset();
           handleLoginModal();
@@ -80,11 +79,13 @@ const Login = ({
           addToast(error.response.data.message, {
             appearance: "error",
             autoDismiss: true,
+            autoDismissTimeout: 2000,
           });
         } else {
           addToast(error.message, {
             appearance: "error",
             autoDismiss: true,
+            autoDismissTimeout: 2000,
           });
         }
         setLoading(false);
@@ -93,7 +94,6 @@ const Login = ({
       setLoading(false);
     }, 10000);
     if (data.remember) {
-      console.log("dhukeche")
       localSave("jst_l_info", data);
     }
     if (data.remember === false && local) {
@@ -106,6 +106,8 @@ const Login = ({
       <div className=" xl:p-8 lg:p-7 md:p-6 sm:p-5 p-4 flex items-center justify-between">
         <h3 className="xl:text-3xl md:text-2xl text-xl font-bold">Login</h3>
         <button
+          type="button"
+          aria-label="Close"
           className=" md:p-2.5 p-1.5 rounded-lg bg-black hover:bg-blueTwo"
           onClick={handleLoginModal}
         >
@@ -145,10 +147,17 @@ const Login = ({
           )}
           <div className="xl:mt-6 md:mt-4 mt-3 flex items-center justify-between">
             <div className="flex items-center">
-              <input type="checkbox" {...register("remember")} />
-              <h1 className="md:text-sm text-xs text-gray-600 ml-3">
+              <input
+                id="remember_me"
+                type="checkbox"
+                {...register("remember")}
+              />
+              <label
+                htmlFor="remember_me"
+                className="md:text-sm text-xs text-gray-600 ml-3"
+              >
                 Remember me
-              </h1>
+              </label>
             </div>
             <button
               onClick={handelForgetPassModal}

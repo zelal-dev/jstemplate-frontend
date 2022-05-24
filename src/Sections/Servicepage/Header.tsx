@@ -75,8 +75,6 @@ const Header = () => {
       const singlePageCost = uxCost / uxPageNo;
       setUxCost(uxCost + singlePageCost);
     }
-    // console.log(uxCost, uxPageNo);
-    // console.log(singlePageCost);
     setUxPageNo(uxPageNo + 1);
   };
 
@@ -104,7 +102,6 @@ const Header = () => {
     const desk = document.getElementById("uxDesk") as HTMLInputElement;
     if (desk !== null) {
       if (desk.checked === true) {
-        // console.log(uxPlatform.desktop)
         if (uxPageNo > 0) {
           setUxCost(uxCost + uxPlatform.desktop * uxPageNo);
         } else {
@@ -119,7 +116,6 @@ const Header = () => {
     const mob = document.getElementById("uxMob") as HTMLInputElement;
     if (mob !== null) {
       if (mob.checked === true) {
-        // console.log(uxPlatform.desktop)
         if (uxPageNo > 0) {
           setUxCost(uxCost + uxPlatform.mobile * uxPageNo);
         } else {
@@ -134,7 +130,6 @@ const Header = () => {
     const tab = document.getElementById("uxTab") as HTMLInputElement;
     if (tab !== null) {
       if (tab.checked === true) {
-        // console.log(uxPlatform.desktop)
         if (uxPageNo > 0) {
           setUxCost(uxCost + uxPlatform.tablet * uxPageNo);
         } else {
@@ -150,7 +145,6 @@ const Header = () => {
     const box = document.getElementById("uxLanding") as HTMLInputElement;
     if (box !== null) {
       if (box.checked === true) {
-        // console.log(uxPlatform.desktop)
         setUxCost(uxCost + uxPageType.landing * uxPageNo);
       } else {
         setUxCost(uxCost - uxPageType.landing * uxPageNo);
@@ -162,7 +156,6 @@ const Header = () => {
     const box = document.getElementById("uxDash") as HTMLInputElement;
     if (box !== null) {
       if (box.checked === true) {
-        // console.log(uxPlatform.desktop)
         setUxCost(uxCost + uxPageType.dashboard * uxPageNo);
       } else {
         setUxCost(uxCost - uxPageType.dashboard * uxPageNo);
@@ -205,7 +198,12 @@ const Header = () => {
           <div className=" flex items-center justify-between">
             <div className=" flex flex-col sm:flex-row sm:items-center justify-between sm:w-3/4 lg:w-4/5 w-auto">
               <div className="flex items-center">
-                <input type="checkbox" id="uxCheck" onClick={handleUx} />
+                <input
+                  aria-label="uxCheck"
+                  type="checkbox"
+                  id="uxCheck"
+                  onClick={handleUx}
+                />
                 <h4 className="text-gray-700 font-bold text-sm xl:ml-5 md:ml-3 ml-1.5">
                   I need UI/UX Design in Figma{" "}
                 </h4>
@@ -237,6 +235,8 @@ const Header = () => {
                 </h5>
                 <div className="flex flex-col">
                   <button
+                    type="button"
+                    aria-label="uxPageUp"
                     className="py-1 px-1 border border-grayLight"
                     onClick={handleUxPageNoInc}
                     disabled={!ux ? true : false}
@@ -244,6 +244,8 @@ const Header = () => {
                     <IoIosArrowUp className="text-gray-500 w-2 h-2" />
                   </button>
                   <button
+                    type="button"
+                    aria-label="uxPageDown"
                     className="py-1 px-1 border border-grayLight"
                     onClick={handleUxPageNoDec}
                     disabled={!ux ? true : false}
@@ -260,6 +262,7 @@ const Header = () => {
                   <input
                     type="checkbox"
                     id="uxDesk"
+                    aria-label="checkbox"
                     onClick={handleUxPlatformDesk}
                     disabled={uxPageNo === 0 || !ux ? true : false}
                   />
@@ -268,6 +271,7 @@ const Header = () => {
                 <div className="flex items-center mr-5">
                   <input
                     type="checkbox"
+                    aria-label="uxMob"
                     id="uxMob"
                     onClick={handleUxPlatformMob}
                     disabled={uxPageNo === 0 || !ux ? true : false}
@@ -276,6 +280,7 @@ const Header = () => {
                 </div>
                 <div className="flex items-center">
                   <input
+                    aria-label="uxTab"
                     type="checkbox"
                     id="uxTab"
                     onClick={handleUxPlatformTab}
@@ -291,6 +296,7 @@ const Header = () => {
                 <div className="flex items-center mr-5">
                   <input
                     type="checkbox"
+                    aria-label="uxLanding"
                     id="uxLanding"
                     disabled={uxPageNo === 0 || !ux ? true : false}
                     onClick={handleUxPageLanding}
@@ -301,6 +307,7 @@ const Header = () => {
                   <input
                     type="checkbox"
                     id="uxDash"
+                    aria-label="uxDash"
                     disabled={uxPageNo === 0 || !ux ? true : false}
                     onClick={handleUxPageDash}
                   />
@@ -314,7 +321,7 @@ const Header = () => {
           <div className=" flex items-center justify-between">
             <div className=" flex flex-col sm:flex-row sm:items-center justify-between sm:w-3/4 lg:w-4/5 w-auto">
               <div className="flex items-center">
-                <input type="checkbox" />
+                <input type="checkbox" aria-label="checkbox" />
                 <h4 className="text-gray-700 font-bold text-sm xl:ml-5 md:ml-3 ml-1.5">
                   Frontend Development
                 </h4>
@@ -347,7 +354,7 @@ const Header = () => {
           <div className=" flex items-center justify-between">
             <div className=" flex flex-col sm:flex-row sm:items-center justify-between sm:w-3/4 lg:w-4/5 w-auto">
               <div className="flex items-center">
-                <input type="checkbox" />
+                <input type="checkbox" aria-label="check" />
                 <h4 className="text-gray-700 font-bold text-sm xl:ml-5 md:ml-3 ml-1.5">
                   Frontend Development
                 </h4>

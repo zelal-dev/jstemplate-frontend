@@ -1,11 +1,10 @@
-import React from 'react'
-import SolutionCart from '../../components/SolutionCart'
-import Link from 'next/link'
-import { HiOutlineArrowNarrowRight } from 'react-icons/hi'
-import { ProductDocument } from '../../../pages/shop'
+import React from "react";
+import SolutionCart from "../../components/SolutionCart";
+import Link from "next/link";
+import { HiOutlineArrowNarrowRight } from "react-icons/hi";
+import { ProductDocument } from "../../../pages/shop";
 
 const Solution = ({ data }: { data: ProductDocument }) => {
-  console.log('data from solution', data)
   return (
     <div className="container mx-auto relative z-0">
       <div className="xl:py-24 sm:py-16 py-14 flex flex-col items-center justify-center">
@@ -27,66 +26,42 @@ const Solution = ({ data }: { data: ProductDocument }) => {
           <div className="shadow-grayLight">
             <Link href="/preSalePage">
               <a>
-                <SolutionCart
-                  toColor="blueOne"
-                  fromColor="blueTwo"
-                  item={undefined}
-                />
+                <SolutionCart toColor="blueOne" fromColor="blueTwo" item={1} />
               </a>
             </Link>
           </div>
           <div className="xl:-mt-36 shadow-grayLight h-min">
             <Link href="/preSalePage">
               <a>
-                <SolutionCart
-                  toColor="blueOne"
-                  fromColor="blueTwo"
-                  item={undefined}
-                />
+                <SolutionCart toColor="blueOne" fromColor="blueTwo" item={2} />
               </a>
             </Link>
           </div>
           <div className="shadow-grayLight">
             <Link href="/preSalePage">
               <a>
-                <SolutionCart
-                  toColor="blueOne"
-                  fromColor="blueTwo"
-                  item={undefined}
-                />
+                <SolutionCart toColor="blueOne" fromColor="blueTwo" item={3} />
               </a>
             </Link>
           </div>
           <div className="shadow-grayLight">
             <Link href="/preSalePage">
               <a>
-                <SolutionCart
-                  toColor="blueOne"
-                  fromColor="blueTwo"
-                  item={undefined}
-                />
+                <SolutionCart toColor="blueOne" fromColor="blueTwo" item={4} />
               </a>
             </Link>
           </div>
           <div className="xl:-mt-36 shadow-grayLight h-min">
             <Link href="/preSalePage">
               <a>
-                <SolutionCart
-                  toColor="blueOne"
-                  fromColor="blueTwo"
-                  item={undefined}
-                />
+                <SolutionCart toColor="blueOne" fromColor="blueTwo" item={5} />
               </a>
             </Link>
           </div>
           <div className="shadow-grayLight">
             <Link href="/preSalePage">
               <a>
-                <SolutionCart
-                  toColor="blueOne"
-                  fromColor="blueTwo"
-                  item={undefined}
-                />
+                <SolutionCart toColor="blueOne" fromColor="blueTwo" item={6} />
               </a>
             </Link>
           </div>
@@ -96,12 +71,12 @@ const Solution = ({ data }: { data: ProductDocument }) => {
             <span className="md:ml-4 ml-3 text-white mr-4">
               View All Solution
             </span>
-            <HiOutlineArrowNarrowRight style={{ color: 'white' }} />
+            <HiOutlineArrowNarrowRight style={{ color: "white" }} />
           </a>
         </Link>
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default Solution
+export default Solution;

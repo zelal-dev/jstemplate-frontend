@@ -1,7 +1,7 @@
-import React from 'react'
-import { RiPhoneLine } from 'react-icons/ri'
-import FooterWithoutSolution from '../src/components/FooterWithoutSolution'
-import Navbar from '../src/components/Navbar'
+import React from "react";
+import { RiPhoneLine } from "react-icons/ri";
+import FooterWithoutSolution from "../src/components/FooterWithoutSolution";
+import Navbar from "../src/components/Navbar";
 
 const ContactUs = () => {
   return (
@@ -155,7 +155,7 @@ const ContactUs = () => {
       </section>
       <FooterWithoutSolution />
     </>
-  )
-}
+  );
+};
 
-export default ContactUs
+export default ContactUs;

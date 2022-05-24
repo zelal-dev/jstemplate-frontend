@@ -28,6 +28,7 @@ const SimpleTitleFirst = () => {
             <div className="lg:col-span-4 my-auto px-5 sm:px-0">
               {sample.map((item, index) => (
                 <button
+                  type="button"
                   key={index}
                   onClick={() => handleImage(index)}
                   className={`${
@@ -54,10 +55,16 @@ const SimpleTitleFirst = () => {
             </div>
           </div>
           <div>
-            <button className="text-base font-semibold py-4 px-8 bg-gradient-to-br from-secondaryTemplateColorLight to-secondaryTemplateColorDark shadow-secondaryTemplate rounded-lg text-gray-100 mr-5">
+            <button
+              type="button"
+              className="text-base font-semibold py-4 px-8 bg-gradient-to-br from-secondaryTemplateColorLight to-secondaryTemplateColorDark shadow-secondaryTemplate rounded-lg text-gray-100 mr-5"
+            >
               Get Started
             </button>
-            <button className="text-base font-semibold py-4 px-8 bg-gradient-to-br from-orangeOne to-orangeTwo shadow-4xl rounded-lg text-gray-100">
+            <button
+              type="button"
+              className="text-base font-semibold py-4 px-8 bg-gradient-to-br from-orangeOne to-orangeTwo shadow-4xl rounded-lg text-gray-100"
+            >
               Get Free Demo
             </button>
           </div>

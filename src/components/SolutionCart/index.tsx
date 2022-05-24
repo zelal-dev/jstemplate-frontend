@@ -1,16 +1,15 @@
-import React from 'react'
-import { BsFillEmojiSmileFill } from 'react-icons/bs'
+import React from "react";
+import { BsFillEmojiSmileFill } from "react-icons/bs";
 
 const SolutionCart = ({
   toColor,
   fromColor,
   item,
 }: {
-  toColor: string
-  fromColor: string
-  item: any
+  toColor: string;
+  fromColor: string;
+  item: any;
 }) => {
-  console.log('Items', item)
   return (
     <div className="rounded-xl cursor-pointer p-7 bg-white  flex flex-col items-start relative group">
       <div className="w-full 2xl:h-64 lg:h-60 sm:h-56 h-48 rounded-lg mb-6 bg-cartImageBgOne" />
@@ -22,10 +21,10 @@ const SolutionCart = ({
       <h5
         className={`text-xl mt-5 font-bold text-gray-900 group-hover:text-${fromColor} duration-200 leading-6`}
       >
-        {item?.title ? item?.title : 'Product Title'}
+        {item?.title ? item?.title : "Product Title"}
       </h5>
       <article className="text-gray-600 mt-3">
-        {item?.description ? item.description : 'Product Description'}
+        {item?.description ? item.description : "Product Description"}
       </article>
       {/* <div className="p-1.5 rounded shadow mt-6 flex items-center">
         <div
@@ -41,7 +40,7 @@ const SolutionCart = ({
         Pre-Sale
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default SolutionCart
+export default SolutionCart;

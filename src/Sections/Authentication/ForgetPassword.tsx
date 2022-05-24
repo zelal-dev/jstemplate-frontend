@@ -13,6 +13,8 @@ const ForgetPassword = ({
           Forget Password
         </h3>
         <button
+          type="button"
+          aria-label="cross"
           className=" md:p-2.5 p-1.5 rounded-lg bg-black hover:bg-blueTwo"
           onClick={handelForgetPassModal}
         >
@@ -31,7 +33,10 @@ const ForgetPassword = ({
             placeholder="abc@xyx.com"
           />
 
-          <button className="w-1/2 md:py-3 py-2 rounded-md bg-gradient-to-br from-blueOne to-blueTwo md:text-base text-sm font-semibold text-white mt-8">
+          <button
+            type="button"
+            className="w-1/2 md:py-3 py-2 rounded-md bg-gradient-to-br from-blueOne to-blueTwo md:text-base text-sm font-semibold text-white mt-8"
+          >
             Reset Password
           </button>
         </form>

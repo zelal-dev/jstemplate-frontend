@@ -91,6 +91,8 @@ const Registration = ({
           {toggle === 0 ? "Registration" : "Confirm Password"}
         </h3>
         <button
+          type="button"
+          aria-label="cross"
           className="md:p-2.5 p-1.5 rounded-lg bg-black hover:bg-blueTwo"
           onClick={handleRegModal}
         >

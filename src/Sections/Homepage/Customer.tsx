@@ -1,6 +1,6 @@
-import React from 'react'
-import Image from 'next/image'
-import customerBg from './../../../public/customerBg.svg'
+import React from "react";
+import Image from "next/image";
+import customerBg from "./../../../public/customerBg.svg";
 const Customer = () => {
   return (
     <div className="relative w-full z-0">
@@ -15,7 +15,7 @@ const Customer = () => {
         </article>
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default Customer
+export default Customer;

@@ -34,10 +34,10 @@ const DashboardPrimaryNavbar = () => {
       ? "text-sm text-white p-4 rounded-lg bg-blueTwo flex items-center"
       : "text-sm text-gray-600 p-4 rounded-lg flex items-center";
 
-  const handleLogout = () =>{
+  const handleLogout = () => {
     localRemove("jst_u_info");
-    router.push("/")
-  }
+    router.push("/");
+  };
 
   const handleProfileDropdown = () => {
     if (profileDropdown === "hidden") {
@@ -140,13 +140,15 @@ const DashboardPrimaryNavbar = () => {
         </div>
         <div className="sm:flex items-center hidden">
           <Link href="/preSalePage">
-            <a className="p-3 rounded-md bg-gradient-to-br from-orangeOne to-orangeTwo mr-4 shadow-4xl cursor-pointer">
-              <FaShoppingCart
-                style={{ color: "white", width: "18px", height: "18px" }}
-              />
+            <a className="w-10 h-10 grid justify-center items-center rounded-md bg-gradient-to-br from-orangeOne to-orangeTwo mr-4 shadow-4xl cursor-pointer">
+              <FaShoppingCart className="text-white text-xl" />
             </a>
           </Link>
-          <button onClick={handleProfileDropdown}>
+          <button
+            type="button"
+            aria-label="User"
+            onClick={handleProfileDropdown}
+          >
             <a className="cursor-pointer flex items-end">
               <Image src="/man.svg" alt="" width="42" height="42" />
             </a>
@@ -166,7 +168,7 @@ const DashboardPrimaryNavbar = () => {
               <span>Accounts Settings</span>
             </a>
           </Link>
-          <button onClick={handleLogout}>
+          <button type="button" onClick={handleLogout}>
             <a
               className={`text-sm text-gray-600 p-4 rounded-lg flex items-center mt-1.5`}
             >
