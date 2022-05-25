@@ -1,10 +1,9 @@
 import React from "react";
 import { IoChatbubbles } from "react-icons/io5";
-import prodSingleBg from "./../../../public/prodSingleBg.svg";
 
 const Hire = () => {
   return (
-    <div className="px-5 sm:px-0 2xl:pt-28 xl:pt-24 lg:pt-20 md:pt-16 pt-14 ">
+    <div className="px-5 sm:px-0 2xl:pt-28 xl:py-24 lg:pt-20 md:pt-16 py-14 ">
       <div
         style={{
           backgroundImage: `url("/prodSingleBg.svg")`,

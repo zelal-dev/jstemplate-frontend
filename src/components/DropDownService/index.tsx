@@ -1,11 +1,11 @@
-import React from 'react'
-import { FaShoppingCart } from 'react-icons/fa'
-import { HiOutlineArrowNarrowRight } from 'react-icons/hi'
-import Link from 'next/link'
+import React from "react";
+import { FaShoppingCart } from "react-icons/fa";
+import { HiOutlineArrowNarrowRight } from "react-icons/hi";
+import Link from "next/link";
 import {
   serviceMenuData,
   serviceMenuDocument,
-} from '../../../data/service.data'
+} from "../../../data/service.data";
 
 const DropDownService = () => {
   return (
@@ -32,12 +32,12 @@ const DropDownService = () => {
                 </a>
               </Link>
             </>
-          )
+          );
         })}
       </div>
       <div className="arrow bg-white m-0 border-0 w-10 h-6 absolute -top-4 xl:left-96 lg:left-52 md:left-56 sm:left-40" />
     </div>
-  )
-}
+  );
+};
 
-export default DropDownService
+export default DropDownService;

@@ -1,3 +1,4 @@
+import { useRouter } from "next/router";
 import React, { useState } from "react";
 import { LoaderGrowing } from "../../../../src/lib/loader";
 import { UserNotLogin, useUser } from "../../../../src/lib/useUser";
@@ -21,6 +22,11 @@ const ProjectDetails = () => {
   const [requirementPart, setRequirementPart] = useState<string>("hidden");
   const [requirementColor, setRequirementColor] =
     useState<string>("text-gray-700");
+  const router = useRouter();
+
+  React.useEffect(() => {
+    router.back();
+  }, [router]);
 
   const handleMessageVisibility = () => {
     setRequirementPart("hidden");
@@ -59,103 +65,103 @@ const ProjectDetails = () => {
     setProjectColor("text-gray-700");
   };
 
-  if (!user && !loggedIn) {
-    return <UserNotLogin />;
-  }
+  //   if (!user && !loggedIn) {
+  //     return <UserNotLogin />;
+  //   }
 
-  if (loggedIn && user) {
-    return (
-      <div className="bg-backgroundGrayOne min-h-screen">
-        <Navbar.DashboardPrimaryNavbar />
-        <Navbar.DashboardSecondaryNavbar />
-        <div className="container mx-auto py-10 px-5 sm:px-0">
-          <div className="grid-cols-12 gap-8 container hidden lg:grid">
-            <div className="col-span-6">
-              <ProjectDetailsPart />
-            </div>
-            <div className="col-span-6">
-              <div className="bg-white rounded-lg p-6">
-                <div className="flex items-center">
-                  <h3
-                    className={`text-base  ${messageColor} mr-10`}
-                    onClick={handleMessageVisibility}
-                  >
-                    Messages
-                  </h3>
-                  <h3
-                    className={`text-base  ${requirementColor}`}
-                    onClick={handleRequirementVisibility}
-                  >
-                    Requirements
-                  </h3>
-                </div>
-                <div className="h-0.5 mt-4 w-full bg-backgroundGrayOne flex items-center">
-                  <div
-                    className={`h-0.5 w-20 ${messagePart} bg-blueTwo duration-150`}
-                  />
-                  <div
-                    className={`h-0.5 w-28 ${requirementPart} bg-blueTwo duration-150 ml-28`}
-                  />
-                </div>
-                <div className={`${messagePart} duration-150`}>
-                  <Message />
-                </div>
-                <div className={`${requirementPart} duration-150`}>
-                  <Requirements />
-                </div>
-              </div>
-            </div>
-          </div>
-          <div className="lg:hidden block">
-            <div className="bg-white rounded-lg p-6">
-              <div className="flex items-center">
-                <h3
-                  className={`md:text-base text-sm  ${projectColor} xl:mr-10 lg:mr-9 md:mr-7 sm:mr-6 mr-5`}
-                  onClick={handleProjectVisibility}
-                >
-                  Project Details
-                </h3>
-                <h3
-                  className={`md:text-base text-sm  ${messageColorSmall} xl:mr-10 lg:mr-9 md:mr-7 sm:mr-6 mr-5`}
-                  onClick={handleMessageVisibilitySmall}
-                >
-                  Messages
-                </h3>
-                <h3
-                  className={`md:text-base text-sm  ${requirementColor}`}
-                  onClick={handleRequirementsVisibilitySmall}
-                >
-                  Requirements
-                </h3>
-              </div>
-              <div className="h-0.5 mt-4 w-full bg-backgroundGrayOne flex items-center">
-                <div
-                  className={`h-0.5 md:w-28 w-24 ${projectPart} bg-blueTwo duration-150`}
-                />
-                <div
-                  className={`h-0.5 md:w-20 w-16 ${messagePartSmall} bg-blueTwo duration-150 lg:ml-36 md:ml-32 ml-28`}
-                />
-                <div
-                  className={`h-0.5 ms:w-28 w-24 ${requirementPart} bg-blueTwo duration-150 lg:ml-64 md:ml-60 ml-48`}
-                />
-              </div>
-              <div>
-                <div className={`${projectPart} duration-150`}>
-                  <ProjectDetailsPart />
-                </div>
-                <div className={`${messagePartSmall} duration-150`}>
-                  <Message />
-                </div>
-                <div className={`${requirementPart} duration-150`}>
-                  <Requirements />
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    );
-  }
+  //   if (loggedIn && user) {
+  //     return (
+  //       <div className="bg-backgroundGrayOne min-h-screen">
+  //         <Navbar.DashboardPrimaryNavbar />
+  //         <Navbar.DashboardSecondaryNavbar />
+  //         <div className="container mx-auto py-10 px-5 sm:px-0">
+  //           <div className="grid-cols-12 gap-8 container hidden lg:grid">
+  //             <div className="col-span-6">
+  //               <ProjectDetailsPart />
+  //             </div>
+  //             <div className="col-span-6">
+  //               <div className="bg-white rounded-lg p-6">
+  //                 <div className="flex items-center">
+  //                   <h3
+  //                     className={`text-base  ${messageColor} mr-10`}
+  //                     onClick={handleMessageVisibility}
+  //                   >
+  //                     Messages
+  //                   </h3>
+  //                   <h3
+  //                     className={`text-base  ${requirementColor}`}
+  //                     onClick={handleRequirementVisibility}
+  //                   >
+  //                     Requirements
+  //                   </h3>
+  //                 </div>
+  //                 <div className="h-0.5 mt-4 w-full bg-backgroundGrayOne flex items-center">
+  //                   <div
+  //                     className={`h-0.5 w-20 ${messagePart} bg-blueTwo duration-150`}
+  //                   />
+  //                   <div
+  //                     className={`h-0.5 w-28 ${requirementPart} bg-blueTwo duration-150 ml-28`}
+  //                   />
+  //                 </div>
+  //                 <div className={`${messagePart} duration-150`}>
+  //                   <Message />
+  //                 </div>
+  //                 <div className={`${requirementPart} duration-150`}>
+  //                   <Requirements />
+  //                 </div>
+  //               </div>
+  //             </div>
+  //           </div>
+  //           <div className="lg:hidden block">
+  //             <div className="bg-white rounded-lg p-6">
+  //               <div className="flex items-center">
+  //                 <h3
+  //                   className={`md:text-base text-sm  ${projectColor} xl:mr-10 lg:mr-9 md:mr-7 sm:mr-6 mr-5`}
+  //                   onClick={handleProjectVisibility}
+  //                 >
+  //                   Project Details
+  //                 </h3>
+  //                 <h3
+  //                   className={`md:text-base text-sm  ${messageColorSmall} xl:mr-10 lg:mr-9 md:mr-7 sm:mr-6 mr-5`}
+  //                   onClick={handleMessageVisibilitySmall}
+  //                 >
+  //                   Messages
+  //                 </h3>
+  //                 <h3
+  //                   className={`md:text-base text-sm  ${requirementColor}`}
+  //                   onClick={handleRequirementsVisibilitySmall}
+  //                 >
+  //                   Requirements
+  //                 </h3>
+  //               </div>
+  //               <div className="h-0.5 mt-4 w-full bg-backgroundGrayOne flex items-center">
+  //                 <div
+  //                   className={`h-0.5 md:w-28 w-24 ${projectPart} bg-blueTwo duration-150`}
+  //                 />
+  //                 <div
+  //                   className={`h-0.5 md:w-20 w-16 ${messagePartSmall} bg-blueTwo duration-150 lg:ml-36 md:ml-32 ml-28`}
+  //                 />
+  //                 <div
+  //                   className={`h-0.5 ms:w-28 w-24 ${requirementPart} bg-blueTwo duration-150 lg:ml-64 md:ml-60 ml-48`}
+  //                 />
+  //               </div>
+  //               <div>
+  //                 <div className={`${projectPart} duration-150`}>
+  //                   <ProjectDetailsPart />
+  //                 </div>
+  //                 <div className={`${messagePartSmall} duration-150`}>
+  //                   <Message />
+  //                 </div>
+  //                 <div className={`${requirementPart} duration-150`}>
+  //                   <Requirements />
+  //                 </div>
+  //               </div>
+  //             </div>
+  //           </div>
+  //         </div>
+  //       </div>
+  //     );
+  //   }
 
   return <LoaderGrowing />;
 };

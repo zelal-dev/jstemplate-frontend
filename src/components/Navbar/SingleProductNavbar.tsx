@@ -210,7 +210,7 @@ const SingleProductNavbar = () => {
       <div
         className={`absolute hidden top-28 lg:left-56 sm:left-28 z-20 ease-out duration-700 sm:${proDis}`}
       >
-        <DropDownProduct />
+        <DropDownProduct handler={productDropdown} />
       </div>
       <div
         className={`absolute hidden top-28 lg:left-56 sm:left-28 z-20 ease-out duration-700 sm:${serDis}`}

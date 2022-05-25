@@ -1,39 +1,48 @@
-import Link from 'next/link'
-import React, { useState } from 'react'
-import { FaShoppingCart } from 'react-icons/fa'
-import { HiOutlineArrowNarrowRight } from 'react-icons/hi'
+import Link from "next/link";
+import React, { useState } from "react";
+import { FaShoppingCart } from "react-icons/fa";
+import { HiOutlineArrowNarrowRight } from "react-icons/hi";
+import useSWR from "swr";
+import { Axios } from "../../utils/axiosKits";
 // import Image from 'next/image'
 // import cart from './../../../public/cart.svg';
 
-const DropDownProduct = () => {
-  const [mernColor, setMernColor] = useState<string>('secondary')
-  const [headlessColor, setHeadlessColor] = useState<string>()
-  const [reactColor, setReactColor] = useState<string>()
-  const [figmaColor, setFigmaColor] = useState<string>()
+const feather = (url: string) => Axios(url).then((res) => res.data.data);
+
+const DropDownProduct = ({ handler }: { handler: any }) => {
+  const [mernColor, setMernColor] = useState<string>("secondary");
+  const [headlessColor, setHeadlessColor] = useState<string>();
+  const [reactColor, setReactColor] = useState<string>();
+  const [figmaColor, setFigmaColor] = useState<string>();
+  const { data, error } = useSWR("api/v1/products/menu", feather, {
+    refreshInterval: 0,
+  });
+  console.log("data", data);
+
   const mern = () => {
-    setMernColor('secondary')
-    setReactColor('')
-    setFigmaColor('')
-    setHeadlessColor('')
-  }
+    setMernColor("secondary");
+    setReactColor("");
+    setFigmaColor("");
+    setHeadlessColor("");
+  };
   const headless = () => {
-    setHeadlessColor('secondary')
-    setMernColor('')
-    setReactColor('')
-    setFigmaColor('')
-  }
+    setHeadlessColor("secondary");
+    setMernColor("");
+    setReactColor("");
+    setFigmaColor("");
+  };
   const react = () => {
-    setReactColor('secondary')
-    setMernColor('')
-    setFigmaColor('')
-    setHeadlessColor('')
-  }
+    setReactColor("secondary");
+    setMernColor("");
+    setFigmaColor("");
+    setHeadlessColor("");
+  };
   const figma = () => {
-    setFigmaColor('secondary')
-    setReactColor('')
-    setMernColor('')
-    setHeadlessColor('')
-  }
+    setFigmaColor("secondary");
+    setReactColor("");
+    setMernColor("");
+    setHeadlessColor("");
+  };
   return (
     <div className="bg-white xl:w-[55.625rem] w-10/12 h-auto drop-shadow-xl rounded-lg">
       <div className="pt-7">
@@ -77,142 +86,89 @@ const DropDownProduct = () => {
             className={`xl:w-44 lg:w-36 md:w-28 sm:w-24 h-px duration-200 ease-in bg-${figmaColor}`}
           />
         </div>
+        {/* Mern list */}
         <div
           className={`lg:px-8 md:px-7 sm:px-6  md:py-7 sm:py-6 ${
-            mernColor === 'secondary' ? 'grid' : 'hidden'
+            mernColor === "secondary" ? "grid" : "hidden"
           } xl:grid-cols-2 lg:grid-cols-1 container gap-2`}
         >
-          <ButtonLayout
-            title="MetaJobs- Job Board Theme"
-            url="/productSinglePage"
-            shortDescription="The best job portal website template. Secure, fast and scaleable."
-          >
-            <FaShoppingCart className="w-6 h-6 drop-shadow-lg text-blueTwo" />
-          </ButtonLayout>
-          <ButtonLayout
-            title="MetaAds- Classified Ads Theme"
-            url="/productSinglePage"
-            shortDescription="Build a classified ads website with a clean and modern design."
-          >
-            <FaShoppingCart className="w-6 h-6 drop-shadow-lg text-orangeTwo" />
-          </ButtonLayout>
-
-          <ButtonLayout
-            title="Freelancer marketplace theme"
-            url="/productSinglePage"
-            shortDescription="Build a freelancer marketplace website with a clean and modern design."
-          >
-            <FaShoppingCart className="w-6 h-6 drop-shadow-lg text-greenDark" />
-          </ButtonLayout>
-
-          <ButtonLayout
-            title="MetaList- Directory & Listing Theme"
-            url="/productSinglePage"
-            shortDescription="Build a directory & listing website with a clean and modern design."
-          >
-            <FaShoppingCart className="w-6 h-6 drop-shadow-lg text-yellowDark" />
-          </ButtonLayout>
-
-          {/* <ButtonLayout
-            title="Short Product Title Here"
-            url="/productSinglePage"
-          >
-            <FaShoppingCart className="w-6 h-6 drop-shadow-lg text-redDark" />
-          </ButtonLayout> */}
-
-          {/* <ButtonLayout
-            title="Short Product Title Here"
-            url="/productSinglePage"
-          >
-            <FaShoppingCart className="w-6 h-6 drop-shadow-lg text-purpleDark" />
-          </ButtonLayout> */}
+          {data &&
+            data.Mern.map((item: any, index: any) => (
+              <div onClick={() => handler()} key={index}>
+                <ButtonLayout
+                  title={item.title}
+                  url={`/item/${item.slug}`}
+                  shortDescription={item.description.slice(0, 70)}
+                >
+                  <FaShoppingCart
+                    className={`w-6 h-6 drop-shadow-lg text-orangeTwo`}
+                  />
+                </ButtonLayout>
+              </div>
+            ))}
         </div>
+        {/* Frontity list */}
         <div
           className={`lg:px-8 md:px-7 sm:px-6  md:py-7 sm:py-6 ${
-            headlessColor === 'secondary' ? 'grid' : 'hidden'
+            headlessColor === "secondary" ? "grid" : "hidden"
           } xl:grid-cols-2 lg:grid-cols-1 container gap-2`}
         >
-          <ButtonLayout
-            title="Portfo- Personal Portfolio Theme"
-            url="/productSinglePage"
-            shortDescription="Portfo- Frontity Personal Portfolio Theme"
-          >
-            <FaShoppingCart className="w-6 h-6 drop-shadow-lg text-blueTwo" />
-          </ButtonLayout>
-
-          <ButtonLayout
-            title="Frontity Blog, News Theme"
-            url="/productSinglePage"
-            shortDescription="Frontity Multipurpose Blog Theme"
-          >
-            <FaShoppingCart className="w-6 h-6 drop-shadow-lg text-orangeTwo" />
-          </ButtonLayout>
-          {/* 
-          <ButtonLayout
-            title="Creative Multipurpose Frontity Theme"
-            url="/productSinglePage"
-            shortDescription="Build a freelancer marketplace website with a clean and modern design."
-          >
-            <FaShoppingCart className="w-6 h-6 drop-shadow-lg text-greenDark" />
-          </ButtonLayout> */}
-
-          {/* <ButtonLayout
-            title="Frontity Multipurpose WooCommerce Theme"
-            url="/productSinglePage"
-            shortDescription="Build a directory & listing website with a clean and modern design."
-          >
-            <FaShoppingCart className="w-6 h-6 drop-shadow-lg text-yellowDark" />
-          </ButtonLayout> */}
+          {data &&
+            data.Frontity.map((item: any, index: any) => (
+              <div onClick={() => handler()} key={index}>
+                <ButtonLayout
+                  title={item.title}
+                  url={`/item/${item.slug}`}
+                  shortDescription={item.description.slice(0, 70)}
+                >
+                  <FaShoppingCart
+                    className={`w-6 h-6 drop-shadow-lg text-orangeTwo`}
+                  />
+                </ButtonLayout>
+              </div>
+            ))}
         </div>
+        {/* React list */}
         <div
           className={`lg:px-8 md:px-7 sm:px-6  md:py-7 sm:py-6 ${
-            reactColor === 'secondary' ? 'grid' : 'hidden'
+            reactColor === "secondary" ? "grid" : "hidden"
           } xl:grid-cols-2 lg:grid-cols-1 container gap-2`}
         >
-          <ButtonLayout
-            title="Digiency- Multipurpose Agency Template"
-            url="/productSinglePage"
-            shortDescription="Multipurpose React Agency Template"
-          >
-            <FaShoppingCart className="w-6 h-6 drop-shadow-lg text-blueTwo" />
-          </ButtonLayout>
-
-          <ButtonLayout
-            title="MetaDash- React Dashboard Template"
-            url="/productSinglePage"
-            shortDescription="Build a React Dashboard Template"
-          >
-            <FaShoppingCart className="w-6 h-6 drop-shadow-lg text-orangeTwo" />
-          </ButtonLayout>
-
-          {/* <ButtonLayout
-            title="Metalancer- Freelancer marketplace"
-            url="/productSinglePage"
-            shortDescription="Build a freelancer marketplace website with a clean and modern design."
-          >
-            <FaShoppingCart className="w-6 h-6 drop-shadow-lg text-greenDark" />
-          </ButtonLayout> */}
+          {data &&
+            data.React.map((item: any, index: any) => (
+              <div onClick={() => handler()} key={index}>
+                <ButtonLayout
+                  title={item.title}
+                  url={`/item/${item.slug}`}
+                  shortDescription={item.description.slice(0, 70)}
+                >
+                  <FaShoppingCart
+                    className={`w-6 h-6 drop-shadow-lg text-orangeTwo`}
+                  />
+                </ButtonLayout>
+              </div>
+            ))}
         </div>
+        {/* Tailwind list */}
         <div
           className={`lg:px-8 md:px-7 sm:px-6  md:py-7 sm:py-6 ${
-            figmaColor === 'secondary' ? 'grid' : 'hidden'
+            figmaColor === "secondary" ? "grid" : "hidden"
           } xl:grid-cols-2 lg:grid-cols-1 container gap-2`}
         >
-          <ButtonLayout
-            title="SEO Agency Landing Page Template"
-            url="/productSinglePage"
-            shortDescription="Build a SEO Agency Landing Page Template"
-          >
-            <FaShoppingCart className="w-6 h-6 drop-shadow-lg text-blueTwo" />
-          </ButtonLayout>
-
-          <ButtonLayout
-            title="Tailwind CSS Blog Template"
-            url="/productSinglePage"
-            shortDescription="Build a Tailwind CSS Blog Template"
-          >
-            <FaShoppingCart className="w-6 h-6 drop-shadow-lg text-orangeTwo" />
-          </ButtonLayout>
+          {data &&
+            data.Tailwind.map((item: any, index: any) => (
+              <div onClick={() => handler()} key={index}>
+                <ButtonLayout
+                  title={item.title}
+                  url={`/item/${item.slug}`}
+                  shortDescription={item.description.slice(0, 70)}
+                >
+                  <FaShoppingCart
+                    className={`w-6 h-6 drop-shadow-lg text-orangeTwo`}
+                  />
+                </ButtonLayout>
+              </div>
+            ))}
         </div>
         <div className=" lg:px-8 md:px-7 sm:px-6 md:py-7 sm:py-6  bg-backgroundGrayOne flex flex-col xl:flex-row justify-between items-center rounded-b-lg">
           <div>
@@ -227,18 +183,18 @@ const DropDownProduct = () => {
             <a className="mt-3 shadow-3xl flex sm:w-auto items-center xl:text-lg text-base xl:py-3 md:py-2 xl:px-4 md:px-3 py-2.5 px-3 rounded-lg bg-gradient-to-br from-blueOne to-blueTwo ">
               <span className="md:ml-2 ml-1 text-white mr-2">
                 View All Solution
-              </span>{' '}
-              <HiOutlineArrowNarrowRight style={{ color: 'white' }} />
+              </span>{" "}
+              <HiOutlineArrowNarrowRight style={{ color: "white" }} />
             </a>
           </Link>
         </div>
       </div>
       <div className="arrow bg-white m-0 border-0 w-10 h-6 absolute -top-4 2xl:left-72 xl:left-64 lg:left-28 md:left-20 sm:left-10" />
     </div>
-  )
-}
+  );
+};
 
-export default DropDownProduct
+export default DropDownProduct;
 
 const ButtonLayout = ({
   children,
@@ -246,10 +202,10 @@ const ButtonLayout = ({
   url,
   shortDescription,
 }: {
-  children: any
-  title: string
-  url: string
-  shortDescription: string
+  children: any;
+  title: string;
+  url: string;
+  shortDescription: string;
 }) => {
   return (
     <Link href={`${url}`}>
@@ -269,5 +225,5 @@ const ButtonLayout = ({
         </div>
       </a>
     </Link>
-  )
-}
+  );
+};

@@ -185,7 +185,7 @@ const DashboardPrimaryNavbar = () => {
         <div
           className={`absolute hidden top-24 lg:left-1/4 md:left-40 sm:left-28 z-20 ease-out duration-700 sm:${proDis}`}
         >
-          <DropDownProduct />
+          <DropDownProduct handler={productDropdown} />
         </div>
         <div
           className={`absolute hidden top-24 lg:left-1/4 md:left-40 sm:left-28 z-20 ease-out duration-700 sm:${serDis}`}

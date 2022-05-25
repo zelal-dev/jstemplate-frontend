@@ -179,7 +179,71 @@ const Header = () => {
         </article>
       </div>
       <div className="xl:p-10 lg:p-8 md:p-7 sm:p-6 p-5 rounded-lg bg-white lg:w-2/5 sm:w-3/4 w-full mt-16 lg:mt-0">
-        <div className="flex justify-between items-center">
+        {/* contact form */}
+        <form>
+          {/* <form className="grid gap-4" onSubmit={handleSubmit(onSubmitHandler)}> */}
+          <div className="mb-4 ">
+            <input
+              className="w-full px-3 py-3 rounded border border-themeGrayLight focus:outline-none"
+              type="text"
+              placeholder="Your Name"
+              // {...register("name", {
+              //   required: "Name is required",
+              //   minLength: {
+              //     value: 3,
+              //     message: "Name must be at least 3 characters",
+              //   },
+              // })}
+            />
+          </div>
+          <div className="mb-4 ">
+            <input
+              className="w-full px-3 py-3 rounded border border-themeGrayLight focus:outline-none"
+              type="text"
+              placeholder="Your Email"
+              // {...register("email", {
+              //   required: "Email is required",
+              //   pattern: {
+              //     value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i,
+              //     message: "Invalid email address",
+              //   },
+              // })}
+            />
+          </div>
+          <div className="mb-4">
+            <input
+              className="w-full px-3 py-3 rounded border border-themeGrayLight focus:outline-none"
+              type="text"
+              placeholder="Your Phone"
+              // {...register("mobile", {
+              //   required: "Mobile is required",
+              //   pattern: {
+              //     value: /^[0-9]+$/,
+              //     message: "Mobile must be numeric",
+              //   },
+              // })}
+            />
+          </div>
+          <div className="mb-4">
+            <textarea
+              className="w-full h-24 p-3 rounded border border-themeGrayLight focus:outline-none"
+              placeholder="How can we help you ..."
+              // {...register("message", {
+              //   required: "This field is required",
+              // })}
+            />
+          </div>
+          <button
+            type="submit"
+            //   disabled={isSubmitting}
+            className="text-gray-100 text-base font-medium px-10 py-3.5 rounded-lg bg-gradient-to-br from-greenSecondaryLight to-greenSecondaryDark shadow-green"
+          >
+            {/* {isSubmitting ? "Please wait..." : "Send Message"} */}
+            Send Message
+          </button>
+        </form>
+        {/* calculator form  */}
+        {/* <div className="flex justify-between items-center">
           <div>
             <h3 className="text-gray-900 font-bold xl:text-xl text-sm">
               Estimate Your Project Budget
@@ -393,7 +457,7 @@ const Header = () => {
           <button className="text-greenSecondaryDark text-sm font-medium p-4 rounded-lg ">
             Contact Us
           </button>
-        </div>
+        </div> */}
       </div>
     </div>
   );

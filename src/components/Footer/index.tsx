@@ -1,6 +1,6 @@
-import Image from 'next/image'
-import Link from 'next/link'
-import React from 'react'
+import Image from "next/image";
+import Link from "next/link";
+import React from "react";
 import {
   FaCcDiscover,
   FaCcJcb,
@@ -12,9 +12,9 @@ import {
   FaInstagram,
   FaLinkedinIn,
   FaTwitter,
-} from 'react-icons/fa'
-import { HiOutlineArrowNarrowRight } from 'react-icons/hi'
-import { SiAmericanexpress } from 'react-icons/si'
+} from "react-icons/fa";
+import { HiOutlineArrowNarrowRight } from "react-icons/hi";
+import { SiAmericanexpress } from "react-icons/si";
 
 const Footer = ({
   boxToColor,
@@ -24,18 +24,17 @@ const Footer = ({
   buttonFromColor,
   shadowButton,
 }: {
-  boxToColor: string
-  boxFromColor: string
-  shadowBox: string
-  buttonToColor: string
-  buttonFromColor: string
-  shadowButton: string
+  boxToColor: string;
+  boxFromColor: string;
+  shadowBox: string;
+  buttonToColor: string;
+  buttonFromColor: string;
+  shadowButton: string;
 }) => {
   return (
     <div className="bg-gray-800 relative px-5">
       <div className="container mx-auto">
-        <div className="bg-white  drop-shadow-2xl absolute -top-40 left-5 right-5 sm:left-auto sm:right-auto sm:container xl:p-24 lg:p-20 md:p-16 sm:p-12 p-8 flex lg:flex-row flex-col items-center justify-between rounded-lg">
-          {/* <Image src={footerBg} /> */}
+        <div className="bg-white  drop-shadow-2xl absolute -top-32 left-5 right-5 sm:left-auto sm:right-auto sm:container xl:py-16 xl:px-24 lg:p-20 md:p-16 sm:p-12 p-8 flex lg:flex-row flex-col items-center justify-between rounded-lg">
           <div className="flex items-start lg:w-3/4 w-full">
             <div
               className={`xl:w-24 xl:h-24 md:w-20 md:h-16 sm:w-16 w-36 h-14 rounded-md bg-gradient-to-br from-${boxFromColor} to-${boxToColor} lg:mr-10 sm:mr-6 mr-3 shadow-${shadowBox}`}
@@ -54,15 +53,15 @@ const Footer = ({
               <a
                 className={`flex-1 shadow-${shadowButton} flex items-center xl:text-lg text-base xl:py-6 md:py-3 xl:px-10 md:px-5 py-3 px-3 rounded-lg bg-gradient-to-br from-${buttonFromColor} to-${buttonToColor} mt-8 lg:mt-0`}
               >
-                <span className=" text-white mr-4">View All Solution</span>{' '}
-                <HiOutlineArrowNarrowRight style={{ color: 'white' }} />
+                <span className=" text-white mr-4">View All Solution</span>{" "}
+                <HiOutlineArrowNarrowRight style={{ color: "white" }} />
               </a>
             </Link>
           </div>
         </div>
+        {/* Footer Start */}
         <div className="flex items-start justify-between flex-wrap xl:pt-52 lg:pt-48 md:pt-40 sm:pt-36 pt-32">
           <div className="pt-8">
-            {/* <h1 className='text-3xl font-bold text-gray-100'>Brand Logo</h1> */}
             <Link href="/">
               <a>
                 <Image
@@ -111,7 +110,7 @@ const Footer = ({
           <div className="pt-8">
             <h3 className="text-lg font-bold text-gray-100">Menu</h3>
             <div className="mt-4 flex flex-col ">
-              <Link href="">
+              <Link href="/">
                 <a className="text-gray-400 hover:text-blueTwo font-sm">Home</a>
               </Link>
               <Link href="">
@@ -119,19 +118,14 @@ const Footer = ({
                   Our Solution
                 </a>
               </Link>
-              <Link href="/resources">
+              <Link href="">
                 <a className="text-gray-400 hover:text-blueTwo font-sm mt-2">
                   Resources
                 </a>
               </Link>
-              <Link href="">
+              <Link href="/blog">
                 <a className="text-gray-400 hover:text-blueTwo font-sm mt-2">
                   Blog
-                </a>
-              </Link>
-              <Link href="">
-                <a className="text-gray-400 hover:text-blueTwo font-sm mt-2">
-                  Faq’s
                 </a>
               </Link>
             </div>
@@ -139,17 +133,12 @@ const Footer = ({
           <div className="pt-8">
             <h3 className="text-lg font-bold text-gray-100">Quick Link</h3>
             <div className="mt-4 flex flex-col ">
-              <Link href="">
+              <Link href="/contact-us">
                 <a className="text-gray-400 hover:text-blueTwo font-sm">
                   Contact Us
                 </a>
               </Link>
-              <Link href="">
-                <a className="text-gray-400 hover:text-blueTwo font-sm mt-2">
-                  Pre-Sale
-                </a>
-              </Link>
-              <Link href="">
+              <Link href="/terms-conditions">
                 <a className="text-gray-400 hover:text-blueTwo font-sm mt-2">
                   Terms & Condition
                 </a>
@@ -157,11 +146,6 @@ const Footer = ({
               <Link href="/privacy-policy">
                 <a className="text-gray-400 hover:text-blueTwo font-sm mt-2">
                   Privacy Policy
-                </a>
-              </Link>
-              <Link href="">
-                <a className="text-gray-400 hover:text-blueTwo font-sm mt-2">
-                  Help
                 </a>
               </Link>
             </div>
@@ -255,7 +239,7 @@ const Footer = ({
         </p>
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default Footer
+export default Footer;

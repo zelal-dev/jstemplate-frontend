@@ -1,6 +1,6 @@
-import Image from 'next/image'
-import Link from 'next/link'
-import React from 'react'
+import Image from "next/image";
+import Link from "next/link";
+import React from "react";
 import {
   FaCcDiscover,
   FaCcJcb,
@@ -12,8 +12,8 @@ import {
   FaInstagram,
   FaLinkedinIn,
   FaTwitter,
-} from 'react-icons/fa'
-import { SiAmericanexpress } from 'react-icons/si'
+} from "react-icons/fa";
+import { SiAmericanexpress } from "react-icons/si";
 
 const FooterWithoutSolution = () => {
   return (
@@ -69,7 +69,7 @@ const FooterWithoutSolution = () => {
           <div className="pt-8">
             <h3 className="text-lg font-bold text-gray-100">Menu</h3>
             <div className="mt-4 flex flex-col ">
-              <Link href="">
+              <Link href="/">
                 <a className="text-gray-400 hover:text-blueTwo font-sm">Home</a>
               </Link>
               <Link href="">
@@ -82,14 +82,9 @@ const FooterWithoutSolution = () => {
                   Resources
                 </a>
               </Link>
-              <Link href="">
+              <Link href="/blog">
                 <a className="text-gray-400 hover:text-blueTwo font-sm mt-2">
                   Blog
-                </a>
-              </Link>
-              <Link href="">
-                <a className="text-gray-400 hover:text-blueTwo font-sm mt-2">
-                  Faq’s
                 </a>
               </Link>
             </div>
@@ -97,29 +92,19 @@ const FooterWithoutSolution = () => {
           <div className="pt-8">
             <h3 className="text-lg font-bold text-gray-100">Quick Link</h3>
             <div className="mt-4 flex flex-col ">
-              <Link href="">
+              <Link href="/contact-us">
                 <a className="text-gray-400 hover:text-blueTwo font-sm">
                   Contact Us
                 </a>
               </Link>
-              <Link href="">
+              <Link href="/terms-conditions">
                 <a className="text-gray-400 hover:text-blueTwo font-sm mt-2">
-                  Pre-Sale
-                </a>
-              </Link>
-              <Link href="">
-                <a className="text-gray-400 hover:text-blueTwo font-sm mt-2">
-                  Terms & Condition
+                  Terms & Conditions
                 </a>
               </Link>
               <Link href="/privacy-policy">
                 <a className="text-gray-400 hover:text-blueTwo font-sm mt-2">
                   Privacy Policy
-                </a>
-              </Link>
-              <Link href="">
-                <a className="text-gray-400 hover:text-blueTwo font-sm mt-2">
-                  Help
                 </a>
               </Link>
             </div>
@@ -213,7 +198,7 @@ const FooterWithoutSolution = () => {
         </p>
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default FooterWithoutSolution
+export default FooterWithoutSolution;
