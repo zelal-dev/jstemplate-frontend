@@ -37,13 +37,10 @@ const PreSalePage = (props: any) => {
   );
 };
 
-export const getServerSideProps: GetServerSideProps = async ({
-  params,
-  res,
-}) => {
+export const getServerSideProps: GetServerSideProps = async (context) => {
   // slug is available on the context parameter
   try {
-    const { slug } = params as { slug: string };
+    const { slug } = context.query as { slug: string };
     const res = await fetch(
       `${process.env.NEXT_PUBLIC_API_URL}api/v1/product/slug/${slug}`
     );
@@ -64,7 +61,6 @@ export const getServerSideProps: GetServerSideProps = async ({
       };
     }
   } catch {
-    res.statusCode = 404;
     return {
       props: {
         statusCode: 404,

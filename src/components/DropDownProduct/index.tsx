@@ -17,7 +17,6 @@ const DropDownProduct = ({ handler }: { handler: any }) => {
   const { data, error } = useSWR("api/v1/products/menu", feather, {
     refreshInterval: 0,
   });
-  console.log("data", data);
 
   const mern = () => {
     setMernColor("secondary");

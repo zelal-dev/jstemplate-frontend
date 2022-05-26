@@ -10,6 +10,8 @@ import { IoIosArrowDown } from "react-icons/io";
 import { MdKeyboardArrowDown, MdKeyboardArrowUp } from "react-icons/md";
 import { RiLoginCircleLine, RiSettings3Fill, RiUserFill } from "react-icons/ri";
 import { ToastProvider } from "react-toast-notifications";
+import { useSWRConfig } from "swr";
+import { useUser } from "../../lib/useUser";
 import ForgetPassword from "../../Sections/Authentication/ForgetPassword";
 import Login from "../../Sections/Authentication/Login";
 import Registration from "../../Sections/Authentication/Registration";
@@ -22,18 +24,18 @@ const DefaultNavbar = () => {
   const [serDis, setSerDis] = useState<string>("hidden");
   const [proColor, setProColor] = useState("text-gray-700");
   const [serColor, setSerColor] = useState("text-gray-700");
+  const [loginShow, setLoginShow] = useState<boolean>(false);
+  const [registerShow, setRegisterShow] = useState<boolean>(false);
+  const [forgetPassShow, setForgetPassShow] = useState<boolean>(false);
   const [sideBarContent, setSideBarContent] = useState<string>("hidden");
-  const [loginModal, setLoginModal] = useState<string>("hidden");
-  const [signUpModal, setSignUpModal] = useState<string>("hidden");
-  const [forgetPassModal, setForgetPassModal] = useState<string>("hidden");
   const [profileDropdown, setProfileDropdown] = useState<string>("hidden");
   const [sideBarServiceContent, setSideBarServiceContent] =
     useState<string>("hidden");
   const [sideBar, setSideBar] = useState<string>("-left-full");
-  const [userInfo, setUserInfo] = useState<any>();
+  const { user, loggedIn } = useUser();
+  const { mutate } = useSWRConfig();
   const [toggle, setToggle] = useState<boolean>(false);
   const router = useRouter();
-
   const styleDash =
     router.asPath === "/dashboard"
       ? "text-sm text-white p-4 rounded-lg bg-blueTwo flex items-center"
@@ -48,6 +50,7 @@ const DefaultNavbar = () => {
     setProfileDropdown("hidden");
     handleUserImageShow();
     router.push("/");
+    mutate("api/v1/user/self", null, false);
   };
 
   const handleProfileDropdown = () => {
@@ -57,9 +60,6 @@ const DefaultNavbar = () => {
       setProfileDropdown("hidden");
     }
   };
-  useEffect(() => {
-    setUserInfo(localGet("jst_u_info"));
-  }, [toggle]);
 
   const handleUserImageShow = () => {
     if (toggle) {
@@ -68,31 +68,19 @@ const DefaultNavbar = () => {
       setToggle(true);
     }
   };
-  const handleLoginModal = () => {
-    setSignUpModal("hidden");
-    if (loginModal === "hidden") {
-      setLoginModal("flex");
-    } else {
-      setLoginModal("hidden");
-    }
-  };
-  const handleRegModal = () => {
-    setLoginModal("hidden");
-    if (signUpModal === "hidden") {
-      setSignUpModal("flex");
-    } else {
-      setSignUpModal("hidden");
-    }
+
+  // toggle login modal
+  const toggleLoginModal = () => {
+    setLoginShow(!loginShow);
   };
 
-  const handelForgetPassModal = (e: any) => {
-    e.preventDefault();
-    setLoginModal("hidden");
-    if (forgetPassModal === "hidden") {
-      setForgetPassModal("flex");
-    } else {
-      setForgetPassModal("hidden");
-    }
+  // toggle register modal
+  const toggleRegModal = () => {
+    setRegisterShow(!registerShow);
+  };
+
+  const handelForgetPassModal = () => {
+    setForgetPassShow(!forgetPassShow);
   };
 
   const productDropdown = () => {
@@ -192,7 +180,7 @@ const DefaultNavbar = () => {
             <FaShoppingCart className="text-white text-xl" />
           </a>
         </Link>
-        {userInfo?.token ? (
+        {user && loggedIn ? (
           <button
             type="button"
             aria-label="user"
@@ -203,14 +191,14 @@ const DefaultNavbar = () => {
             </a>
           </button>
         ) : (
-          <Link href="">
-            <a
-              className="w-10 h-10 grid justify-center items-center rounded-md bg-gradient-to-br from-blueOne to-blueTwo shadow-3xl cursor-pointer"
-              onClick={handleLoginModal}
-            >
-              <RiLoginCircleLine className="text-white text-2xl" />
-            </a>
-          </Link>
+          <button
+            type="button"
+            aria-label="Login"
+            className="w-10 h-10 grid justify-center items-center rounded-md bg-gradient-to-br from-blueOne to-blueTwo shadow-3xl cursor-pointer"
+            onClick={toggleLoginModal}
+          >
+            <RiLoginCircleLine className="text-white text-2xl" />
+          </button>
         )}
       </div>
       <div
@@ -227,7 +215,7 @@ const DefaultNavbar = () => {
             <span>Accounts Settings</span>
           </a>
         </Link>
-        <button onClick={handleLogout}>
+        <button type="button" onClick={handleLogout}>
           <a
             className={`text-sm text-gray-600 p-4 rounded-lg flex items-center mt-1.5`}
           >
@@ -251,42 +239,24 @@ const DefaultNavbar = () => {
       >
         <DropDownService />
       </div>
-      <div
-        className={`fixed top-0 left-0 right-0 h-screen ${loginModal} bg-black opacity-80 z-40`}
+
+      <Login
+        handleLoginModal={toggleLoginModal}
+        handleRegModal={toggleRegModal}
+        handelForgetPassModal={handelForgetPassModal}
+        handleUserImageShow={handleUserImageShow}
+        loginShow={loginShow}
       />
-      <div
-        className={`fixed top-0 left-0 right-0 h-screen z-50 ${loginModal} items-center justify-center`}
-      >
-        <ToastProvider>
-          <Login
-            handleLoginModal={handleLoginModal}
-            handleRegModal={handleRegModal}
-            handelForgetPassModal={handelForgetPassModal}
-            handleUserImageShow={handleUserImageShow}
-          />
-        </ToastProvider>
-      </div>
-      <div
-        className={`fixed top-0 left-0 right-0 h-screen ${signUpModal} bg-black opacity-80 z-40`}
+
+      <Registration
+        handleLoginModal={toggleLoginModal}
+        handleRegModal={toggleRegModal}
+        regShow={registerShow}
       />
-      <div
-        className={`fixed top-0 left-0 right-0 h-screen z-50 ${signUpModal} items-center justify-center`}
-      >
-        <ToastProvider>
-          <Registration
-            handleLoginModal={handleLoginModal}
-            handleRegModal={handleRegModal}
-          />
-        </ToastProvider>
-      </div>
-      <div
-        className={`fixed top-0 left-0 right-0 h-screen ${forgetPassModal} bg-black opacity-80 z-40`}
+      <ForgetPassword
+        handelForgetPassModal={handelForgetPassModal}
+        modalShow={forgetPassShow}
       />
-      <div
-        className={`fixed top-0 left-0 right-0 h-screen z-50 ${forgetPassModal} items-center justify-center`}
-      >
-        <ForgetPassword handelForgetPassModal={handelForgetPassModal} />
-      </div>
       <div
         className={`fixed ${sideBar} ease-in duration-300 z-50 top-0 w-full h-screen bg-gray-800 p-10 overflow-auto`}
       >
