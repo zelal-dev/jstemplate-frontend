@@ -33,7 +33,7 @@ export interface ProductDocument {
 
 const ProductPage = ({ productData }: { productData: ProductDocument }) => {
   // fetch data using SWR
-  const { data, error } = SWR("/api/v1/public/products", fetcher, {
+  const { data, error } = SWR("api/v1/public/products", fetcher, {
     initialData: productData,
   } as any);
 
@@ -59,7 +59,7 @@ export default ProductPage;
 
 export const getStaticProps: GetStaticProps = async (context) => {
   const productResponse = await fetch(
-    `http://localhost:1337/api/v1/public/products`
+    `${process.env.NEXT_PUBLIC_API_URL}api/v1/public/products`
   );
   const productData = await productResponse.json();
 
