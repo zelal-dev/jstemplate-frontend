@@ -14,7 +14,7 @@ import { MdOutlineKeyboardArrowDown } from "react-icons/md";
 import { MdHeadsetMic } from "react-icons/md";
 import { ImCross } from "react-icons/im";
 
-const Heading = () => {
+const Heading = ({ data }: { data: any }) => {
   return (
     <div className="container mx-auto md:-mt-80 bg-white w-full shadow-xl xl:p-24 lg:p-16 md:p-10 sm:p-8 p-6 rounded-xl">
       <div className="flex flex-col items-center">
@@ -85,9 +85,9 @@ const Heading = () => {
           </div>
         </div>
         <div className="grid xl:grid-cols-3 lg:grid-cols-2 gap-10 container mt-16">
-          <HeadingNormalCart />
-          <HeadingPlusCart />
-          <HeadingExtendedCart />
+          <HeadingNormalCart price={data.price.standart} />
+          <HeadingPlusCart price={data.price.standartPlus} />
+          <HeadingExtendedCart price={data.price.extended} />
         </div>
         <div className="grid sm:grid-cols-12 gap-12 mt-16 sm:p-8 border border-cartImageBgOne">
           <div className="xl:col-span-3 sm:col-span-4 ">
@@ -136,7 +136,7 @@ const Heading = () => {
 
 export default Heading;
 
-const HeadingNormalCart = () => {
+const HeadingNormalCart = ({ price }: { price: any }) => {
   return (
     <div
       className="p-7 my-auto bg-secondaryGrayLight rounded-lg border border-cartImageBgOne"
@@ -146,7 +146,7 @@ const HeadingNormalCart = () => {
       <h5 className="text-gray-500 text-sm">Save $99</h5>
       <div className="flex items-end">
         <h3 className="text-4xl font-black text-secondaryTemplateColorDark mr-2">
-          $69
+          {price ? `$${price}` : "$69"}
         </h3>
         <h5 className="text-lg text-gray-500 pb-1.5 line-through">$149</h5>
       </div>
@@ -220,7 +220,7 @@ const HeadingNormalCart = () => {
   );
 };
 
-const HeadingPlusCart = () => {
+const HeadingPlusCart = ({ price }: { price: any }) => {
   return (
     <div
       className="p-7 my-auto bg-secondaryGrayLight rounded-lg border border-cartImageBgOne"
@@ -230,7 +230,7 @@ const HeadingPlusCart = () => {
       <h5 className="text-gray-500 text-sm">Save $100</h5>
       <div className="flex items-end">
         <h3 className="text-4xl font-black text-secondaryTemplateColorDark mr-2">
-          $149
+          {price ? `$${price}` : "$149"}
         </h3>
         <h5 className="text-lg text-gray-500 pb-1.5 line-through">$349</h5>
       </div>
@@ -304,7 +304,7 @@ const HeadingPlusCart = () => {
   );
 };
 
-const HeadingExtendedCart = () => {
+const HeadingExtendedCart = ({ price }: { price: any }) => {
   return (
     <div className="rounded-lg relative overflow-hidden bg-secondaryTemplateColorDark shadow-secondaryTemplate">
       <div
@@ -326,7 +326,7 @@ const HeadingExtendedCart = () => {
         <div className="flex items-end">
           <h3 className="text-4xl text-white font-black mr-2">$399</h3>
           <h5 className="text-lg text-gray-100 opacity-70 pb-1.5 line-through">
-            $999
+            {price ? `$${price}` : "$999"}
           </h5>
         </div>
         <hr className="w-full text-secondaryGrayLighter mt-6 mb-7 opacity-20" />

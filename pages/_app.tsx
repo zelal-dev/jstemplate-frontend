@@ -15,6 +15,7 @@ function MyApp({ Component, pageProps }: AppProps) {
       <Head>
         <title>{pageTitle !== "" ? pageTitle : "Home"} - JS Template</title>
         <link rel="icon" href="/favicon.ico" />
+        <meta name="robots" content="noindex" />
       </Head>
       <Component {...pageProps} />
     </ToastProvider>

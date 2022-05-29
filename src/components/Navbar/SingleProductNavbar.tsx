@@ -145,11 +145,12 @@ const SingleProductNavbar = () => {
         </Link>
       </div>
       <div className="sm:flex items-center hidden">
-        <Link href="/preSalePage">
+        {/* cart icon hidden */}
+        {/* <Link href="/preSalePage">
           <a className="w-10 h-10 grid justify-center items-center rounded-md bg-gradient-to-br from-orangeOne to-orangeTwo mr-4 shadow-4xl cursor-pointer">
             <FaShoppingCart className="text-white text-xl" />
           </a>
-        </Link>
+        </Link> */}
         {user && loggedIn ? (
           <button
             type="button"
@@ -167,7 +168,7 @@ const SingleProductNavbar = () => {
             className="w-10 h-10 grid justify-center items-center rounded-md bg-gradient-to-br from-blueOne to-blueTwo shadow-3xl cursor-pointer"
             onClick={toggleLoginModal}
           >
-            <RiLoginCircleLine className="text-white text-2xl" />
+            <RiUserFill className="text-white text-2xl" />
           </button>
         )}
       </div>

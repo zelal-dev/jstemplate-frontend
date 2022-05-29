@@ -5,6 +5,8 @@ import { HiOutlineArrowNarrowRight } from "react-icons/hi";
 import { ProductDocument } from "../../../pages/shop";
 
 const Solution = ({ data }: { data: ProductDocument }) => {
+  console.log(data);
+
   return (
     <div className="container mx-auto relative z-0">
       <div className="xl:py-24 sm:py-16 py-14 flex flex-col items-center justify-center">
@@ -23,51 +25,30 @@ const Solution = ({ data }: { data: ProductDocument }) => {
           {/* {sample.map((items, index)=>(
                     <SolutionCart key={index} />
                 ))} */}
-          <div className="shadow-grayLight">
-            <Link href="/preSalePage">
-              <a>
-                <SolutionCart toColor="blueOne" fromColor="blueTwo" item={1} />
-              </a>
-            </Link>
-          </div>
-          <div className="xl:-mt-36 shadow-grayLight h-min">
-            <Link href="/preSalePage">
-              <a>
-                <SolutionCart toColor="blueOne" fromColor="blueTwo" item={2} />
-              </a>
-            </Link>
-          </div>
-          <div className="shadow-grayLight">
-            <Link href="/preSalePage">
-              <a>
-                <SolutionCart toColor="blueOne" fromColor="blueTwo" item={3} />
-              </a>
-            </Link>
-          </div>
-          <div className="shadow-grayLight">
-            <Link href="/preSalePage">
-              <a>
-                <SolutionCart toColor="blueOne" fromColor="blueTwo" item={4} />
-              </a>
-            </Link>
-          </div>
-          <div className="xl:-mt-36 shadow-grayLight h-min">
-            <Link href="/preSalePage">
-              <a>
-                <SolutionCart toColor="blueOne" fromColor="blueTwo" item={5} />
-              </a>
-            </Link>
-          </div>
-          <div className="shadow-grayLight">
-            <Link href="/preSalePage">
-              <a>
-                <SolutionCart toColor="blueOne" fromColor="blueTwo" item={6} />
-              </a>
-            </Link>
-          </div>
+          {data &&
+            data.map((item: any, index: any) => (
+              <div
+                className={`${
+                  index === 1 || index === 4 || index === 6 || index === 8
+                    ? " "
+                    : ""
+                } `}
+                key={item._id}
+              >
+                <Link href={`/item/${item.slug}`}>
+                  <a>
+                    <SolutionCart
+                      toColor="blueOne"
+                      fromColor="blueTwo"
+                      item={item}
+                    />
+                  </a>
+                </Link>
+              </div>
+            ))}
         </div>
         <Link href="/shop">
-          <a className="xl:-mt-12 md:mt-16 mt-10 shadow-3xl flex sm:w-auto items-center xl:text-lg text-base xl:py-6 md:py-3 xl:px-10 md:px-5 py-3 px-3 rounded-lg bg-gradient-to-br from-blueOne to-blueTwo sm:mr-6 mr-0">
+          <a className="mt-10 shadow-3xl flex sm:w-auto items-center xl:text-lg text-base xl:py-6 md:py-3 xl:px-10 md:px-5 py-3 px-3 rounded-lg bg-gradient-to-br from-blueOne to-blueTwo sm:mr-6 mr-0">
             <span className="md:ml-4 ml-3 text-white mr-4">
               View All Solution
             </span>

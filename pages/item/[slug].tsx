@@ -21,8 +21,8 @@ const PreSalePage = (props: any) => {
         <Header data={props.data} />
       </div>
       <MangeWebsite />
-      <SimpleTitleThird />
-      <Heading />
+      <SimpleTitleThird data={props.data} />
+      <Heading data={props.data} />
       <Hire />
       <Testimonials />
       <Footer

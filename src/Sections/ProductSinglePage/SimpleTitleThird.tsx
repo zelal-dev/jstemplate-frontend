@@ -1,7 +1,7 @@
 import Image from "next/image";
 import React, { useState } from "react";
 
-const SimpleTitleThird = () => {
+const SimpleTitleThird = ({ data }: { data: any }) => {
   const sample = [1, 2, 3];
   const [tab, setTab] = useState<number>(0);
   const [img, setImg] = useState<string>("/serviceHeadBg.svg");

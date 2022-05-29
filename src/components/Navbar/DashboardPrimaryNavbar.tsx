@@ -139,11 +139,12 @@ const DashboardPrimaryNavbar = () => {
           </Link>
         </div>
         <div className="sm:flex items-center hidden">
-          <Link href="/preSalePage">
+          {/* cart icon hidden */}
+          {/* <Link href="/preSalePage">
             <a className="w-10 h-10 grid justify-center items-center rounded-md bg-gradient-to-br from-orangeOne to-orangeTwo mr-4 shadow-4xl cursor-pointer">
               <FaShoppingCart className="text-white text-xl" />
             </a>
-          </Link>
+          </Link> */}
           <button
             type="button"
             aria-label="User"

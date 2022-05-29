@@ -150,11 +150,12 @@ const ServiceNavbar = () => {
         </Link>
       </div>
       <div className="sm:flex items-center hidden">
-        <Link href="/preSalePage">
+        {/* cart icon hidden */}
+        {/* <Link href="/preSalePage">
           <a className="w-10 h-10 grid justify-center items-center rounded-md bg-gray-100 mr-4 drop-shadow-4xl cursor-pointer">
             <FaShoppingCart className="text-white text-xl" />
           </a>
-        </Link>
+        </Link> */}
         {user && loggedIn ? (
           <button
             type="button"
@@ -172,7 +173,7 @@ const ServiceNavbar = () => {
             className="w-10 h-10 grid justify-center items-center rounded-md bg-gray-100 drop-shadow-3xl cursor-pointer"
             onClick={toggleLoginModal}
           >
-            <RiLoginCircleLine className="text-white text-lg" />
+            <RiUserFill className="text-white text-lg" />
           </button>
         )}
       </div>
