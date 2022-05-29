@@ -16,14 +16,14 @@ const PreSalePage = () => {
     <div>
       <div className="sm:bg-[url('/productSingleHeaderBg.svg')] bg-no-repeat bg-secondaryTemplateColorDark">
         <Navbar.SingleProductNavbar />
-        <Header data={undefined} />
+        <Header data={undefined} icons={undefined} />
       </div>
-      <MangeWebsite />
+      {/* <MangeWebsite /> */}
       {/* <SimpleTitleFirst />
         <SimpleTitleSecond /> */}
-      <SimpleTitleThird />
-      <Heading />
-      <Hire />
+      {/* <SimpleTitleThird /> */}
+      {/* <Heading /> */}
+      {/* <Hire /> */}
       {/* <Question /> */}
       <Testimonials />
       <Footer
