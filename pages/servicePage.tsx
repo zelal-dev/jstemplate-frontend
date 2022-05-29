@@ -19,14 +19,14 @@ const ServicePage = () => {
         <Navbar.ServiceNavbar />
         <Header />
       </div>
-      <ChooseUs />
+      {/* <ChooseUs />
       <Heading />
       <Works />
       <Promise />
       <Get />
-      <Products />
+      <Products /> */}
       {/* <Question /> */}
-      <Hire />
+      {/* <Hire /> */}
       <Testimonials />
       <Footer
         boxToColor="greenDark"
