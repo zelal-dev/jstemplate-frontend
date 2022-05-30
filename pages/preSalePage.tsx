@@ -9,6 +9,13 @@ import MangeWebsite from "../src/Sections/PreSalePage/ManageWebsite";
 import Timeline from "../src/Sections/PreSalePage/Timeline";
 import Question from "../src/Sections/Servicepage/Question";
 
+// page primary colors
+const colors = {
+  textPrimary: "text-[#250dae]",
+  bgPrimary: "bg-[#250dae]",
+  buttonPrimary: "bg-gradient-to-br from-[#250dae] to-[#472ce0]",
+};
+
 const ProductSinglePage = () => {
   return (
     <div>
@@ -16,10 +23,10 @@ const ProductSinglePage = () => {
         <Navbar.SingleProductNavbar />
         <Header />
       </div>
-      <MangeWebsite />
+      <MangeWebsite colors={colors} data={undefined} />
       <Timeline />
       <Benefits />
-      <Hire />
+      <Hire colors={colors} />
       {/* <Question /> */}
       <Testimonials />
       <Footer
