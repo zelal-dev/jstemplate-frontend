@@ -3,7 +3,7 @@ import { FaNodeJs, FaReact } from "react-icons/fa";
 import { SiMongodb, SiExpress } from "react-icons/si";
 
 const Header = (props: any) => {
-  const { data, icons } = props;
+  const { data, icons, colors } = props;
   return (
     <div className=" flex flex-col items-center xl:pt-36 lg:pt-32 md:pt-24 sm:pt-20 pt-16 lg:pb-[21rem] sm:pb-72 pb-72">
       <div className="relative w-2/3 sm:w-auto">
@@ -19,7 +19,7 @@ const Header = (props: any) => {
       <div className="xl:my-14 lg:my-12 md:my-10 sm:my-9 my-8 flex flex-col sm:flex-row items-center">
         <button
           type="button"
-          className="text-base font-semibold py-3 px-7 border-2 border-gray-100 bg-gray-100 rounded-lg text-secondaryTemplateColorDark sm:mr-4 mb-3 sm:mb-0"
+          className={`text-base font-semibold py-3 px-7 border-2 border-gray-100 bg-gray-100 rounded-lg ${colors.textPrimary} sm:mr-4 mb-3 sm:mb-0`}
         >
           Live Preview
         </button>

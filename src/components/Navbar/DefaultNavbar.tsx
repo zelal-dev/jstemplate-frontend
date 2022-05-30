@@ -241,6 +241,18 @@ const DefaultNavbar = () => {
         <DropDownService />
       </div>
 
+      {/* ProDis overlay function */}
+      <div
+        className={`sm:${proDis} hidden fixed w-full h-full left-0 top-0 z-10`}
+        onClick={productDropdown}
+      />
+
+      {/* SerDis overlay function */}
+      <div
+        className={`sm:${serDis} hidden fixed w-full h-full left-0 top-0 z-10`}
+        onClick={serviceDropdown}
+      />
+
       <Login
         handleLoginModal={toggleLoginModal}
         handleRegModal={toggleRegModal}

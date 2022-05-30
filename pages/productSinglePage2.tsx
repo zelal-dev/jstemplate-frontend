@@ -11,11 +11,13 @@ const ProductSinglePage2 = () => {
     <div className="bg-[#E5E5E5]">
       <div className='lg:bg-[url("/productSingle2HeaderBg.svg")] bg-blueTwo'>
         <Navbar.SingleProductNavbar />
-        <Header />
+        <Header data={undefined} />
       </div>
-      {/* <Products />
-      <RelatedProduct />
-      <Testimonials /> */}
+      <Products info={undefined} colors={undefined}>
+        <div>Demo</div>
+      </Products>
+      {/* <RelatedProduct /> */}
+      <Testimonials />
       <Footer
         boxToColor="secondaryTemplateColorDark"
         boxFromColor="secondaryTemplateColorLight"

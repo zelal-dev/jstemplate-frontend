@@ -14,8 +14,10 @@ import { MdHeadsetMic } from "react-icons/md";
 import { FaHourglassHalf, FaNodeJs, FaReact } from "react-icons/fa";
 import { SiMongodb, SiExpress } from "react-icons/si";
 
+// page primary colors
 const colors = {
-  primary: "#00a699",
+  textPrimary: "text-[#24b8bd]",
+  bgPrimary: "bg-[#24b8bd]",
   buttonPrimary:
     "bg-gradient-to-br from-secondaryTemplateColorLight to-secondaryTemplateColorDark",
 };
@@ -318,14 +320,16 @@ const data = {
 const MernStackDirectoryListingTheme = (props: any) => {
   return (
     <div>
-      <div className="sm:bg-[url('/productSingleHeaderBg.svg')] bg-no-repeat bg-cover">
+      <div
+        className={`sm:bg-[url('/products/heading-one.svg')] bg-no-repeat bg-cover ${colors.bgPrimary}`}
+      >
         <Navbar.SingleProductNavbar />
-        <Header data={props.data} icons={data.buildWith} />
+        <Header data={props.data} icons={data.buildWith} colors={colors} />
       </div>
       <MangeWebsite colors={colors} data={data.manageWebsite} />
       <SimpleTitleThird colors={colors} data={data.sampleInfo} />
       <Heading data={props.data} info={data.preSale} colors={colors} />
-      <Hire />
+      <Hire colors={colors} />
       <Testimonials />
       <Footer
         boxToColor="secondaryTemplateColorDark"
