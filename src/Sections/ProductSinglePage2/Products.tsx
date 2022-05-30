@@ -1,9 +1,18 @@
 import Image from "next/image";
+import Link from "next/link";
 import React from "react";
 import { AiFillEye } from "react-icons/ai";
 import { FaShoppingCart } from "react-icons/fa";
 
-const Products = () => {
+const Products = ({
+  children,
+  info,
+  colors,
+}: {
+  children: any;
+  info: any;
+  colors: any;
+}) => {
   return (
     <>
       <div className="grid-cols-12 gap-7 container mx-auto -mt-72 hidden lg:grid">
@@ -26,105 +35,22 @@ const Products = () => {
               >
                 Description
               </button>
-              <button
+              {/* Review button hidden */}
+              {/* <button
                 type="button"
                 className="text-base text-gray-600 border-none outline-none"
               >
                 Review (10)
-              </button>
+              </button> */}
             </div>
             <div className="h-0.5 w-full bg-[#DDE6F5]">
               <div className="h-0.5 w-20 ml-10 bg-blueTwo" />
             </div>
-            <div className="py-8 px-10">
-              <h1 className="text-2xl font-bold text-gray-900">
-                Digiency- Figma Website Template
-              </h1>
-              <article className="text-base text-gray-600 mt-5">
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime,
-                corporis, esse nam inventore laboriosam nihil quasi rem facere
-                ipsa neque itaque optio eveniet nisi? Dolorem quod praesentium
-                accusantium harum nobis.
-              </article>
-              <article className="text-base text-gray-600 mt-5">
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime,
-                corporis, esse nam inventore laboriosam nihil quasi rem facere
-                ipsa neque itaque optio eveniet nisi? Dolorem quod praesentium
-                accusantium harum nobis.
-              </article>
-              <h3 className="text-base font-bold text-gray-900 mt-5">
-                FEATURES
-              </h3>
-              <ul className="list-disc ml-5">
-                <li>Lorem, ipsum dolor.</li>
-                <li>Lorem, ipsum dolor.</li>
-                <li>Lorem, ipsum dolor.</li>
-                <li>Lorem, ipsum dolor.</li>
-                <li>Lorem, ipsum dolor.</li>
-              </ul>
-              <h3 className="text-base font-bold text-gray-900 mt-5">
-                FEATURES
-              </h3>
-              <ul className="list-disc ml-5">
-                <li>Screen 1</li>
-                <li>Screen 1</li>
-                <li>Screen 1</li>
-                <li>Screen 1</li>
-                <li>Screen 1</li>
-              </ul>
-              <div className="grid grid-cols-2 gap-x-10 gap-y-5 mt-10">
-                <div className="w-full xl:h-64 lg:h-44 relative rounded-xl">
-                  <Image
-                    src="/productCartImg.svg"
-                    alt=""
-                    layout="fill"
-                    objectFit="contain"
-                  />
-                </div>
-                <div className="w-full xl:h-64 lg:h-44 relative rounded-xl">
-                  <Image
-                    src="/productCartImg.svg"
-                    alt=""
-                    layout="fill"
-                    objectFit="contain"
-                  />
-                </div>
-                <div className="w-full xl:h-64 lg:h-44 relative rounded-xl">
-                  <Image
-                    src="/productCartImg.svg"
-                    alt=""
-                    layout="fill"
-                    objectFit="contain"
-                  />
-                </div>
-                <div className="w-full xl:h-64 lg:h-44 relative rounded-xl">
-                  <Image
-                    src="/productCartImg.svg"
-                    alt=""
-                    layout="fill"
-                    objectFit="contain"
-                  />
-                </div>
-                <div className="w-full xl:h-64 lg:h-44 relative rounded-xl">
-                  <Image
-                    src="/productCartImg.svg"
-                    alt=""
-                    layout="fill"
-                    objectFit="contain"
-                  />
-                </div>
-                <div className="w-full xl:h-64 lg:h-44 relative rounded-xl">
-                  <Image
-                    src="/productCartImg.svg"
-                    alt=""
-                    layout="fill"
-                    objectFit="contain"
-                  />
-                </div>
-              </div>
-            </div>
+            <div className="py-8 px-10">{children}</div>
           </div>
-          <div className='bg-[url("/contactusBg.svg")] bg-cover container mx-auto xl:p-12 p-8  flex flex-col items-center justify-center rounded-lg mt-10'>
+          <div
+            className={`sm:bg-[url("/products/hire-bg.svg")] bg-no-repeat bg-cover ${colors.bgPrimary} container mx-auto xl:p-12 p-8  flex flex-col items-center justify-center rounded-lg mt-10`}
+          >
             <h3 className="xl:text-lg lg:text-base text-gray-100">
               Hurry up! Limited time offer
             </h3>
@@ -133,7 +59,7 @@ const Products = () => {
             </h1>
             <button
               type="button"
-              className="py-4 px-8 font-semibold text-blueTwo bg-gray-100 rounded-md text-base mt-6"
+              className={`py-3 px-8 font-semibold ${colors.textPrimary} bg-gray-100 rounded-md text-base mt-6`}
             >
               Buy Now
             </button>
@@ -144,74 +70,102 @@ const Products = () => {
             <h1 className="text-xl font-bold text-gray-900">Price</h1>
             <div className="flex items-center">
               <div className="flex items-end mr-5">
-                <h1 className="text-2xl text-gray-900 font-bold mr-3">$20</h1>
-                <h5 className="text-sm text-[#FA4F58] pb-1">$30</h5>
+                <h1 className="text-2xl text-gray-900 font-bold mr-3">
+                  ${info.pricing.salePrice}.00
+                </h1>
+                <h5 className="text-sm text-[#FA4F58] pb-1">
+                  ${info.pricing.regularPrice}.00
+                </h5>
               </div>
-              <h3 className="text-xs text-gray-100 py-0.5 px-2.5 rounded-full bg-gradient-to-br from-purpleLight to-purpleDark">
-                Limited Offer
-              </h3>
+              {info.offer && (
+                <h3 className="text-xs text-gray-100 py-0.5 px-2.5 rounded-full bg-gradient-to-br from-purpleLight to-purpleDark">
+                  {info.offer}
+                </h3>
+              )}
             </div>
           </div>
           <hr className="w-full bg-cartImageBgOne my-6" />
           <div className="grid xl:grid-cols-2 grid-cols-1 gap-5">
+            <Link href={info.previewLink ? info.previewLink : "#"}>
+              <a
+                target={info.previewLink ? "_blank" : ""}
+                className={`text-base font-semibold text-gray-100 py-3 rounded-lg ${colors.buttonPrimary} flex items-center justify-center shadow-3xl`}
+              >
+                <AiFillEye className="text-2xl mr-3" />
+                <span>Preview</span>
+              </a>
+            </Link>
             <button
               type="button"
-              className="text-base font-semibold text-gray-100 py-4 rounded-lg bg-gradient-to-br from-blueOne to-blueTwo flex items-center justify-center shadow-3xl"
-            >
-              <AiFillEye className="text-lg mr-3" />
-              <span>Preview</span>
-            </button>
-            <button
-              type="button"
-              className="text-base font-semibold text-gray-100 py-4 rounded-lg bg-gradient-to-br from-orangeOne to-orangeTwo flex items-center justify-center shadow-4xl"
+              className="text-base font-semibold text-gray-100 py-3 rounded-lg bg-gradient-to-br from-orangeOne to-orangeTwo flex items-center justify-center shadow-4xl"
             >
               <FaShoppingCart className="text-lg mr-3" />
               <span>Add To Cart</span>
             </button>
           </div>
           <hr className="w-full bg-cartImageBgOne mt-6" />
-          <div className="flex items-center justify-between my-5">
+          {/* Downloads hidden */}
+          {/* <div className="flex items-center justify-between my-5">
             <h3 className="text-base text-gray-800">Downloads</h3>
             <h3 className="text-base text-gray-600">20 Times</h3>
           </div>
-          <hr className="w-full bg-cartImageBgOne " />
+          <hr className="w-full bg-cartImageBgOne " /> */}
           <div className="flex items-center justify-between my-5">
             <h3 className="text-base text-gray-800">Last Update</h3>
-            <h3 className="text-base text-gray-600">August 30, 2021</h3>
+            <h3 className="text-base text-gray-600">{info.updateAt}</h3>
           </div>
           <hr className="w-full bg-cartImageBgOne " />
-          <div className="flex items-center justify-between my-5">
-            <h3 className="text-base text-gray-800">Released</h3>
-            <h3 className="text-base text-gray-600">May 1, 2021</h3>
-          </div>
-          <hr className="w-full bg-cartImageBgOne " />
-          <div className="flex items-center justify-between my-5">
-            <h3 className="text-base text-gray-800">Tools</h3>
-            <h3 className="text-base text-gray-600">Figma (.fig)</h3>
-          </div>
-          <hr className="w-full bg-cartImageBgOne " />
-          <div className="flex items-center justify-between my-5">
-            <h3 className="text-base text-gray-800">Software Version</h3>
-            <h3 className="text-base text-gray-600">4.5.12 or Above</h3>
-          </div>
-          <hr className="w-full bg-cartImageBgOne " />
+          {info.released && (
+            <>
+              <div className="flex items-center justify-between my-5">
+                <h3 className="text-base text-gray-800">Released</h3>
+                <h3 className="text-base text-gray-600">{info.released}</h3>
+              </div>
+              <hr className="w-full bg-cartImageBgOne " />
+            </>
+          )}
+          {info.tools && (
+            <>
+              <div className="flex items-center justify-between my-5">
+                <h3 className="text-base text-gray-800">Tools</h3>
+                <h3 className="text-base text-gray-600">{info.tools}</h3>
+              </div>
+              <hr className="w-full bg-cartImageBgOne " />
+            </>
+          )}
+          {info.version && (
+            <>
+              <div className="flex items-center justify-between my-5">
+                <h3 className="text-base text-gray-800">Software Version</h3>
+                <h3 className="text-base text-gray-600">{info.version}</h3>
+              </div>
+              <hr className="w-full bg-cartImageBgOne " />
+            </>
+          )}
           <div className="flex items-center justify-between my-5">
             <h3 className="text-base text-gray-800">Responsive</h3>
-            <h3 className="text-base text-gray-600">Yes</h3>
+            <h3 className="text-base text-gray-600">
+              {info.responsive ? "Yes" : "No"}
+            </h3>
           </div>
           <hr className="w-full bg-cartImageBgOne " />
           <div className="flex items-center justify-between my-5">
             <h3 className="text-base text-gray-800">Documentation</h3>
-            <h3 className="text-base text-gray-600">Yes</h3>
+            <h3 className="text-base text-gray-600">
+              {info.doc ? "Yes" : "No"}
+            </h3>
           </div>
           <hr className="w-full bg-cartImageBgOne " />
-          <div className="flex items-start justify-between mt-5">
-            <h3 className="text-base text-gray-800">Tags</h3>
-            <article className="text-base text-gray-600 w-2/4">
-              admin, app, clean, dashboard, figma, interface, kit, minimal,
-              modern, shop, sketch, template, ui, ui kit, ux
-            </article>
-          </div>
+          {info.tags && (
+            <>
+              <div className="flex items-start justify-between mt-5">
+                <h3 className="text-base text-gray-800">Tags</h3>
+                <article className="text-base text-gray-600 w-2/4">
+                  {info.tags.toString().replace(/,/g, ", ")}
+                </article>
+              </div>
+            </>
+          )}
         </div>
       </div>
 

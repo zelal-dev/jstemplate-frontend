@@ -16,6 +16,7 @@ import { ImCross } from "react-icons/im";
 
 const Heading = (props: any) => {
   const { colors, info, data } = props;
+
   return (
     <div className="container mx-auto md:-mt-80 bg-white w-full shadow-xl xl:p-24 lg:p-16 md:p-10 sm:p-8 p-6 rounded-xl">
       <div className="flex flex-col items-center">
@@ -103,7 +104,7 @@ const Heading = (props: any) => {
               survived not only five centuries, but also the leap into
               electronic typesetting...
             </article>
-            <span className="text-secondaryTemplateColorDark font-bold">
+            <span className={`${colors.textPrimary} mt-4 block font-bold`}>
               Read More
             </span>
           </div>
@@ -151,7 +152,7 @@ const HeadingNormalCart = ({
       <h2 className="text-lg font-bold text-gray-900">{info.title}</h2>
       <h5 className="text-gray-500 text-sm">Save ${info.save}</h5>
       <div className="flex items-end">
-        <h3 className="text-4xl font-black text-secondaryTemplateColorDark mr-2">
+        <h3 className={`text-4xl font-black ${colors.textPrimary} mr-2`}>
           {info ? `$${info.sale}` : "$69"}
         </h3>
         <h5 className="text-lg text-gray-500 pb-1.5 line-through">
@@ -213,7 +214,7 @@ const HeadingPlusCart = ({
       <h2 className="text-lg font-bold text-gray-900">{info.title}</h2>
       <h5 className="text-gray-500 text-sm">Save ${info.save}</h5>
       <div className="flex items-end">
-        <h3 className="text-4xl font-black text-secondaryTemplateColorDark mr-2">
+        <h3 className={`text-4xl font-black ${colors.textPrimary} mr-2`}>
           {info ? `$${info.sale}` : "$149"}
         </h3>
         <h5 className="text-lg text-gray-500 pb-1.5 line-through">
@@ -269,17 +270,19 @@ const HeadingExtendedCart = ({
 }) => {
   return (
     <div
-      className={`rounded-lg relative overflow-hidden bg-[${colors.primary}] shadow-secondaryTemplate`}
+      className={`rounded-lg relative overflow-hidden ${colors.bgPrimary} shadow-secondaryTemplate`}
     >
       <div
-        className="w-80 -top-32 -left-40  z-10 absolute h-[36rem] bg-[rgba(0,0,0,0.1)]"
+        className="w-80 -top-32 -left-40  z-10 absolute h-[36rem] bg-[rgba(23,23,23,0.08)]"
         style={{ transform: "matrix(0.84, 0.47, -0.58, 0.86, 0, 0)" }}
       />
       <div
-        className="w-80 -bottom-36 -right-44  z-10 absolute h-[36rem] bg-[rgba(0,0,0,0.1)]"
+        className="w-80 -bottom-36 -right-44  z-10 absolute h-[36rem] bg-[rgba(23,23,23,0.08)]"
         style={{ transform: "matrix(0.84, 0.47, -0.58, 0.86, 0, 0)" }}
       />
-      <div className=" z-20 absolute bg-white top-5 right-5 text-secondaryTemplateColorDark text-sm py-2 px-3 shadow-md rounded-lg">
+      <div
+        className={`z-20 absolute bg-white top-5 right-5 ${colors.textPrimary} text-sm py-2 px-3 shadow-md rounded-lg`}
+      >
         Recommended
       </div>
       <div className="px-10 py-12 z-20 relative">
@@ -302,9 +305,9 @@ const HeadingExtendedCart = ({
                 className={`bg-gradient-to-br from-[#FFFFFF] to-[#81FFF7] p-1.5 rounded-full`}
               >
                 {item.checked ? (
-                  <FaCheck className="text-secondaryTemplateColorDark w-2.5 h-2.5" />
+                  <FaCheck className={`${colors.textPrimary} w-2.5 h-2.5`} />
                 ) : (
-                  <ImCross className="text-secondaryTemplateColorDark w-2.5 h-2.5" />
+                  <ImCross className={`${colors.textPrimary} w-2.5 h-2.5`} />
                 )}
               </div>
               <h3 className="text-base text-gray-100 ml-3">{item.title}</h3>
@@ -313,7 +316,7 @@ const HeadingExtendedCart = ({
         </div>
         <button
           type="button"
-          className="text-secondaryTemplateColorDark text-base font-semibold bg-white w-full py-4 rounded-lg mt-8 shadow-secondaryTemplate"
+          className={`${colors.textPrimary} text-base font-semibold bg-white w-full py-4 rounded-lg mt-8 shadow-secondaryTemplate`}
         >
           Buy Now
         </button>
