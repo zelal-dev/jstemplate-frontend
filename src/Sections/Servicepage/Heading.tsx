@@ -1,7 +1,7 @@
 import Image from "next/image";
 import React, { useState } from "react";
 import { IoChatbubbles } from "react-icons/io5";
-const Heading = () => {
+const Heading = ({ colors }: { colors: any }) => {
   const sample = [1, 2, 3, 4, 5, 6, 7];
   const [tab, setTab] = useState<number>(0);
   const [img, setImg] = useState<string>("/serviceHeadBg.svg");
@@ -36,7 +36,7 @@ const Heading = () => {
                   }`}
                 >
                   {tab === index ? (
-                    <div className="w-5 h-5 bg-gradient-to-br from-greenSecondaryLight to-greenSecondaryDark mr-6 " />
+                    <div className={`w-5 h-5 ${colors.buttonPrimary} mr-6`} />
                   ) : (
                     <div className="w-5 h-5  bg-gray-900 mr-6" />
                   )}
@@ -48,10 +48,14 @@ const Heading = () => {
               ))}
             </div>
             <div className="relative xl:w-3/4 sm:w-3/5 w-full sm:h-96 sm:py-64 h-40 rounded-lg shadow-xl mt-8 sm:mt-0">
-              {img !== undefined ? <Image src={img} alt="" layout="fill" objectFit="cover" /> : null}
+              {img !== undefined ? (
+                <Image src={img} alt="" layout="fill" objectFit="cover" />
+              ) : null}
             </div>
           </div>
-          <button className="text-base font-semibold drop-shadow-lg mt-16 text-gray-100 flex items-center shadow-green bg-gradient-to-br from-greenSecondaryLight to-greenSecondaryDark py-4 px-6 rounded-lg">
+          <button
+            className={`text-base font-semibold drop-shadow-lg mt-16 text-gray-100 flex items-center shadow-secondaryTemplate ${colors.buttonPrimary} py-4 px-6 rounded-lg`}
+          >
             <IoChatbubbles className="mr-4" /> Start a Project
           </button>
         </div>

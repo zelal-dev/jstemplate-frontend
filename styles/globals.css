@@ -33,11 +33,6 @@
   background-size: cover;
 }
 
-.service-hire-part {
-  background-image: url("./../public/hireBg.svg");
-  background-size: cover;
-}
-
 .single-product-hire-part {
   background-image: url("./../public/prodSingleBg.svg");
   background-size: cover;
@@ -56,9 +51,16 @@
   /* background-repeat: no-repeat; */
 }
 
-.service-part {
-  background-image: url("./../public//serviceHeadBg.svg");
-  background-size: cover;
+.image > div,
+.image span {
+  position: unset !important;
+}
+
+.image_div {
+  object-fit: contain;
+  width: 100% !important;
+  position: relative !important;
+  height: unset !important;
 }
 
 /* .testimonials-container {

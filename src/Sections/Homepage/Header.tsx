@@ -22,7 +22,7 @@ const Header = () => {
         </span>
       </article>
       <div className="flex sm:flex-row flex-col items-center xl:mt-12 lg:mt-10 md:mt-9 sm:mt-8 mt-7 ">
-        <Link href="/productPage">
+        <Link href="/shop">
           <a className="flex sm:w-auto w-full items-center xl:text-lg text-base xl:py-4 md:py-3 xl:px-6 md:px-5 py-3 px-3 rounded-lg bg-gradient-to-br from-blueOne to-blueTwo sm:mr-6 mr-0 shadow-3xl">
             <HiArchive
               style={{ color: "white", width: "18px", height: "18px" }}
@@ -30,14 +30,15 @@ const Header = () => {
             <span className="md:ml-4 ml-3 text-white">Our Solution</span>{" "}
           </a>
         </Link>
-        <Link href="/preSalePage">
+        {/* Pre Seal Button Hidden */}
+        {/* <Link href="/preSalePage">
           <a className="flex sm:w-auto w-full items-center xl:text-lg text-base xl:py-4 md:py-3 xl:px-6 md:px-5 py-3 px-3 rounded-lg bg-gradient-to-br from-orangeOne to-orangeTwo  sm:mt-0 mt-3 shadow-4xl">
             <FaShoppingCart
               style={{ color: "white", width: "18px", height: "18px" }}
             />
             <span className="md:ml-4 ml-3 text-white">Pre Sale</span>
           </a>
-        </Link>
+        </Link> */}
       </div>
     </div>
   );
