@@ -4,7 +4,12 @@ import customerBg from "./../../../public/customerBg.svg";
 const Customer = () => {
   return (
     <div className="relative w-full z-0">
-      <Image src={customerBg} alt="" layout="responsive" />
+      <Image
+        src={customerBg}
+        className="bg-blueTwo"
+        alt=""
+        layout="responsive"
+      />
       <div className=" absolute 2xl:top-28 xl:top-24 lg:top-20 md:top-16 sm:top-10 top-6 lg:inset-x-1/3 inset-x-1/4">
         <h1 className="2xl:text-4xl xl:text-3xl lg:text-2xl md:text-xl sm:text-lg text-base text-white font-bold text-center">
           Our Customers World Wide

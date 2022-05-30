@@ -11,7 +11,7 @@ type uxPageTypeDataT = {
   dashboard: number;
 };
 
-const Header = () => {
+const Header = ({ colors }: { colors: any }) => {
   const [totalCost, setTotalCost] = useState<number>(0);
   const [disUx, setDisUx] = useState("block");
   const [disFront1, setDisFront1] = useState("hidden");
@@ -168,7 +168,7 @@ const Header = () => {
       <div className="lg:w-3/5 sm:w-4/5 w-full m:mr-16 mr-0  lg:pr-20 pr-0">
         <h1
           className="2xl:text-7xxl xl:text-7xl lg:text-5xl md:text-4xl sm:text-3xl text-2xl text-gray-100 xl:leading-24 lg:leading-16 md:leading-10 sm:leading-9 leading-8 font-bold text-center lg:text-left"
-          style={{ textShadow: "8px 8px 0px #459B4B" }}
+          style={{ textShadow: "8px 8px 0px #191919" }}
         >
           MERN Stack Web Development
         </h1>
@@ -236,7 +236,7 @@ const Header = () => {
           <button
             type="submit"
             //   disabled={isSubmitting}
-            className="text-gray-100 text-base font-medium px-10 py-3.5 rounded-lg bg-gradient-to-br from-greenSecondaryLight to-greenSecondaryDark shadow-green"
+            className={`text-gray-100 text-base font-medium px-10 py-3.5 rounded-lg ${colors.bgPrimary} shadow-secondaryTemplate`}
           >
             {/* {isSubmitting ? "Please wait..." : "Send Message"} */}
             Send Message

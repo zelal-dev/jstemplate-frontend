@@ -1,11 +1,15 @@
 import React from "react";
 
-const ServiceChooseCart = () => {
+const ServiceChooseCart = ({ colors }: { colors: any }) => {
   return (
     <div className="p-10 rounded-lg ">
       <div className="flex items-center justify-between">
-        <div className="w-20 h-20 rounded-lg bg-templateColor" />
-        <h1 className="text-5xxl font-black text-templateColor opacity-30 leading-16">
+        <div
+          className={`w-20 h-20 rounded-lg ${colors.bgPrimary} shadow-secondaryTemplate`}
+        />
+        <h1
+          className={`text-5xxl font-black ${colors.textPrimary} opacity-30 leading-16`}
+        >
           01
         </h1>
       </div>
