@@ -8,22 +8,24 @@ import Get from "../../src/Sections/Servicepage/Get";
 import Header from "../../src/Sections/Servicepage/Header";
 import Heading from "../../src/Sections/Servicepage/Heading";
 import Hire from "../../src/Sections/Servicepage/Hire";
+import Products from "../../src/Sections/Servicepage/Products";
 import Promise from "../../src/Sections/Servicepage/Promise";
+import Question from "../../src/Sections/Servicepage/Question";
 import Works from "../../src/Sections/Servicepage/Works";
 
 // page primary colors
 const colors = {
-  textPrimary: "text-[#0ea38a]",
-  bgPrimary: "bg-[#0ea38a]",
-  borderPrimary: "border-[#8bf5e3]",
-  hoverBorderPrimary: "hover:border-[#0ea38a]",
-  buttonPrimary: "bg-gradient-to-br from-[#0ea38a] to-[#37c3ab]",
+  textPrimary: "text-[#1f38c5]",
+  bgPrimary: "bg-[#1f38c5]",
+  borderPrimary: "border-[#cad1f9]",
+  hoverBorderPrimary: "hover:border-[#1f38c5]",
+  buttonPrimary: "bg-gradient-to-br from-[#1f38c5] to-[#4b63eb]",
 };
 
 // page components data
 const data = {
   heading: {
-    title: "MERN Stack Web Development",
+    title: "Frontity Web Development",
     description:
       "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s, when an unknown printer took a galley of type",
   },
@@ -221,7 +223,7 @@ const data = {
     buttonLink: "#",
   },
   hire: {
-    title: "Hire MERN Stack Developers",
+    title: "Hire Frontity Developers",
     description:
       "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text",
     buttonText: "Start a Project",
