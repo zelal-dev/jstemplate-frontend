@@ -11,7 +11,7 @@ type uxPageTypeDataT = {
   dashboard: number;
 };
 
-const Header = ({ colors }: { colors: any }) => {
+const Header = ({ colors, data }: { colors: any; data: any }) => {
   const [totalCost, setTotalCost] = useState<number>(0);
   const [disUx, setDisUx] = useState("block");
   const [disFront1, setDisFront1] = useState("hidden");
@@ -170,12 +170,12 @@ const Header = ({ colors }: { colors: any }) => {
           className="2xl:text-7xxl xl:text-7xl lg:text-5xl md:text-4xl sm:text-3xl text-2xl text-gray-100 xl:leading-24 lg:leading-16 md:leading-10 sm:leading-9 leading-8 font-bold text-center lg:text-left"
           style={{ textShadow: "8px 8px 0px #191919" }}
         >
-          MERN Stack Web Development
+          {data ? data.title : "Loading..."}
         </h1>
         <article className="xL:text-xl lg:text-lg md:text-base text-sm text-gray-100 xl:mt-8 lg:mt-7 md:mt-6 sm:mt-5 mt-4 text-center lg:text-left">
-          Lorem Ipsum is simply dummy text of the printing and typesetting
-          industry. Lorem Ipsum has been the industrys standard dummy text ever
-          since the 1500s, when an unknown printer took a galley of type
+          {data
+            ? data.description
+            : "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s, when an unknown printer took a galley of type"}
         </article>
       </div>
       <div className="xl:p-10 lg:p-8 md:p-7 sm:p-6 p-5 rounded-lg bg-white lg:w-2/5 sm:w-3/4 w-full mt-16 lg:mt-0">

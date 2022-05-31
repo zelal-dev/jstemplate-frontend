@@ -173,7 +173,7 @@ const ServiceNavbar = () => {
             className="w-10 h-10 grid justify-center items-center rounded-md bg-gray-100 drop-shadow-3xl cursor-pointer"
             onClick={toggleLoginModal}
           >
-            <RiUserFill className="text-white text-lg" />
+            <RiUserFill className="text-gray-700 text-2xl" />
           </button>
         )}
       </div>
