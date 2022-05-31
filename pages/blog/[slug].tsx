@@ -3,13 +3,50 @@ import Link from "next/link";
 import React from "react";
 import { BsArrowRightShort } from "react-icons/bs";
 import FooterWithoutSolution from "../../src/components/FooterWithoutSolution";
-import Navbar from "./../../src/components/Navbar";
+import Navbar from "../../src/components/Navbar";
+import ErrorProps from "next/error";
+import useSWR from "swr";
+import FeaturedMedia from "../../src/components/Blog/FeaturedMedia";
+import Thumbnail from "../../src/components/Blog/Thumbnail";
+import styled from "@emotion/styled";
 
-const data = ["1", "2", "3", "4", "5", "6", "7", "8"];
+const dataOne = ["1", "2", "3", "4", "5", "6", "7", "8"];
 
 const dataTwo = ["1", "2", "3", "4"];
 
-const Details = () => {
+const fetcher = (url: any) => fetch(url).then((r) => r.json());
+
+const Details = ({
+  getData,
+  latestPosts,
+  status,
+  slug,
+}: {
+  getData: any;
+  latestPosts: any;
+  status: any;
+  slug: any;
+}) => {
+  const { data, error } = useSWR(
+    `https://api-blog.jstemplate.net/wp-json/wp/v2/posts?slug=${slug}`,
+    fetcher,
+    {
+      fallbackData: getData,
+    }
+  );
+  // latestPosts data fetching
+  const { data: latestPostsData, error: latestPostsError } = useSWR(
+    `https://api-blog.jstemplate.net/wp-json/wp/v2/posts?per_page=5`,
+    fetcher,
+    {
+      fallbackData: latestPosts,
+    }
+  );
+
+  if (status === 404) {
+    return <ErrorProps statusCode={404} />;
+  }
+
   return (
     <>
       <div className="shadow-md">
@@ -20,50 +57,20 @@ const Details = () => {
           <div className="grid grid-cols-10 justify-center gap-7">
             <div className="col-span-10 md:col-span-7">
               <div className="bg-white rounded-2xl p-7 shadow-[0_6px_24px_rgba(6, 129, 121, 0.08)]">
-                <Image
-                  src={"/serviceHeadBg.svg"}
-                  width={810}
-                  height={540}
-                  layout="responsive"
-                  objectFit="cover"
-                  alt=""
-                />
+                {/* post thumbnail image */}
+                <Thumbnail id={data[0].id} />
                 <h1 className="text-3xl font-bold text-[#001324] truncate pt-8">
-                  Simple and awesome blog or news title here
+                  {data[0].title.rendered}
                 </h1>
-                <p className="pt-4 text-lg text-[#5D6D7E]">
-                  Lorem Ipsum Dolor Sit Amet, Consectetur Adipiscing Elit, Sed
-                  Do Eiusmod Tempor Incididunt Ut Labore Et Dolore Magna Aliqua.
-                  Ut Enim Ad Minim Veniam, Quis Nostrud Exercitation Ullamco
-                  Laboris Nisi Ut Aliquip Ex Ea Commodo Consequat. Duis Aute
-                  Irure Dolor In Reprehenderit In Voluptate Velit Esse Cillum
-                  Dolore Eu Fugiat Nulla Pariatur. Excepteur Sint Occaecat
-                  Cupidatat Non Proident.
-                </p>
-                <p className="pt-4 text-lg text-[#5D6D7E]">
-                  Lorem Ipsum Dolor Sit Amet, Consectetur Adipiscing Elit, Sed
-                  Do Eiusmod Tempor Incididunt Ut Labore Et Dolore Magna Aliqua.
-                  Ut Enim Ad Minim Veniam, Quis Nostrud Exercitation Ullamco
-                  Laboris Nisi Ut Aliquip Ex Ea Commodo Consequat. Duis Aute
-                  Irure Dolor In Reprehenderit In Voluptate Velit Esse Cillum
-                  Dolore Eu Fugiat Nulla Pariatur. Excepteur Sint Occaecat
-                  Cupidatat Non Proident.
-                </p>
-                <p className="text-xl text-[#5D6D7E] mt-4 pl-7 border-l-4 border-[#EBEDEF]">
-                  Mauris aliquet ultricies ante, non faucibus ante gravida sed.
-                  Sed ultrices pellentesque purus, vulputate volutpat ipsum
-                  hendrerit sed neque sed sapien rutrum.
-                </p>
-                <p className="pt-7 text-lg text-[#5D6D7E]">
-                  Lorem Ipsum Dolor Sit Amet, Consectetur Adipiscing Elit, Sed
-                  Do Eiusmod Tempor Incididunt Ut Labore Et Dolore Magna Aliqua.
-                  Ut Enim Ad Minim Veniam, Quis Nostrud Exercitation Ullamco
-                  Laboris Nisi Ut Aliquip Ex Ea Commodo Consequat. Duis Aute
-                  Irure Dolor In Reprehenderit In Voluptate Velit Esse Cillum
-                  Dolore Eu Fugiat Nulla Pariatur. Excepteur Sint Occaecat
-                  Cupidatat Non Proident.
-                </p>
-                <hr className="mt-7 border border-themeGrayLight" />
+                <PostContent
+                  className="pt-4 text-lg text-[#5D6D7E]"
+                  dangerouslySetInnerHTML={{
+                    __html: data[0].content.rendered,
+                  }}
+                />
+
+                {/* Tags component hidden */}
+                {/* <hr className="mt-7 border border-themeGrayLight" />
                 <div className="flex flex-wrap items-center gap-11 mt-7">
                   <p className="text-xl font-bold text-[#001324]">Tags</p>
                   <div className="flex items-center gap-2">
@@ -80,17 +87,19 @@ const Details = () => {
                       Food
                     </span>
                   </div>
-                </div>
+                </div> */}
               </div>
-              <Comments />
+              {/* Comments component hidden */}
+              {/* <Comments /> */}
             </div>
             <div className="col-span-8 md:col-span-3">
-              <div className="bg-white rounded-2xl p-10 shadow-[0_6px_24px_rgba(6, 129, 121, 0.08)]">
+              {/* Category component hidden */}
+              {/* <div className="bg-white rounded-2xl p-10 shadow-[0_6px_24px_rgba(6, 129, 121, 0.08)]">
                 <h1 className="text-3xl font-bold text-[#001324] pb-1">
                   Category List
                 </h1>
 
-                {data.map((item, index) => (
+                {dataOne.map((item: any, index: any) => (
                   <div key={index} className="flex items-center gap-4 pt-4">
                     <span className="border border-blueTwo w-5 opacity-30"></span>
                     <p className="text-lg text-[#001324] truncate w-full">
@@ -98,41 +107,43 @@ const Details = () => {
                     </p>
                   </div>
                 ))}
-              </div>
+              </div> */}
               <h1 className="text-3xl font-bold text-[#001324] mt-8 mb-3 ">
                 Latest Topic
               </h1>
-              {dataTwo.map((item, index) => (
-                <div
-                  key={index}
-                  className="flex flex-wrap xl:flex-nowrap items-center gap-5 bg-white rounded-2xl  shadow-[0_6px_24px_rgba(6, 129, 121, 0.08)] p-5 mb-5"
-                >
-                  <div>
-                    <Image
-                      src="/serviceHeadBg.svg"
-                      width={132}
-                      height={100}
-                      layout="fixed"
-                      objectFit="cover"
-                      alt=""
-                    />
-                  </div>
-                  <div>
-                    <p className="text-sm text-[#1a2b3a]">14 SEP, 2020</p>
-                    <h3 className="text-base font-bold text-[#001324] max-h-11 overflow-hidden">
-                      Simple and Awesome News or Blog Title Here Lorem...
-                    </h3>
-                    <Link href="">
-                      <a className="flex items-center gap-3 mt-2">
-                        <button className="text-sm font-semibold text-blueTwo">
-                          Read More
-                        </button>
-                        <BsArrowRightShort className="text-blueTwo text-2xl" />
-                      </a>
-                    </Link>
-                  </div>
-                </div>
-              ))}
+              {latestPostsData &&
+                latestPostsData.map((item: any, index: any) => {
+                  const date = new Date(item.date);
+                  const postDate = date.toLocaleDateString("en-US", {
+                    day: "numeric",
+                    month: "long",
+                    year: "numeric",
+                  });
+                  return (
+                    <div
+                      key={index}
+                      className="flex flex-wrap xl:flex-nowrap items-center gap-5 bg-white rounded-2xl  shadow-[0_6px_24px_rgba(6, 129, 121, 0.08)] p-5 mb-5"
+                    >
+                      <div>
+                        <PostImage id={item.id} />
+                      </div>
+                      <div>
+                        <p className="text-sm text-[#1a2b3a]">{postDate}</p>
+                        <h3 className="text-base font-bold text-[#001324] max-h-11 overflow-hidden">
+                          {item.title.rendered}
+                        </h3>
+                        <Link href={`/blog/${item.slug}`}>
+                          <a className="flex items-center gap-3 mt-2 text-blueTwo">
+                            <span className="text-sm font-semibold ">
+                              Read More
+                            </span>
+                            <BsArrowRightShort className="text-2xl" />
+                          </a>
+                        </Link>
+                      </div>
+                    </div>
+                  );
+                })}
             </div>
           </div>
         </div>
@@ -142,7 +153,81 @@ const Details = () => {
   );
 };
 
+// getServerSideProps function for fetching data from external API
+export async function getServerSideProps(context: any) {
+  const slug = context.query.slug;
+  const res = await fetch(
+    `https://api-blog.jstemplate.net/wp-json/wp/v2/posts?slug=${slug}`
+  );
+  const data = await res.json();
+
+  const resTwo = await fetch(
+    "https://api-blog.jstemplate.net/wp-json/wp/v2/posts?per_page=5"
+  );
+  const latestPosts = await resTwo.json();
+
+  if (data.length > 0) {
+    return {
+      props: {
+        getData: data,
+        latestPosts: latestPosts,
+        status: 200,
+        slug: slug,
+      },
+    };
+  } else {
+    // return 404 page
+    return {
+      props: {
+        getData: [],
+        latestPosts: [],
+        status: 404,
+        slug: slug,
+      },
+    };
+  }
+}
+
 export default Details;
+
+const PostImage = ({ id }: { id: any }) => {
+  const { data, error } = useSWR(
+    id
+      ? `https://api-blog.jstemplate.net/wp-json/wp/v2/media?parent=${id}`
+      : null,
+    fetcher,
+    {
+      refreshInterval: 0,
+    }
+  );
+
+  if (data) {
+    if (data.length > 0) {
+      return (
+        <div className="w-[100px] h-[100px] bg-slate-200 rounded-lg overflow-hidden grid justify-center items-center text-gray-300 text-2xl">
+          <Image
+            src={data[0].media_details.sizes.full.source_url}
+            alt={data[0].alt_text}
+            width={100}
+            height={100}
+            priority
+          />
+        </div>
+      );
+    } else {
+      return (
+        <div className="w-[100px] h-[100px] bg-slate-200 rounded-lg overflow-hidden grid justify-center items-center text-gray-300 text-lg">
+          No Image
+        </div>
+      );
+    }
+  }
+  return (
+    <div className="w-[100px] animate-pulse h-[100px] bg-slate-100 rounded-lg overflow-hidden grid justify-center items-center text-gray-300 text-2xl">
+      Loading...
+    </div>
+  );
+};
 
 const Comments = () => {
   return (
@@ -269,3 +354,62 @@ const Comments = () => {
     </div>
   );
 };
+
+const PostContent = styled.div`
+  figcaption {
+    font-size: 1rem;
+    font-weight: 500;
+    text-transform: uppercase;
+    margin: 10px 0;
+    color: #5d6d7e;
+  }
+  h2 {
+    font-size: 1.5rem;
+    color: #001324;
+    line-height: 1.5rem;
+    margin-bottom: 1rem;
+  }
+  h3 {
+    font-size: 1.35rem;
+    color: #001324;
+    line-height: 1.5;
+    margin-bottom: 1rem;
+  }
+  h4 {
+    font-size: 1.25rem;
+    color: #001324;
+    line-height: 1.5;
+    margin-bottom: 1rem;
+  }
+  h5 {
+    font-size: 1rem;
+    color: #001324;
+    line-height: 1.5;
+    margin-bottom: 1rem;
+  }
+  h6 {
+    font-size: 0.75rem;
+    color: #001324;
+    line-height: 1.5;
+    margin-bottom: 1rem;
+  }
+  p {
+    font-size: 1rem;
+    line-height: 1.5;
+    margin-bottom: 1rem;
+    color: #5d6d7e;
+  }
+  a {
+    color: #001324;
+    text-decoration: none;
+    &:hover {
+      text-decoration: underline;
+      color: blue;
+    }
+  }
+  img {
+    width: 100%;
+    height: auto;
+    margin-bottom: 1rem;
+  }
+`;

@@ -8,11 +8,11 @@ export const Loader = ({ bg }) => {
         <div className="sk-child sk-bounce3"></div>
       </div>
     </div>
-  )
-}
+  );
+};
 
 export const LoaderGrowing = () => {
-  const itemLength = ['1', '2', '3', '4', '5']
+  const itemLength = ["1", "2", "3", "4", "5"];
   return (
     <div className="absolute inset-0 z-40 flex items-center justify-center bg-[#ffffffd0]">
       <div className={`lds-ring`} aria-role="none">
@@ -21,13 +21,13 @@ export const LoaderGrowing = () => {
         ))}
       </div>
     </div>
-  )
-}
+  );
+};
 
 export const FormLoader = ({ color }) => {
   return (
     <svg
-      className={`ml-2 h-5 w-5 animate-spin ${color ? color : 'text-primary'}`}
+      className={`ml-2 h-5 w-5 animate-spin ${color ? color : "text-blueTwo"}`}
       xmlns="http://www.w3.org/2000/svg"
       fill="none"
       viewBox="0 0 24 24"
@@ -46,5 +46,5 @@ export const FormLoader = ({ color }) => {
         d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
       />
     </svg>
-  )
-}
+  );
+};
