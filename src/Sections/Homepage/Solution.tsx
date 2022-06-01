@@ -5,8 +5,6 @@ import { HiOutlineArrowNarrowRight } from "react-icons/hi";
 import { ProductDocument } from "../../../pages/shop";
 
 const Solution = ({ data }: { data: ProductDocument }) => {
-  console.log(data);
-
   return (
     <div className="container mx-auto relative z-0">
       <div className="xl:py-24 sm:py-16 py-14 flex flex-col items-center justify-center">
