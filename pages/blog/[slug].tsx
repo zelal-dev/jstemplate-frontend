@@ -1,19 +1,14 @@
+import styled from "@emotion/styled";
+import ErrorProps from "next/error";
+import Head from "next/head";
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
 import { BsArrowRightShort } from "react-icons/bs";
+import useSWR from "swr";
+import Thumbnail from "../../src/components/Blog/Thumbnail";
 import FooterWithoutSolution from "../../src/components/FooterWithoutSolution";
 import Navbar from "../../src/components/Navbar";
-import ErrorProps from "next/error";
-import useSWR from "swr";
-import FeaturedMedia from "../../src/components/Blog/FeaturedMedia";
-import Thumbnail from "../../src/components/Blog/Thumbnail";
-import styled from "@emotion/styled";
-import Head from "next/head";
-
-const dataOne = ["1", "2", "3", "4", "5", "6", "7", "8"];
-
-const dataTwo = ["1", "2", "3", "4"];
 
 const fetcher = (url: any) => fetch(url).then((r) => r.json());
 
@@ -51,29 +46,37 @@ const Details = ({
   return (
     <>
       <Head>
-        <title>{data[0]?.yoast_head_json.title}</title>
+        <title>
+          {data[0]?.yoast_head_json?.title && data[0]?.yoast_head_json?.title}
+        </title>
         <meta
           name="description"
-          content={data[0]?.yoast_head_json.og_description}
+          content={
+            data[0]?.yoast_head_json?.og_description &&
+            data[0]?.yoast_head_json?.og_description
+          }
         />
         <meta
           name="robots"
-          content={`${data[0]?.yoast_head_json.robots.index}, ${data[0]?.yoast_head_json.robots.follow},`}
+          content={`${data[0]?.yoast_head_json?.robots?.index}, ${data[0]?.yoast_head_json?.robots?.follow},`}
         />
-        <meta property="og:title" content={data[0]?.yoast_head_json.title} />
+        <meta property="og:title" content={data[0]?.yoast_head_json?.title} />
         <meta
           property="og:description"
-          content={data[0]?.yoast_head_json.og_description}
+          content={data[0]?.yoast_head_json?.og_description}
         />
         <meta
           property="og:image"
-          content={data[0]?.yoast_head_json.og_image[0].url}
+          content={
+            data[0]?.yoast_head_json?.og_image &&
+            data[0]?.yoast_head_json?.og_image[0].url
+          }
         />
-        <meta property="og:url" content={data[0]?.yoast_head_json.og_url} />
-        <meta property="og:type" content={data[0]?.yoast_head_json.og_type} />
+        <meta property="og:url" content={data[0]?.yoast_head_json?.og_url} />
+        <meta property="og:type" content={data[0]?.yoast_head_json?.og_type} />
         <meta
           property="og:site_name"
-          content={data[0]?.yoast_head_json.og_site_name}
+          content={data[0]?.yoast_head_json?.og_site_name}
         />
         <meta property="article:published_time" content={data[0]?.date} />
       </Head>
@@ -87,9 +90,12 @@ const Details = ({
               <div className="bg-white rounded-2xl p-7 shadow-[0_6px_24px_rgba(6, 129, 121, 0.08)]">
                 {/* post thumbnail image */}
                 <Thumbnail id={data[0].id} />
-                <h1 className="text-3xl font-bold text-[#001324] truncate pt-8">
-                  {data[0].title.rendered}
-                </h1>
+                <h1
+                  className="text-3xl font-bold text-[#001324] truncate pt-8"
+                  dangerouslySetInnerHTML={{
+                    __html: data[0].title.rendered,
+                  }}
+                />
                 <PostContent
                   className="pt-4 text-lg text-[#5D6D7E]"
                   dangerouslySetInnerHTML={{
@@ -153,12 +159,22 @@ const Details = ({
                       className="flex flex-wrap xl:flex-nowrap items-center gap-5 bg-white rounded-2xl  shadow-[0_6px_24px_rgba(6, 129, 121, 0.08)] p-5 mb-5"
                     >
                       <div>
-                        <PostImage id={item.id} />
+                        <Link href={`/post/${item.slug}`}>
+                          <a>
+                            <PostImage id={item.id} />
+                          </a>
+                        </Link>
                       </div>
                       <div>
                         <p className="text-sm text-[#1a2b3a]">{postDate}</p>
-                        <h3 className="text-base font-bold text-[#001324] max-h-11 overflow-hidden">
-                          {item.title.rendered}
+                        <h3 className="text-base font-bold text-[#001324] hover:text-blueTwo max-h-11 overflow-hidden">
+                          <Link href={`/blog/${item.slug}`}>
+                            <a
+                              dangerouslySetInnerHTML={{
+                                __html: item.title.rendered,
+                              }}
+                            />
+                          </Link>
                         </h3>
                         <Link href={`/blog/${item.slug}`}>
                           <a className="flex items-center gap-3 mt-2 text-blueTwo">

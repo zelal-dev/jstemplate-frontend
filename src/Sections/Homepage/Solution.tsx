@@ -2,9 +2,9 @@ import React from "react";
 import SolutionCart from "../../components/SolutionCart";
 import Link from "next/link";
 import { HiOutlineArrowNarrowRight } from "react-icons/hi";
-import { ProductDocument } from "../../../pages/shop";
+import _ from "lodash";
 
-const Solution = ({ data }: { data: ProductDocument }) => {
+const Solution = ({ data }: { data: any }) => {
   return (
     <div className="container mx-auto relative z-0">
       <div className="xl:py-24 sm:py-16 py-14 flex flex-col items-center justify-center">
@@ -20,11 +20,8 @@ const Solution = ({ data }: { data: ProductDocument }) => {
           secure
         </article>
         <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-11 container mx-auto xl:mt-40 md:mt-16 mt-12 px-5 md:px-0">
-          {/* {sample.map((items, index)=>(
-                    <SolutionCart key={index} />
-                ))} */}
           {data &&
-            data.map((item: any, index: any) => (
+            _.slice(data, 0, 6).map((item: any, index: any) => (
               <div
                 className={`${
                   index === 1 || index === 4 || index === 7 || index === 10

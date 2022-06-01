@@ -1,45 +1,12 @@
 // import Image from '../../src/components/optimize/image';
-import Image from "next/image";
 import Link from "next/link";
 import React from "react";
 import { HiOutlineArrowNarrowRight } from "react-icons/hi";
-import Navbar from "../../src/components/Navbar";
-
-import FooterWithoutSolution from "../../src/components/FooterWithoutSolution";
 import useSWR, { useSWRConfig } from "swr";
-import { Axios } from "../../src/utils/axiosKits";
-import { FormLoader, LoaderGrowing } from "../../src/lib/loader";
 import FeaturedMedia from "../../src/components/Blog/FeaturedMedia";
-
-const img = [
-  {
-    img: "/blog-1.png",
-  },
-  {
-    img: "/blog-2.png",
-  },
-  {
-    img: "/blog-3.png",
-  },
-  {
-    img: "/blog-4.png",
-  },
-  {
-    img: "/blog-5.png",
-  },
-  {
-    img: "/blog-6.png",
-  },
-  {
-    img: "/blog-7.png",
-  },
-  {
-    img: "/blog-8.png",
-  },
-  {
-    img: "/blog-9.png",
-  },
-];
+import FooterWithoutSolution from "../../src/components/FooterWithoutSolution";
+import Navbar from "../../src/components/Navbar";
+import { FormLoader } from "../../src/lib/loader";
 
 const fetcher = (url: any) => fetch(url).then((r) => r.json());
 
@@ -102,7 +69,7 @@ const News = ({ getData }: { getData: any }) => {
                   return (
                     <div
                       key={index}
-                      className="col-span-6 md:col-span-3 lg:col-span-2 bg-white p-7 rounded-2xl transition duration-500 ease-in-out hover:shadow-grayLight "
+                      className="col-span-6 md:col-span-3 group lg:col-span-2 bg-white p-7 rounded-2xl transition duration-500 ease-in-out hover:shadow-grayLight "
                     >
                       {/* post thumbnail image */}
                       <Link href={`/blog/${item.slug}`}>
@@ -113,9 +80,13 @@ const News = ({ getData }: { getData: any }) => {
                       <p className="text-lg text-[#1a2b3a] pt-5 pb-2">
                         {postDate}
                       </p>
-                      <h1 className="text-lg sm:text-xl text-[#001324] font-bold text-ellipsis overflow-hidden max-h-14">
+                      <h1 className="text-lg sm:text-xl text-[#001324] group-hover:text-blueTwo font-bold text-ellipsis overflow-hidden max-h-14">
                         <Link href={`/blog/${item.slug}`}>
-                          <a>{item.title.rendered}</a>
+                          <a
+                            dangerouslySetInnerHTML={{
+                              __html: item.title.rendered,
+                            }}
+                          />
                         </Link>
                       </h1>
                       <div

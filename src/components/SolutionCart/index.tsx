@@ -1,3 +1,4 @@
+import Link from "next/link";
 import React from "react";
 import { BsFillEmojiSmileFill } from "react-icons/bs";
 import Image from "../../lib/Image";
@@ -15,21 +16,27 @@ const SolutionCart = ({
     <div className="hover:shadow-grayLight shadow-md ease-in duration-300 rounded-xl cursor-pointer p-7 bg-white  flex flex-col items-start relative group">
       {item.thumbnail ? (
         <div className="mb-6">
-          <Image
-            src={
-              item.thumbnail ||
-              "http://res.cloudinary.com/js-template/image/upload/v1651478994/vi1pbxtwb3l7qyv2vhpz.jpg"
-            }
-            layout={undefined}
-            className={"w-full 2xl:h-64 lg:h-60 sm:h-56 h-48 rounded-lg "}
-            alt="preview_img"
-            width={800}
-            height={500}
-            noPlaceholder={undefined}
-          />
+          <Link href={`/item/${item?.slug}`}>
+            <a>
+              <Image
+                src={
+                  item.thumbnail ||
+                  "http://res.cloudinary.com/js-template/image/upload/v1651478994/vi1pbxtwb3l7qyv2vhpz.jpg"
+                }
+                layout={undefined}
+                className={"w-full 2xl:h-64 lg:h-60 sm:h-56 h-48 rounded-lg "}
+                alt="preview_img"
+                width={800}
+                height={500}
+                noPlaceholder={undefined}
+              />
+            </a>
+          </Link>
         </div>
       ) : (
-        <div className="w-full 2xl:h-64 lg:h-60 sm:h-56 h-48 rounded-lg mb-6 bg-cartImageBgOne" />
+        <Link href={`/item/${item?.slug}`}>
+          <a className="w-full 2xl:h-64 lg:h-60 sm:h-56 h-48 rounded-lg mb-6 bg-cartImageBgOne" />
+        </Link>
       )}
       {item &&
         item.category.map((category: string, index: any) => {
@@ -45,7 +52,9 @@ const SolutionCart = ({
       <h5
         className={`text-xl mt-5 font-bold text-gray-900 group-hover:text-${fromColor} duration-200 leading-6`}
       >
-        {item?.title ? item?.title : "Product Title"}
+        <Link href={`/item/${item?.slug}`}>
+          {item?.title ? item?.title : "Product Title"}
+        </Link>
       </h5>
       <article className="text-gray-600 mt-3">
         {item?.description
