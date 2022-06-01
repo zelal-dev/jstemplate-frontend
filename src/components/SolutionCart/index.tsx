@@ -12,7 +12,7 @@ const SolutionCart = ({
   item: any;
 }) => {
   return (
-    <div className="h-full hover:shadow-grayLight shadow-md ease-in duration-300 rounded-xl cursor-pointer p-7 bg-white  flex flex-col items-start relative group">
+    <div className="hover:shadow-grayLight shadow-md ease-in duration-300 rounded-xl cursor-pointer p-7 bg-white  flex flex-col items-start relative group">
       {item.thumbnail ? (
         <div className="mb-6">
           <Image

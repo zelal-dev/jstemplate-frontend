@@ -16,12 +16,12 @@ const Solution = ({ data }: { data: ProductDocument }) => {
         <h1 className="2xl:text-4xl xl:text-3xl lg:text-2xl md:text-xl sm:text-lg text-base font-bold lg:mt-4 sm:mt-3 mt-2 text-gray-900">
           Our Creative Solution
         </h1>
-        <article className="mt-5 text-gray-600 md:w-1/3 w-3/5 text-center xl:text-lg md:text-base text-sm">
+        <article className="mt-5 text-gray-600 max-w-2xl w-11/12 text-center xl:text-lg md:text-base text-sm">
           Check out the Best full stack solution and React, Next.js Ready-Made
           Templates. Every templates we ensure super fast speed, scaleable and
           secure
         </article>
-        <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-11 container mx-auto xl:mt-20 md:mt-16 mt-12 px-5 md:px-0">
+        <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-11 container mx-auto xl:mt-40 md:mt-16 mt-12 px-5 md:px-0">
           {/* {sample.map((items, index)=>(
                     <SolutionCart key={index} />
                 ))} */}
@@ -29,8 +29,8 @@ const Solution = ({ data }: { data: ProductDocument }) => {
             data.map((item: any, index: any) => (
               <div
                 className={`${
-                  index === 1 || index === 4 || index === 6 || index === 8
-                    ? ""
+                  index === 1 || index === 4 || index === 7 || index === 10
+                    ? "xl:-mt-20"
                     : ""
                 } `}
                 key={item._id}
@@ -48,7 +48,7 @@ const Solution = ({ data }: { data: ProductDocument }) => {
             ))}
         </div>
         <Link href="/shop">
-          <a className="mt-20 shadow-3xl flex sm:w-auto items-center xl:text-lg text-base xl:py-6 md:py-3 xl:px-10 md:px-5 py-3 px-3 rounded-lg bg-gradient-to-br from-blueOne to-blueTwo sm:mr-6 mr-0">
+          <a className="mt-20 xl:mt-0 shadow-3xl flex sm:w-auto items-center xl:text-lg text-base xl:py-6 md:py-3 xl:px-10 md:px-5 py-3 px-3 rounded-lg bg-gradient-to-br from-blueOne to-blueTwo sm:mr-6 mr-0">
             <span className="md:ml-4 ml-3 text-white mr-4">
               View All Solution
             </span>

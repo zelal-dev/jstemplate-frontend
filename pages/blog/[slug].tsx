@@ -9,6 +9,7 @@ import useSWR from "swr";
 import FeaturedMedia from "../../src/components/Blog/FeaturedMedia";
 import Thumbnail from "../../src/components/Blog/Thumbnail";
 import styled from "@emotion/styled";
+import Head from "next/head";
 
 const dataOne = ["1", "2", "3", "4", "5", "6", "7", "8"];
 
@@ -49,6 +50,33 @@ const Details = ({
 
   return (
     <>
+      <Head>
+        <title>{data[0]?.yoast_head_json.title}</title>
+        <meta
+          name="description"
+          content={data[0]?.yoast_head_json.og_description}
+        />
+        <meta
+          name="robots"
+          content={`${data[0]?.yoast_head_json.robots.index}, ${data[0]?.yoast_head_json.robots.follow},`}
+        />
+        <meta property="og:title" content={data[0]?.yoast_head_json.title} />
+        <meta
+          property="og:description"
+          content={data[0]?.yoast_head_json.og_description}
+        />
+        <meta
+          property="og:image"
+          content={data[0]?.yoast_head_json.og_image[0].url}
+        />
+        <meta property="og:url" content={data[0]?.yoast_head_json.og_url} />
+        <meta property="og:type" content={data[0]?.yoast_head_json.og_type} />
+        <meta
+          property="og:site_name"
+          content={data[0]?.yoast_head_json.og_site_name}
+        />
+        <meta property="article:published_time" content={data[0]?.date} />
+      </Head>
       <div className="shadow-md">
         <Navbar.SecondaryDefaultNavbar />
       </div>

@@ -59,7 +59,7 @@ const ChooseUs = () => {
         <h1 className="2xl:text-4xl xl:text-3xl lg:text-2xl md:text-xl sm:text-lg text-base font-bold lg:mt-4 sm:mt-3 mt-2 text-gray-900">
           Why Choose Us ?
         </h1>
-        <article className="mt-5 text-gray-600 md:w-1/3 w-3/5 text-center xl:text-lg md:text-base text-sm">
+        <article className="mt-5 text-gray-600 max-w-2xl w-11/12 text-center xl:text-lg md:text-base text-sm">
           Our main focuses on providing every customer the best support for
           their respective business. We make sure our customer is always happy.
         </article>

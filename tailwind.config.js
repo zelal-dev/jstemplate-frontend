@@ -34,6 +34,10 @@ module.exports = {
       largest: ".75em",
     },
     extend: {
+      fontFamily: {
+        lato: "'Lato', sans-serif",
+        montserrat: "'Montserrat', sans-serif",
+      },
       colors: {
         secondary: "#FF7043",
         orangeOne: "#FFAB90",

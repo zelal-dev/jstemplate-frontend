@@ -14,7 +14,7 @@ const Header = () => {
           Grow Your Business Faster
         </h1>
       </div>
-      <article className="sm:w-2/5 w-4/5 text-gray-600 xl:mt-6 md:mt-5 mt-3 text-center 2xl:text-xl lg:text-lg sm:text-base text-sm">
+      <article className="max-w-3xl w-11/12 text-gray-600 xl:mt-6 md:mt-5 mt-3 text-center 2xl:text-xl lg:text-lg sm:text-base text-sm">
         MERN Stack Theme, Landing page and dashboard template, Headless CMS
         template built on best teck stack-
         <span className="bold text-black">
