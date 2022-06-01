@@ -1,6 +1,6 @@
-import Image from "next/image";
-import Link from "next/link";
-import React from "react";
+import Image from 'next/image'
+import Link from 'next/link'
+import React from 'react'
 import {
   FaCcDiscover,
   FaCcJcb,
@@ -12,9 +12,9 @@ import {
   FaInstagram,
   FaLinkedinIn,
   FaTwitter,
-} from "react-icons/fa";
-import { HiOutlineArrowNarrowRight } from "react-icons/hi";
-import { SiAmericanexpress } from "react-icons/si";
+} from 'react-icons/fa'
+import { HiOutlineArrowNarrowRight } from 'react-icons/hi'
+import { SiAmericanexpress } from 'react-icons/si'
 
 const Footer = ({
   boxToColor,
@@ -24,12 +24,12 @@ const Footer = ({
   buttonFromColor,
   shadowButton,
 }: {
-  boxToColor: string;
-  boxFromColor: string;
-  shadowBox: string;
-  buttonToColor: string;
-  buttonFromColor: string;
-  shadowButton: string;
+  boxToColor: string
+  boxFromColor: string
+  shadowBox: string
+  buttonToColor: string
+  buttonFromColor: string
+  shadowButton: string
 }) => {
   return (
     <div className="bg-gray-800 relative px-5">
@@ -44,17 +44,18 @@ const Footer = ({
                 You`ll love our solutions
               </h1>
               <article className="text-gray-600 xl:text-lg lg:text-base text-sm lg:w-3/4 w-full mt-2">
-                Buy Our Ready-Made Web Solution Grow Your Business Faster
+                Buy Our Ready-Made JS Template Solution, Grow Your Business
+                Faster
               </article>
             </div>
           </div>
           <div className=" flex items-center justify-center">
-            <Link href="/productPage">
+            <Link href="/shop">
               <a
                 className={`flex-1 shadow-${shadowButton} flex items-center xl:text-lg text-base xl:py-6 md:py-3 xl:px-10 md:px-5 py-3 px-3 rounded-lg bg-gradient-to-br from-${buttonFromColor} to-${buttonToColor} mt-8 lg:mt-0`}
               >
-                <span className=" text-white mr-4">View All Solution</span>{" "}
-                <HiOutlineArrowNarrowRight style={{ color: "white" }} />
+                <span className=" text-white mr-4">View All Solution</span>{' '}
+                <HiOutlineArrowNarrowRight style={{ color: 'white' }} />
               </a>
             </Link>
           </div>
@@ -239,7 +240,7 @@ const Footer = ({
         </p>
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default Footer;
+export default Footer
