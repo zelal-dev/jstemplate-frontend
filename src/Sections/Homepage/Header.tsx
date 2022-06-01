@@ -1,7 +1,7 @@
-import Link from 'next/link'
-import React from 'react'
-import { FaShoppingCart } from 'react-icons/fa'
-import { HiArchive } from 'react-icons/hi'
+import Link from "next/link";
+import React from "react";
+import { FaShoppingCart } from "react-icons/fa";
+import { HiArchive } from "react-icons/hi";
 
 const Header = () => {
   return (
@@ -25,23 +25,23 @@ const Header = () => {
         <Link href="/shop">
           <a className="flex sm:w-auto w-full items-center xl:text-lg text-base xl:py-4 md:py-3 xl:px-6 md:px-5 py-3 px-3 rounded-lg bg-gradient-to-br from-blueOne to-blueTwo sm:mr-6 mr-0 shadow-3xl">
             <FaShoppingCart
-              style={{ color: 'white', width: '18px', height: '18px' }}
+              style={{ color: "white", width: "18px", height: "18px" }}
             />
-            <span className="md:ml-4 ml-3 text-white">Our Solution</span>{' '}
+            <span className="md:ml-4 ml-3 text-white">Our Solution</span>{" "}
           </a>
         </Link>
         {/* Pre Seal Button Hidden */}
-        <Link href="/preSalePage">
+        <Link href="/contact-us">
           <a className="flex sm:w-auto w-full items-center xl:text-lg text-base xl:py-4 md:py-3 xl:px-6 md:px-5 py-3 px-3 rounded-lg bg-gradient-to-br from-orangeOne to-orangeTwo  sm:mt-0 mt-3 shadow-4xl">
             <HiArchive
-              style={{ color: 'white', width: '18px', height: '18px' }}
+              style={{ color: "white", width: "18px", height: "18px" }}
             />
             <span className="md:ml-4 ml-3 text-white">Hire Us</span>
           </a>
         </Link>
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default Header
+export default Header;

@@ -4,6 +4,7 @@ const nextConfig = {
   // image host name:
   images: {
     domains: [
+      "res.cloudinary.com",
       "api-blog.jstemplate.net",
       "lh1.googleusercontent.com",
       "lh2.googleusercontent.com",

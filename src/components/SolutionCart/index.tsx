@@ -1,7 +1,7 @@
 import Link from "next/link";
 import React from "react";
 import { BsFillEmojiSmileFill } from "react-icons/bs";
-import Image from "../../lib/Image";
+import Image from "next/image";
 
 const SolutionCart = ({
   toColor,
@@ -15,7 +15,7 @@ const SolutionCart = ({
   return (
     <div className="hover:shadow-grayLight shadow-md ease-in duration-300 rounded-xl cursor-pointer p-7 bg-white  flex flex-col items-start relative group">
       {item.thumbnail ? (
-        <div className="mb-6">
+        <div className="w-full 2xl:h-64 lg:h-60 sm:h-56 h-48 rounded-lg relative mb-6">
           <Link href={`/item/${item?.slug}`}>
             <a>
               <Image
@@ -23,12 +23,10 @@ const SolutionCart = ({
                   item.thumbnail ||
                   "http://res.cloudinary.com/js-template/image/upload/v1651478994/vi1pbxtwb3l7qyv2vhpz.jpg"
                 }
-                layout={undefined}
-                className={"w-full 2xl:h-64 lg:h-60 sm:h-56 h-48 rounded-lg "}
+                className={"w-full h-auto rounded-lg "}
                 alt="preview_img"
-                width={800}
-                height={500}
-                noPlaceholder={undefined}
+                layout="fill"
+                objectFit="cover"
               />
             </a>
           </Link>
