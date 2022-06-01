@@ -1,61 +1,61 @@
-import Link from "next/link";
-import { useRouter } from "next/router";
-import React, { useState } from "react";
-import { BsFillFileDiffFill, BsFillTriangleFill } from "react-icons/bs";
-import { FaReceipt, FaShoppingCart } from "react-icons/fa";
-import { HiOutlineDownload } from "react-icons/hi";
-import { ImCross } from "react-icons/im";
-import { RiUserFill } from "react-icons/ri";
-import { VscListSelection } from "react-icons/vsc";
+import Link from 'next/link'
+import { useRouter } from 'next/router'
+import React, { useState } from 'react'
+import { BsFillFileDiffFill, BsFillTriangleFill } from 'react-icons/bs'
+import { FaReceipt, FaShoppingCart } from 'react-icons/fa'
+import { HiOutlineDownload } from 'react-icons/hi'
+import { ImCross } from 'react-icons/im'
+import { RiUserFill } from 'react-icons/ri'
+import { VscListSelection } from 'react-icons/vsc'
 
 const DashboardSecondaryNavbar = () => {
-  const router = useRouter();
-  const [modal, setModal] = useState<string>("hidden");
-  const [layout, setLayout] = useState<string>("block");
-  const [sidebar, setSidebar] = useState<string>("hidden");
+  const router = useRouter()
+  const [modal, setModal] = useState<string>('hidden')
+  const [layout, setLayout] = useState<string>('block')
+  const [sidebar, setSidebar] = useState<string>('hidden')
 
   const handleTicketModal = () => {
-    if (modal === "hidden") {
-      setModal("flex");
-      setLayout("fixed");
+    if (modal === 'hidden') {
+      setModal('flex')
+      setLayout('fixed')
     } else {
-      setModal("hidden");
-      setLayout("block");
+      setModal('hidden')
+      setLayout('block')
     }
-  };
+  }
 
   const handleSidebar = () => {
-    if (sidebar === "hidden") {
-      setSidebar("block");
+    if (sidebar === 'hidden') {
+      setSidebar('block')
     } else {
-      setSidebar("hidden");
+      setSidebar('hidden')
     }
-  };
+  }
 
   // const style = {
   //   marginRight: 10,
   //   color: router.asPath === "/dashboard" ? 'text-sm text-white p-4 rounded-lg bg-blueTwo flex items-center mr-3' : 'text-sm text-gray-600 p-4 rounded-lg flex items-center mr-3',
   // }
   const styleDash =
-    router.asPath === "/dashboard"
-      ? "text-sm text-white p-4 rounded-lg bg-blueTwo flex items-center mr-3"
-      : "text-sm text-gray-600 p-4 rounded-lg flex items-center mr-3";
+    router.asPath === '/dashboard'
+      ? 'text-sm text-white p-4 rounded-lg bg-blueTwo flex items-center mr-3'
+      : 'text-sm text-gray-600 p-4 rounded-lg flex items-center mr-3'
   const stylePre =
-    router.asPath === "/dashboard/presale"
-      ? "text-sm text-white p-4 rounded-lg bg-blueTwo flex items-center mr-3"
-      : "text-sm text-gray-600 p-4 rounded-lg flex items-center mr-3";
+    router.asPath === '/dashboard/presale'
+      ? 'text-sm text-white p-4 rounded-lg bg-blueTwo flex items-center mr-3'
+      : 'text-sm text-gray-600 p-4 rounded-lg flex items-center mr-3'
   const styleDownloads =
-    router.asPath === "/dashboard/downloads"
-      ? "text-sm text-white p-4 rounded-lg bg-blueTwo flex items-center mr-3"
-      : "text-sm text-gray-600 p-4 rounded-lg flex items-center mr-3";
+    router.asPath === '/dashboard/downloads'
+      ? 'text-sm text-white p-4 rounded-lg bg-blueTwo flex items-center mr-3'
+      : 'text-sm text-gray-600 p-4 rounded-lg flex items-center mr-3'
   const styleTickets =
-    router.asPath === "/dashboard/tickets"
-      ? "text-sm text-white p-4 rounded-lg bg-blueTwo flex items-center mr-3"
-      : "text-sm text-gray-600 p-4 rounded-lg flex items-center mr-3";
+    router.asPath === '/dashboard/tickets'
+      ? 'text-sm text-white p-4 rounded-lg bg-blueTwo flex items-center mr-3'
+      : 'text-sm text-gray-600 p-4 rounded-lg flex items-center mr-3'
   const styleProjects =
-    router.asPath === "/dashboard/projects"
-      ? "text-sm text-white p-4 rounded-lg bg-blueTwo flex items-center mr-3"
-      : "text-sm text-gray-600 p-4 rounded-lg flex items-center mr-3";
+    router.asPath === '/dashboard/projects'
+      ? 'text-sm text-white p-4 rounded-lg bg-blueTwo flex items-center mr-3'
+      : 'text-sm text-gray-600 p-4 rounded-lg flex items-center mr-3'
   return (
     <div className="bg-white mt-1 drop-shadow-sm relative">
       <div className="container relative mx-auto flex items-center justify-between py-2 px-5 sm:px-0">
@@ -77,7 +77,7 @@ const DashboardSecondaryNavbar = () => {
           </Link> */}
           <Link href="/dashboard/downloads">
             <a className={`${styleDownloads}`}>
-              <HiOutlineDownload className="w-5 h-5 mr-4" />{" "}
+              <HiOutlineDownload className="w-5 h-5 mr-4" />{' '}
               <span>Downloads</span>
             </a>
           </Link>
@@ -108,19 +108,19 @@ const DashboardSecondaryNavbar = () => {
           <div className="flex flex-col">
             <Link href="/dashboard">
               <a className={`${styleDash}`}>
-                <RiUserFill className="w-5 h-5 mr-4" />{" "}
+                <RiUserFill className="w-5 h-5 mr-4" />{' '}
                 <span>My Dashboard</span>
               </a>
             </Link>
             <Link href="/dashboard/presale">
               <a className={`${stylePre}`}>
-                <FaShoppingCart className="w-5 h-5 mr-4" />{" "}
+                <FaShoppingCart className="w-5 h-5 mr-4" />{' '}
                 <span>Pre-Sale</span>
               </a>
             </Link>
             <Link href="/dashboard/downloads">
               <a className={`${styleDownloads}`}>
-                <HiOutlineDownload className="w-5 h-5 mr-4" />{" "}
+                <HiOutlineDownload className="w-5 h-5 mr-4" />{' '}
                 <span>Downloads</span>
               </a>
             </Link>
@@ -131,7 +131,7 @@ const DashboardSecondaryNavbar = () => {
             </Link>
             <Link href="/dashboard/projects">
               <a className={`${styleProjects}`}>
-                <BsFillFileDiffFill className="w-5 h-5 mr-4" />{" "}
+                <BsFillFileDiffFill className="w-5 h-5 mr-4" />{' '}
                 <span>Projects</span>
               </a>
             </Link>
@@ -188,7 +188,7 @@ const DashboardSecondaryNavbar = () => {
         </div>
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default DashboardSecondaryNavbar;
+export default DashboardSecondaryNavbar

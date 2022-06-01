@@ -1,55 +1,55 @@
-import React, { useState } from "react";
-import { BsFillEmojiSmileFill, BsShieldFillCheck } from "react-icons/bs";
-import { FaUsers } from "react-icons/fa";
-import { DiJavascript1 } from "react-icons/di";
-import { BiDollar } from "react-icons/bi";
-import treatment from "./../../../public/treatment.svg";
-import Image from "next/image";
+import React, { useState } from 'react'
+import { BsFillEmojiSmileFill, BsShieldFillCheck } from 'react-icons/bs'
+import { FaUsers } from 'react-icons/fa'
+import { DiJavascript1 } from 'react-icons/di'
+import { BiDollar } from 'react-icons/bi'
+import treatment from './../../../public/treatment.svg'
+import Image from 'next/image'
 
 const ChooseUs = () => {
-  const sample = [1, 2, 3];
-  const [boxShadowOne, setBoxShadowOne] = useState("");
-  const [boxShadowTwo, setBoxShadowTwo] = useState("");
-  const [boxShadowThree, setBoxShadowThree] = useState("");
-  const [boxShadowFour, setBoxShadowFour] = useState("");
-  const [boxShadowFive, setBoxShadowFive] = useState("");
-  const [boxShadowSix, setBoxShadowSix] = useState("");
+  const sample = [1, 2, 3]
+  const [boxShadowOne, setBoxShadowOne] = useState('')
+  const [boxShadowTwo, setBoxShadowTwo] = useState('')
+  const [boxShadowThree, setBoxShadowThree] = useState('')
+  const [boxShadowFour, setBoxShadowFour] = useState('')
+  const [boxShadowFive, setBoxShadowFive] = useState('')
+  const [boxShadowSix, setBoxShadowSix] = useState('')
   const handleMouseOverOne = () => {
-    setBoxShadowOne("");
-  };
+    setBoxShadowOne('')
+  }
   const handleMouseOutOne = () => {
-    setBoxShadowOne("inset 0px 8px 4px -4px #E9F0FB");
-  };
+    setBoxShadowOne('inset 0px 8px 4px -4px #E9F0FB')
+  }
   const handleMouseOverTwo = () => {
-    setBoxShadowTwo("");
-  };
+    setBoxShadowTwo('')
+  }
   const handleMouseOutTwo = () => {
-    setBoxShadowTwo("inset 0px 8px 4px -4px #E9F0FB");
-  };
+    setBoxShadowTwo('inset 0px 8px 4px -4px #E9F0FB')
+  }
   const handleMouseOverThree = () => {
-    setBoxShadowThree("");
-  };
+    setBoxShadowThree('')
+  }
   const handleMouseOutThree = () => {
-    setBoxShadowThree("inset 0px 8px 4px -4px #E9F0FB");
-  };
+    setBoxShadowThree('inset 0px 8px 4px -4px #E9F0FB')
+  }
   const handleMouseOverFour = () => {
-    setBoxShadowFour("");
-  };
+    setBoxShadowFour('')
+  }
   const handleMouseOutFour = () => {
-    setBoxShadowFour("inset 0px 8px 4px -4px #E9F0FB");
-  };
+    setBoxShadowFour('inset 0px 8px 4px -4px #E9F0FB')
+  }
   const handleMouseOverFive = () => {
-    setBoxShadowFive("");
-  };
+    setBoxShadowFive('')
+  }
   const handleMouseOutFive = () => {
-    setBoxShadowFive("inset 0px 8px 4px -4px #E9F0FB");
-  };
+    setBoxShadowFive('inset 0px 8px 4px -4px #E9F0FB')
+  }
   const handleMouseOverSix = () => {
-    setBoxShadowSix("");
-  };
+    setBoxShadowSix('')
+  }
   const handleMouseOutSix = () => {
-    setBoxShadowSix("inset 0px 8px 4px -4px #E9F0FB");
-  };
+    setBoxShadowSix('inset 0px 8px 4px -4px #E9F0FB')
+  }
   return (
     <div className="container mx-auto relative z-0">
       <div className="xl:py-24 sm:py-16 py-14 flex flex-col items-center justify-center">
@@ -72,7 +72,7 @@ const ChooseUs = () => {
           >
             <div className="p-5 rounded-md bg-gradient-to-br from-blueOne to-blueTwo shadow-3xl">
               <FaUsers
-                style={{ color: "white", width: "30px", height: "30px" }}
+                style={{ color: 'white', width: '30px', height: '30px' }}
               />
             </div>
             <h5 className="text-xl font-bold mt-7 text-gray-900 text-center">
@@ -92,7 +92,7 @@ const ChooseUs = () => {
           >
             <div className="p-5 rounded-md bg-gradient-to-br from-orangeOne to-orangeTwo shadow-4xl">
               <BsFillEmojiSmileFill
-                style={{ color: "white", width: "30px", height: "30px" }}
+                style={{ color: 'white', width: '30px', height: '30px' }}
               />
             </div>
             <h5 className="text-xl font-bold mt-7 text-gray-900 text-center">
@@ -110,14 +110,14 @@ const ChooseUs = () => {
           >
             <div className="p-5 rounded-md bg-gradient-to-br from-purpleLight to-purpleDark shadow-purple">
               <BsShieldFillCheck
-                style={{ color: "white", width: "30px", height: "30px" }}
+                style={{ color: 'white', width: '30px', height: '30px' }}
               />
             </div>
             <h5 className="text-xl font-bold mt-7 text-gray-900 text-center">
-              Secure and Scaleable
+              Secure and Scalable
             </h5>
             <article className="text-lg text-gray-600 mt-4 text-center">
-              Our solution is secured and scaleable as you need
+              Our solution is secured and scalable as you need
             </article>
           </div>
           <div
@@ -128,7 +128,7 @@ const ChooseUs = () => {
           >
             <div className="p-5 rounded-md bg-gradient-to-br from-greenLight to-greenDark shadow-green">
               <DiJavascript1
-                style={{ color: "white", width: "30px", height: "30px" }}
+                style={{ color: 'white', width: '30px', height: '30px' }}
               />
             </div>
             <h5 className="text-xl font-bold mt-7 text-gray-900 text-center">
@@ -163,7 +163,7 @@ const ChooseUs = () => {
           >
             <div className="p-5 rounded-md bg-gradient-to-br from-redLight to-redDark shadow-red">
               <BiDollar
-                style={{ color: "white", width: "30px", height: "30px" }}
+                style={{ color: 'white', width: '30px', height: '30px' }}
               />
             </div>
             <h5 className="text-xl font-bold mt-7 text-gray-900 text-center">
@@ -177,7 +177,7 @@ const ChooseUs = () => {
         </div>
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default ChooseUs;
+export default ChooseUs
