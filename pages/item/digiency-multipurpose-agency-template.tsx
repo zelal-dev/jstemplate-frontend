@@ -1,8 +1,6 @@
 import { GetServerSideProps } from "next";
 import Image from "next/image";
-import { useRouter } from "next/router";
 import React from "react";
-import useSWR from "swr";
 import Footer from "../../src/components/Footer";
 import Navbar from "../../src/components/Navbar";
 import Header from "../../src/Sections/ProductSinglePage2/Header";

@@ -8,6 +8,10 @@ body {
   font-family: "Lato", "Montserrat", sans-serif;
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 .header-part {
   background-image: url("./../public/headerBg.svg");
   background-size: cover;

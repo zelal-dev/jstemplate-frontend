@@ -128,9 +128,9 @@ const SingleProductNavbar = () => {
           <span className="mr-3">Service</span>
           <IoIosArrowDown />
         </div>
-        <Link href="">
+        <Link href="/resources">
           <a className=" lg:text-base sm:text-sm text-gray-100 cursor-pointer">
-            About
+            Resources
           </a>
         </Link>
         <Link href="/blog">

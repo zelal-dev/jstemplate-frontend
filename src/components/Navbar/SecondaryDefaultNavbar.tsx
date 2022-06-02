@@ -1,22 +1,19 @@
 import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/router";
-import { userInfo } from "os";
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { BsList } from "react-icons/bs";
-import { FaShoppingCart } from "react-icons/fa";
 import { HiOutlineArrowNarrowRight, HiOutlineLogout } from "react-icons/hi";
 import { ImCross } from "react-icons/im";
 import { IoIosArrowDown } from "react-icons/io";
 import { MdKeyboardArrowDown, MdKeyboardArrowUp } from "react-icons/md";
-import { RiLoginCircleLine, RiSettings3Fill, RiUserFill } from "react-icons/ri";
-import { ToastProvider } from "react-toast-notifications";
+import { RiSettings3Fill, RiUserFill } from "react-icons/ri";
 import { useSWRConfig } from "swr";
 import { useUser } from "../../lib/useUser";
 import ForgetPassword from "../../Sections/Authentication/ForgetPassword";
 import Login from "../../Sections/Authentication/Login";
 import Registration from "../../Sections/Authentication/Registration";
-import { localGet, localRemove } from "../../utils/localStorage";
+import { localRemove } from "../../utils/localStorage";
 import DropDownProduct from "../DropDownProduct";
 import DropDownService from "../DropDownService";
 
@@ -159,9 +156,9 @@ const SecondaryDefaultNavbar = () => {
           <span className="mr-3">Service</span>
           <IoIosArrowDown />
         </div>
-        <Link href="">
+        <Link href="/resources">
           <a className=" lg:text-base sm:text-sm text-gray-700 cursor-pointer">
-            About
+            Resources
           </a>
         </Link>
         <Link href="/blog">

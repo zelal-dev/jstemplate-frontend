@@ -158,7 +158,7 @@ const DefaultNavbar = () => {
           <span className="mr-3">Service</span>
           <IoIosArrowDown />
         </div>
-        <Link href="">
+        <Link href="/resources">
           <a className=" lg:text-base sm:text-sm text-gray-700 cursor-pointer">
             Resources
           </a>

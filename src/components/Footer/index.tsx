@@ -119,7 +119,7 @@ const Footer = ({
                   Our Solution
                 </a>
               </Link>
-              <Link href="">
+              <Link href="/resources">
                 <a className="text-gray-400 hover:text-blueTwo font-sm mt-2">
                   Resources
                 </a>

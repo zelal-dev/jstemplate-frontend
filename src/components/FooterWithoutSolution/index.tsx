@@ -72,12 +72,12 @@ const FooterWithoutSolution = () => {
               <Link href="/">
                 <a className="text-gray-400 hover:text-blueTwo font-sm">Home</a>
               </Link>
-              <Link href="">
+              <Link href="/shop">
                 <a className="text-gray-400 hover:text-blueTwo font-sm mt-2">
                   Our Solution
                 </a>
               </Link>
-              <Link href="">
+              <Link href="/resources">
                 <a className="text-gray-400 hover:text-blueTwo font-sm mt-2">
                   Resources
                 </a>

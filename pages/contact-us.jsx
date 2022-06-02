@@ -19,7 +19,7 @@ const ContactUs = () => {
                     Get in Touch
                   </h1>
                   <p className="text-lg font-normal text-white pt-2">
-                    We bring good things to your busines and work
+                    We bring good things to your business and work
                   </p>
                 </div>
                 <div className="flex gap-5">

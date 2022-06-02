@@ -18,7 +18,10 @@ const Heading = (props: any) => {
   const { colors, info, data } = props;
 
   return (
-    <div className="container mx-auto md:-mt-80 bg-white w-full shadow-xl xl:p-24 lg:p-16 md:p-10 sm:p-8 p-6 rounded-xl">
+    <div
+      id={data.slug}
+      className="container mx-auto md:-mt-80 bg-white w-full shadow-xl xl:p-24 lg:p-16 md:p-10 sm:p-8 p-6 rounded-xl"
+    >
       <div className="flex flex-col items-center">
         <h1 className="2xl:text-4xl xl:text-3xl lg:text-2xl md:text-xl sm:text-lg text-base font-bold lg:mt-4 sm:mt-3 mt-2 text-gray-900 text-center">
           {data ? data.title : "Product Single Page Header"}
