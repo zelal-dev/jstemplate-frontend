@@ -14,28 +14,28 @@ const fetcher = (url: any) => fetch(url).then((r) => r.json());
 
 const Details = ({
   getData,
-  latestPosts,
+  latestResources,
   status,
   slug,
 }: {
   getData: any;
-  latestPosts: any;
+  latestResources: any;
   status: any;
   slug: any;
 }) => {
   const { data, error } = useSWR(
-    `https://api-blog.jstemplate.net/wp-json/wp/v2/posts?slug=${slug}`,
+    `https://api-blog.jstemplate.net/wp-json/wp/v2/resources?slug=${slug}`,
     fetcher,
     {
       fallbackData: getData,
     }
   );
-  // latestPosts data fetching
-  const { data: latestPostsData, error: latestPostsError } = useSWR(
-    `https://api-blog.jstemplate.net/wp-json/wp/v2/posts?per_page=5`,
+  // latestResources data fetching
+  const { data: latestResourcesData, error: latestResourcesError } = useSWR(
+    `https://api-blog.jstemplate.net/wp-json/wp/v2/resources?per_page=5`,
     fetcher,
     {
-      fallbackData: latestPosts,
+      fallbackData: latestResources,
     }
   );
 
@@ -156,8 +156,8 @@ const Details = ({
               <h1 className="text-3xl font-bold text-[#001324] mt-8 mb-3 ">
                 Latest Topic
               </h1>
-              {latestPostsData &&
-                latestPostsData.map((item: any, index: any) => {
+              {latestResourcesData &&
+                latestResourcesData.map((item: any, index: any) => {
                   const date = new Date(item.date);
                   const postDate = date.toLocaleDateString("en-US", {
                     day: "numeric",
@@ -179,7 +179,7 @@ const Details = ({
                       <div>
                         <p className="text-sm text-[#1a2b3a]">{postDate}</p>
                         <h3 className="text-base font-bold text-[#001324] hover:text-blueTwo max-h-11 overflow-hidden">
-                          <Link href={`/blog/${item.slug}`}>
+                          <Link href={`/resources/${item.slug}`}>
                             <a
                               dangerouslySetInnerHTML={{
                                 __html: item.title.rendered,
@@ -187,7 +187,7 @@ const Details = ({
                             />
                           </Link>
                         </h3>
-                        <Link href={`/blog/${item.slug}`}>
+                        <Link href={`/resources/${item.slug}`}>
                           <a className="flex items-center gap-3 mt-2 text-blueTwo">
                             <span className="text-sm font-semibold ">
                               Read More
@@ -212,20 +212,20 @@ const Details = ({
 export async function getServerSideProps(context: any) {
   const slug = context.query.slug;
   const res = await fetch(
-    `https://api-blog.jstemplate.net/wp-json/wp/v2/posts?slug=${slug}`
+    `https://api-blog.jstemplate.net/wp-json/wp/v2/resources?slug=${slug}`
   );
   const data = await res.json();
 
   const resTwo = await fetch(
-    "https://api-blog.jstemplate.net/wp-json/wp/v2/posts?per_page=5"
+    "https://api-blog.jstemplate.net/wp-json/wp/v2/resources?per_page=5"
   );
-  const latestPosts = await resTwo.json();
+  const latestResources = await resTwo.json();
 
   if (data.length > 0) {
     return {
       props: {
         getData: data,
-        latestPosts: latestPosts,
+        latestResources: latestResources,
         status: 200,
         slug: slug,
       },
@@ -235,7 +235,7 @@ export async function getServerSideProps(context: any) {
     return {
       props: {
         getData: [],
-        latestPosts: [],
+        latestResources: [],
         status: 404,
         slug: slug,
       },
