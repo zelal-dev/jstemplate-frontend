@@ -170,7 +170,7 @@ const Details = ({
                       className="flex flex-wrap xl:flex-nowrap items-center gap-5 bg-white rounded-2xl  shadow-[0_6px_24px_rgba(6, 129, 121, 0.08)] p-5 mb-5"
                     >
                       <div>
-                        <Link href={`/post/${item.slug}`}>
+                        <Link href={`/blog/${item.slug}`}>
                           <a>
                             <PostImage id={item.id} />
                           </a>
