@@ -1,49 +1,63 @@
-import React from "react";
+import { lastIndexOf } from 'lodash'
+import React, { Fragment } from 'react'
 
 const Works = ({ colors, data }: { colors: any; data: any }) => {
   return (
     <div className="container mx-auto">
       <div className="xl:py-24 sm:py-16 py-14 flex flex-col items-center justify-center">
         <h1 className="2xl:text-4xl xl:text-3xl lg:text-2xl md:text-xl sm:text-lg text-base font-bold lg:mt-4 sm:mt-3 mt-2 text-gray-900">
-          {data ? data.title : "Heading Title"}
+          {data ? data.title : 'Heading Title'}
         </h1>
         <article className="mt-5 text-gray-600 max-w-2xl w-11/12 text-center xl:text-lg md:text-base text-sm">
-          {data ? data.description : "Description"}
+          {data ? data.description : 'Description'}
         </article>
         <div className="mt-16 grid lg:grid-cols-12 md:grid-cols-1 gap-16 container mx-auto px-5 sm:px-0">
-          <div className="lg:col-span-7">
-            <WorksCart colors={colors} />
-          </div>
-          <div className="lg:col-span-5 hidden lg:block">
-            <div className="flex items-end h-full">
-              <Arrow className={`${colors.textPrimary}`} />
-            </div>
-          </div>
-          <div className="lg:col-span-5 hidden lg:block">
+          {data
+            ? data.items.map((item: any, index: number) => (
+                <Fragment key={index}>
+                  {index % 2 === 0 ? (
+                    <Fragment>
+                      <div className="lg:col-span-7">
+                        <WorksCart item={item} colors={colors} />
+                      </div>
+                      <div className={`lg:col-span-5 hidden lg:block`}>
+                        {/* do not show last item  */}
+                        {data.items.length - 1 !== index && (
+                          <div className="flex items-end h-full">
+                            <Arrow className={`${colors.textPrimary}`} />
+                          </div>
+                        )}
+                      </div>
+                    </Fragment>
+                  ) : (
+                    <Fragment>
+                      <div className="lg:col-span-5 hidden lg:block">
+                        <div className="flex items-end h-full">
+                          <Arrow2 className={`${colors.textPrimary}`} />
+                        </div>
+                      </div>
+                      <div className="lg:col-span-7">
+                        <WorksCart item={item} colors={colors} />
+                      </div>
+                    </Fragment>
+                  )}
+                </Fragment>
+              ))
+            : 'Items'}
+
+          {/* <div className="lg:col-span-5 hidden lg:block">
             <div className="flex justify-end items-end h-full">
               <Arrow2 className={`${colors.textPrimary}`} />
             </div>
           </div>
           <div className="lg:col-span-7">
             <WorksCart colors={colors} />
-          </div>
-          <div className="lg:col-span-7">
-            <WorksCart colors={colors} />
-          </div>
-          <div className="lg:col-span-5 hidden lg:block">
-            <div className="flex items-end h-full">
-              <Arrow className={`${colors.textPrimary}`} />
-            </div>
-          </div>
-          <div className="lg:col-span-5 hidden lg:block"></div>
-          <div className="lg:col-span-7">
-            <WorksCart colors={colors} />
-          </div>
+          </div> */}
         </div>
       </div>
     </div>
-  );
-};
+  )
+}
 
 function Arrow({ className }: { className: string }) {
   return (
@@ -60,7 +74,7 @@ function Arrow({ className }: { className: string }) {
         fill="currentColor"
       />
     </svg>
-  );
+  )
 }
 
 function Arrow2({ className }: { className: string }) {
@@ -78,12 +92,12 @@ function Arrow2({ className }: { className: string }) {
         fill="currentColor"
       />
     </svg>
-  );
+  )
 }
 
-export default Works;
+export default Works
 
-const WorksCart = ({ colors }: { colors: any }) => {
+const WorksCart = ({ colors, item }: { colors: any; item: any }) => {
   return (
     <div className="col-span-12 flex items-start">
       <div className="col-span-6">
@@ -93,14 +107,12 @@ const WorksCart = ({ colors }: { colors: any }) => {
       </div>
       <div className="col-span-6 my-auto xl:ml-11 lg:ml-9 md:ml-7 sm:ml-6 ml-5">
         <h1 className="xl:text-3xl lg:text-2xl md:text-xl sm:text-lg text-base font-bold text-gray-900">
-          Simple Step Title Here
+          {item.name}{' '}
         </h1>
         <article className="mt-5 xl:text-lg md:text-base sm:text-sm text-xs text-gray-600">
-          Lorem Ipsum is simply dummy text of the printing and typesetting
-          industry. Lorem Ipsum has been the industrys standard dummy text ever
-          since the 1500s, when an unknown printer took
+          {item.description}
         </article>
       </div>
     </div>
-  );
-};
+  )
+}

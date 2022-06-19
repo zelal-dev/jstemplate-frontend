@@ -1,78 +1,78 @@
-import Link from "next/link";
-import React, { useState } from "react";
-import { BiSearchAlt2 } from "react-icons/bi";
-import { BsThreeDotsVertical } from "react-icons/bs";
-import { useToasts } from "react-toast-notifications";
-import useSWR, { mutate } from "swr";
-import { useRouter } from "next/router";
-import Layout from "../../../src/components/Layout";
-import { authAxios } from "../../../src/utils/axiosKits";
-import { SubmitHandler, useForm } from "react-hook-form";
-import { LoaderGrowing } from "../../../src/lib/loader";
-import { useUser, UserNotLogin } from "../../../src/lib/useUser";
+import Link from 'next/link'
+import React, { useState } from 'react'
+import { BiSearchAlt2 } from 'react-icons/bi'
+import { BsThreeDotsVertical } from 'react-icons/bs'
+import { useToasts } from 'react-toast-notifications'
+import useSWR, { mutate } from 'swr'
+import { useRouter } from 'next/router'
+import Layout from '../../../src/components/Layout'
+import { authAxios } from '../../../src/utils/axiosKits'
+import { SubmitHandler, useForm } from 'react-hook-form'
+import { LoaderGrowing } from '../../../src/lib/loader'
+import { useUser, UserNotLogin } from '../../../src/lib/useUser'
 
 const fetchProduct = (url: any) =>
-  authAxios(url).then((res) => res.data.products);
+  authAxios(url).then((res) => res.data.products)
 
 const Products = () => {
-  const { loggedIn, user } = useUser();
-  const [products, setProducts] = useState([]);
-  const [action, setAction] = useState<number>();
-  const [loading, setLoading] = useState<boolean>(false);
-  const [editVisibility, setEditVisibility] = useState<boolean>(false);
-  const router = useRouter();
-  const { addToast } = useToasts();
+  const { loggedIn, user } = useUser()
+  const [products, setProducts] = useState([])
+  const [action, setAction] = useState<number>()
+  const [loading, setLoading] = useState<boolean>(false)
+  const [editVisibility, setEditVisibility] = useState<boolean>(false)
+  const router = useRouter()
+  const { addToast } = useToasts()
   const { data, error } = useSWR(`api/v1/product`, fetchProduct, {
     refreshInterval: 1000,
-  });
+  })
 
   const handleActionVisible = (value: number) => {
     if (action === value) {
-      setAction(-1);
+      setAction(-1)
     } else {
-      setAction(value);
+      setAction(value)
     }
-  };
+  }
 
   const handleEditVisibility = (id: any) => {
-    router.push(`/admin-dashboard/products/${id}`);
-  };
+    router.push(`/admin-dashboard/products/${id}`)
+  }
 
   const handleProductDelete = async (id: number) => {
     // call swr to delete the component
-    setLoading(true);
+    setLoading(true)
     await authAxios({
-      method: "DELETE",
+      method: 'DELETE',
       url: `/api/v1/product/${id}`,
     })
       .then((res) => {
-        mutate(`api/v1/product/`);
+        mutate(`api/v1/product/`)
         addToast(res.data.message, {
-          appearance: "success",
+          appearance: 'success',
           autoDismiss: true,
           autoDismissTimeout: 3000,
-        });
-        setAction(-1);
-        setLoading(false);
+        })
+        setAction(-1)
+        setLoading(false)
       })
       .catch((err) => {
-        setLoading(false);
+        setLoading(false)
         err
           ? addToast(err.response.data.message, {
-              appearance: "error",
+              appearance: 'error',
               autoDismiss: true,
               autoDismissTimeout: 3000,
             })
-          : addToast("Something went wrong", {
-              appearance: "error",
+          : addToast('Something went wrong', {
+              appearance: 'error',
               autoDismiss: true,
               autoDismissTimeout: 3000,
-            });
-      });
-  };
+            })
+      })
+  }
 
   if (!user && !loggedIn) {
-    return <UserNotLogin />;
+    return <UserNotLogin />
   }
 
   if (loggedIn && user) {
@@ -81,7 +81,7 @@ const Products = () => {
         <Layout.AdminDashboard>
           <div
             className="py-7 px-12 bg-backgroundGrayOne overflow-y-auto"
-            style={{ height: "calc(100vh - 75px)" }}
+            style={{ height: 'calc(100vh - 75px)' }}
           >
             <div className="flex items-center justify-between">
               <h1 className="text-2xl font-bold text-gray-900">Products</h1>
@@ -188,7 +188,7 @@ const Products = () => {
                 </div>
                 {data?.map((items: any, index: number) => (
                   <>
-                    <div className="col-span-1 py-6 my-auto">
+                    <div key={index} className="col-span-1 py-6 my-auto">
                       <h3 className="text-sm text-gray-900">{index + 1}</h3>
                     </div>
                     <div className="col-span-3 py-6 my-auto ">
@@ -217,11 +217,11 @@ const Products = () => {
                       <h3
                         className={`text-white py-0.5 px-2.5 rounded-full text-xs bg-gradient-to-br ${
                           items.status.isPublished
-                            ? "from-orangeOne to-orangeTwo"
-                            : "from-[#67E5A3] to-[#08994D]"
+                            ? 'from-orangeOne to-orangeTwo'
+                            : 'from-[#67E5A3] to-[#08994D]'
                         } inline`}
                       >
-                        {items.status.isPublished ? "Pre-Sale" : "Completed"}
+                        {items.status.isPublished ? 'Pre-Sale' : 'Completed'}
                       </h3>
                     </div>
                     <div className="col-span-1 py-6 my-auto ml-auto">
@@ -235,7 +235,7 @@ const Products = () => {
                       </button>
                       <div
                         className={`absolute ${
-                          action === index ? "block" : "hidden"
+                          action === index ? 'block' : 'hidden'
                         } right-0 shadow-xl p-2 rounded-lg flex flex-col bg-white`}
                       >
                         <button
@@ -316,11 +316,11 @@ const Products = () => {
                     <h3
                       className={`text-white py-0.5 px-2.5 rounded-full text-xs bg-gradient-to-br ${
                         items.status.isPublished
-                          ? "from-orangeOne to-orangeTwo"
-                          : "from-[#67E5A3] to-[#08994D]"
+                          ? 'from-orangeOne to-orangeTwo'
+                          : 'from-[#67E5A3] to-[#08994D]'
                       } inline`}
                     >
-                      {items.status.isPublished ? "Pre-Sale" : "Completed"}
+                      {items.status.isPublished ? 'Pre-Sale' : 'Completed'}
                     </h3>
                   </div>
                   <div className="col-span-4 p-4 ">
@@ -337,7 +337,7 @@ const Products = () => {
                     </button>
                     <div
                       className={`absolute ${
-                        action === index ? "block" : "hidden"
+                        action === index ? 'block' : 'hidden'
                       } shadow-xl p-2 rounded-lg flex flex-col bg-white`}
                     >
                       <button
@@ -398,24 +398,24 @@ const Products = () => {
           </div>
         </Layout.AdminDashboard>
       </div>
-    );
+    )
   }
 
-  return <LoaderGrowing />;
-};
+  return <LoaderGrowing />
+}
 
-export default Products;
+export default Products
 
 type Inputs = {
-  title: string;
-  status: string;
-  description: string;
-  expectedDelivery: string;
-  category: string;
-  standard: number;
-  standardPlus: number;
-  business: number;
-};
+  title: string
+  status: string
+  description: string
+  expectedDelivery: string
+  category: string
+  standard: number
+  standardPlus: number
+  business: number
+}
 
 const ProductUpdate = () => {
   const {
@@ -423,13 +423,13 @@ const ProductUpdate = () => {
     handleSubmit,
     watch,
     formState: { errors },
-  } = useForm<Inputs>();
+  } = useForm<Inputs>()
 
-  const [loading, setLoading] = useState<boolean>(false);
+  const [loading, setLoading] = useState<boolean>(false)
   //   const router = useRouter();
-  const { addToast } = useToasts();
+  const { addToast } = useToasts()
 
-  const onSubmit: SubmitHandler<Inputs> = async (data) => {};
+  const onSubmit: SubmitHandler<Inputs> = async (data) => {}
   return (
     <div className="flex items-center justify-center">
       <div className=" lg:w-auto w-full md:p-10 sm:p-7 p-5 rounded-lg bg-white">
@@ -449,7 +449,7 @@ const ProductUpdate = () => {
         >
           <div className="sm:col-span-8 col-span-12">
             <input
-              {...register("title", { required: true })}
+              {...register('title', { required: true })}
               className="border border-[#DDE6F5] p-4 rounded-md w-full text-sm outline-none"
               placeholder="Product Title"
             />
@@ -463,7 +463,7 @@ const ProductUpdate = () => {
             <div className="border border-[#DDE6F5] p-4 rounded-md ">
               <select
                 aria-label="status"
-                {...register("status", { required: true })}
+                {...register('status', { required: true })}
                 className="w-full text-sm outline-none"
               >
                 <option value="pre-sale" className="text-sm">
@@ -482,7 +482,7 @@ const ProductUpdate = () => {
           </div>
           <div className="col-span-12">
             <textarea
-              {...register("description", { required: true })}
+              {...register('description', { required: true })}
               className="border border-[#DDE6F5] p-4 rounded-md w-full text-sm outline-none h-24 resize-none"
               placeholder="Product Description"
             />
@@ -497,7 +497,7 @@ const ProductUpdate = () => {
               <input
                 aria-label="expectedDelivery"
                 type="date"
-                {...register("expectedDelivery", { required: true })}
+                {...register('expectedDelivery', { required: true })}
                 className="w-full text-sm outline-none"
               />
             </div>
@@ -511,7 +511,7 @@ const ProductUpdate = () => {
             <div className="border border-[#DDE6F5] p-4 rounded-md ">
               <select
                 aria-label="category"
-                {...register("category", { required: true })}
+                {...register('category', { required: true })}
                 className="w-full text-sm outline-none"
               >
                 <option value="MERN" className="text-sm">
@@ -535,7 +535,7 @@ const ProductUpdate = () => {
           <div className="md:col-span-4 sm:col-span-6 col-span-12">
             <input
               type="number"
-              {...register("standard", { required: true })}
+              {...register('standard', { required: true })}
               className="border border-[#DDE6F5] p-4 rounded-md w-full text-sm outline-none"
               placeholder="Standard"
             />
@@ -548,7 +548,7 @@ const ProductUpdate = () => {
           <div className="md:col-span-4 sm:col-span-6 col-span-12">
             <input
               type="number"
-              {...register("standardPlus", { required: true })}
+              {...register('standardPlus', { required: true })}
               className="border border-[#DDE6F5] p-4 rounded-md w-full text-sm outline-none"
               placeholder="Standard Plus"
             />
@@ -561,7 +561,7 @@ const ProductUpdate = () => {
           <div className="md:col-span-4 sm:col-span-6 col-span-12">
             <input
               type="number"
-              {...register("business", { required: true })}
+              {...register('business', { required: true })}
               className="border border-[#DDE6F5] p-4 rounded-md w-full text-sm outline-none"
               placeholder="Business"
             />
@@ -575,10 +575,10 @@ const ProductUpdate = () => {
             type="submit"
             className="md:text-sm text-xs py-3 px-5 rounded-md bg-blueTwo md:col-span-3 sm:col-span-4 col-span-8 text-gray-100"
           >
-            {loading ? "Please Wait..." : "Add Product"}
+            {loading ? 'Please Wait...' : 'Add Product'}
           </button>
         </form>
       </div>
     </div>
-  );
-};
+  )
+}

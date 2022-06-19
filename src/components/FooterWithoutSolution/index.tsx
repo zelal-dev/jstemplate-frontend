@@ -1,6 +1,6 @@
-import Image from "next/image";
-import Link from "next/link";
-import React from "react";
+import Image from 'next/image'
+import Link from 'next/link'
+import React from 'react'
 import {
   FaCcDiscover,
   FaCcJcb,
@@ -12,8 +12,8 @@ import {
   FaInstagram,
   FaLinkedinIn,
   FaTwitter,
-} from "react-icons/fa";
-import { SiAmericanexpress } from "react-icons/si";
+} from 'react-icons/fa'
+import { SiAmericanexpress } from 'react-icons/si'
 
 const FooterWithoutSolution = () => {
   return (
@@ -112,22 +112,22 @@ const FooterWithoutSolution = () => {
           <div className="pt-8">
             <h3 className="text-lg font-bold text-gray-100">Our Solution</h3>
             <div className="mt-4 flex flex-col ">
-              <Link href="">
+              <Link href="#">
                 <a className="text-gray-400 hover:text-blueTwo font-sm">
                   Meta Jobs
                 </a>
               </Link>
-              <Link href="">
+              <Link href="#">
                 <a className="text-gray-400 hover:text-blueTwo font-sm mt-2">
                   Meta Ads
                 </a>
               </Link>
-              <Link href="">
+              <Link href="#">
                 <a className="text-gray-400 hover:text-blueTwo font-sm mt-2">
                   Meta List
                 </a>
               </Link>
-              <Link href="">
+              <Link href="#">
                 <a className="text-gray-400 hover:text-blueTwo font-sm mt-2">
                   Meta Lancer
                 </a>
@@ -138,17 +138,17 @@ const FooterWithoutSolution = () => {
             <div>
               <h3 className="text-lg font-bold text-gray-100">Headless CMS</h3>
               <div className="mt-4 flex flex-col ">
-                <Link href="">
+                <Link href="#">
                   <a className="text-gray-400 hover:text-blueTwo font-sm">
                     E-Commerce Template
                   </a>
                 </Link>
-                <Link href="">
+                <Link href="#">
                   <a className="text-gray-400 hover:text-blueTwo font-sm mt-2">
                     Blog Template
                   </a>
                 </Link>
-                <Link href="">
+                <Link href="#">
                   <a className="text-gray-400 hover:text-blueTwo font-sm mt-2">
                     Multipurpose
                   </a>
@@ -160,12 +160,12 @@ const FooterWithoutSolution = () => {
                 React Template
               </h3>
               <div className="mt-4 flex flex-col ">
-                <Link href="">
+                <Link href="#">
                   <a className="text-gray-400 hover:text-blueTwo font-sm">
                     React Dashboard
                   </a>
                 </Link>
-                <Link href="">
+                <Link href="#">
                   <a className="text-gray-400 hover:text-blueTwo font-sm mt-2">
                     React Multipurpose
                   </a>
@@ -198,7 +198,7 @@ const FooterWithoutSolution = () => {
         </p>
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default FooterWithoutSolution;
+export default FooterWithoutSolution

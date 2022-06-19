@@ -1,6 +1,6 @@
-import Image from "next/image";
-import Link from "next/link";
-import React from "react";
+import Image from 'next/image'
+import Link from 'next/link'
+import React from 'react'
 import {
   FaCcDiscover,
   FaCcJcb,
@@ -12,9 +12,9 @@ import {
   FaInstagram,
   FaLinkedinIn,
   FaTwitter,
-} from "react-icons/fa";
-import { HiOutlineArrowNarrowRight } from "react-icons/hi";
-import { SiAmericanexpress } from "react-icons/si";
+} from 'react-icons/fa'
+import { HiOutlineArrowNarrowRight } from 'react-icons/hi'
+import { SiAmericanexpress } from 'react-icons/si'
 
 const Footer = ({
   boxToColor,
@@ -24,12 +24,12 @@ const Footer = ({
   buttonFromColor,
   shadowButton,
 }: {
-  boxToColor: string;
-  boxFromColor: string;
-  shadowBox: string;
-  buttonToColor: string;
-  buttonFromColor: string;
-  shadowButton: string;
+  boxToColor: string
+  boxFromColor: string
+  shadowBox: string
+  buttonToColor: string
+  buttonFromColor: string
+  shadowButton: string
 }) => {
   return (
     <div className="bg-gray-800 relative px-5">
@@ -54,8 +54,8 @@ const Footer = ({
               <a
                 className={`flex-1 shadow-${shadowButton} flex items-center xl:text-lg text-base xl:py-6 md:py-3 xl:px-10 md:px-5 py-3 px-3 rounded-lg bg-gradient-to-br from-${buttonFromColor} to-${buttonToColor} mt-8 lg:mt-0`}
               >
-                <span className=" text-white mr-4">View All Solution</span>{" "}
-                <HiOutlineArrowNarrowRight style={{ color: "white" }} />
+                <span className=" text-white mr-4">View All Solution</span>{' '}
+                <HiOutlineArrowNarrowRight style={{ color: 'white' }} />
               </a>
             </Link>
           </div>
@@ -154,22 +154,22 @@ const Footer = ({
           <div className="pt-8">
             <h3 className="text-lg font-bold text-gray-100">Our Solution</h3>
             <div className="mt-4 flex flex-col ">
-              <Link href="">
+              <Link href="#">
                 <a className="text-gray-400 hover:text-blueTwo font-sm">
                   Meta Jobs
                 </a>
               </Link>
-              <Link href="">
+              <Link href="#">
                 <a className="text-gray-400 hover:text-blueTwo font-sm mt-2">
                   Meta Ads
                 </a>
               </Link>
-              <Link href="">
+              <Link href="#">
                 <a className="text-gray-400 hover:text-blueTwo font-sm mt-2">
                   Meta List
                 </a>
               </Link>
-              <Link href="">
+              <Link href="#">
                 <a className="text-gray-400 hover:text-blueTwo font-sm mt-2">
                   Meta Lancer
                 </a>
@@ -180,17 +180,17 @@ const Footer = ({
             <div>
               <h3 className="text-lg font-bold text-gray-100">Headless CMS</h3>
               <div className="mt-4 flex flex-col ">
-                <Link href="">
+                <Link href="#">
                   <a className="text-gray-400 hover:text-blueTwo font-sm">
                     E-Commerce Template
                   </a>
                 </Link>
-                <Link href="">
+                <Link href="#">
                   <a className="text-gray-400 hover:text-blueTwo font-sm mt-2">
                     Blog Template
                   </a>
                 </Link>
-                <Link href="">
+                <Link href="#">
                   <a className="text-gray-400 hover:text-blueTwo font-sm mt-2">
                     Multipurpose
                   </a>
@@ -202,12 +202,12 @@ const Footer = ({
                 React Template
               </h3>
               <div className="mt-4 flex flex-col ">
-                <Link href="">
+                <Link href="#">
                   <a className="text-gray-400 hover:text-blueTwo font-sm">
                     React Dashboard
                   </a>
                 </Link>
-                <Link href="">
+                <Link href="#">
                   <a className="text-gray-400 hover:text-blueTwo font-sm mt-2">
                     React Multipurpose
                   </a>
@@ -240,7 +240,7 @@ const Footer = ({
         </p>
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default Footer;
+export default Footer

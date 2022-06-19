@@ -1,17 +1,17 @@
-import Image from "next/image";
-import Link from "next/link";
-import React from "react";
-import Layout from "../../src/components/Layout";
-import Navbar from "../../src/components/Navbar";
-import { LoaderGrowing } from "../../src/lib/loader";
-import { useUser, UserNotLogin } from "../../src/lib/useUser";
+import Image from 'next/image'
+import Link from 'next/link'
+import React from 'react'
+import Layout from '../../src/components/Layout'
+import Navbar from '../../src/components/Navbar'
+import { LoaderGrowing } from '../../src/lib/loader'
+import { useUser, UserNotLogin } from '../../src/lib/useUser'
 
 const AdminDashboard = () => {
-  const { loggedIn, user } = useUser();
-  const sample = [1, 2, 3, 4, 5, 6, 7, 8, 9];
+  const { loggedIn, user } = useUser()
+  const sample = [1, 2, 3, 4, 5, 6, 7, 8, 9]
 
   if (!user && !loggedIn) {
-    return <UserNotLogin />;
+    return <UserNotLogin />
   }
 
   if (loggedIn && user) {
@@ -20,7 +20,7 @@ const AdminDashboard = () => {
         <Layout.AdminDashboard>
           <div
             className="overflow-y-auto sm:py-7 sm:px-12 p-5 bg-backgroundGrayOne"
-            style={{ height: "calc(100vh - 75px)" }}
+            style={{ height: 'calc(100vh - 75px)' }}
           >
             <h1 className="text-2xl font-bold text-gray-900">Dashboard</h1>
             <div className="mt-8 grid 2xl:grid-cols-6 xl:grid-cols-5 lg:grid-cols-4 md:grid-cols-3 sm:grid-cols-2 grid-cols-1 gap-5">
@@ -33,7 +33,7 @@ const AdminDashboard = () => {
                     <h1 className="text-base font-bold text-gray-900">
                       New Project Proposal
                     </h1>
-                    <Link href="">
+                    <Link href="#">
                       <a className="text-sm font-semibold text-blueTwo">
                         View All Project
                       </a>
@@ -167,13 +167,13 @@ const AdminDashboard = () => {
           </div>
         </Layout.AdminDashboard>
       </div>
-    );
+    )
   }
 
-  return <LoaderGrowing />;
-};
+  return <LoaderGrowing />
+}
 
-export default AdminDashboard;
+export default AdminDashboard
 
 const DashboardCarts = () => {
   return (
@@ -221,8 +221,8 @@ const DashboardCarts = () => {
         </div>
       </div>
     </>
-  );
-};
+  )
+}
 
 const UserCart = () => {
   return (
@@ -235,5 +235,5 @@ const UserCart = () => {
         <h1 className="text-xs text-gray-500">Client</h1>
       </div>
     </div>
-  );
-};
+  )
+}

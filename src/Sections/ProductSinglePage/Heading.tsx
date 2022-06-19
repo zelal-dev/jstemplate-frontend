@@ -1,5 +1,5 @@
-import React from "react";
-import { WiHumidity } from "react-icons/wi";
+import React from 'react'
+import { WiHumidity } from 'react-icons/wi'
 import {
   FaHourglassHalf,
   FaCheck,
@@ -8,14 +8,14 @@ import {
   FaCcMastercard,
   FaCcJcb,
   FaCcDiscover,
-} from "react-icons/fa";
-import { SiAmericanexpress } from "react-icons/si";
-import { MdOutlineKeyboardArrowDown } from "react-icons/md";
-import { MdHeadsetMic } from "react-icons/md";
-import { ImCross } from "react-icons/im";
+} from 'react-icons/fa'
+import { SiAmericanexpress } from 'react-icons/si'
+import { MdOutlineKeyboardArrowDown } from 'react-icons/md'
+import { MdHeadsetMic } from 'react-icons/md'
+import { ImCross } from 'react-icons/im'
 
 const Heading = (props: any) => {
-  const { colors, info, data } = props;
+  const { colors, info, data } = props
 
   return (
     <div
@@ -24,12 +24,11 @@ const Heading = (props: any) => {
     >
       <div className="flex flex-col items-center">
         <h1 className="2xl:text-4xl xl:text-3xl lg:text-2xl md:text-xl sm:text-lg text-base font-bold lg:mt-4 sm:mt-3 mt-2 text-gray-900 text-center">
-          {data ? data.title : "Product Single Page Header"}
+          Pricing Plans
         </h1>
         <article className="mt-5 text-gray-600 md:w-3/5 w-3/4 text-center xl:text-lg md:text-base text-sm">
-          {data
-            ? data.description
-            : "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text"}
+          We have three different pricing plans for you to choose from. Each
+          plan has a different set of features and benefits.
         </article>
 
         {/* <div className="mt-16 grid xl:grid-cols-3 lg:grid-cols-2  gap-10 container">
@@ -133,30 +132,30 @@ const Heading = (props: any) => {
         </div>
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default Heading;
+export default Heading
 
 const HeadingNormalCart = ({
   price,
   info,
   colors,
 }: {
-  price: any;
-  info: any;
-  colors: any;
+  price: any
+  info: any
+  colors: any
 }) => {
   return (
     <div
       className="p-7 my-auto bg-secondaryGrayLight rounded-lg border border-cartImageBgOne"
-      style={{ boxShadow: "inset 0px 8px 4px -4px #E9F0FB" }}
+      style={{ boxShadow: 'inset 0px 8px 4px -4px #E9F0FB' }}
     >
       <h2 className="text-lg font-bold text-gray-900">{info.title}</h2>
       <h5 className="text-gray-500 text-sm">Save ${info.save}</h5>
       <div className="flex items-end">
         <h3 className={`text-4xl font-black ${colors.textPrimary} mr-2`}>
-          {info ? `$${info.sale}` : "$69"}
+          {info ? `$${info.sale}` : '$69'}
         </h3>
         <h5 className="text-lg text-gray-500 pb-1.5 line-through">
           ${info.regular}
@@ -168,7 +167,7 @@ const HeadingNormalCart = ({
           <div className="flex items-center mb-4 last-of-type:mb-0" key={index}>
             <div
               className={`${
-                item.checked ? colors.buttonPrimary : "bg-gray-400"
+                item.checked ? colors.buttonPrimary : 'bg-gray-400'
               } p-1.5 rounded-full`}
             >
               {item.checked ? (
@@ -197,28 +196,28 @@ const HeadingNormalCart = ({
         </button>
       </div> */}
     </div>
-  );
-};
+  )
+}
 
 const HeadingPlusCart = ({
   price,
   info,
   colors,
 }: {
-  price: any;
-  info: any;
-  colors: any;
+  price: any
+  info: any
+  colors: any
 }) => {
   return (
     <div
       className="p-7 my-auto bg-secondaryGrayLight rounded-lg border border-cartImageBgOne"
-      style={{ boxShadow: "inset 0px 8px 4px -4px #E9F0FB" }}
+      style={{ boxShadow: 'inset 0px 8px 4px -4px #E9F0FB' }}
     >
       <h2 className="text-lg font-bold text-gray-900">{info.title}</h2>
       <h5 className="text-gray-500 text-sm">Save ${info.save}</h5>
       <div className="flex items-end">
         <h3 className={`text-4xl font-black ${colors.textPrimary} mr-2`}>
-          {info ? `$${info.sale}` : "$149"}
+          {info ? `$${info.sale}` : '$149'}
         </h3>
         <h5 className="text-lg text-gray-500 pb-1.5 line-through">
           ${info.regular}
@@ -230,7 +229,7 @@ const HeadingPlusCart = ({
           <div className="flex items-center mb-4 last-of-type:mb-0" key={index}>
             <div
               className={`${
-                item.checked ? colors.buttonPrimary : "bg-gray-400"
+                item.checked ? colors.buttonPrimary : 'bg-gray-400'
               } p-1.5 rounded-full`}
             >
               {item.checked ? (
@@ -259,17 +258,17 @@ const HeadingPlusCart = ({
         </button>
       </div> */}
     </div>
-  );
-};
+  )
+}
 
 const HeadingExtendedCart = ({
   price,
   info,
   colors,
 }: {
-  price: any;
-  info: any;
-  colors: any;
+  price: any
+  info: any
+  colors: any
 }) => {
   return (
     <div
@@ -277,11 +276,11 @@ const HeadingExtendedCart = ({
     >
       <div
         className="w-80 -top-32 -left-40  z-10 absolute h-[36rem] bg-[rgba(23,23,23,0.08)]"
-        style={{ transform: "matrix(0.84, 0.47, -0.58, 0.86, 0, 0)" }}
+        style={{ transform: 'matrix(0.84, 0.47, -0.58, 0.86, 0, 0)' }}
       />
       <div
         className="w-80 -bottom-36 -right-44  z-10 absolute h-[36rem] bg-[rgba(23,23,23,0.08)]"
-        style={{ transform: "matrix(0.84, 0.47, -0.58, 0.86, 0, 0)" }}
+        style={{ transform: 'matrix(0.84, 0.47, -0.58, 0.86, 0, 0)' }}
       />
       <div
         className={`z-20 absolute bg-white top-5 right-5 ${colors.textPrimary} text-sm py-2 px-3 shadow-md rounded-lg`}
@@ -294,7 +293,7 @@ const HeadingExtendedCart = ({
         <div className="flex items-end">
           <h3 className="text-4xl text-white font-black mr-2">${info.sale}</h3>
           <h5 className="text-lg text-gray-100 opacity-70 pb-1.5 line-through">
-            {info ? `$${info.regular}` : "$999"}
+            {info ? `$${info.regular}` : '$999'}
           </h5>
         </div>
         <hr className="w-full text-secondaryGrayLighter mt-6 mb-7 opacity-20" />
@@ -334,5 +333,5 @@ const HeadingExtendedCart = ({
         </div> */}
       </div>
     </div>
-  );
-};
+  )
+}

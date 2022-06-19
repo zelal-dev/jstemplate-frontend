@@ -337,7 +337,7 @@ const MernStackDirectoryListingTheme = (props: any) => {
       <SimpleTitleThird colors={colors} data={data.sampleInfo} />
       <Heading data={props.data} info={data.preSale} colors={colors} />
       <Hire colors={colors} />
-      <Testimonials />
+      {/* <Testimonials /> */}
       <Footer
         boxToColor="secondaryTemplateColorDark"
         boxFromColor="secondaryTemplateColorLight"
@@ -350,38 +350,16 @@ const MernStackDirectoryListingTheme = (props: any) => {
   )
 }
 
-export const getServerSideProps: GetServerSideProps = async (context) => {
-  // slug is available on the context parameter
-  let path: any = context.resolvedUrl
-  path = path.split('/')
-  path = path[path.length - 1]
-  try {
-    const { slug } = context.query as { slug: string }
-    const res = await fetch(
-      `${process.env.NEXT_PUBLIC_API_URL}api/v1/product/slug/${path}`
-    )
-    let data = await res.json()
-    data = await data.product
+export const getStaticProps = async () => {
+  // call api to a get single post by id
+  const URL = `${process.env.NEXT_PUBLIC_BASE_URL}/api/products/mern-stack-job-board-theme`
+  const response = await fetch(URL)
+  const data = await response.json()
 
-    if (data) {
-      return {
-        props: {
-          data,
-        },
-      }
-    } else {
-      return {
-        props: {
-          statusCode: 404,
-        },
-      }
-    }
-  } catch {
-    return {
-      props: {
-        statusCode: 404,
-      }, // will be passed to the page component as props
-    }
+  return {
+    props: {
+      data: data.data,
+    },
   }
 }
 

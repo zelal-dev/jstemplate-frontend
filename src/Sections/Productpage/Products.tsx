@@ -1,60 +1,60 @@
-import React from "react";
-import { IoIosArrowDown } from "react-icons/io";
-import { ProductDocument } from "../../../pages/shop";
-import SolutionCart from "../../components/SolutionCart";
+import React from 'react'
+import { IoIosArrowDown } from 'react-icons/io'
+import { ProductDocument } from '../../../pages/shop'
+import SolutionCart from '../../components/SolutionCart'
 
 const Products = ({ data }: { data: any }) => {
-  const [isSelected, setIsSelected] = React.useState("all");
-  const [selectedProduct, setSelectedProduct] = React.useState(data);
+  const [isSelected, setIsSelected] = React.useState('all')
+  const [selectedProduct, setSelectedProduct] = React.useState(data)
 
   React.useEffect(() => {
     if (data) {
-      setSelectedProduct(data);
+      setSelectedProduct(data)
     }
-  }, [data]);
+  }, [data])
 
   React.useEffect(() => {
-    if (isSelected === "all") {
-      setSelectedProduct(data);
+    if (isSelected === 'all') {
+      setSelectedProduct(data)
     }
 
-    if (isSelected === "mern") {
+    if (isSelected === 'mern') {
       const filteredData = data.filter((item: any) =>
-        item.category.includes("MERN")
-      );
-      setSelectedProduct(filteredData);
+        item.category.includes('MERN')
+      )
+      setSelectedProduct(filteredData)
     }
 
-    if (isSelected === "react") {
+    if (isSelected === 'react') {
       const filteredData = data.filter((item: any) =>
-        item.category.includes("React")
-      );
-      setSelectedProduct(filteredData);
+        item.category.includes('React')
+      )
+      setSelectedProduct(filteredData)
     }
 
-    if (isSelected === "cms") {
+    if (isSelected === 'cms') {
       const filteredData = data.filter((item: any) =>
-        item.category.includes("CMS")
-      );
-      setSelectedProduct(filteredData);
+        item.category.includes('CMS')
+      )
+      setSelectedProduct(filteredData)
     }
 
-    if (isSelected === "figma") {
+    if (isSelected === 'figma') {
       const filteredData = data.filter((item: any) =>
-        item.category.includes("Tailwind")
-      );
-      setSelectedProduct(filteredData);
+        item.category.includes('Tailwind')
+      )
+      setSelectedProduct(filteredData)
     }
-  }, [isSelected, data]);
+  }, [isSelected, data])
 
   // on change select option
   const onChangeSelect = (value: string) => {
-    setIsSelected(value);
-  };
+    setIsSelected(value)
+  }
 
   return (
     <div className="container mx-auto flex flex-col items-center px-5 sm:px-0 pb-2 pt-10">
-      <div className="flex flex-col lg:flex-row items-center justify-between bg-white py-6 px-8 rounded-lg shadow-md container mx-auto">
+      {/* <div className="flex flex-col lg:flex-row items-center justify-between bg-white py-6 px-8 rounded-lg shadow-md container mx-auto">
         <div className="flex items-center justify-start sm:justify-center lg:justify-start overflow-auto w-full sm:w-auto pb-5 sm:pb-0">
           <button
             type="button"
@@ -109,7 +109,8 @@ const Products = ({ data }: { data: any }) => {
           <span>Most Recent</span>{" "}
           <IoIosArrowDown className="text-gray-700 ml-6" />
         </button> */}
-      </div>
+      {/* </div> */}
+
       <div className="mt-11 grid xl:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-11 container">
         {selectedProduct &&
           selectedProduct.map((item: any) => (
@@ -136,7 +137,7 @@ const Products = ({ data }: { data: any }) => {
         </button>
       )}
     </div>
-  );
-};
+  )
+}
 
-export default Products;
+export default Products

@@ -8,137 +8,147 @@ import Get from '../../src/Sections/Servicepage/Get'
 import Header from '../../src/Sections/Servicepage/Header'
 import Heading from '../../src/Sections/Servicepage/Heading'
 import Hire from '../../src/Sections/Servicepage/Hire'
-import Products from '../../src/Sections/Servicepage/Products'
 import Promise from '../../src/Sections/Servicepage/Promise'
 import Question from '../../src/Sections/Servicepage/Question'
 import Works from '../../src/Sections/Servicepage/Works'
+import Products from '../admin-dashboard/products'
 
 // page primary colors
 const colors = {
-  textPrimary: 'text-[#1f38c5]',
-  bgPrimary: 'bg-[#1f38c5]',
-  borderPrimary: 'border-[#cad1f9]',
-  hoverBorderPrimary: 'hover:border-[#1f38c5]',
-  buttonPrimary: 'bg-gradient-to-br from-[#1f38c5] to-[#4b63eb]',
+  textPrimary: 'text-[#0ea38a]',
+  bgPrimary: 'bg-[#0ea38a]',
+  borderPrimary: 'border-[#8bf5e3]',
+  hoverBorderPrimary: 'hover:border-[#0ea38a]',
+  buttonPrimary: 'bg-gradient-to-br from-[#0ea38a] to-[#37c3ab]',
 }
 
 // page components data
 const data = {
   heading: {
-    title: 'Headless WordPress Site With React',
+    title: 'Best MERN Stack Development Services',
     description:
-      'We will create a lighting fast Website using WordPress and React. WordPress will be use as backend and React js will be use as frontend.',
+      'We are a team of web developers who are passionate about building websites that are lighting fast speed, secure and easy to use. We have experinced, skilled and dedicated team of web developers who are ready to help you with your web development needs.',
   },
   whyChooseUs: {
-    title: 'We Provide the best Headless WordPress Site Development Services',
+    title: 'We Provide Best MERN Stack Development Services',
     description:
-      'We are a team of experienced developers and designers who are passionate about creating the best user experience for your business.',
+      'We are a team of experienced developers and designers who are passionate about creating the best user experience for your web app.',
     items: [
       {
-        name: 'Headless WordPress Custom Site Development',
+        name: 'Web Application Development',
         description:
-          'We will create your custom website using WordPress and React. You can manage your website from your WordPress dashboard.',
+          'We create Web Applications that are fast, secure and easy to use. We provide the best MERN Stack web application development services.',
         count: '01',
         icon: <FaUser className="text-white text-5xl" />,
       },
       {
-        name: 'Headless WordPress Blog, News and Magazine Site Development',
+        name: 'Custom SAAS Web Development',
         description:
-          'If you are looking for best the solution to develop blog, news and magazine website, Headless WordPress with Frontity is the best choice for you.',
+          'We create custom SAAS web applications that are fast, secure and easy to use. We provide the best MERN Stack web application development services.',
         count: '02',
         icon: <FaUser className="text-white text-5xl" />,
       },
       {
-        name: 'Headless WordPress eCommerce Site Development',
+        name: 'eCommerce Web Development',
         description:
-          'If you are looking for best the solution to develop eCommerce website, Headless WordPress with Next.js is the best choice for you.',
+          'We create eCommerce web applications that are fast, secure and easy to use. We provide the best MERN Stack web application development services.',
         count: '03',
         icon: <FaUser className="text-white text-5xl" />,
       },
       {
-        name: 'Headless WordPress Landing Page Development',
+        name: 'ERP Development Services',
         description:
-          'Frontity with WordPress gutenburg  or elementor will be best for you. You can manage all content and website design from WordPress dashboard.',
+          'We create ERP web applications that are fast, secure and easy to use. We provide the best MERN Stack web application development services.',
         count: '04',
         icon: <FaUser className="text-white text-5xl" />,
       },
       {
-        name: 'Headless WordPress Portfolio Site Development',
+        name: 'API Development Services',
         description:
-          'If you are looking for best the solution to develop portfolio website, Headless WordPress with frontity is the best choice for you.',
+          'We provide you best API development services for your web app. We create API Design, Development, Testing, Documentation, and Integration.',
         count: '05',
         icon: <FaUser className="text-white text-5xl" />,
       },
       {
-        name: 'Headless WordPress SaaS Site Development',
+        name: 'Real-time App Development Services',
         description:
-          'If you are looking for best the solution to develop SaaS website, Headless WordPress with next.js is the best choice for you.',
+          'We create real-time web applications that are fast, secure and easy to use. We provide the best MERN Stack web application development services.',
         count: '06',
         icon: <FaUser className="text-white text-5xl" />,
       },
     ],
   },
   productFeature: {
-    title: 'Our Recent Headless WordPress Projects',
+    title: 'Our recent MERN Stack Projects',
     description:
-      'We are a team of experienced developers and designers who are passionate about creating the best user experience for your business.',
+      'List of our recent project powered by Node JS, Express JS, MongoDB, React JS, SWR and more. ',
     items: [
       {
         _id: '1',
-        name: 'Personal Portfolio Website',
+        name: 'Job Board Application',
         image: '/productCartImg.svg',
       },
       {
         _id: '2',
-        name: 'eCommerce Website',
+        name: 'Classified Ads Application',
         image: '/productCartImg.svg',
       },
       {
         _id: '3',
-        name: 'Newspaper Website',
+        name: 'Custom Web Application',
+        image: '/productCartImg.svg',
+      },
+      {
+        _id: '3',
+        name: 'Finacial Web Application',
+        image: '/productCartImg.svg',
+      },
+      {
+        _id: '3',
+        name: 'Saas Web Application',
         image: '/productCartImg.svg',
       },
     ],
-    buttonText: 'Start a Project',
+    buttonText: 'Start Your Project with Us',
     buttonLink: '#',
   },
   howItWork: {
-    title: 'Steps to build Your Headless WordPress Site with React',
+    title: 'Steps to build Your MERN Stack Web Application',
     description:
       'We are a team of experienced developers and designers who are passionate about creating the best user experience for your business.',
     items: [
       {
         name: 'Information Gathering',
         description:
-          'We will collect all the information about your business and your requirements. We will chose the best solution that fit your needs. We are available live chat, zoom meeting and email for seemless communication.',
+          'We discuss your project requirements and gather all the information needed to create your MERN Stack web application. We will prefer to discuss on zoom, google meet video sessions.',
         icon: <FaUser />,
         image: '/happy.svg',
       },
       {
         name: 'Planning & Contract Agreement',
         description:
-          'We will create a detailed plan for your Headless WordPress Site including timeline, total cost and scope of work. Both we agree on the plan and start the project.',
+          'We will create a detailed plan for your MERN Stack web application including timeline, total cost and scope of work. We will also create a contract agreement for you to sign.',
         icon: <FaUser />,
         image: '/happy.svg',
       },
       {
         name: 'UX/UI Design Using Figma',
         description:
-          'Our professional designers will create a unique and beautiful user interface for your Headless WordPress Site. If you have already designed your website, we will use your design as a starting point.',
+          'Our professional designers will create a unique and beautiful user interface for your MERN Stack web application. You will be able collaborate with our designers to create a better user experience for your web application.',
         icon: <FaUser />,
         image: '/happy.svg',
       },
       {
-        name: 'Development and API Integration',
+        name: 'Frontend and Backend Development',
         description:
-          'In this phase, We will start coding your Headless WordPress site. We will integrate your WordPress site with your API and start developing your website.',
+          'In this phase, We will start coding your MERN Stack web application. We will write the standard coding to create a robust, super fast and secure web application.',
         icon: <FaUser />,
         image: '/happy.svg',
       },
       {
-        name: 'Testing and Deployment',
+        name: 'Testing, Review and Launch',
         description:
-          'We will test , review the requiremnts and deploy on live. We will also ensure your Headless Website is lighting fast speed, secured and working as expected.',
+          'We will test your MERN Stack web application and ensure that it is working as expected. We will also review your MERN Stack web application and ensure that it is working as expected.',
         icon: <FaUser />,
         image: '/happy.svg',
       },
@@ -210,9 +220,9 @@ const data = {
     buttonLink: '#',
   },
   hire: {
-    title: 'Hire Us to Build Your Headless WordPress Website with React',
+    title: 'Hire MERN Stack Developers',
     description:
-      'We are a team of experienced developers and designers who are passionate about creating the best user experience for your business website.',
+      'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text',
     buttonText: 'Start a Project',
     buttonLink: '#',
   },
@@ -228,13 +238,15 @@ const ServicePage = () => {
         <Header colors={colors} data={data.heading} />
       </div>
       <ChooseUs colors={colors} data={data.whyChooseUs} />
-      <Heading colors={colors} data={data.productFeature} />
-      <Works colors={colors} data={data.howItWork} />
       <Promise colors={colors} data={data.ourPromise} />
+
+      <Works colors={colors} data={data.howItWork} />
+
       <Get colors={colors} data={data.whatYouGet} />
+      <Heading colors={colors} data={data.productFeature} />
       {/* <Products /> */}
-      <Question />
-      <Hire colors={colors} data={data.hire} />
+      {/* <Question /> */}
+      {/* <Hire colors={colors} data={data.hire} /> */}
       {/* <Testimonials /> */}
       <Footer
         boxToColor="greenDark"

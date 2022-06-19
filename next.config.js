@@ -4,16 +4,17 @@ const nextConfig = {
   // image host name:
   images: {
     domains: [
-      "res.cloudinary.com",
-      "api-blog.jstemplate.net",
-      "lh1.googleusercontent.com",
-      "lh2.googleusercontent.com",
-      "lh3.googleusercontent.com",
-      "lh4.googleusercontent.com",
-      "lh5.googleusercontent.com",
-      "h6.googleusercontent.com",
+      'jstemplate.net',
+      'res.cloudinary.com',
+      'api-blog.jstemplate.net',
+      'lh1.googleusercontent.com',
+      'lh2.googleusercontent.com',
+      'lh3.googleusercontent.com',
+      'lh4.googleusercontent.com',
+      'lh5.googleusercontent.com',
+      'h6.googleusercontent.com',
     ],
   },
-};
+}
 
-module.exports = nextConfig;
+module.exports = nextConfig

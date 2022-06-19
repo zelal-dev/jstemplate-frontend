@@ -1,8 +1,8 @@
-import React from "react";
-import SolutionCart from "../../components/SolutionCart";
-import Link from "next/link";
-import { HiOutlineArrowNarrowRight } from "react-icons/hi";
-import _ from "lodash";
+import React from 'react'
+import SolutionCart from '../../components/SolutionCart'
+import Link from 'next/link'
+import { HiOutlineArrowNarrowRight } from 'react-icons/hi'
+import _ from 'lodash'
 
 const Solution = ({ data }: { data: any }) => {
   return (
@@ -25,10 +25,10 @@ const Solution = ({ data }: { data: any }) => {
               <div
                 className={`${
                   index === 1 || index === 4 || index === 7 || index === 10
-                    ? "xl:-mt-20"
-                    : ""
+                    ? 'xl:-mt-20'
+                    : ''
                 } `}
-                key={item._id}
+                key={item.id}
               >
                 <Link href={`/item/${item.slug}`}>
                   <a>
@@ -47,12 +47,12 @@ const Solution = ({ data }: { data: any }) => {
             <span className="md:ml-4 ml-3 text-white mr-4">
               View All Solution
             </span>
-            <HiOutlineArrowNarrowRight style={{ color: "white" }} />
+            <HiOutlineArrowNarrowRight style={{ color: 'white' }} />
           </a>
         </Link>
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default Solution;
+export default Solution

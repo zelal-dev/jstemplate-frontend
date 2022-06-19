@@ -1,15 +1,15 @@
-import React from "react";
-import { BsThreeDotsVertical } from "react-icons/bs";
-import { LoaderGrowing } from "../../../src/lib/loader";
-import { useUser, UserNotLogin } from "../../../src/lib/useUser";
-import Navbar from "./../../../src/components/Navbar";
+import React from 'react'
+import { BsThreeDotsVertical } from 'react-icons/bs'
+import { LoaderGrowing } from '../../../src/lib/loader'
+import { useUser, UserNotLogin } from '../../../src/lib/useUser'
+import Navbar from './../../../src/components/Navbar'
 
 const Downloads = () => {
-  const { loggedIn, user } = useUser();
-  const sample = [1, 2, 3, 4];
+  const { loggedIn, user } = useUser()
+  const sample = [1, 2, 3, 4]
 
   if (!user && !loggedIn) {
-    return <UserNotLogin />;
+    return <UserNotLogin />
   }
 
   if (loggedIn && user) {
@@ -53,19 +53,19 @@ const Downloads = () => {
           ))}
         </div>
       </div>
-    );
+    )
   }
 
-  return <LoaderGrowing />;
-};
+  return <LoaderGrowing />
+}
 
-export default Downloads;
+export default Downloads
 
 const Dropdown = () => {
   return (
     <div className=" w-full bg-red-400">
-      {/* <Link href=""><a className='text-sm text-white p-4 rounded-lg bg-gradient-to-br from-blueOne to-blueTwo flex items-center '>Start Your Project Free</a></Link> */}
+      {/* <Link href="#"><a className='text-sm text-white p-4 rounded-lg bg-gradient-to-br from-blueOne to-blueTwo flex items-center '>Start Your Project Free</a></Link> */}
       Lorem ipsum dolor sit amet consectetur adipisicing elit. Facere, ipsum.
     </div>
-  );
-};
+  )
+}
