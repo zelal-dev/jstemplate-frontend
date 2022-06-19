@@ -34,8 +34,7 @@ const Footer = ({
   return (
     <div className="bg-gray-800 relative px-5">
       <div className="container mx-auto">
-        <div className="bg-white  drop-shadow-2xl absolute -top-40 left-5 right-5 sm:left-auto sm:right-auto sm:container xl:p-24 lg:p-20 md:p-16 sm:p-12 p-8 flex lg:flex-row flex-col items-center justify-between rounded-lg">
-          {/* <Image src={footerBg} /> */}
+        <div className="bg-white  drop-shadow-2xl absolute -top-32 left-5 right-5 sm:left-auto sm:right-auto sm:container xl:py-16 xl:px-24 lg:p-20 md:p-16 sm:p-12 p-8 flex lg:flex-row flex-col items-center justify-between rounded-lg">
           <div className="flex items-start lg:w-3/4 w-full">
             <div
               className={`xl:w-24 xl:h-24 md:w-20 md:h-16 sm:w-16 w-36 h-14 rounded-md bg-gradient-to-br from-${boxFromColor} to-${boxToColor} lg:mr-10 sm:mr-6 mr-3 shadow-${shadowBox}`}
@@ -45,12 +44,13 @@ const Footer = ({
                 You`ll love our solutions
               </h1>
               <article className="text-gray-600 xl:text-lg lg:text-base text-sm lg:w-3/4 w-full mt-2">
-                Buy Our Ready-Made Web Solution Grow Your Business Faster
+                Buy Our Ready-Made JS Template Solution, Grow Your Business
+                Faster
               </article>
             </div>
           </div>
           <div className=" flex items-center justify-center">
-            <Link href="/productPage">
+            <Link href="/shop">
               <a
                 className={`flex-1 shadow-${shadowButton} flex items-center xl:text-lg text-base xl:py-6 md:py-3 xl:px-10 md:px-5 py-3 px-3 rounded-lg bg-gradient-to-br from-${buttonFromColor} to-${buttonToColor} mt-8 lg:mt-0`}
               >
@@ -60,9 +60,9 @@ const Footer = ({
             </Link>
           </div>
         </div>
+        {/* Footer Start */}
         <div className="flex items-start justify-between flex-wrap xl:pt-52 lg:pt-48 md:pt-40 sm:pt-36 pt-32">
           <div className="pt-8">
-            {/* <h1 className='text-3xl font-bold text-gray-100'>Brand Logo</h1> */}
             <Link href="/">
               <a>
                 <Image
@@ -111,10 +111,10 @@ const Footer = ({
           <div className="pt-8">
             <h3 className="text-lg font-bold text-gray-100">Menu</h3>
             <div className="mt-4 flex flex-col ">
-              <Link href="">
+              <Link href="/">
                 <a className="text-gray-400 hover:text-blueTwo font-sm">Home</a>
               </Link>
-              <Link href="">
+              <Link href="/shop">
                 <a className="text-gray-400 hover:text-blueTwo font-sm mt-2">
                   Our Solution
                 </a>
@@ -124,14 +124,9 @@ const Footer = ({
                   Resources
                 </a>
               </Link>
-              <Link href="">
+              <Link href="/blog">
                 <a className="text-gray-400 hover:text-blueTwo font-sm mt-2">
                   Blog
-                </a>
-              </Link>
-              <Link href="">
-                <a className="text-gray-400 hover:text-blueTwo font-sm mt-2">
-                  Faq’s
                 </a>
               </Link>
             </div>
@@ -139,17 +134,12 @@ const Footer = ({
           <div className="pt-8">
             <h3 className="text-lg font-bold text-gray-100">Quick Link</h3>
             <div className="mt-4 flex flex-col ">
-              <Link href="">
+              <Link href="/contact-us">
                 <a className="text-gray-400 hover:text-blueTwo font-sm">
                   Contact Us
                 </a>
               </Link>
-              <Link href="">
-                <a className="text-gray-400 hover:text-blueTwo font-sm mt-2">
-                  Pre-Sale
-                </a>
-              </Link>
-              <Link href="">
+              <Link href="/terms-conditions">
                 <a className="text-gray-400 hover:text-blueTwo font-sm mt-2">
                   Terms & Condition
                 </a>
@@ -159,32 +149,27 @@ const Footer = ({
                   Privacy Policy
                 </a>
               </Link>
-              <Link href="">
-                <a className="text-gray-400 hover:text-blueTwo font-sm mt-2">
-                  Help
-                </a>
-              </Link>
             </div>
           </div>
           <div className="pt-8">
             <h3 className="text-lg font-bold text-gray-100">Our Solution</h3>
             <div className="mt-4 flex flex-col ">
-              <Link href="">
+              <Link href="#">
                 <a className="text-gray-400 hover:text-blueTwo font-sm">
                   Meta Jobs
                 </a>
               </Link>
-              <Link href="">
+              <Link href="#">
                 <a className="text-gray-400 hover:text-blueTwo font-sm mt-2">
                   Meta Ads
                 </a>
               </Link>
-              <Link href="">
+              <Link href="#">
                 <a className="text-gray-400 hover:text-blueTwo font-sm mt-2">
                   Meta List
                 </a>
               </Link>
-              <Link href="">
+              <Link href="#">
                 <a className="text-gray-400 hover:text-blueTwo font-sm mt-2">
                   Meta Lancer
                 </a>
@@ -195,17 +180,17 @@ const Footer = ({
             <div>
               <h3 className="text-lg font-bold text-gray-100">Headless CMS</h3>
               <div className="mt-4 flex flex-col ">
-                <Link href="">
+                <Link href="#">
                   <a className="text-gray-400 hover:text-blueTwo font-sm">
                     E-Commerce Template
                   </a>
                 </Link>
-                <Link href="">
+                <Link href="#">
                   <a className="text-gray-400 hover:text-blueTwo font-sm mt-2">
                     Blog Template
                   </a>
                 </Link>
-                <Link href="">
+                <Link href="#">
                   <a className="text-gray-400 hover:text-blueTwo font-sm mt-2">
                     Multipurpose
                   </a>
@@ -217,12 +202,12 @@ const Footer = ({
                 React Template
               </h3>
               <div className="mt-4 flex flex-col ">
-                <Link href="">
+                <Link href="#">
                   <a className="text-gray-400 hover:text-blueTwo font-sm">
                     React Dashboard
                   </a>
                 </Link>
-                <Link href="">
+                <Link href="#">
                   <a className="text-gray-400 hover:text-blueTwo font-sm mt-2">
                     React Multipurpose
                   </a>

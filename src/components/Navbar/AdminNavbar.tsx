@@ -1,8 +1,8 @@
-import Image from 'next/image'
-import Link from 'next/link'
-import React from 'react'
-import { BsList } from 'react-icons/bs'
-import { HiBell, HiMail } from 'react-icons/hi'
+import Image from "next/image";
+import Link from "next/link";
+import React from "react";
+import { BsList } from "react-icons/bs";
+import { HiBell, HiMail } from "react-icons/hi";
 
 const AdminNavbar = ({ handleSidebar }: { handleSidebar: any }) => {
   return (
@@ -14,11 +14,11 @@ const AdminNavbar = ({ handleSidebar }: { handleSidebar: any }) => {
           </a>
         </Link>
       </div>
-      <div className="items-center lg:flex hidden">
-        <button>
+      <div className=" items-center lg:flex hidden">
+        <button type="button" aria-label="mail">
           <HiMail className="text-xl text-gray-500 mr-5" />
         </button>
-        <button>
+        <button type="button" aria-label="bell">
           <HiBell className="text-xl text-gray-500 mr-8" />
         </button>
         <div className="w-[2.25rem] h-[2.25rem] rounded-full bg-blueTwo" />
@@ -27,10 +27,10 @@ const AdminNavbar = ({ handleSidebar }: { handleSidebar: any }) => {
         className="p-3 rounded-md bg-gradient-to-r from-blueOne to-blueTwo shadow-3xl lg:hidden block cursor-pointer"
         onClick={handleSidebar}
       >
-        <BsList style={{ color: 'white', width: '18px', height: '15.5px' }} />
+        <BsList style={{ color: "white", width: "18px", height: "15.5px" }} />
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default AdminNavbar
+export default AdminNavbar;

@@ -1,5 +1,5 @@
-import React from 'react'
-import { FaSmile } from 'react-icons/fa'
+import React from "react";
+import { FaSmile } from "react-icons/fa";
 
 const Header = () => {
   return (
@@ -21,7 +21,7 @@ const Header = () => {
         </p>
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default Header
+export default Header;

@@ -59,7 +59,7 @@ const ChooseUs = () => {
         <h1 className="2xl:text-4xl xl:text-3xl lg:text-2xl md:text-xl sm:text-lg text-base font-bold lg:mt-4 sm:mt-3 mt-2 text-gray-900">
           Why Choose Us ?
         </h1>
-        <article className="mt-5 text-gray-600 md:w-1/3 w-3/5 text-center xl:text-lg md:text-base text-sm">
+        <article className="mt-5 text-gray-600 max-w-2xl w-11/12 text-center xl:text-lg md:text-base text-sm">
           Our main focuses on providing every customer the best support for
           their respective business. We make sure our customer is always happy.
         </article>
@@ -114,10 +114,10 @@ const ChooseUs = () => {
               />
             </div>
             <h5 className="text-xl font-bold mt-7 text-gray-900 text-center">
-              Secure and Scaleable
+              Secure and Scalable
             </h5>
             <article className="text-lg text-gray-600 mt-4 text-center">
-              Our solution is secured and scaleable as you need
+              Our solution is secured and scalable as you need
             </article>
           </div>
           <div

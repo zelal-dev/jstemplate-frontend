@@ -69,27 +69,22 @@ const FooterWithoutSolution = () => {
           <div className="pt-8">
             <h3 className="text-lg font-bold text-gray-100">Menu</h3>
             <div className="mt-4 flex flex-col ">
-              <Link href="">
+              <Link href="/">
                 <a className="text-gray-400 hover:text-blueTwo font-sm">Home</a>
               </Link>
-              <Link href="">
+              <Link href="/shop">
                 <a className="text-gray-400 hover:text-blueTwo font-sm mt-2">
                   Our Solution
                 </a>
               </Link>
-              <Link href="">
+              <Link href="/resources">
                 <a className="text-gray-400 hover:text-blueTwo font-sm mt-2">
                   Resources
                 </a>
               </Link>
-              <Link href="">
+              <Link href="/blog">
                 <a className="text-gray-400 hover:text-blueTwo font-sm mt-2">
                   Blog
-                </a>
-              </Link>
-              <Link href="">
-                <a className="text-gray-400 hover:text-blueTwo font-sm mt-2">
-                  Faq’s
                 </a>
               </Link>
             </div>
@@ -97,19 +92,14 @@ const FooterWithoutSolution = () => {
           <div className="pt-8">
             <h3 className="text-lg font-bold text-gray-100">Quick Link</h3>
             <div className="mt-4 flex flex-col ">
-              <Link href="">
+              <Link href="/contact-us">
                 <a className="text-gray-400 hover:text-blueTwo font-sm">
                   Contact Us
                 </a>
               </Link>
-              <Link href="">
+              <Link href="/terms-conditions">
                 <a className="text-gray-400 hover:text-blueTwo font-sm mt-2">
-                  Pre-Sale
-                </a>
-              </Link>
-              <Link href="">
-                <a className="text-gray-400 hover:text-blueTwo font-sm mt-2">
-                  Terms & Condition
+                  Terms & Conditions
                 </a>
               </Link>
               <Link href="/privacy-policy">
@@ -117,32 +107,27 @@ const FooterWithoutSolution = () => {
                   Privacy Policy
                 </a>
               </Link>
-              <Link href="">
-                <a className="text-gray-400 hover:text-blueTwo font-sm mt-2">
-                  Help
-                </a>
-              </Link>
             </div>
           </div>
           <div className="pt-8">
             <h3 className="text-lg font-bold text-gray-100">Our Solution</h3>
             <div className="mt-4 flex flex-col ">
-              <Link href="">
+              <Link href="#">
                 <a className="text-gray-400 hover:text-blueTwo font-sm">
                   Meta Jobs
                 </a>
               </Link>
-              <Link href="">
+              <Link href="#">
                 <a className="text-gray-400 hover:text-blueTwo font-sm mt-2">
                   Meta Ads
                 </a>
               </Link>
-              <Link href="">
+              <Link href="#">
                 <a className="text-gray-400 hover:text-blueTwo font-sm mt-2">
                   Meta List
                 </a>
               </Link>
-              <Link href="">
+              <Link href="#">
                 <a className="text-gray-400 hover:text-blueTwo font-sm mt-2">
                   Meta Lancer
                 </a>
@@ -153,17 +138,17 @@ const FooterWithoutSolution = () => {
             <div>
               <h3 className="text-lg font-bold text-gray-100">Headless CMS</h3>
               <div className="mt-4 flex flex-col ">
-                <Link href="">
+                <Link href="#">
                   <a className="text-gray-400 hover:text-blueTwo font-sm">
                     E-Commerce Template
                   </a>
                 </Link>
-                <Link href="">
+                <Link href="#">
                   <a className="text-gray-400 hover:text-blueTwo font-sm mt-2">
                     Blog Template
                   </a>
                 </Link>
-                <Link href="">
+                <Link href="#">
                   <a className="text-gray-400 hover:text-blueTwo font-sm mt-2">
                     Multipurpose
                   </a>
@@ -175,12 +160,12 @@ const FooterWithoutSolution = () => {
                 React Template
               </h3>
               <div className="mt-4 flex flex-col ">
-                <Link href="">
+                <Link href="#">
                   <a className="text-gray-400 hover:text-blueTwo font-sm">
                     React Dashboard
                   </a>
                 </Link>
-                <Link href="">
+                <Link href="#">
                   <a className="text-gray-400 hover:text-blueTwo font-sm mt-2">
                     React Multipurpose
                   </a>

@@ -10,9 +10,9 @@ export interface serviceMenuDocument {
 export const serviceMenuData = [
   {
     id: uuidv4(),
-    title: 'MERN Stack Website Design',
+    title: 'MERN Stack Development Services',
     description: 'We can help you to develop your website using MERN Stack',
-    slug: 'mern-stack-website-development',
+    slug: 'mern-stack-development-services',
   },
   {
     id: uuidv4(),

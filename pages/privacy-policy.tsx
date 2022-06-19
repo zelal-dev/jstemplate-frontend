@@ -16,7 +16,7 @@ const PrivacyPolicy = () => {
             </div>
           </div>
         </div>
-        <div className="container mx-auto mt-8 px-5 sm:px-0">
+        <div className="container mx-auto my-12 px-5 sm:px-0">
           <p className="md:text-lg text-base mb-4 text-[#4b566b]">
             At js template, accessible from{" "}
             <a href="https://jstemplate.net" className="text-blueTwo">

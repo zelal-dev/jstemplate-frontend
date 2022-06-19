@@ -1,7 +1,7 @@
-import Link from 'next/link'
-import React from 'react'
-import { FaShoppingCart } from 'react-icons/fa'
-import { HiArchive } from 'react-icons/hi'
+import Link from "next/link";
+import React from "react";
+import { FaShoppingCart } from "react-icons/fa";
+import { HiArchive } from "react-icons/hi";
 
 const Header = () => {
   return (
@@ -14,7 +14,7 @@ const Header = () => {
           Grow Your Business Faster
         </h1>
       </div>
-      <article className="sm:w-2/5 w-4/5 text-gray-600 xl:mt-6 md:mt-5 mt-3 text-center 2xl:text-xl lg:text-lg sm:text-base text-sm">
+      <article className="max-w-3xl w-11/12 text-gray-600 xl:mt-6 md:mt-5 mt-3 text-center 2xl:text-xl lg:text-lg sm:text-base text-sm">
         MERN Stack Theme, Landing page and dashboard template, Headless CMS
         template built on best teck stack-
         <span className="bold text-black">
@@ -22,25 +22,26 @@ const Header = () => {
         </span>
       </article>
       <div className="flex sm:flex-row flex-col items-center xl:mt-12 lg:mt-10 md:mt-9 sm:mt-8 mt-7 ">
-        <Link href="/productPage">
+        <Link href="/shop">
           <a className="flex sm:w-auto w-full items-center xl:text-lg text-base xl:py-4 md:py-3 xl:px-6 md:px-5 py-3 px-3 rounded-lg bg-gradient-to-br from-blueOne to-blueTwo sm:mr-6 mr-0 shadow-3xl">
-            <HiArchive
-              style={{ color: 'white', width: '18px', height: '18px' }}
+            <FaShoppingCart
+              style={{ color: "white", width: "18px", height: "18px" }}
             />
-            <span className="md:ml-4 ml-3 text-white">Our Solution</span>{' '}
+            <span className="md:ml-4 ml-3 text-white">Our Solution</span>{" "}
           </a>
         </Link>
-        <Link href="/preSalePage">
+        {/* Pre Seal Button Hidden */}
+        <Link href="/contact-us">
           <a className="flex sm:w-auto w-full items-center xl:text-lg text-base xl:py-4 md:py-3 xl:px-6 md:px-5 py-3 px-3 rounded-lg bg-gradient-to-br from-orangeOne to-orangeTwo  sm:mt-0 mt-3 shadow-4xl">
-            <FaShoppingCart
-              style={{ color: 'white', width: '18px', height: '18px' }}
+            <HiArchive
+              style={{ color: "white", width: "18px", height: "18px" }}
             />
-            <span className="md:ml-4 ml-3 text-white">Pre Sale</span>
+            <span className="md:ml-4 ml-3 text-white">Hire Us</span>
           </a>
         </Link>
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default Header
+export default Header;

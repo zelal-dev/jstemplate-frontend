@@ -2,7 +2,9 @@ import React from "react";
 import TestimonialsCart from "../../components/TestimonialsCart";
 
 const Testimonials = () => {
-  const sample = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12];
+  const sample = [
+    1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20,
+  ];
   return (
     <div className="bg-backgroundGrayOne relative z-0">
       <div className="container mx-auto">
@@ -14,7 +16,7 @@ const Testimonials = () => {
             What Our Client Says About Us ?
           </h1>
 
-          <div className="w-full h-[27rem]  relative overflow-hidden  mt-16 mb-32 px-5">
+          <div className="w-full h-[30rem]  relative overflow-hidden  mt-16 px-5">
             <div className="grid xl:grid-cols-4 lg:grid-cols-3 sm:grid-cols-2 grid-cols-1 gap-7 absolute top-0  xl:animate-testimonial-xl lg:animate-testimonial-lg sm:animate-testimonial-sm animate-testimonial-xs">
               {sample.map((items, index) => (
                 <TestimonialsCart key={index} />

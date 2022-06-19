@@ -33,11 +33,9 @@ export interface ProductDocument {
 
 const ProductPage = ({ productData }: { productData: ProductDocument }) => {
   // fetch data using SWR
-  const { data, error } = SWR('/api/v1/public/products', fetcher, {
+  const { data, error } = SWR('/api/products/retrives', fetcher, {
     initialData: productData,
   } as any)
-
-  console.log('data by SWR', data, 'error', error)
 
   return (
     <section>
@@ -48,7 +46,7 @@ const ProductPage = ({ productData }: { productData: ProductDocument }) => {
         </div>
         {/* pass props */}
         <Products data={data} />
-        <ContactUs />
+        {/* <ContactUs /> */}
       </div>
       <FooterWithoutSolution />
     </section>
@@ -60,9 +58,11 @@ export default ProductPage
 // get staticspros function for prefetch data
 
 export const getStaticProps: GetStaticProps = async (context) => {
-  const productResponse = await fetch(
-    `http://localhost:1337/api/v1/public/products`
-  )
+  // fetch all products from woocommerce using fecth api
+  const BASE_URL =
+    `${process.env.NEXT_PUBLIC_BASE_URL}/api/products/retrives` as string
+
+  const productResponse = await fetch(BASE_URL)
   const productData = await productResponse.json()
 
   return {
