@@ -355,7 +355,7 @@ export const getStaticProps = async () => {
   const URL = `${process.env.NEXT_PUBLIC_BASE_URL}/api/products/mern-stack-job-board-theme`
   const response = await fetch(URL)
   const data = await response.json()
-
+  console.log('data', data)
   return {
     props: {
       data: data.data,

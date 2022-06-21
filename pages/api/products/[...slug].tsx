@@ -5,6 +5,8 @@ import { Woocommerce } from '../../../src/utils/woocommerce'
 // eslint-disable-next-line import/no-anonymous-default-export
 export default async function (req: NextApiRequest, res: NextApiResponse) {
   const { slug } = req.query
+
+  console.log('slug', slug)
   // allow only get request for this endpoint
   if (req.method !== 'GET')
     return res.status(400).json({ message: 'Method not allowed' })

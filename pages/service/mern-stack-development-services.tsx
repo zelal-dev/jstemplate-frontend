@@ -27,12 +27,12 @@ const data = {
   heading: {
     title: 'Best MERN Stack Development Services',
     description:
-      'We are a team of web developers who are passionate about building websites that are lighting fast speed, secure and easy to use. We have experinced, skilled and dedicated team of web developers who are ready to help you with your web development needs.',
+      'If you are looking for top-quality MERN stack development services, you have come to the right place. Our professional team has years of experience creating amazing websites using this technology stack.',
   },
   whyChooseUs: {
     title: 'We Provide Best MERN Stack Development Services',
     description:
-      'We are a team of experienced developers and designers who are passionate about creating the best user experience for your web app.',
+      'MERN stack development is all the rage right now. If you are not familiar with it, Together, they make a powerful web development platform thats perfect for creating modern-looking web applications.',
     items: [
       {
         name: 'Web Application Development',
@@ -113,28 +113,28 @@ const data = {
     buttonLink: '#',
   },
   howItWork: {
-    title: 'Steps to build Your MERN Stack Web Application',
+    title: 'Steps to Build Your MERN Stack Web Application',
     description:
       'We are a team of experienced developers and designers who are passionate about creating the best user experience for your business.',
     items: [
       {
         name: 'Information Gathering',
         description:
-          'We discuss your project requirements and gather all the information needed to create your MERN Stack web application. We will prefer to discuss on zoom, google meet video sessions.',
+          'After the project is initiated, the next step is information gathering. The project specifications are determined based on the customer’s requirements, and the team does a deep dive into understanding the customers needs.',
         icon: <FaUser />,
         image: '/happy.svg',
       },
       {
         name: 'Planning & Contract Agreement',
         description:
-          'We will create a detailed plan for your MERN Stack web application including timeline, total cost and scope of work. We will also create a contract agreement for you to sign.',
+          'The next step is Planning and Contract Agreement. The team creates a proposal that outlines all of the deliverables and required tasks, and both parties sign off on the agreement.',
         icon: <FaUser />,
         image: '/happy.svg',
       },
       {
         name: 'UX/UI Design Using Figma',
         description:
-          'Our professional designers will create a unique and beautiful user interface for your MERN Stack web application. You will be able collaborate with our designers to create a better user experience for your web application.',
+          'Once the contract is agreed to, UX/UI design begins in Figma. The design is based on the customer’s requirements and takes into account their brand and specific use cases. The goal is to create a design that not only looks great but also functions well for the customers users.',
         icon: <FaUser />,
         image: '/happy.svg',
       },
@@ -157,7 +157,7 @@ const data = {
   ourPromise: {
     title: 'What You Will Get',
     description:
-      'We are a team of experienced developers and designers who are passionate about creating the best user experience for your business website.',
+      'We are always there for you when you need us. Our team provides continuous support so that you are never left feeling stranded. In addition, we have strict NDA terms and conditions to ensure that your project remains confidential.',
     items: [
       {
         name: 'Lightning Fast Loading',
@@ -222,7 +222,7 @@ const data = {
   hire: {
     title: 'Hire MERN Stack Developers',
     description:
-      'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text',
+      'We have a team of experienced MERN stack developers who are well-versed in the latest trends and technologies. We use the latest tools and frameworks to build efficient and scalable applications.',
     buttonText: 'Start a Project',
     buttonLink: '#',
   },
@@ -246,7 +246,7 @@ const ServicePage = () => {
       <Heading colors={colors} data={data.productFeature} />
       {/* <Products /> */}
       {/* <Question /> */}
-      {/* <Hire colors={colors} data={data.hire} /> */}
+      <Hire colors={colors} data={data.hire} />
       {/* <Testimonials /> */}
       <Footer
         boxToColor="greenDark"
