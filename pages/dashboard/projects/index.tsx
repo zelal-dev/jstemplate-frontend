@@ -1,16 +1,16 @@
-import { useRouter } from "next/router";
-import React from "react";
-import { LoaderGrowing } from "../../../src/lib/loader";
-import { UserNotLogin, useUser } from "../../../src/lib/useUser";
-import Navbar from "./../../../src/components/Navbar";
+import { useRouter } from 'next/router'
+import React from 'react'
+import { LoaderGrowing } from '../../../src/lib/loader'
+import { useUser } from '../../../src/lib/useUser'
+// import Navbar from "./../../../src/components/Navbar";
 
 const Projects = () => {
-  const { loggedIn, user } = useUser();
-  const router = useRouter();
+  const { loggedIn, user } = useUser()
+  const router = useRouter()
 
   React.useEffect(() => {
-    router.back();
-  }, [router]);
+    router.back()
+  }, [router])
 
   //   if (!user && !loggedIn) {
   //     return <UserNotLogin />;
@@ -192,7 +192,7 @@ const Projects = () => {
   //     );
   //   }
 
-  return <LoaderGrowing />;
-};
+  return <LoaderGrowing />
+}
 
-export default Projects;
+export default Projects

@@ -15,6 +15,7 @@ const nextConfig = {
       'h6.googleusercontent.com',
     ],
   },
+  // do not load admin dashboard pages on build command
 }
 
 module.exports = nextConfig

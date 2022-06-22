@@ -65,7 +65,7 @@ export const getStaticProps: GetStaticProps = async (context) => {
 
   return {
     props: {
-      productData: productData.data,
+      productData: productData.data ? productData.data : [],
     },
   }
 }

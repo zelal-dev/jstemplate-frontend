@@ -67,7 +67,8 @@ export const getStaticProps: GetStaticProps = async (context) => {
 
   return {
     props: {
-      productData,
+      // Pass data to the page via props or null
+      productData: productData.data || null,
     },
   }
 }

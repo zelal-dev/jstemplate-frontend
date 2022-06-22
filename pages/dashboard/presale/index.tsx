@@ -1,17 +1,16 @@
-import { useRouter } from "next/router";
-import React from "react";
-import { LoaderGrowing } from "../../../src/lib/loader";
-import { useUser, UserNotLogin } from "../../../src/lib/useUser";
-import Navbar from "./../../../src/components/Navbar";
+import { useRouter } from 'next/router'
+import React from 'react'
+import { LoaderGrowing } from '../../../src/lib/loader'
+import { useUser } from '../../../src/lib/useUser'
 
 const PreSale = () => {
-  const { loggedIn, user } = useUser();
-  const router = useRouter();
-  const sample = [1, 2, 3, 4];
+  const { loggedIn, user } = useUser()
+  const router = useRouter()
+  const sample = [1, 2, 3, 4]
 
   React.useEffect(() => {
-    router.back();
-  }, [router]);
+    router.back()
+  }, [router])
 
   //   if (!user && !loggedIn) {
   //     return <UserNotLogin />;
@@ -74,7 +73,7 @@ const PreSale = () => {
   //     );
   //   }
 
-  return <LoaderGrowing />;
-};
+  return <LoaderGrowing />
+}
 
-export default PreSale;
+export default PreSale
