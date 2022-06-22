@@ -18,8 +18,6 @@ const DropDownService = () => {
     fallbackData: [],
   })
 
-  console.log('data service', data, 'error service', error)
-
   return (
     <div className="bg-white w-10/12 drop-shadow-xl rounded-lg">
       <div className=" lg:px-8 md:px-7 sm:px-6 lg:py-8 md:py-7 sm:py-6  grid xl:grid-cols-2 lg:grid-cols-1 container gap-3">
