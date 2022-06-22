@@ -27,7 +27,7 @@ export default async function (req: NextApiRequest, res: NextApiResponse) {
         menu_order: item.menu_order,
         attr_title: item.attr_title,
         description: item.post_content,
-        url: item.url,
+        url: item.url ? item.url : '#',
       }
     })
 
