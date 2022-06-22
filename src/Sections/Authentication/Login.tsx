@@ -1,17 +1,17 @@
-import React, { useEffect, useState } from "react";
-import { SubmitHandler, useForm } from "react-hook-form";
-import { ImCross } from "react-icons/im";
-import { useToasts } from "react-toast-notifications";
-import { useSWRConfig } from "swr";
-import PopupModule from "../../components/PopupModal";
-import { Axios } from "../../utils/axiosKits";
-import { localGet, localRemove, localSave } from "./../../utils/localStorage";
+import React, { useEffect, useState } from 'react'
+import { SubmitHandler, useForm } from 'react-hook-form'
+import { ImCross } from 'react-icons/im'
+import { useToasts } from 'react-toast-notifications'
+import { useSWRConfig } from 'swr'
+import PopupModule from '../../components/PopupModal'
+import { Axios } from '../../utils/axiosKits'
+import { localGet, localRemove, localSave } from './../../utils/localStorage'
 
 type Inputs = {
-  email: string;
-  password: string;
-  remember: boolean;
-};
+  email: string
+  password: string
+  remember: boolean
+}
 
 const Login = ({
   handleLoginModal,
@@ -20,11 +20,11 @@ const Login = ({
   handleUserImageShow,
   loginShow,
 }: {
-  handleLoginModal: any;
-  handleRegModal: any;
-  handelForgetPassModal: any;
-  handleUserImageShow: any;
-  loginShow: boolean;
+  handleLoginModal: any
+  handleRegModal: any
+  handelForgetPassModal: any
+  handleUserImageShow: any
+  loginShow: boolean
 }) => {
   const {
     register,
@@ -33,27 +33,27 @@ const Login = ({
     setValue,
     reset,
     formState: { errors },
-  } = useForm<Inputs>();
-  const [loading, setLoading] = useState<boolean>(false);
-  const { mutate } = useSWRConfig();
-  const { addToast } = useToasts();
+  } = useForm<Inputs>()
+  const [loading, setLoading] = useState<boolean>(false)
+  const { mutate } = useSWRConfig()
+  const { addToast } = useToasts()
 
   useEffect(() => {
-    const local = localGet("jst_l_info");
+    const local = localGet('jst_l_info')
     if (local) {
-      const { email, password } = local;
-      setValue("email", email);
-      setValue("password", password);
-      setValue("remember", true);
+      const { email, password } = local
+      setValue('email', email)
+      setValue('password', password)
+      setValue('remember', true)
     }
-  }, [setValue]);
+  }, [setValue])
 
   const onSubmit: SubmitHandler<Inputs> = async (data) => {
-    setLoading(true);
-    const local = localGet("jst_l_info");
+    setLoading(true)
+    const local = localGet('jst_l_info')
     await Axios({
-      method: "post",
-      url: `/api/v1/user/login`,
+      method: 'post',
+      url: `/api/user/login`,
       data: {
         email: data.email,
         password: data.password,
@@ -61,51 +61,51 @@ const Login = ({
     })
       .then((res) => {
         if (res.status === 200 || res.status === 201) {
-          localSave("jst_u_info", {
+          localSave('jst_u_info', {
             ...res.data,
             login_at: new Date(),
             // expires one day after login
             expires_in: new Date(new Date().getTime() + 86400000),
-          });
-          mutate("api/v1/user/self").then(() => {
+          })
+          mutate('api/v1/user/self').then(() => {
             addToast(res.data.message, {
-              appearance: "success",
+              appearance: 'success',
               autoDismiss: true,
               autoDismissTimeout: 1500,
-            });
-            handleUserImageShow();
-            setLoading(false);
-            reset();
-            handleLoginModal();
-          });
+            })
+            handleUserImageShow()
+            setLoading(false)
+            reset()
+            handleLoginModal()
+          })
         }
       })
       .catch((error) => {
         if (error?.response?.data) {
           addToast(error.response.data.message, {
-            appearance: "error",
+            appearance: 'error',
             autoDismiss: true,
             autoDismissTimeout: 2000,
-          });
+          })
         } else {
           addToast(error.message, {
-            appearance: "error",
+            appearance: 'error',
             autoDismiss: true,
             autoDismissTimeout: 2000,
-          });
+          })
         }
-        setLoading(false);
-      });
+        setLoading(false)
+      })
     setTimeout(() => {
-      setLoading(false);
-    }, 10000);
+      setLoading(false)
+    }, 10000)
     if (data.remember) {
-      localSave("jst_l_info", data);
+      localSave('jst_l_info', data)
     }
     if (data.remember === false && local) {
-      localRemove("jst_l_info");
+      localRemove('jst_l_info')
     }
-  };
+  }
 
   return (
     <PopupModule title="Login" show={loginShow} onClose={handleLoginModal}>
@@ -117,7 +117,7 @@ const Login = ({
           type="text"
           className="lg:p-3 md:p-2.5 p-2 border outline-none rounded-md w-full md:text-base text-sm"
           placeholder="abc"
-          {...register("email", { required: true })}
+          {...register('email', { required: true })}
         />
         {errors?.email && (
           <span className="text-xss italic text-red-500">
@@ -131,7 +131,7 @@ const Login = ({
           type="password"
           className="lg:p-3 md:p-2.5 p-2 border outline-none rounded-md w-full md:text-base text-sm"
           placeholder="******"
-          {...register("password", { required: true })}
+          {...register('password', { required: true })}
         />
         {errors?.password && (
           <span className="text-xss italic text-red-500">
@@ -140,7 +140,7 @@ const Login = ({
         )}
         <div className="xl:mt-6 md:mt-4 mt-3 flex items-center justify-between">
           <div className="flex items-center">
-            <input id="remember_me" type="checkbox" {...register("remember")} />
+            <input id="remember_me" type="checkbox" {...register('remember')} />
             <label
               htmlFor="remember_me"
               className="md:text-sm text-xs text-gray-600 ml-3"
@@ -151,10 +151,10 @@ const Login = ({
           <button
             type="button"
             onClick={() => {
-              handleLoginModal();
+              handleLoginModal()
               setTimeout(() => {
-                handelForgetPassModal();
-              }, 200);
+                handelForgetPassModal()
+              }, 200)
             }}
             className="md:text-sm text-xs text-blueTwo hover:underline"
           >
@@ -165,7 +165,7 @@ const Login = ({
           type="submit"
           className="md:py-3 py-2 rounded-md bg-gradient-to-br from-blueOne to-blueTwo md:text-base text-sm font-semibold text-white mt-8"
         >
-          {loading ? "Please Wait..." : "Login"}
+          {loading ? 'Please Wait...' : 'Login'}
         </button>
       </form>
       <div className="flex items-center justify-center xl:mt-6 md:mt-4 mt-3">
@@ -174,17 +174,17 @@ const Login = ({
           type="button"
           className="md:text-sm text-xs text-blueTwo cursor-pointer"
           onClick={() => {
-            handleLoginModal();
+            handleLoginModal()
             setTimeout(() => {
-              handleRegModal();
-            }, 200);
+              handleRegModal()
+            }, 200)
           }}
         >
           Create Account
         </button>
       </div>
     </PopupModule>
-  );
-};
+  )
+}
 
-export default Login;
+export default Login
