@@ -43,14 +43,14 @@ const SolutionCart = ({
       )}
 
       {item.categories &&
-        item.categories.map((category: string, index: any) => {
+        item.categories.map((category: any, index: any) => {
           return (
             <>
               <span
                 key={index}
                 className={`text-xs py-1.5 rounded text-white px-2 bg-gradient-to-br from-${toColor} to-${fromColor} shadow-3xl`}
               >
-                {category.name || ' Category Name'}
+                {category?.name || ' Category Name'}
               </span>
             </>
           )

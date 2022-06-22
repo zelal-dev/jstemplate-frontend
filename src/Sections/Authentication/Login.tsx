@@ -50,60 +50,95 @@ const Login = ({
 
   const onSubmit: SubmitHandler<Inputs> = async (data) => {
     setLoading(true)
-    const local = localGet('jst_l_info')
-    await Axios({
-      method: 'post',
-      url: `/api/user/login`,
-      data: {
-        email: data.email,
+
+    // call api to login using axios
+    const response = await Axios.post(
+      `${process.env.NEXT_PUBLIC_BASE_URL}/api/user/login`,
+      {
+        username: data.email,
         password: data.password,
-      },
-    })
-      .then((res) => {
-        if (res.status === 200 || res.status === 201) {
-          localSave('jst_u_info', {
-            ...res.data,
-            login_at: new Date(),
-            // expires one day after login
-            expires_in: new Date(new Date().getTime() + 86400000),
-          })
-          mutate('api/v1/user/self').then(() => {
-            addToast(res.data.message, {
-              appearance: 'success',
-              autoDismiss: true,
-              autoDismissTimeout: 1500,
-            })
-            handleUserImageShow()
-            setLoading(false)
-            reset()
-            handleLoginModal()
-          })
-        }
-      })
-      .catch((error) => {
-        if (error?.response?.data) {
-          addToast(error.response.data.message, {
-            appearance: 'error',
-            autoDismiss: true,
-            autoDismissTimeout: 2000,
-          })
-        } else {
-          addToast(error.message, {
-            appearance: 'error',
-            autoDismiss: true,
-            autoDismissTimeout: 2000,
-          })
-        }
-        setLoading(false)
-      })
-    setTimeout(() => {
-      setLoading(false)
-    }, 10000)
-    if (data.remember) {
-      localSave('jst_l_info', data)
+      }
+    )
+    const resData = await response.data
+
+    // extract token from resData
+    const token = resData.data.token
+    const user = {
+      email: resData.data.displayName,
     }
-    if (data.remember === false && local) {
-      localRemove('jst_l_info')
+
+    // SAVE TOKEN TO LOCAL STORAGE
+    localSave('jst_l_info', {
+      token,
+      user,
+    })
+    // show toast if login success
+    if (resData.success) {
+      addToast('Login success', {
+        appearance: 'success',
+        autoDismiss: true,
+        autoDismissTimeout: 3000,
+      })
+
+      console.log('token', token)
+      setLoading(false)
+
+      // setLoading(true)
+      // const local = localGet('jst_l_info')
+      // await Axios({
+      //   method: 'post',
+      //   url: `/api/user/login`,
+      //   data: {
+      //     email: data.email,
+      //     password: data.password,
+      //   },
+      // })
+      //   .then((res) => {
+      //     if (res.status === 200 || res.status === 201) {
+      //       localSave('jst_u_info', {
+      //         ...res.data,
+      //         login_at: new Date(),
+      //         // expires one day after login
+      //         expires_in: new Date(new Date().getTime() + 86400000),
+      //       })
+      //       mutate('api/v1/user/self').then(() => {
+      //         addToast(res.data.message, {
+      //           appearance: 'success',
+      //           autoDismiss: true,
+      //           autoDismissTimeout: 1500,
+      //         })
+      //         handleUserImageShow()
+      //         setLoading(false)
+      //         reset()
+      //         handleLoginModal()
+      //       })
+      //     }
+      //   })
+      //   .catch((error) => {
+      //     if (error?.response?.data) {
+      //       addToast(error.response.data.message, {
+      //         appearance: 'error',
+      //         autoDismiss: true,
+      //         autoDismissTimeout: 2000,
+      //       })
+      //     } else {
+      //       addToast(error.message, {
+      //         appearance: 'error',
+      //         autoDismiss: true,
+      //         autoDismissTimeout: 2000,
+      //       })
+      //     }
+      //     setLoading(false)
+      //   })
+      // setTimeout(() => {
+      //   setLoading(false)
+      // }, 10000)
+      // if (data.remember) {
+      //   localSave('jst_l_info', data)
+      // }
+      // if (data.remember === false && local) {
+      //   localRemove('jst_l_info')
+      // }
     }
   }
 
