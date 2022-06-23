@@ -8,6 +8,8 @@ import ContactUs from '../src/Sections/Productpage/ContactUs'
 import Header from '../src/Sections/Productpage/Header'
 import Products from '../src/Sections/Productpage/Products'
 import { Axios } from '../src/utils/axiosKits'
+import { Woocommerce } from '../src/utils/woocommerce'
+import _ from 'lodash'
 
 const fetcher = (url: string) => Axios(url).then((res) => res.data.data) as any
 export interface ProductDocument {
@@ -59,16 +61,36 @@ export default ProductPage
 
 export const getStaticProps: GetStaticProps = async (context) => {
   // fetch all products from woocommerce using fecth api
-  const BASE_URL =
-    `${process.env.NEXT_PUBLIC_BASE_URL}/api/products/retrives` as string
+  // const BASE_URL =
+  //   `${process.env.NEXT_PUBLIC_BASE_URL}/api/products/retrives` as string
 
-  const productResponse = await fetch(BASE_URL)
-  const productData = await productResponse.json()
+  // const productResponse = await fetch(BASE_URL)
+  // const productData = await productResponse.json()
+  const data = await Woocommerce.get('products').then((res) => res.data)
+
+  const filteredData = _.filter(data, (item: any) => {
+    return item.status === 'publish'
+  }).map((item: any) => {
+    return {
+      id: item.id,
+      name: item.name,
+      slug: item.slug,
+      image: item.images[0].src,
+      short_description: item.short_description,
+      categories: item.categories.map((category: any) => {
+        return {
+          id: category.id,
+          name: category.name,
+          slug: category.slug,
+        }
+      }),
+    }
+  })
 
   return {
     props: {
       // Pass data to the page via props or null
-      productData: productData.data || null,
+      productData: filteredData ?? [],
     },
   }
 }

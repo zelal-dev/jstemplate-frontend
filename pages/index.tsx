@@ -11,16 +11,18 @@ import Solution from '../src/Sections/Homepage/Solution'
 import Testimonials from '../src/Sections/Homepage/Testimonials'
 import { Axios } from '../src/utils/axiosKits'
 import { ProductDocument } from './shop'
+import { Woocommerce } from '../src/utils/woocommerce'
+import _ from 'lodash'
 
 const fetcher = (url: string) => Axios(url).then((res) => res.data.data) as any
 
 const Homepage = ({ productData }: { productData: ProductDocument }) => {
-  // // fetch data using SWR
-  // const { data, error } = useSWR('/api/products/retrives', fetcher, {
-  //   initialData: productData,
-  //   refreshInterval: 1000,
-  // } as any)
-  // console.log('productData', productData, 'data', data, 'error', error)
+  // fetch data using SWR
+  const { data, error } = useSWR('/api/products/retrives', fetcher, {
+    initialData: productData,
+    refreshInterval: 1000,
+  } as any)
+  console.log('productData from SWR', productData, 'data', data, 'error', error)
   return (
     <>
       <NextSeo
@@ -57,15 +59,35 @@ export default Homepage
 
 export const getStaticProps: GetStaticProps = async (context) => {
   // fetch all products from woocommerce using fecth api
-  const BASE_URL =
-    `${process.env.NEXT_PUBLIC_BASE_URL}/api/products/retrives` as string
+  // const BASE_URL =
+  //   `${process.env.NEXT_PUBLIC_BASE_URL}/api/products/retrives` as string
 
-  const productResponse = await fetch(BASE_URL)
-  const productData = await productResponse.json()
+  // const productResponse = await fetch(BASE_URL)
+  // const productData = await productResponse.json()
+  const data = await Woocommerce.get('products').then((res) => res.data)
+
+  const filteredData = _.filter(data, (item: any) => {
+    return item.status === 'publish'
+  }).map((item: any) => {
+    return {
+      id: item.id,
+      name: item.name,
+      slug: item.slug,
+      image: item.images[0].src,
+      short_description: item.short_description,
+      categories: item.categories.map((category: any) => {
+        return {
+          id: category.id,
+          name: category.name,
+          slug: category.slug,
+        }
+      }),
+    }
+  })
 
   return {
     props: {
-      productData: productData.data ? productData.data : [],
+      productData: filteredData ?? [],
     },
   }
 }
