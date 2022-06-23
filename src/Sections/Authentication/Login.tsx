@@ -59,7 +59,9 @@ const Login = ({
         password: data.password,
       }
     )
-    const resData = await response.data
+    const resData = await response.data.data
+
+    console.log('resData', resData)
 
     // extract token from resData
     const token = resData.data.token
