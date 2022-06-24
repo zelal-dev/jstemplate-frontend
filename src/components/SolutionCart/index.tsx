@@ -45,21 +45,20 @@ const SolutionCart = ({
       {item.categories &&
         item.categories.map((category: any, index: any) => {
           return (
-            <>
+            <div key={index}>
               <span
-                key={index}
                 className={`text-xs py-1.5 rounded text-white px-2 bg-gradient-to-br from-${toColor} to-${fromColor} shadow-3xl`}
               >
                 {category?.name || ' Category Name'}
               </span>
-            </>
+            </div>
           )
         })}
       <h5
         className={`text-xl mt-5 font-bold text-gray-900 group-hover:text-${fromColor} duration-200 leading-6`}
       >
         <Link href={`/item/${item?.slug}`}>
-          {item?.name ? item?.name : 'Product Title'}
+          <a> {item?.name ? item?.name : 'Product Title'}</a>
         </Link>
       </h5>
       <div className="text-gray-600 mt-3">

@@ -1,18 +1,19 @@
-import Image from "next/image";
-import Link from "next/link";
-import React from "react";
-import { AiFillEye } from "react-icons/ai";
-import { FaShoppingCart } from "react-icons/fa";
+import Image from 'next/image'
+import Link from 'next/link'
+import React from 'react'
+import { AiFillEye } from 'react-icons/ai'
+import { FaShoppingCart } from 'react-icons/fa'
 
 const Products = ({
   children,
   info,
   colors,
 }: {
-  children: any;
-  info: any;
-  colors: any;
+  children: any
+  info: any
+  colors: any
 }) => {
+  console.log('Information', info)
   return (
     <>
       <div className="grid-cols-12 gap-7 container mx-auto -mt-72 hidden lg:grid">
@@ -71,28 +72,28 @@ const Products = ({
             <div className="flex items-center">
               <div className="flex items-end mr-5">
                 <h1 className="text-2xl text-gray-900 font-bold mr-3">
-                  ${info.pricing.salePrice}.00
+                  ${info[0].price}.00
                 </h1>
                 <h5 className="text-sm text-[#FA4F58] pb-1">
-                  ${info.pricing.regularPrice}.00
+                  {/* ${info?.pricing.regularPrice}.00 */}
                 </h5>
               </div>
-              {info.offer && (
+              {/* {info?.offer && (
                 <h3 className="text-xs text-gray-100 py-0.5 px-2.5 rounded-full bg-gradient-to-br from-purpleLight to-purpleDark">
-                  {info.offer}
+                  {info?.offer}
                 </h3>
-              )}
+              )} */}
             </div>
           </div>
           <hr className="w-full bg-cartImageBgOne my-6" />
           <div className="grid xl:grid-cols-2 grid-cols-1 gap-5">
-            <Link href={info.previewLink ? info.previewLink : "#"}>
+            <Link href="#">
               <a
-                target={info.previewLink ? "_blank" : ""}
+                target="_blank"
                 className={`text-base font-semibold text-gray-100 py-3 rounded-lg ${colors.buttonPrimary} flex items-center justify-center shadow-3xl`}
               >
                 <AiFillEye className="text-2xl mr-3" />
-                <span>Preview</span>
+                <span>Live Preview</span>
               </a>
             </Link>
             <button
@@ -100,7 +101,7 @@ const Products = ({
               className="text-base font-semibold text-gray-100 py-3 rounded-lg bg-gradient-to-br from-orangeOne to-orangeTwo flex items-center justify-center shadow-4xl"
             >
               <FaShoppingCart className="text-lg mr-3" />
-              <span>Add To Cart</span>
+              <span>Buy Now</span>
             </button>
           </div>
           <hr className="w-full bg-cartImageBgOne mt-6" />
@@ -112,32 +113,32 @@ const Products = ({
           <hr className="w-full bg-cartImageBgOne " /> */}
           <div className="flex items-center justify-between my-5">
             <h3 className="text-base text-gray-800">Last Update</h3>
-            <h3 className="text-base text-gray-600">{info.updateAt}</h3>
+            {/* <h3 className="text-base text-gray-600">{info?.updateAt}</h3> */}
           </div>
           <hr className="w-full bg-cartImageBgOne " />
-          {info.released && (
+          {info?.released && (
             <>
               <div className="flex items-center justify-between my-5">
                 <h3 className="text-base text-gray-800">Released</h3>
-                <h3 className="text-base text-gray-600">{info.released}</h3>
+                {/* <h3 className="text-base text-gray-600">{info?.released}</h3> */}
               </div>
               <hr className="w-full bg-cartImageBgOne " />
             </>
           )}
-          {info.tools && (
+          {info?.tools && (
             <>
               <div className="flex items-center justify-between my-5">
                 <h3 className="text-base text-gray-800">Tools</h3>
-                <h3 className="text-base text-gray-600">{info.tools}</h3>
+                <h3 className="text-base text-gray-600">{info?.tools}</h3>
               </div>
               <hr className="w-full bg-cartImageBgOne " />
             </>
           )}
-          {info.version && (
+          {info?.version && (
             <>
               <div className="flex items-center justify-between my-5">
                 <h3 className="text-base text-gray-800">Software Version</h3>
-                <h3 className="text-base text-gray-600">{info.version}</h3>
+                <h3 className="text-base text-gray-600">{info?.version}</h3>
               </div>
               <hr className="w-full bg-cartImageBgOne " />
             </>
@@ -145,23 +146,23 @@ const Products = ({
           <div className="flex items-center justify-between my-5">
             <h3 className="text-base text-gray-800">Responsive</h3>
             <h3 className="text-base text-gray-600">
-              {info.responsive ? "Yes" : "No"}
+              {info?.responsive ? 'Yes' : 'No'}
             </h3>
           </div>
           <hr className="w-full bg-cartImageBgOne " />
           <div className="flex items-center justify-between my-5">
             <h3 className="text-base text-gray-800">Documentation</h3>
             <h3 className="text-base text-gray-600">
-              {info.doc ? "Yes" : "No"}
+              {info?.doc ? 'Yes' : 'No'}
             </h3>
           </div>
           <hr className="w-full bg-cartImageBgOne " />
-          {info.tags && (
+          {info?.tags && (
             <>
               <div className="flex items-start justify-between mt-5">
                 <h3 className="text-base text-gray-800">Tags</h3>
                 <article className="text-base text-gray-600 w-2/4">
-                  {info.tags.toString().replace(/,/g, ", ")}
+                  {info?.tags.toString().replace(/,/g, ', ')}
                 </article>
               </div>
             </>
@@ -382,7 +383,7 @@ const Products = ({
         </div>
       </div>
     </>
-  );
-};
+  )
+}
 
-export default Products;
+export default Products

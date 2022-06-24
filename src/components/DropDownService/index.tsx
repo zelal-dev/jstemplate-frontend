@@ -7,25 +7,16 @@ import {
   serviceMenuData,
   serviceMenuDocument,
 } from '../../../data/service.data'
-import { Axios } from '../../utils/axiosKits'
-
-const fetcher = (url: string) => Axios(url).then((res) => res.data.data)
 
 const DropDownService = () => {
-  // call api using axios and get the data from the api
-  const { data, error } = useSWR('/api/menu/service', fetcher, {
-    refreshInterval: 0,
-    fallbackData: [],
-  })
-
   return (
     <div className="bg-white w-10/12 drop-shadow-xl rounded-lg">
       <div className=" lg:px-8 md:px-7 sm:px-6 lg:py-8 md:py-7 sm:py-6  grid xl:grid-cols-2 lg:grid-cols-1 container gap-3">
-        {data &&
-          data?.map((item: any) => {
+        {serviceMenuData &&
+          serviceMenuData?.map((item: any) => {
             return (
               <>
-                <Link key={item?.ID} href={item.url}>
+                <Link key={item?.id} href={`/service/${item.slug}` ?? '#'}>
                   <a>
                     <div className="flex items-start group p-5 rounded-lg hover:bg-backgroundGray cursor-pointer ease-in duration-200 border border-white hover:border-cartImageBgOne">
                       <div className="shadow-lg rounded-lg bg-white p-3 mr-6">

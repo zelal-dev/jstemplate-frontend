@@ -5,7 +5,6 @@ import { Woocommerce } from '../../../src/utils/woocommerce'
 // eslint-disable-next-line import/no-anonymous-default-export
 export default async function (req: NextApiRequest, res: NextApiResponse) {
   const { slug } = req.query
-
   console.log('slug', slug)
   // allow only get request for this endpoint
   if (req.method !== 'GET')
@@ -32,17 +31,21 @@ export default async function (req: NextApiRequest, res: NextApiResponse) {
         slug: item.slug,
         image: item.images[0].src,
         short_description: item.short_description,
-        price: {
-          standard: item.price,
-          standardPlus: item.price,
-          extended: item.price,
-        },
+        type: item.type === 'simple' ? 'simple' : 'variable',
+        price:
+          item.type === 'simple'
+            ? item.price
+            : {
+                standard: item.price,
+                standardPlus: item.price,
+                extended: item.price,
+              },
       }
     })
 
     return res.status(200).send({
       message: 'Successfully fetched products',
-      data: filteredData[0],
+      data: filteredData,
     })
   } catch (error: any) {
     return res.status(500).send({ message: error.message })

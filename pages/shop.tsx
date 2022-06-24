@@ -60,12 +60,6 @@ export default ProductPage
 // get staticspros function for prefetch data
 
 export const getStaticProps: GetStaticProps = async (context) => {
-  // fetch all products from woocommerce using fecth api
-  // const BASE_URL =
-  //   `${process.env.NEXT_PUBLIC_BASE_URL}/api/products/retrives` as string
-
-  // const productResponse = await fetch(BASE_URL)
-  // const productData = await productResponse.json()
   const data = await Woocommerce.get('products').then((res) => res.data)
 
   const filteredData = _.filter(data, (item: any) => {

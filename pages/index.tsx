@@ -20,9 +20,8 @@ const Homepage = ({ productData }: { productData: ProductDocument }) => {
   // fetch data using SWR
   const { data, error } = useSWR('/api/products/retrives', fetcher, {
     initialData: productData,
-    refreshInterval: 1000,
   } as any)
-  console.log('productData from SWR', productData, 'data', data, 'error', error)
+
   return (
     <>
       <NextSeo
@@ -37,7 +36,7 @@ const Homepage = ({ productData }: { productData: ProductDocument }) => {
             <Header />
           </div>
           <KnowUs />
-          <Solution data={productData} />
+          <Solution data={data} />
         </div>
         <ChooseUs />
         <Customer />

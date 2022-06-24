@@ -188,7 +188,10 @@ const Products = () => {
                 </div>
                 {data?.map((items: any, index: number) => (
                   <>
-                    <div key={index} className="col-span-1 py-6 my-auto">
+                    <div
+                      key={index.toString()}
+                      className="col-span-1 py-6 my-auto"
+                    >
                       <h3 className="text-sm text-gray-900">{index + 1}</h3>
                     </div>
                     <div className="col-span-3 py-6 my-auto ">

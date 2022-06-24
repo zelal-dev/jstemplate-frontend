@@ -351,16 +351,9 @@ const MernStackDirectoryListingTheme = (props: any) => {
   )
 }
 
-export const getStaticProps = async (contex: any) => {
-  // call api to a get single post by id
-  // const URL = `${process.env.NEXT_PUBLIC_BASE_URL}/api/products/mern-stack-job-board-theme`
-  // const response = await fetch(URL)
-  // const data = await response.json()
-  // console.log('data', data)
-  const { slug } = contex.params
-
+export const getStaticProps = async () => {
   const response = await fetch(
-    `${process.env.API_ENDPOINT}/wp-json/wc/v3/products/?slug=${slug}`,
+    `${process.env.API_ENDPOINT}/wp-json/wc/v3/products/?slug=mern-stack-job-board-theme`,
     {
       headers: {
         Authorization: `Basic ${process.env.CONSUMER_TOKEN}`,
@@ -387,7 +380,6 @@ export const getStaticProps = async (contex: any) => {
     }
   })
 
-  console.log('filteredData', filteredData)
   return {
     props: {
       data: filteredData[0],

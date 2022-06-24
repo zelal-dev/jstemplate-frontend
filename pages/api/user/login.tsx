@@ -19,8 +19,7 @@ export default async function name(req: NextApiRequest, res: NextApiResponse) {
       },
     }
   )
-  console.log(`${process.env.API_ENDPOINT}/wp-json/jwt-auth/v1/token`)
-  console.log('req.body ', data)
+
   // return token to client
   return res.status(200).send({
     message: 'Successfully fetched token',

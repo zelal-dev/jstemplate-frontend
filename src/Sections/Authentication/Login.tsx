@@ -61,8 +61,6 @@ const Login = ({
     )
     const resData = await response.data.data
 
-    console.log('resData', resData)
-
     // extract token from resData
     const token = resData.data.token
     const user = {
@@ -82,7 +80,6 @@ const Login = ({
         autoDismissTimeout: 3000,
       })
 
-      console.log('token', token)
       setLoading(false)
 
       // setLoading(true)

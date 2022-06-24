@@ -4,28 +4,26 @@ import React, { useEffect, useState } from 'react'
 import { FaShoppingCart } from 'react-icons/fa'
 import { HiOutlineArrowNarrowRight } from 'react-icons/hi'
 import useSWR from 'swr'
-import { Axios, Temp } from '../../utils/axiosKits'
-// import Image from 'next/image'
-// import cart from './../../../public/cart.svg';
-
-const feather = (url: string) => Axios(url).then((res) => res.data.data)
+import {
+  productMenuData,
+  productMenuDocument,
+} from '../../../data/service.data'
 
 const DropDownProduct = ({ handler }: { handler: any }) => {
   const [activeSubmenu, setActiveSubmenu] = useState<Array<Object>>([])
-  const [activeID, setActiveID] = useState<Number>(1)
-  const { data, error } = useSWR('/api/menu/products', feather, {
-    refreshInterval: 0,
-    fallbackData: [],
-  })
+  const [activeID, setActiveID] = useState(1)
+
   useEffect(() => {
     //  filter based on parent menu item and map the child using lodash
-    const submenu = _.filter(data, { menu_order: activeID })
+    const submenu = _.filter(productMenuData, { menu_order: activeID })
     // detructure the submenu
     if (submenu[0]?.children.length > 0) {
-      const { children } = submenu[0]
+      const { children } = submenu[0] as any
       setActiveSubmenu(children)
     }
-  }, [activeID, data])
+
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [activeID, productMenuData])
 
   const clickHandler = (id: number) => {
     setActiveID(id)
@@ -35,10 +33,11 @@ const DropDownProduct = ({ handler }: { handler: any }) => {
     <div className="bg-white xl:w-[55.625rem] w-10/12 h-auto drop-shadow-xl rounded-lg">
       <div className="pt-7">
         <div className=" lg:px-8 md:px-7 sm:px-6 flex items-center border-b-2 border-gray-200">
-          {data?.map((item: any) => (
+          {productMenuData?.map((item: any) => (
             // eslint-disable-next-line react/jsx-key
             <button
               onClick={() => clickHandler(item.menu_order)}
+              key={item.id}
               className={`xl:pb-5 xl:px-8 lg:pb-3 lg:px-4 md:pb-2 md:px-3 sm:pb-2 sm:px-1 lg:text-base sm:text-xs ${
                 item.menu_order === activeID
                   ? 'text-secondary'
@@ -115,7 +114,7 @@ const ButtonLayout = ({
   shortDescription: string
 }) => {
   return (
-    <Link href={`${url}`}>
+    <Link href={`/item/${url}`}>
       <a>
         <div className="flex items-start group p-5 rounded-lg hover:bg-backgroundGray cursor-pointer ease-in duration-200 border border-white hover:border-cartImageBgOne">
           <div className="shadow-lg rounded-lg bg-white p-3 mr-6">

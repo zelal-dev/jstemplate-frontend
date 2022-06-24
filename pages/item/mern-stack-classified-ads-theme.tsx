@@ -13,6 +13,7 @@ import { WiHumidity } from 'react-icons/wi'
 import { MdHeadsetMic } from 'react-icons/md'
 import { FaHourglassHalf, FaNodeJs, FaReact } from 'react-icons/fa'
 import { SiMongodb, SiExpress } from 'react-icons/si'
+import _ from 'lodash'
 
 // page primary colors
 const colors = {
@@ -343,14 +344,37 @@ const MernStackDirectoryListingTheme = (props: any) => {
 }
 
 export const getStaticProps = async () => {
-  // call api to a get single post by id
-  const URL = `${process.env.NEXT_PUBLIC_BASE_URL}/api/products/mern-stack-classified-ads-theme`
-  const response = await fetch(URL)
+  const response = await fetch(
+    `${process.env.API_ENDPOINT}/wp-json/wc/v3/products/?slug=mern-stack-job-board-theme`,
+    {
+      headers: {
+        Authorization: `Basic ${process.env.CONSUMER_TOKEN}`,
+      },
+    }
+  )
   const data = await response.json()
+
+  // pick only few fields from the response object
+  const filteredData = _.filter(data, (item: any) => {
+    return item.status === 'publish'
+  }).map((item: any) => {
+    return {
+      id: item.id,
+      name: item.name,
+      slug: item.slug,
+      image: item.images[0].src,
+      short_description: item.short_description,
+      price: {
+        standard: item.price,
+        standardPlus: item.price,
+        extended: item.price,
+      },
+    }
+  })
 
   return {
     props: {
-      data: data.data,
+      data: filteredData[0],
     },
   }
 }
