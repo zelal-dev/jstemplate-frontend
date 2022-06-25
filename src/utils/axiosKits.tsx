@@ -12,7 +12,7 @@ export const Temp = axios.create({
 export const authAxios = axios.create({
   baseURL: process.env.NEXT_PUBLIC_API_URL,
   headers: {
-    Authorization: `Bearer ${localGet('jst_u_info')?.token}`,
+    Authorization: `Bearer ${localGet('jst_l_info')?.token}`,
     Accept: 'application/json',
   },
 })

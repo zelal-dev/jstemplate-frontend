@@ -50,7 +50,7 @@ const ProductSinglePage2 = (props: any) => {
       initialData: props.data,
     } as any
   )
-  console.log('Data', data)
+
   return (
     <div className="bg-[#E5E5E5]">
       <div

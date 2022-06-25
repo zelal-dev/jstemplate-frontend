@@ -1,30 +1,30 @@
-import React, { useState } from "react";
-import { SubmitHandler, useForm } from "react-hook-form";
-import { ImCross } from "react-icons/im";
-import { useToasts } from "react-toast-notifications";
-import PopupModule from "../../components/PopupModal";
-import { Axios } from "../../utils/axiosKits";
+import React, { useState } from 'react'
+import { SubmitHandler, useForm } from 'react-hook-form'
+import { ImCross } from 'react-icons/im'
+import { useToasts } from 'react-toast-notifications'
+import PopupModule from '../../components/PopupModal'
+import { Axios } from '../../utils/axiosKits'
 
 type Inputs = {
-  firstName: string;
-  lastName: string;
-  email: string;
-  password: string;
-  confirm_pass: string;
-  phoneNumber: string;
-  role: string;
-};
+  firstName: string
+  lastName: string
+  email: string
+  password: string
+  confirm_pass: string
+  phoneNumber: string
+  role: string
+}
 
 const Registration = ({
   handleLoginModal,
   handleRegModal,
   regShow,
 }: {
-  handleLoginModal: any;
-  handleRegModal: any;
-  regShow: boolean;
+  handleLoginModal: any
+  handleRegModal: any
+  regShow: boolean
 }) => {
-  const [toggle, setToggle] = useState(0);
+  const [toggle, setToggle] = useState(0)
   const {
     register,
     handleSubmit,
@@ -32,15 +32,15 @@ const Registration = ({
     setValue,
     reset,
     formState: { errors },
-  } = useForm<Inputs>();
-  const [loading, setLoading] = useState<boolean>(false);
-  const { addToast } = useToasts();
+  } = useForm<Inputs>()
+  const [loading, setLoading] = useState<boolean>(false)
+  const { addToast } = useToasts()
 
   const onSubmit: SubmitHandler<Inputs> = async (data) => {
     try {
       await Axios({
-        method: "post",
-        url: `/api/v1/user/signup`,
+        method: 'post',
+        url: `/api/user/signup`,
         data: {
           fullName: {
             firstName: data.firstName,
@@ -50,47 +50,47 @@ const Registration = ({
           password: data.password,
           phoneNumber: data.phoneNumber,
           role: {
-            isSubscriber: data.role === "subscriber" ? true : false,
-            isCustomer: data.role === "customer" ? true : false,
+            isSubscriber: data.role === 'subscriber' ? true : false,
+            isCustomer: data.role === 'customer' ? true : false,
           },
         },
       }).then((res) => {
         if (res.status === 200 || res.status === 201) {
           addToast(res.data.message, {
-            appearance: "success",
+            appearance: 'success',
             autoDismiss: true,
-          });
-          handleRegModal();
-          handleLoginModal();
-          reset();
+          })
+          handleRegModal()
+          handleLoginModal()
+          reset()
         }
-      });
+      })
     } catch (error: any) {
       if (error?.response?.data) {
         addToast(error.response.data.message, {
-          appearance: "error",
+          appearance: 'error',
           autoDismiss: true,
-        });
+        })
       } else {
         addToast(error.message, {
-          appearance: "error",
+          appearance: 'error',
           autoDismiss: true,
-        });
+        })
       }
     }
-  };
+  }
 
   const handleToggle = () => {
     if (toggle === 0) {
-      setToggle(1);
+      setToggle(1)
     } else {
-      setToggle(0);
+      setToggle(0)
     }
-  };
+  }
   return (
     <PopupModule
       show={regShow}
-      title={toggle === 0 ? "Registration" : "Confirm Password"}
+      title={toggle === 0 ? 'Registration' : 'Confirm Password'}
       onClose={handleRegModal}
     >
       <form onSubmit={handleSubmit(onSubmit)}>
@@ -105,7 +105,7 @@ const Registration = ({
                   type="text"
                   className="lg:p-3 md:p-2.5 p-2 border outline-none rounded-md w-full md:text-base text-sm  md:mt-2 mt-1"
                   placeholder="abc"
-                  {...register("firstName", { required: true })}
+                  {...register('firstName', { required: true })}
                 />
                 {errors?.firstName && (
                   <span className="text-xss italic text-red-500">
@@ -121,7 +121,7 @@ const Registration = ({
                   type="text"
                   className="lg:p-3 md:p-2.5 p-2 border outline-none rounded-md  w-full md:text-base text-sm  md:mt-2 mt-1"
                   placeholder="xyz"
-                  {...register("lastName", { required: true })}
+                  {...register('lastName', { required: true })}
                 />
                 {errors?.lastName && (
                   <span className="text-xss italic text-red-500">
@@ -139,7 +139,7 @@ const Registration = ({
                   type="email"
                   className="lg:p-3 md:p-2.5 p-2 border outline-none rounded-md w-full md:text-base text-sm  md:mt-2 mt-1"
                   placeholder="abc@xyz.com"
-                  {...register("email", { required: true })}
+                  {...register('email', { required: true })}
                 />
                 {errors?.email && (
                   <span className="text-xss italic text-red-500">
@@ -155,7 +155,7 @@ const Registration = ({
                   type="text"
                   className="lg:p-3 md:p-2.5 p-2 border outline-none rounded-md  w-full md:text-base text-sm  md:mt-2 mt-1"
                   placeholder="01XXXXXXXXX"
-                  {...register("phoneNumber", { required: true })}
+                  {...register('phoneNumber', { required: true })}
                 />
                 {errors?.phoneNumber && (
                   <span className="text-xss italic text-red-500">
@@ -174,7 +174,7 @@ const Registration = ({
                     type="radio"
                     id="subscriber-radio"
                     defaultValue="subscriber"
-                    {...register("role")}
+                    {...register('role')}
                     className="mr-3"
                   />
                   Subscriber
@@ -184,7 +184,7 @@ const Registration = ({
                     type="radio"
                     id="customer-radio"
                     defaultValue="customer"
-                    {...register("role")}
+                    {...register('role')}
                     className="ml-6 mr-3"
                   />
                   Customer
@@ -202,7 +202,7 @@ const Registration = ({
               type="password"
               className="lg:p-3 md:p-2.5 p-2 border outline-none rounded-md w-full md:text-base text-sm"
               placeholder="******"
-              {...register("password", { required: true })}
+              {...register('password', { required: true })}
             />
             {errors?.password && (
               <span className="text-xss italic text-red-500">
@@ -217,13 +217,13 @@ const Registration = ({
               type="password"
               className="lg:p-3 md:p-2.5 p-2 border outline-none rounded-md  w-full md:text-base text-sm"
               placeholder="******"
-              {...register("confirm_pass", {
+              {...register('confirm_pass', {
                 required: {
                   value: true,
-                  message: "This field is required",
+                  message: 'This field is required',
                 },
                 validate: (value) =>
-                  value === watch("password") || "Passwords do not match",
+                  value === watch('password') || 'Passwords do not match',
               })}
             />
             {errors?.confirm_pass && (
@@ -265,20 +265,20 @@ const Registration = ({
           type="button"
           className="md:text-sm text-xs text-blueTwo cursor-pointer"
           onClick={() => {
-            handleRegModal();
+            handleRegModal()
             setTimeout(() => {
-              handleLoginModal();
-            }, 200);
+              handleLoginModal()
+            }, 200)
           }}
         >
           Login
         </button>
       </div>
     </PopupModule>
-  );
-};
+  )
+}
 
-export default Registration;
+export default Registration
 
 {
   /* <div className="flex  w-full gap-6 pt-2 pb-8">

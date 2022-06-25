@@ -1,110 +1,110 @@
-import Image from "next/image";
-import Link from "next/link";
-import { useRouter } from "next/router";
-import React, { useEffect, useState } from "react";
-import { BsList } from "react-icons/bs";
-import { FaShoppingCart } from "react-icons/fa";
-import { HiOutlineLogout } from "react-icons/hi";
-import { IoIosArrowDown } from "react-icons/io";
-import { RiLoginCircleLine, RiSettings3Fill, RiUserFill } from "react-icons/ri";
-import { ToastProvider } from "react-toast-notifications";
-import { useSWRConfig } from "swr";
-import { useUser } from "../../lib/useUser";
-import ForgetPassword from "../../Sections/Authentication/ForgetPassword";
-import Login from "../../Sections/Authentication/Login";
-import Registration from "../../Sections/Authentication/Registration";
-import { localGet, localRemove } from "../../utils/localStorage";
-import DropDownProduct from "../DropDownProduct";
-import DropDownService from "../DropDownService";
+import Image from 'next/image'
+import Link from 'next/link'
+import { useRouter } from 'next/router'
+import React, { useEffect, useState } from 'react'
+import { BsList } from 'react-icons/bs'
+import { FaShoppingCart } from 'react-icons/fa'
+import { HiOutlineLogout } from 'react-icons/hi'
+import { IoIosArrowDown } from 'react-icons/io'
+import { RiLoginCircleLine, RiSettings3Fill, RiUserFill } from 'react-icons/ri'
+import { ToastProvider } from 'react-toast-notifications'
+import { useSWRConfig } from 'swr'
+import { useUser } from '../../lib/useUser'
+import ForgetPassword from '../../Sections/Authentication/ForgetPassword'
+import Login from '../../Sections/Authentication/Login'
+import Registration from '../../Sections/Authentication/Registration'
+import { localGet, localRemove } from '../../utils/localStorage'
+import DropDownProduct from '../DropDownProduct'
+import DropDownService from '../DropDownService'
 
 const SingleProductNavbar = () => {
-  const [proDis, setProdDis] = useState<string>("hidden");
-  const [serDis, setSerDis] = useState<string>("hidden");
-  const [proColor, setProColor] = useState("text-gray-100");
-  const [serColor, setSerColor] = useState("text-gray-100");
-  const [loginShow, setLoginShow] = useState<boolean>(false);
-  const [registerShow, setRegisterShow] = useState<boolean>(false);
-  const [forgetPassShow, setForgetPassShow] = useState<boolean>(false);
-  const { user, loggedIn } = useUser();
-  const { mutate } = useSWRConfig();
-  const [toggle, setToggle] = useState<boolean>(false);
-  const [profileDropdown, setProfileDropdown] = useState<string>("hidden");
-  const router = useRouter();
+  const [proDis, setProdDis] = useState<string>('hidden')
+  const [serDis, setSerDis] = useState<string>('hidden')
+  const [proColor, setProColor] = useState('text-gray-100')
+  const [serColor, setSerColor] = useState('text-gray-100')
+  const [loginShow, setLoginShow] = useState<boolean>(false)
+  const [registerShow, setRegisterShow] = useState<boolean>(false)
+  const [forgetPassShow, setForgetPassShow] = useState<boolean>(false)
+  const { user, loggedIn } = useUser()
+  const { mutate } = useSWRConfig()
+  const [toggle, setToggle] = useState<boolean>(false)
+  const [profileDropdown, setProfileDropdown] = useState<string>('hidden')
+  const router = useRouter()
 
   const styleDash =
-    router.asPath === "/dashboard"
-      ? "text-sm text-white p-4 rounded-lg bg-blueTwo flex items-center"
-      : "text-sm text-gray-600 p-4 rounded-lg flex items-center";
+    router.asPath === '/dashboard'
+      ? 'text-sm text-white p-4 rounded-lg bg-blueTwo flex items-center'
+      : 'text-sm text-gray-600 p-4 rounded-lg flex items-center'
   const styleSettings =
-    router.asPath === "/dashboard/accounts-settings"
-      ? "text-sm text-white p-4 rounded-lg bg-blueTwo flex items-center"
-      : "text-sm text-gray-600 p-4 rounded-lg flex items-center";
+    router.asPath === '/dashboard/accounts-settings'
+      ? 'text-sm text-white p-4 rounded-lg bg-blueTwo flex items-center'
+      : 'text-sm text-gray-600 p-4 rounded-lg flex items-center'
 
   const handleLogout = () => {
-    localRemove("jst_u_info");
-    router.push("/");
-    mutate("api/v1/user/self", null, false);
-  };
+    localRemove('jst_u_info')
+    router.push('/')
+    mutate('api/user/self', null, false)
+  }
 
   const handleProfileDropdown = () => {
-    if (profileDropdown === "hidden") {
-      setProfileDropdown("block");
+    if (profileDropdown === 'hidden') {
+      setProfileDropdown('block')
     } else {
-      setProfileDropdown("hidden");
+      setProfileDropdown('hidden')
     }
-  };
+  }
 
   const handleUserImageShow = () => {
     if (toggle) {
-      setToggle(false);
+      setToggle(false)
     } else {
-      setToggle(true);
+      setToggle(true)
     }
-  };
+  }
 
   // toggle login modal
   const toggleLoginModal = () => {
-    setLoginShow(!loginShow);
-  };
+    setLoginShow(!loginShow)
+  }
 
   // toggle register modal
   const toggleRegModal = () => {
-    setRegisterShow(!registerShow);
-  };
+    setRegisterShow(!registerShow)
+  }
 
   // forget password modal
   const handelForgetPassModal = () => {
-    setForgetPassShow(!forgetPassShow);
-  };
+    setForgetPassShow(!forgetPassShow)
+  }
 
   const productDropdown = () => {
-    setSerDis("hidden");
-    setSerColor("text-gray-100");
-    if (proColor === "text-gray-100") {
-      setProColor("text-secondary");
+    setSerDis('hidden')
+    setSerColor('text-gray-100')
+    if (proColor === 'text-gray-100') {
+      setProColor('text-secondary')
     } else {
-      setProColor("text-gray-100");
+      setProColor('text-gray-100')
     }
-    if (proDis === "hidden") {
-      setProdDis("block");
+    if (proDis === 'hidden') {
+      setProdDis('block')
     } else {
-      setProdDis("hidden");
+      setProdDis('hidden')
     }
-  };
+  }
   const serviceDropdown = () => {
-    setProdDis("hidden");
-    setProColor("text-gray-100");
-    if (serColor === "text-gray-100") {
-      setSerColor("text-secondary");
+    setProdDis('hidden')
+    setProColor('text-gray-100')
+    if (serColor === 'text-gray-100') {
+      setSerColor('text-secondary')
     } else {
-      setSerColor("text-gray-100");
+      setSerColor('text-gray-100')
     }
-    if (serDis === "hidden") {
-      setSerDis("block");
+    if (serDis === 'hidden') {
+      setSerDis('block')
     } else {
-      setSerDis("hidden");
+      setSerDis('hidden')
     }
-  };
+  }
   return (
     <div className="flex items-center justify-between container mx-auto px-5 sm:px-0 xl:py-6 md:py-7 sm:py-6 py-5 relative">
       {/* <Link href="/"><a className='lg:text-2xl sm:text-xl font-bold text-gray-100'>Brand <span>Logo</span></a></Link> */}
@@ -182,7 +182,7 @@ const SingleProductNavbar = () => {
         </Link>
         <Link href="/dashboard/accounts-settings">
           <a className={`${styleSettings} mt-1.5`}>
-            <RiSettings3Fill className="w-5 h-5 mr-4" />{" "}
+            <RiSettings3Fill className="w-5 h-5 mr-4" />{' '}
             <span>Accounts Settings</span>
           </a>
         </Link>
@@ -195,7 +195,7 @@ const SingleProductNavbar = () => {
         </button>
       </div>
       <div className="p-3 rounded-md bg-gray-100 drop-shadow-3xl sm:hidden block cursor-pointer">
-        <BsList style={{ color: "#3E9645", width: "18px", height: "15.5px" }} />
+        <BsList style={{ color: '#3E9645', width: '18px', height: '15.5px' }} />
       </div>
       <div
         className={`absolute hidden top-28 lg:left-56 sm:left-28 z-20 ease-out duration-700 sm:${proDis}`}
@@ -238,7 +238,7 @@ const SingleProductNavbar = () => {
         modalShow={forgetPassShow}
       />
     </div>
-  );
-};
+  )
+}
 
-export default SingleProductNavbar;
+export default SingleProductNavbar

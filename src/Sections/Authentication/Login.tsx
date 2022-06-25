@@ -51,95 +51,82 @@ const Login = ({
   const onSubmit: SubmitHandler<Inputs> = async (data) => {
     setLoading(true)
 
-    // call api to login using axios
-    const response = await Axios.post(
-      `${process.env.NEXT_PUBLIC_BASE_URL}/api/user/login`,
-      {
-        username: data.email,
-        password: data.password,
-      }
-    )
-    const resData = await response.data.data
-
-    // extract token from resData
-    const token = resData.data.token
-    const user = {
-      email: resData.data.displayName,
-    }
-
-    // SAVE TOKEN TO LOCAL STORAGE
-    localSave('jst_l_info', {
-      token,
-      user,
-    })
-    // show toast if login success
-    if (resData.success) {
-      addToast('Login success', {
+    // fetch the token from the server and save it in localStorage
+    // Show a toast message
+    // use try catch to handle the error
+    try {
+      const response = await Axios.post(
+        `${process.env.NEXT_PUBLIC_BASE_URL}/api/user/login`,
+        {
+          username: data.email,
+          password: data.password,
+        }
+      )
+      const token = response.data.data.data.token || ''
+      localSave('jst_u_info', {
+        token,
+        userId: response.data.data.data.id,
+      })
+      mutate('api/user/self', null, false)
+      addToast('Login Successful', {
         appearance: 'success',
         autoDismiss: true,
         autoDismissTimeout: 3000,
       })
-
-      setLoading(false)
-
-      // setLoading(true)
-      // const local = localGet('jst_l_info')
-      // await Axios({
-      //   method: 'post',
-      //   url: `/api/user/login`,
-      //   data: {
-      //     email: data.email,
-      //     password: data.password,
-      //   },
-      // })
-      //   .then((res) => {
-      //     if (res.status === 200 || res.status === 201) {
-      //       localSave('jst_u_info', {
-      //         ...res.data,
-      //         login_at: new Date(),
-      //         // expires one day after login
-      //         expires_in: new Date(new Date().getTime() + 86400000),
-      //       })
-      //       mutate('api/v1/user/self').then(() => {
-      //         addToast(res.data.message, {
-      //           appearance: 'success',
-      //           autoDismiss: true,
-      //           autoDismissTimeout: 1500,
-      //         })
-      //         handleUserImageShow()
-      //         setLoading(false)
-      //         reset()
-      //         handleLoginModal()
-      //       })
-      //     }
-      //   })
-      //   .catch((error) => {
-      //     if (error?.response?.data) {
-      //       addToast(error.response.data.message, {
-      //         appearance: 'error',
-      //         autoDismiss: true,
-      //         autoDismissTimeout: 2000,
-      //       })
-      //     } else {
-      //       addToast(error.message, {
-      //         appearance: 'error',
-      //         autoDismiss: true,
-      //         autoDismissTimeout: 2000,
-      //       })
-      //     }
-      //     setLoading(false)
-      //   })
-      // setTimeout(() => {
-      //   setLoading(false)
-      // }, 10000)
-      // if (data.remember) {
-      //   localSave('jst_l_info', data)
-      // }
-      // if (data.remember === false && local) {
-      //   localRemove('jst_l_info')
-      // }
+    } catch (error: any) {
+      addToast('Login Failed', {
+        appearance: 'error',
+        autoDismiss: true,
+        autoDismissTimeout: 3000,
+      })
     }
+    setLoading(false)
+
+    // reset the form
+    reset()
+
+    // close the modal
+    handleLoginModal()
   }
+
+  // // call api to login using axios
+  // const response = await Axios.post(
+  //   `${process.env.NEXT_PUBLIC_BASE_URL}/api/user/login`,
+  //   {
+  //     username: data.email,
+  //     password: data.password,
+  //   }
+  // )
+  // const resData = await response.data
+  // console.log('resData., ', resData)
+  // // extract token from resData
+
+  // // show toast if login success
+  // if (resData.success) {
+  //   const token = resData.data.data.token
+  //   // SAVE TOKEN TO LOCAL STORAGE
+  //   localSave('jst_l_info', {
+  //     token,
+  //   })
+  //   addToast('Login success', {
+  //     appearance: 'success',
+  //     autoDismiss: true,
+  //     autoDismissTimeout: 3000,
+  //   })
+  // }
+  // // show toast if login failed
+  // if (!resData.success) {
+  //   addToast('Login failed', {
+  //     appearance: 'error',
+  //     autoDismiss: true,
+  //     autoDismissTimeout: 3000,
+  //   })
+  // }
+  // // reset form
+  // reset()
+  // setLoading(false)
+  // // close login modal
+  // handleLoginModal()
 
   return (
     <PopupModule title="Login" show={loginShow} onClose={handleLoginModal}>

@@ -1,17 +1,19 @@
-import React from "react";
-import Navbar from "./../../src/components/Navbar";
-import { FaShoppingCart, FaReceipt } from "react-icons/fa";
-import { BsFillFileDiffFill, BsCheckLg } from "react-icons/bs";
-import { HiOutlineDownload } from "react-icons/hi";
-import { UserNotLogin, useUser } from "../../src/lib/useUser";
-import { LoaderGrowing } from "../../src/lib/loader";
-import useSWR from "swr";
+import React from 'react'
+import Navbar from './../../src/components/Navbar'
+import { FaShoppingCart, FaReceipt } from 'react-icons/fa'
+import { BsFillFileDiffFill, BsCheckLg } from 'react-icons/bs'
+import { HiOutlineDownload } from 'react-icons/hi'
+import { UserNotLogin, useUser } from '../../src/lib/useUser'
+import { LoaderGrowing } from '../../src/lib/loader'
+import useSWR from 'swr'
 
 const Dashboard = () => {
-  const { loggedIn, user } = useUser();
+  const { loggedIn, user } = useUser()
+
+  console.log('Dashboard', loggedIn, user)
 
   if (!user && !loggedIn) {
-    return <UserNotLogin />;
+    return <UserNotLogin />
   }
 
   if (loggedIn && user) {
@@ -182,13 +184,13 @@ const Dashboard = () => {
           </div>
         </div>
       </div>
-    );
+    )
   }
 
-  return <LoaderGrowing />;
-};
+  return <LoaderGrowing />
+}
 
-export default Dashboard;
+export default Dashboard
 
 const DashboardPreCart = () => {
   return (
@@ -201,8 +203,8 @@ const DashboardPreCart = () => {
         <h3 className="text-xl font-bold text-blueTwo mt-1">2</h3>
       </div>
     </div>
-  );
-};
+  )
+}
 const DashboardTicketCart = () => {
   return (
     <div className="bg-white p-6 rounded-lg flex items-center border border-cartImageBgOne shadow-sm">
@@ -214,8 +216,8 @@ const DashboardTicketCart = () => {
         <h3 className="text-xl font-bold text-orangeTwo mt-1">2</h3>
       </div>
     </div>
-  );
-};
+  )
+}
 
 const DashboardProjectCart = () => {
   return (
@@ -228,8 +230,8 @@ const DashboardProjectCart = () => {
         <h3 className="text-xl font-bold text-purpleDark mt-1">2</h3>
       </div>
     </div>
-  );
-};
+  )
+}
 const DashboardCompleteCart = () => {
   return (
     <div className="bg-white p-6 rounded-lg flex items-center border border-cartImageBgOne shadow-sm">
@@ -243,8 +245,8 @@ const DashboardCompleteCart = () => {
         <h3 className="text-xl font-bold text-greenDark mt-1">2</h3>
       </div>
     </div>
-  );
-};
+  )
+}
 
 const DashboardDownloadCart = () => {
   return (
@@ -257,8 +259,8 @@ const DashboardDownloadCart = () => {
         <h3 className="text-xl font-bold text-redDark mt-1">2</h3>
       </div>
     </div>
-  );
-};
+  )
+}
 
 // #e6f0fe
 // #fff1ec
