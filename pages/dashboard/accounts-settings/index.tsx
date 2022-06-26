@@ -2,6 +2,7 @@ import Image from 'next/image'
 import React, { useState } from 'react'
 import { SubmitHandler, useForm } from 'react-hook-form'
 import { FaCamera } from 'react-icons/fa'
+import Navbar from '../../../src/components/Navbar'
 import { LoaderGrowing } from '../../../src/lib/loader'
 import { useUser, UserNotLogin } from '../../../src/lib/useUser'
 
