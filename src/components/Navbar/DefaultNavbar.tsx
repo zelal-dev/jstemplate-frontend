@@ -205,9 +205,14 @@ const DefaultNavbar = () => {
       <div
         className={`absolute p-2.5 ${profileDropdown} rounded-lg drop-shadow-xl bg-white top-24 right-0 ml-auto z-40`}
       >
-        <Link href="/dashboard">
+        <div>
           <a className={`${styleDash}`}>
-            <RiUserFill className="w-5 h-5 mr-4" /> <span>My Dashboard</span>
+            <RiUserFill className="w-5 h-5 mr-4" /> <span>Hi, JS Template</span>
+          </a>
+        </div>
+        <Link href="dashboard/downloads">
+          <a className={`${styleDash}`}>
+            <RiUserFill className="w-5 h-5 mr-4" /> <span>Downloads</span>
           </a>
         </Link>
         <Link href="/dashboard/accounts-settings">

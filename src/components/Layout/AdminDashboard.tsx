@@ -1,58 +1,58 @@
-import Image from "next/image";
-import Link from "next/link";
-import { useRouter } from "next/router";
-import React, { useState } from "react";
-import { BsFilePlus } from "react-icons/bs";
-import { CgBox } from "react-icons/cg";
-import { FaReceipt } from "react-icons/fa";
-import { FiUsers } from "react-icons/fi";
-import { ImCross } from "react-icons/im";
-import { IoBagRemoveOutline } from "react-icons/io5";
-import { RiAppsLine } from "react-icons/ri";
-import Navbar from "./../Navbar";
+import Image from 'next/image'
+import Link from 'next/link'
+import { useRouter } from 'next/router'
+import React, { useState } from 'react'
+import { BsFilePlus } from 'react-icons/bs'
+import { CgBox } from 'react-icons/cg'
+import { FaReceipt } from 'react-icons/fa'
+import { FiUsers } from 'react-icons/fi'
+import { ImCross } from 'react-icons/im'
+import { IoBagRemoveOutline } from 'react-icons/io5'
+import { RiAppsLine } from 'react-icons/ri'
+import Navbar from './../Navbar'
 
 const AdminDashboard = ({ children }: { children: any }) => {
-  const router = useRouter();
+  const router = useRouter()
   const [mobileSidebarVisibilty, setMobileSidebarVisibility] =
-    useState<string>("-left-full");
-  const [mobileSidebarBack, setMobileSidebarBack] = useState<string>("hidden");
+    useState<string>('-left-full')
+  const [mobileSidebarBack, setMobileSidebarBack] = useState<string>('hidden')
 
   const handleSidebar = () => {
-    if (mobileSidebarVisibilty === "-left-full") {
-      setMobileSidebarVisibility("left-0");
-      setMobileSidebarBack("fixed");
+    if (mobileSidebarVisibilty === '-left-full') {
+      setMobileSidebarVisibility('left-0')
+      setMobileSidebarBack('fixed')
     } else {
-      setMobileSidebarVisibility("-left-full");
-      setMobileSidebarBack("hidden");
+      setMobileSidebarVisibility('-left-full')
+      setMobileSidebarBack('hidden')
     }
-  };
+  }
 
   const styleDash =
-    router.asPath === "/admin-dashboard"
-      ? "text-sm text-white p-4 rounded-lg bg-blueTwo flex items-center"
-      : "text-sm text-gray-700 p-4 rounded-lg flex items-center";
+    router.asPath === '/admin-dashboard'
+      ? 'text-sm text-white p-4 rounded-lg bg-blueTwo flex items-center'
+      : 'text-sm text-gray-700 p-4 rounded-lg flex items-center'
   const styleClient =
-    router.asPath === "/admin-dashboard/clients"
-      ? "text-sm text-white p-4 rounded-lg bg-blueTwo flex items-center mt-1"
-      : "text-sm text-gray-700 p-4 rounded-lg flex items-center mt-1";
+    router.asPath === '/admin-dashboard/clients'
+      ? 'text-sm text-white p-4 rounded-lg bg-blueTwo flex items-center mt-1'
+      : 'text-sm text-gray-700 p-4 rounded-lg flex items-center mt-1'
   const styleLeads =
-    router.asPath === "/admin-dashboard/leads"
-      ? "text-sm text-white p-4 rounded-lg bg-blueTwo flex items-center"
-      : "text-sm text-gray-700 p-4 rounded-lg flex items-center";
+    router.asPath === '/admin-dashboard/leads'
+      ? 'text-sm text-white p-4 rounded-lg bg-blueTwo flex items-center'
+      : 'text-sm text-gray-700 p-4 rounded-lg flex items-center'
   const styleProducts =
-    router.asPath === "/admin-dashboard/products" ||
-    router.asPath === "/admin-dashboard/products/add-new-products"
-      ? "text-sm text-white p-4 rounded-lg bg-blueTwo flex items-center"
-      : "text-sm text-gray-700 p-4 rounded-lg flex items-center";
+    router.asPath === '/admin-dashboard/products' ||
+    router.asPath === '/admin-dashboard/products/add-new-products'
+      ? 'text-sm text-white p-4 rounded-lg bg-blueTwo flex items-center'
+      : 'text-sm text-gray-700 p-4 rounded-lg flex items-center'
   const styleProjects =
-    router.asPath === "/admin-dashboard/projects" ||
-    router.asPath === "/admin-dashboard/projects/details"
-      ? "text-sm text-white p-4 rounded-lg bg-blueTwo flex items-center"
-      : "text-sm text-gray-700 p-4 rounded-lg flex items-center";
+    router.asPath === '/admin-dashboard/projects' ||
+    router.asPath === '/admin-dashboard/projects/details'
+      ? 'text-sm text-white p-4 rounded-lg bg-blueTwo flex items-center'
+      : 'text-sm text-gray-700 p-4 rounded-lg flex items-center'
   const styleTickets =
-    router.asPath === "/admin-dashboard/tickets"
-      ? "text-sm text-white p-4 rounded-lg bg-blueTwo flex items-center"
-      : "text-sm text-gray-700 p-4 rounded-lg flex items-center";
+    router.asPath === '/admin-dashboard/tickets'
+      ? 'text-sm text-white p-4 rounded-lg bg-blueTwo flex items-center'
+      : 'text-sm text-gray-700 p-4 rounded-lg flex items-center'
 
   return (
     <div>
@@ -61,19 +61,19 @@ const AdminDashboard = ({ children }: { children: any }) => {
         <div className="col-span-2 lg:block hidden border-r border-[#E7ECF3]">
           <div
             className=" overflow-y-auto bg-white p-5"
-            style={{ height: "calc(100vh - 74px)" }}
+            style={{ height: 'calc(100vh - 74px)' }}
           >
             <h2 className="text-xs text-gray-500">MENU</h2>
             <div className="mt-3">
               <Link href="/admin-dashboard">
                 <a className={`${styleDash}`}>
-                  <RiAppsLine className="w-5 h-5 mr-4" />{" "}
+                  <RiAppsLine className="w-5 h-5 mr-4" />{' '}
                   <span>My Dashboard</span>
                 </a>
               </Link>
               <Link href="/admin-dashboard/clients">
                 <a className={`${styleClient}`}>
-                  <IoBagRemoveOutline className="w-5 h-5 mr-4" />{" "}
+                  <IoBagRemoveOutline className="w-5 h-5 mr-4" />{' '}
                   <span>Client</span>
                 </a>
               </Link>
@@ -123,13 +123,13 @@ const AdminDashboard = ({ children }: { children: any }) => {
           <div className="mt-5">
             <Link href="/admin-dashboard">
               <a className={`${styleDash}`}>
-                <RiAppsLine className="w-5 h-5 mr-4" />{" "}
+                <RiAppsLine className="w-5 h-5 mr-4" />{' '}
                 <span>My Dashboard</span>
               </a>
             </Link>
             <Link href="/admin-dashboard/client">
               <a className={`${styleClient}`}>
-                <IoBagRemoveOutline className="w-5 h-5 mr-4" />{" "}
+                <IoBagRemoveOutline className="w-5 h-5 mr-4" />{' '}
                 <span>Client</span>
               </a>
             </Link>
@@ -157,7 +157,7 @@ const AdminDashboard = ({ children }: { children: any }) => {
         </div>
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default AdminDashboard;
+export default AdminDashboard

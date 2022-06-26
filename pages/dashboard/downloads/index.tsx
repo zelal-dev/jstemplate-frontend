@@ -16,7 +16,7 @@ const Downloads = () => {
     return (
       <div className="bg-backgroundGrayOne min-h-screen">
         <Navbar.DashboardPrimaryNavbar />
-        <Navbar.DashboardSecondaryNavbar />
+        {/* <Navbar.DashboardSecondaryNavbar /> */}
         <div className="container mx-auto py-10 px-5 sm:px-5">
           <h2 className="text-2xl font-bold text-gray-900 mb-10">Downloads</h2>
           {sample.map((items, index) => (

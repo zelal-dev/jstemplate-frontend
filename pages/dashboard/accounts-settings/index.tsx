@@ -1,23 +1,22 @@
-import Image from "next/image";
-import React, { useState } from "react";
-import { SubmitHandler, useForm } from "react-hook-form";
-import { FaCamera } from "react-icons/fa";
-import Navbar from "../../../src/components/Navbar";
-import { LoaderGrowing } from "../../../src/lib/loader";
-import { useUser, UserNotLogin } from "../../../src/lib/useUser";
+import Image from 'next/image'
+import React, { useState } from 'react'
+import { SubmitHandler, useForm } from 'react-hook-form'
+import { FaCamera } from 'react-icons/fa'
+import { LoaderGrowing } from '../../../src/lib/loader'
+import { useUser, UserNotLogin } from '../../../src/lib/useUser'
 
 type Inputs = {
-  firstName: string;
-  lastName: string;
-  email: string;
-  password: string;
-  confirm_pass: string;
-  phoneNumber: string;
-  role: string;
-};
+  firstName: string
+  lastName: string
+  email: string
+  password: string
+  confirm_pass: string
+  phoneNumber: string
+  role: string
+}
 
 const AccountsSettings = () => {
-  const { loggedIn, user } = useUser();
+  const { loggedIn, user } = useUser()
   const {
     register,
     handleSubmit,
@@ -25,20 +24,20 @@ const AccountsSettings = () => {
     setValue,
     reset,
     formState: { errors },
-  } = useForm<Inputs>();
-  const [loading, setLoading] = useState<boolean>(false);
+  } = useForm<Inputs>()
+  const [loading, setLoading] = useState<boolean>(false)
 
-  const onSubmit: SubmitHandler<Inputs> = async (data) => {};
+  const onSubmit: SubmitHandler<Inputs> = async (data) => {}
 
   if (!user && !loggedIn) {
-    return <UserNotLogin />;
+    return <UserNotLogin />
   }
 
   if (loggedIn && user) {
     return (
       <div className="bg-backgroundGrayOne min-h-screen">
         <Navbar.DashboardPrimaryNavbar />
-        <Navbar.DashboardSecondaryNavbar />
+        {/* <Navbar.DashboardSecondaryNavbar /> */}
         <div className="container mx-auto py-10 px-5 sm:px-0">
           <h2 className="text-2xl font-bold text-gray-900 mb-10">My Profile</h2>
           <div className="flex items-center gap-4 rounded-lg bg-white px-4 py-10 shadow">
@@ -109,11 +108,11 @@ const AccountsSettings = () => {
                             aria-label="gridFirstName"
                             className={`block w-full appearance-none border text-planDetails ${
                               errors.firstName
-                                ? "!border-red-500"
-                                : "border-gray"
+                                ? '!border-red-500'
+                                : 'border-gray'
                             } leading-tight rounded border-gray-300  py-2.5 px-3 focus:bg-white focus:outline-none `}
                             id="gridFirstName"
-                            {...register("firstName", { required: true })}
+                            {...register('firstName', { required: true })}
                             type="text"
                             placeholder="Jane"
                           />
@@ -133,11 +132,11 @@ const AccountsSettings = () => {
                           <input
                             className={`block w-full appearance-none border text-planDetails ${
                               errors.lastName
-                                ? "!border-red-500"
-                                : "border-gray"
+                                ? '!border-red-500'
+                                : 'border-gray'
                             } leading-tight rounded border-gray-300 py-2.5 px-3 focus:bg-white focus:outline-none `}
                             id="gridLastName"
-                            {...register("lastName", { required: true })}
+                            {...register('lastName', { required: true })}
                             type="text"
                             placeholder="Ferdinand"
                           />
@@ -156,9 +155,9 @@ const AccountsSettings = () => {
                           </label>
                           <input
                             className={`block w-full appearance-none border text-planDetails ${
-                              errors.email ? "!border-red-500" : "border-gray"
+                              errors.email ? '!border-red-500' : 'border-gray'
                             } leading-tight focus:bg-white" id="grid-first-name rounded border-gray-300 py-2.5 px-3 focus:outline-none `}
-                            {...register("email", { required: true })}
+                            {...register('email', { required: true })}
                             type="text"
                             placeholder="info@gmail.com"
                           />
@@ -178,7 +177,7 @@ const AccountsSettings = () => {
                           <input
                             className="leading-tight mb-3 block w-full appearance-none rounded border border-gray-300 py-2.5 px-3 text-planDetails focus:bg-white focus:outline-none "
                             id="phoneNumber"
-                            {...register("phoneNumber")}
+                            {...register('phoneNumber')}
                             type="text"
                             placeholder="(406) 555-0120"
                             // defaultValue={data?.phoneNumber}
@@ -292,10 +291,10 @@ const AccountsSettings = () => {
           </form>
         </div>
       </div>
-    );
+    )
   }
 
-  return <LoaderGrowing />;
-};
+  return <LoaderGrowing />
+}
 
-export default AccountsSettings;
+export default AccountsSettings
