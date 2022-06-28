@@ -14,6 +14,9 @@ import { MdHeadsetMic } from 'react-icons/md'
 import { FaHourglassHalf, FaNodeJs, FaReact } from 'react-icons/fa'
 import { SiExpress, SiMongodb } from 'react-icons/si'
 import _ from 'lodash'
+import { Woocommerce } from '../../src/utils/woocommerce'
+import useSWR from 'swr'
+import { Axios } from '../../src/utils/axiosKits'
 
 // page primary colors
 const colors = {
@@ -27,7 +30,7 @@ const livePreview = {
 }
 
 // page component data props
-const data = {
+const localData = {
   buildWith: {
     title: 'Build with',
     icons: [
@@ -318,8 +321,19 @@ const data = {
     },
   },
 }
-
+const fetcher = (url: string) => Axios(url).then((res: any) => res.data) as any
 const MernStackDirectoryListingTheme = (props: any) => {
+  const slug = 'mern-stack-job-board-theme'
+  // call data using swr
+  const { data: swrData, error: productError } = useSWR(
+    `${process.env.NEXT_PUBLIC_API_URL}/api/products/${slug}`,
+    fetcher,
+    {
+      initialData: props.foreignData,
+    } as any
+  )
+  // detructure data from productData
+  const { data } = swrData || {}
   return (
     <div>
       <div
@@ -327,15 +341,15 @@ const MernStackDirectoryListingTheme = (props: any) => {
       >
         <Navbar.SingleProductNavbar />
         <Header
-          data={props.data}
-          icons={data.buildWith}
+          data={data}
+          icons={localData.buildWith}
           colors={colors}
           livePreview={livePreview}
         />
       </div>
-      <MangeWebsite colors={colors} data={data.manageWebsite} />
-      <SimpleTitleThird colors={colors} data={data.sampleInfo} />
-      <Heading data={props.data} info={data.preSale} colors={colors} />
+      <MangeWebsite colors={colors} data={localData.manageWebsite} />
+      <SimpleTitleThird colors={colors} data={localData.sampleInfo} />
+      <Heading data={data} info={localData.preSale} colors={colors} />
       <Hire colors={colors} />
       <Testimonials />
       <Footer
@@ -351,37 +365,28 @@ const MernStackDirectoryListingTheme = (props: any) => {
 }
 
 export const getStaticProps = async () => {
-  const response = await fetch(
-    `${process.env.API_ENDPOINT}/wp-json/wc/v3/products/?slug=mern-stack-job-board-theme`,
-    {
-      headers: {
-        Authorization: `Basic ${process.env.CONSUMER_TOKEN}`,
-      },
-    }
-  )
-  const data = await response.json()
+  const slug = 'mern-stack-job-board-theme'
+  const data = await Woocommerce.get('products', {
+    slug,
+    status: 'publish',
+  }).then((response) => response.data)
 
-  // pick only few fields from the response object
-  const filteredData = _.filter(data, (item: any) => {
-    return item.status === 'publish'
-  }).map((item: any) => {
+  // only return few fields
+  const filteredData = data.map((item: any) => {
     return {
       id: item.id,
       name: item.name,
       slug: item.slug,
       image: item.images[0].src,
       short_description: item.short_description,
-      price: {
-        standard: item.price,
-        standardPlus: item.price,
-        extended: item.price,
-      },
     }
   })
+  console.log('filteredData', filteredData)
+  const finalData = Object.assign(filteredData[0], {})
 
   return {
     props: {
-      data: filteredData[0],
+      foreignData: finalData,
     },
   }
 }

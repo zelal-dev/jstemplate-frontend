@@ -26,7 +26,7 @@ const colors = {
 }
 
 // page component data props
-const data = {
+const localData = {
   buildWith: {
     title: 'Build with',
     icons: [
@@ -320,16 +320,18 @@ const data = {
 }
 const fetcher = (url: string) => Axios(url).then((res) => res.data) as any
 
-const MernStackAdsTheme = (props: { productData: any }) => {
+const MernStackAdsTheme = (props: { foreignData: any }) => {
   const slug = 'mern-stack-classified-ads-theme'
   // call data using swr
-  const { data: productData, error: productError } = useSWR(
+  const { data: swrData, error: productError } = useSWR(
     `${process.env.NEXT_PUBLIC_API_URL}/api/products/${slug}`,
     fetcher,
     {
-      initialData: props.productData,
+      initialData: props.foreignData,
     } as any
   )
+  // detructure data from productData
+  const { data } = swrData || {}
 
   return (
     <div>
@@ -337,11 +339,11 @@ const MernStackAdsTheme = (props: { productData: any }) => {
         className={`sm:bg-[url('/products/heading-one.svg')] bg-no-repeat bg-cover ${colors.bgPrimary}`}
       >
         <Navbar.SingleProductNavbar />
-        <Header data={productData} icons={data.buildWith} colors={colors} />
+        <Header data={data} icons={localData.buildWith} colors={colors} />
       </div>
-      <MangeWebsite colors={colors} data={data.manageWebsite} />
-      <SimpleTitleThird colors={colors} data={data.sampleInfo} />
-      <Heading data={productData} info={data.preSale} colors={colors} />
+      <MangeWebsite colors={colors} data={localData.manageWebsite} />
+      <SimpleTitleThird colors={colors} data={localData.sampleInfo} />
+      <Heading data={data} info={localData.preSale} colors={colors} />
       <Hire colors={colors} />
       <Testimonials />
       <Footer
@@ -363,63 +365,23 @@ export const getStaticProps = async () => {
     status: 'publish',
   }).then((response) => response.data)
 
-  // fetch again the variations to get the price
-  const variationsData = await Woocommerce.get(
-    `products/${data[0].id}/variations`,
-    {
-      status: 'publish',
-    }
-  ).then((response) => response.data)
-
-  // pick only the price from the variations
-  const variationsPrice = variationsData.map((variation: any) => {
-    return {
-      id: variation.id,
-      price: variation.price,
-      sales_price: variation.sale_price,
-      regular_price: variation.regular_price,
-    }
-  })
-
-  // pick some field and return as objcect
+  // only return few fields
   const filteredData = data.map((item: any) => {
-    const price =
-      item.type === 'simple'
-        ? [
-            {
-              price: item.price,
-              regular_price: item.regular_price,
-              sale_price: item.sale_price,
-            },
-          ]
-        : variationsPrice
     return {
       id: item.id,
       name: item.name,
       slug: item.slug,
       image: item.images[0].src,
       short_description: item.short_description,
-      date_created: item.date_created,
-      date_modified: item.date_modified,
-      featured: item.featured,
-      sku: item.sku,
-      type: item.type === 'simple' ? 'simple' : 'variable',
-      price,
-      categories: item.categories.map((category: any) => {
-        return {
-          id: category.id,
-          name: category.name,
-          slug: category.slug,
-        }
-      }),
     }
   })
 
   const finalData = Object.assign(filteredData[0], {})
+  console.log('finalData', finalData)
 
   return {
     props: {
-      productData: finalData,
+      foreignData: finalData,
     },
   }
 }

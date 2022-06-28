@@ -70,7 +70,7 @@ const MangeWebsite = (props: any) => {
             type="video/mp4"
           />
         </video> */}
-        <h1 className="2xl:text-4xl xl:text-3xl lg:text-2xl md:text-xl sm:text-lg text-base font-bold lg:mt-4 sm:mt-3 text-gray-900  md:w-2/4 w-4/6 text-center pt-28">
+        <h1 className="2xl:text-4xl xl:text-3xl lg:text-2xl md:text-xl sm:text-lg text-base font-bold lg:mt-4 sm:mt-3 text-gray-900  md:w-2/4 w-4/6 text-center">
           {data ? data.title : 'Title Heading'}
         </h1>
         <article className="mt-5 text-gray-600 md:w-2/4 w-3/5 text-center xl:text-lg md:text-base text-sm">
