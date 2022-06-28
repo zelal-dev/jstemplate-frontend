@@ -13,13 +13,12 @@ export default async function fetcher() {
   await new Promise((resolve) => setTimeout(resolve, 400))
 
   const localData = localStorage.getItem('jst_l_info')
-  console.log('localData', localData)
 
   if (localData) {
     // user logged in fetch user data
     //@ts-ignore
     const { data, error } = await authAxios.get('/api/user/self')
-    console.log('data from API', data, 'error', error)
+
     return {
       user: data.data,
       error: error,

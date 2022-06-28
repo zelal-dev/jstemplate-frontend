@@ -15,13 +15,12 @@
     "jsx": "preserve",
     "incremental": true
   },
-  "include": [, "upcoming-temp/projects"
+  "include": [
+    "**/*.ts",
     "next-env.d.ts",
     "**/*.ts",
     "**/*.tsx",
-    "pages/dashboard",
-    "upcoming-temp/presale",
-    "upcoming-temp/tickets"
+    "pages/dashboard"
   ],
-  "exclude": ["node_modules"]
+  "exclude": ["node_modules", "upcoming-temp"]
 }

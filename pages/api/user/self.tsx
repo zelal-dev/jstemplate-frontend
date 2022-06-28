@@ -20,7 +20,6 @@ export default async function (req: NextApiRequest, res: NextApiResponse) {
     )
     const data = response.data
 
-    console.log('data from wordpress', data)
     // return response
     return res.status(200).send({
       message: 'Successfully logged in',

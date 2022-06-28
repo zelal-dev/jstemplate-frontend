@@ -11,42 +11,66 @@ export default async function (req: NextApiRequest, res: NextApiResponse) {
     return res.status(400).json({ message: 'Method not allowed' })
 
   try {
-    const response = await fetch(
-      `${process.env.API_ENDPOINT}/wp-json/wc/v3/products/?slug=${slug}`,
-      {
-        headers: {
-          Authorization: `Basic ${process.env.CONSUMER_TOKEN}`,
-        },
-      }
-    )
-    const data = await response.json()
+    const data = await Woocommerce.get('products', {
+      slug,
+      status: 'publish',
+    }).then((response) => response.data)
 
-    // pick only few fields from the response object
-    const filteredData = _.filter(data, (item: any) => {
-      return item.status === 'publish'
-    }).map((item: any) => {
+    // fetch again the variations to get the price
+    const variationsData = await Woocommerce.get(
+      `products/${data[0].id}/variations`,
+      {
+        status: 'publish',
+      }
+    ).then((response) => response.data)
+
+    // pick only the price from the variations
+    const variationsPrice = variationsData.map((variation: any) => {
+      return {
+        id: variation.id,
+        price: variation.price,
+        sales_price: variation.sale_price,
+        regular_price: variation.regular_price,
+      }
+    })
+
+    // pick some field and return as objcect
+    const filteredData = data.map((item: any) => {
+      const price =
+        item.type === 'simple'
+          ? [
+              {
+                price: item.price,
+                regular_price: item.regular_price,
+                sale_price: item.sale_price,
+              },
+            ]
+          : variationsPrice
       return {
         id: item.id,
         name: item.name,
         slug: item.slug,
         image: item.images[0].src,
         short_description: item.short_description,
+        date_created: item.date_created,
+        date_modified: item.date_modified,
+        featured: item.featured,
+        sku: item.sku,
         type: item.type === 'simple' ? 'simple' : 'variable',
-        price:
-          item.type === 'simple'
-            ? item.price
-            : {
-                standard: item.price,
-                standardPlus: item.price,
-                extended: item.price,
-              },
+        price,
+        categories: item.categories.map((category: any) => {
+          return {
+            id: category.id,
+            name: category.name,
+            slug: category.slug,
+          }
+        }),
       }
     })
 
-    return res.status(200).send({
-      message: 'Successfully fetched products',
-      data: filteredData,
-    })
+    const finalData = Object.assign(filteredData[0], {})
+
+    return res.status(200).send(finalData)
   } catch (error: any) {
     return res.status(500).send({ message: error.message })
   }

@@ -6,15 +6,6 @@ import { Woocommerce } from '../../../src/utils/woocommerce'
 export default async function (req: NextApiRequest, res: NextApiResponse) {
   if (req.method !== 'GET')
     return res.status(400).json({ message: 'Method not allowed' })
-  // const response = await fetch(
-  //   `${process.env.API_ENDPOINT}/wp-json/wc/v3/products`,
-  //   {
-  //     headers: {
-  //       Authorization: `Basic ${process.env.CONSUMER_TOKEN}`,
-  //     },
-  //   }
-  // )
-  // const data = await response.json()
 
   const data = await Woocommerce.get('products').then((res) => res.data)
 

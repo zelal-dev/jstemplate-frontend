@@ -1,5 +1,6 @@
-import React from "react";
-import { IoChatbubbles } from "react-icons/io5";
+import Link from 'next/link'
+import React from 'react'
+import { IoChatbubbles } from 'react-icons/io5'
 
 const Hire = ({ colors }: { colors: any }) => {
   return (
@@ -11,18 +12,22 @@ const Hire = ({ colors }: { colors: any }) => {
           Hire MERN Stack Developers
         </h1>
         <article className="md:mt-6 mt-5 xl:text-xl lg:text-lg md:text-base text-sm text-gray-100 2xl:w-2/4 md:w-3/5 sm:w-2/3 w-full text-center">
-          Lorem Ipsum is simply dummy text of the printing and typesetting
-          industry. Lorem Ipsum has been the industrys standard dummy text
+          Looking for best MERN Stack team to build your next project. Hire Us
+          and get your project done in time.
         </article>
-        <button
-          type="button"
-          className={`text-base font-semibold drop-shadow-lg mt-16 ${colors.textPrimary} flex items-center bg-gray-100 py-4 px-6 rounded-lg`}
-        >
-          <IoChatbubbles className="mr-4 drop-shadow-xl" /> Start a Project
-        </button>
+        <Link href="/service/mern-stack-development-services" passHref>
+          <a>
+            <button
+              type="button"
+              className={`text-base font-semibold drop-shadow-lg mt-16 ${colors.textPrimary} flex items-center bg-gray-100 py-4 px-6 rounded-lg`}
+            >
+              <IoChatbubbles className="mr-4 drop-shadow-xl" /> Start a Project
+            </button>
+          </a>
+        </Link>
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default Hire;
+export default Hire

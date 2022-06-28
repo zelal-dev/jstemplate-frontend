@@ -215,31 +215,30 @@ const data = {
         regular: 149,
         list: [
           {
-            title: 'Free Installation Support',
-            checked: true,
-          },
-          {
-            title: 'Short Specification Here',
-            checked: true,
-          },
-          {
-            title: 'Modify the Code',
-            checked: true,
-          },
-          {
             title: 'One Domain License',
+            checked: true,
+          },
+          {
+            title: '6 Month Support',
+            checked: true,
+          },
+          {
+            title: 'Installation & Setup',
             checked: false,
           },
           {
             title: 'Ticked Based Support',
+            checked: true,
+          },
+          { title: 'Download Frontend Code', checked: true },
+          { title: 'Download backend Code', checked: true },
+          { title: 'Download API Collection', checked: true },
+          {
+            title: 'Download Figma Design',
             checked: false,
           },
           {
-            title: 'Access to Design Source',
-            checked: false,
-          },
-          {
-            title: 'Custom Modification',
+            title: 'Customization',
             checked: false,
           },
         ],
@@ -251,31 +250,31 @@ const data = {
         regular: 349,
         list: [
           {
-            title: 'Free Installation Support',
-            checked: true,
-          },
-          {
-            title: 'Short Specification Here',
-            checked: true,
-          },
-          {
-            title: 'Modify the Code',
-            checked: true,
-          },
-          {
             title: 'One Domain License',
             checked: true,
           },
           {
-            title: 'Ticked Based Support',
+            title: '1 Year Support',
             checked: true,
           },
           {
-            title: 'Access to Design Source',
-            checked: false,
+            title: 'Installation & Setup',
+            checked: true,
           },
           {
-            title: 'Custom Modification',
+            title: 'Priority Based Support',
+            checked: true,
+          },
+          { title: 'Download Frontend Code', checked: true },
+          { title: 'Download backend Code', checked: true },
+          { title: 'Download API Collection', checked: true },
+
+          {
+            title: 'Download Figma Design',
+            checked: true,
+          },
+          {
+            title: 'Theme Customization',
             checked: false,
           },
         ],
@@ -287,31 +286,31 @@ const data = {
         regular: 999,
         list: [
           {
-            title: 'Free Installation Support',
+            title: 'Unlimited Domain License',
             checked: true,
           },
           {
-            title: 'Short Specification Here',
+            title: '1 Year Support',
             checked: true,
           },
           {
-            title: 'Modify the Code',
+            title: 'Installation & Setup',
             checked: true,
           },
           {
-            title: 'One Domain License',
+            title: 'Priority Based Support',
+            checked: true,
+          },
+          { title: 'Download Frontend Code', checked: true },
+          { title: 'Download backend Code', checked: true },
+          { title: 'Download API Collection', checked: true },
+
+          {
+            title: 'Download Figma Design',
             checked: true,
           },
           {
-            title: 'Ticked Based Support',
-            checked: true,
-          },
-          {
-            title: 'Access to Design Source',
-            checked: true,
-          },
-          {
-            title: 'Custom Modification',
+            title: 'Theme Customization',
             checked: true,
           },
         ],
@@ -338,7 +337,7 @@ const MernStackDirectoryListingTheme = (props: any) => {
       <SimpleTitleThird colors={colors} data={data.sampleInfo} />
       <Heading data={props.data} info={data.preSale} colors={colors} />
       <Hire colors={colors} />
-      {/* <Testimonials /> */}
+      <Testimonials />
       <Footer
         boxToColor="secondaryTemplateColorDark"
         boxFromColor="secondaryTemplateColorLight"

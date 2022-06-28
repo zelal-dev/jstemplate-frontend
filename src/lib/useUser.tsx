@@ -7,9 +7,6 @@ import { LoaderGrowing } from './loader'
 
 export const useUser = () => {
   const { data, error } = useSWR('api/v1/user/self', fetcher)
-
-  console.log('data from User', data, 'error', error)
-
   const { mutate } = useSWRConfig()
   const loading = !data && !error
   const loggedIn = localGet('jst_u_info') !== null

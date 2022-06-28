@@ -11,7 +11,7 @@ const Header = (props: any) => {
       <div className="relative w-2/3 sm:w-auto">
         {data && (
           <h1 className="text-gray-100 xl:text-4xl lg:text-3xl md:text-2xl text-xl font-bold text-center">
-            {data ? data.name : 'Mern Stack Job Board Theme'}
+            {data ? data.name : 'product name not loaded'}
           </h1>
         )}
       </div>
@@ -35,7 +35,7 @@ const Header = (props: any) => {
             </button>
           </a>
         </Link>
-        <Link href={`#${data.slug}`} passHref>
+        <Link href={`${data?.slug}` ?? '#'} passHref>
           <a className="text-base font-semibold py-3 px-7 border-2 border-gray-100 rounded-lg text-white">
             Pricing
           </a>

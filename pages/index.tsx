@@ -57,7 +57,11 @@ const Homepage = ({ productData }: { productData: ProductDocument }) => {
 export default Homepage
 
 export const getStaticProps: GetStaticProps = async (context) => {
-  const data = await Woocommerce.get('products').then((res) => res.data)
+  const data = await Woocommerce.get('products', {
+    per_page: 20,
+    status: 'publish',
+  }).then((res) => res.data)
+
   const filteredData = _.filter(data, (item: any) => {
     return item.status === 'publish'
   }).map((item: any) => {
@@ -67,6 +71,10 @@ export const getStaticProps: GetStaticProps = async (context) => {
       slug: item.slug,
       image: item.images[0].src,
       short_description: item.short_description,
+      type: item.type === 'simple' ? 'simple' : 'variable',
+      price: item.price,
+      regular_price: item.regular_price,
+      sale_price: item.sale_price,
       categories: item.categories.map((category: any) => {
         return {
           id: category.id,

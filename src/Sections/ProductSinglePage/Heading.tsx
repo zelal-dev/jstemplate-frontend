@@ -16,10 +16,9 @@ import { ImCross } from 'react-icons/im'
 
 const Heading = (props: any) => {
   const { colors, info, data } = props
-
   return (
     <div
-      id={data.slug}
+      id={data?.slug}
       className="container mx-auto md:-mt-80 bg-white w-full shadow-xl xl:p-24 lg:p-16 md:p-10 sm:p-8 p-6 rounded-xl"
     >
       <div className="flex flex-col items-center">
@@ -75,22 +74,23 @@ const Heading = (props: any) => {
         {/* Pricing box's */}
         <div className="grid xl:grid-cols-3 lg:grid-cols-2 gap-10 container mt-16">
           <HeadingNormalCart
-            price={data.price.standart}
+            price={data?.price}
             info={info.pricing.standard}
             colors={colors}
           />
+
           <HeadingPlusCart
-            price={data.price.standartPlus}
+            price={data?.price}
             info={info.pricing.standardPlus}
             colors={colors}
           />
           <HeadingExtendedCart
-            price={data.price.extended}
+            price={data?.price}
             info={info.pricing.extended}
             colors={colors}
           />
         </div>
-        <div className="grid sm:grid-cols-12 gap-12 mt-16 sm:p-8 border border-cartImageBgOne">
+        {/* <div className="grid sm:grid-cols-12 gap-12 mt-16 sm:p-8 border border-cartImageBgOne">
           <div className="xl:col-span-3 sm:col-span-4 ">
             <div className="w-60 h-60" />
           </div>
@@ -129,7 +129,7 @@ const Heading = (props: any) => {
               </div>
             </div>
           </div>
-        </div>
+        </div> */}
       </div>
     </div>
   )
@@ -146,24 +146,27 @@ const HeadingNormalCart = ({
   info: any
   colors: any
 }) => {
+  console.log('Price', price, 'info', info, 'Colors', colors)
   return (
     <div
       className="p-7 my-auto bg-secondaryGrayLight rounded-lg border border-cartImageBgOne"
       style={{ boxShadow: 'inset 0px 8px 4px -4px #E9F0FB' }}
     >
-      <h2 className="text-lg font-bold text-gray-900">{info.title}</h2>
-      <h5 className="text-gray-500 text-sm">Save ${info.save}</h5>
+      <h2 className="text-lg font-bold text-gray-900">
+        {info?.title ?? 'title'}
+      </h2>
+      <h5 className="text-gray-500 text-sm">Save ${info?.save}</h5>
       <div className="flex items-end">
-        <h3 className={`text-4xl font-black ${colors.textPrimary} mr-2`}>
-          {info ? `$${info.sale}` : '$69'}
+        <h3 className={`text-4xl font-black ${colors?.textPrimary} mr-2`}>
+          {info ? `$${info?.sale}` : '$69'}
         </h3>
         <h5 className="text-lg text-gray-500 pb-1.5 line-through">
-          ${info.regular}
+          ${info?.regular}
         </h5>
       </div>
       <hr className="w-full text-secondaryGrayLighter mt-6 mb-7" />
       <div>
-        {info.list.map((item: any, index: number) => (
+        {info?.list?.map((item: any, index: number) => (
           <div className="flex items-center mb-4 last-of-type:mb-0" key={index}>
             <div
               className={`${

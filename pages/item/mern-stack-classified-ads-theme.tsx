@@ -14,6 +14,9 @@ import { MdHeadsetMic } from 'react-icons/md'
 import { FaHourglassHalf, FaNodeJs, FaReact } from 'react-icons/fa'
 import { SiMongodb, SiExpress } from 'react-icons/si'
 import _ from 'lodash'
+import { Axios } from '../../src/utils/axiosKits'
+import useSWR from 'swr'
+import { Woocommerce } from '../../src/utils/woocommerce'
 
 // page primary colors
 const colors = {
@@ -212,31 +215,30 @@ const data = {
         regular: 149,
         list: [
           {
-            title: 'Free Installation Support',
-            checked: true,
-          },
-          {
-            title: 'Short Specification Here',
-            checked: true,
-          },
-          {
-            title: 'Modify the Code',
-            checked: true,
-          },
-          {
             title: 'One Domain License',
+            checked: true,
+          },
+          {
+            title: '6 Month Support',
+            checked: true,
+          },
+          {
+            title: 'Installation & Setup',
             checked: false,
           },
           {
             title: 'Ticked Based Support',
+            checked: true,
+          },
+          { title: 'Download Frontend Code', checked: true },
+          { title: 'Download backend Code', checked: true },
+          { title: 'Download API Collection', checked: true },
+          {
+            title: 'Download Figma Design',
             checked: false,
           },
           {
-            title: 'Access to Design Source',
-            checked: false,
-          },
-          {
-            title: 'Custom Modification',
+            title: 'Customization',
             checked: false,
           },
         ],
@@ -248,31 +250,31 @@ const data = {
         regular: 349,
         list: [
           {
-            title: 'Free Installation Support',
-            checked: true,
-          },
-          {
-            title: 'Short Specification Here',
-            checked: true,
-          },
-          {
-            title: 'Modify the Code',
-            checked: true,
-          },
-          {
             title: 'One Domain License',
             checked: true,
           },
           {
-            title: 'Ticked Based Support',
+            title: '1 Year Support',
             checked: true,
           },
           {
-            title: 'Access to Design Source',
-            checked: false,
+            title: 'Installation & Setup',
+            checked: true,
           },
           {
-            title: 'Custom Modification',
+            title: 'Priority Based Support',
+            checked: true,
+          },
+          { title: 'Download Frontend Code', checked: true },
+          { title: 'Download backend Code', checked: true },
+          { title: 'Download API Collection', checked: true },
+
+          {
+            title: 'Download Figma Design',
+            checked: true,
+          },
+          {
+            title: 'Theme Customization',
             checked: false,
           },
         ],
@@ -284,31 +286,31 @@ const data = {
         regular: 999,
         list: [
           {
-            title: 'Free Installation Support',
+            title: 'Unlimited Domain License',
             checked: true,
           },
           {
-            title: 'Short Specification Here',
+            title: '1 Year Support',
             checked: true,
           },
           {
-            title: 'Modify the Code',
+            title: 'Installation & Setup',
             checked: true,
           },
           {
-            title: 'One Domain License',
+            title: 'Priority Based Support',
+            checked: true,
+          },
+          { title: 'Download Frontend Code', checked: true },
+          { title: 'Download backend Code', checked: true },
+          { title: 'Download API Collection', checked: true },
+
+          {
+            title: 'Download Figma Design',
             checked: true,
           },
           {
-            title: 'Ticked Based Support',
-            checked: true,
-          },
-          {
-            title: 'Access to Design Source',
-            checked: true,
-          },
-          {
-            title: 'Custom Modification',
+            title: 'Theme Customization',
             checked: true,
           },
         ],
@@ -316,19 +318,30 @@ const data = {
     },
   },
 }
+const fetcher = (url: string) => Axios(url).then((res) => res.data) as any
 
-const MernStackDirectoryListingTheme = (props: any) => {
+const MernStackAdsTheme = (props: { productData: any }) => {
+  const slug = 'mern-stack-classified-ads-theme'
+  // call data using swr
+  const { data: productData, error: productError } = useSWR(
+    `${process.env.NEXT_PUBLIC_API_URL}/api/products/${slug}`,
+    fetcher,
+    {
+      initialData: props.productData,
+    } as any
+  )
+
   return (
     <div>
       <div
         className={`sm:bg-[url('/products/heading-one.svg')] bg-no-repeat bg-cover ${colors.bgPrimary}`}
       >
         <Navbar.SingleProductNavbar />
-        <Header data={props.data} icons={data.buildWith} colors={colors} />
+        <Header data={productData} icons={data.buildWith} colors={colors} />
       </div>
       <MangeWebsite colors={colors} data={data.manageWebsite} />
       <SimpleTitleThird colors={colors} data={data.sampleInfo} />
-      <Heading data={props.data} info={data.preSale} colors={colors} />
+      <Heading data={productData} info={data.preSale} colors={colors} />
       <Hire colors={colors} />
       <Testimonials />
       <Footer
@@ -344,39 +357,71 @@ const MernStackDirectoryListingTheme = (props: any) => {
 }
 
 export const getStaticProps = async () => {
-  const response = await fetch(
-    `${process.env.API_ENDPOINT}/wp-json/wc/v3/products/?slug=mern-stack-job-board-theme`,
-    {
-      headers: {
-        Authorization: `Basic ${process.env.CONSUMER_TOKEN}`,
-      },
-    }
-  )
-  const data = await response.json()
+  const slug = 'mern-stack-classified-ads-theme'
+  const data = await Woocommerce.get('products', {
+    slug,
+    status: 'publish',
+  }).then((response) => response.data)
 
-  // pick only few fields from the response object
-  const filteredData = _.filter(data, (item: any) => {
-    return item.status === 'publish'
-  }).map((item: any) => {
+  // fetch again the variations to get the price
+  const variationsData = await Woocommerce.get(
+    `products/${data[0].id}/variations`,
+    {
+      status: 'publish',
+    }
+  ).then((response) => response.data)
+
+  // pick only the price from the variations
+  const variationsPrice = variationsData.map((variation: any) => {
+    return {
+      id: variation.id,
+      price: variation.price,
+      sales_price: variation.sale_price,
+      regular_price: variation.regular_price,
+    }
+  })
+
+  // pick some field and return as objcect
+  const filteredData = data.map((item: any) => {
+    const price =
+      item.type === 'simple'
+        ? [
+            {
+              price: item.price,
+              regular_price: item.regular_price,
+              sale_price: item.sale_price,
+            },
+          ]
+        : variationsPrice
     return {
       id: item.id,
       name: item.name,
       slug: item.slug,
       image: item.images[0].src,
       short_description: item.short_description,
-      price: {
-        standard: item.price,
-        standardPlus: item.price,
-        extended: item.price,
-      },
+      date_created: item.date_created,
+      date_modified: item.date_modified,
+      featured: item.featured,
+      sku: item.sku,
+      type: item.type === 'simple' ? 'simple' : 'variable',
+      price,
+      categories: item.categories.map((category: any) => {
+        return {
+          id: category.id,
+          name: category.name,
+          slug: category.slug,
+        }
+      }),
     }
   })
 
+  const finalData = Object.assign(filteredData[0], {})
+
   return {
     props: {
-      data: filteredData[0],
+      productData: finalData,
     },
   }
 }
 
-export default MernStackDirectoryListingTheme
+export default MernStackAdsTheme

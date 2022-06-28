@@ -1,67 +1,67 @@
-import Image from "next/image";
-import React, { useState } from "react";
-import { BiDollar } from "react-icons/bi";
-import { HiBell } from "react-icons/hi";
-import { IoChatbubbles } from "react-icons/io5";
+import Image from 'next/image'
+import React, { useState } from 'react'
+import { BiDollar } from 'react-icons/bi'
+import { HiBell } from 'react-icons/hi'
+import { IoChatbubbles } from 'react-icons/io5'
 import {
   RiAppsFill,
   RiLayoutMasonryFill,
   RiSearchFill,
   RiUserFill,
-} from "react-icons/ri";
-import megaPhone from "./../../../public/megaPhone.svg";
-import time from "./../../../public/time.svg";
+} from 'react-icons/ri'
+import megaPhone from './../../../public/megaPhone.svg'
+import time from './../../../public/time.svg'
 
 const MangeWebsite = (props: any) => {
-  const { colors, data } = props;
+  const { colors, data } = props
 
-  const sample = [1, 2, 3];
-  const [boxShadowOne, setBoxShadowOne] = useState("");
-  const [boxShadowTwo, setBoxShadowTwo] = useState("");
-  const [boxShadowThree, setBoxShadowThree] = useState("");
-  const [boxShadowFour, setBoxShadowFour] = useState("");
-  const [boxShadowFive, setBoxShadowFive] = useState("");
-  const [boxShadowSix, setBoxShadowSix] = useState("");
+  const sample = [1, 2, 3]
+  const [boxShadowOne, setBoxShadowOne] = useState('')
+  const [boxShadowTwo, setBoxShadowTwo] = useState('')
+  const [boxShadowThree, setBoxShadowThree] = useState('')
+  const [boxShadowFour, setBoxShadowFour] = useState('')
+  const [boxShadowFive, setBoxShadowFive] = useState('')
+  const [boxShadowSix, setBoxShadowSix] = useState('')
   const handleMouseOverOne = () => {
-    setBoxShadowOne("");
-  };
+    setBoxShadowOne('')
+  }
   const handleMouseOutOne = () => {
-    setBoxShadowOne("inset 0px 8px 4px -4px #E9F0FB");
-  };
+    setBoxShadowOne('inset 0px 8px 4px -4px #E9F0FB')
+  }
   const handleMouseOverTwo = () => {
-    setBoxShadowTwo("");
-  };
+    setBoxShadowTwo('')
+  }
   const handleMouseOutTwo = () => {
-    setBoxShadowTwo("inset 0px 8px 4px -4px #E9F0FB");
-  };
+    setBoxShadowTwo('inset 0px 8px 4px -4px #E9F0FB')
+  }
   const handleMouseOverThree = () => {
-    setBoxShadowThree("");
-  };
+    setBoxShadowThree('')
+  }
   const handleMouseOutThree = () => {
-    setBoxShadowThree("inset 0px 8px 4px -4px #E9F0FB");
-  };
+    setBoxShadowThree('inset 0px 8px 4px -4px #E9F0FB')
+  }
   const handleMouseOverFour = () => {
-    setBoxShadowFour("");
-  };
+    setBoxShadowFour('')
+  }
   const handleMouseOutFour = () => {
-    setBoxShadowFour("inset 0px 8px 4px -4px #E9F0FB");
-  };
+    setBoxShadowFour('inset 0px 8px 4px -4px #E9F0FB')
+  }
   const handleMouseOverFive = () => {
-    setBoxShadowFive("");
-  };
+    setBoxShadowFive('')
+  }
   const handleMouseOutFive = () => {
-    setBoxShadowFive("inset 0px 8px 4px -4px #E9F0FB");
-  };
+    setBoxShadowFive('inset 0px 8px 4px -4px #E9F0FB')
+  }
   const handleMouseOverSix = () => {
-    setBoxShadowSix("");
-  };
+    setBoxShadowSix('')
+  }
   const handleMouseOutSix = () => {
-    setBoxShadowSix("inset 0px 8px 4px -4px #E9F0FB");
-  };
+    setBoxShadowSix('inset 0px 8px 4px -4px #E9F0FB')
+  }
   return (
     <div className="container mx-auto">
       <div className="xl:py-24 sm:py-16 py-14 flex flex-col items-center justify-center">
-        <video
+        {/* <video
           controls
           className="rounded-xl xl:-mt-96 lg:-mt-[21rem] md:-mt-80 sm:-mt-80 -mt-[18rem] shadow-2xl xl:w-[59.5rem] lg:w-[50rem] md:w-[40rem] sm:w-[30rem] w-[20rem] xl:h-[31.25rem] lg:h-[25rem] md:h-[20rem] sm:h-[15rem] h-[10.625rem]"
         >
@@ -69,14 +69,14 @@ const MangeWebsite = (props: any) => {
             src="https://www.youtube.com/watch?v=Faow3SKIzq0"
             type="video/mp4"
           />
-        </video>
+        </video> */}
         <h1 className="2xl:text-4xl xl:text-3xl lg:text-2xl md:text-xl sm:text-lg text-base font-bold lg:mt-4 sm:mt-3 text-gray-900  md:w-2/4 w-4/6 text-center pt-28">
-          {data ? data.title : "Title Heading"}
+          {data ? data.title : 'Title Heading'}
         </h1>
         <article className="mt-5 text-gray-600 md:w-2/4 w-3/5 text-center xl:text-lg md:text-base text-sm">
           {data
             ? data.description
-            : "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text"}
+            : 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text'}
         </article>
         {data && data.list.length > 0 && (
           <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-11 container mx-auto xl:my-16 md:mt-12 mt-8 px-5 lg:px-28 sm:px-16">
@@ -105,7 +105,7 @@ const MangeWebsite = (props: any) => {
         )}
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default MangeWebsite;
+export default MangeWebsite
