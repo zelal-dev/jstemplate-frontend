@@ -360,10 +360,10 @@ const MernStackAdsTheme = (props: { foreignData: any }) => {
 
 export const getStaticProps = async () => {
   const slug = 'mern-stack-classified-ads-theme'
-  const data = await Woocommerce.get('products', {
+  const { data } = await Woocommerce.get('products', {
     slug,
     status: 'publish',
-  }).then((response) => response.data)
+  })
 
   // only return few fields
   const filteredData = data.map((item: any) => {
