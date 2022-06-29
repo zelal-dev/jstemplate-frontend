@@ -105,7 +105,7 @@ export const productMenuData = [
     children: [
       {
         id: 2441,
-        title: 'MetaBlog- Wordpress Headless Blog Theme',
+        title: 'MetaBlog- Headless WordPress Blog Theme',
         description: 'Multipurpose frontity to buid your site quickly',
         url: '#',
         iconClass: '',
