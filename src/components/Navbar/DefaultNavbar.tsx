@@ -163,6 +163,7 @@ const DefaultNavbar = () => {
             Resources
           </a>
         </Link>
+
         <Link href="/blog">
           <a className="mx-7 lg:text-base sm:text-sm text-gray-700 cursor-pointer">
             Blog
