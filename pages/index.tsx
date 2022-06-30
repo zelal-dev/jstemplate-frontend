@@ -24,11 +24,12 @@ const Homepage = ({ productData }: { productData: ProductDocument }) => {
 
   return (
     <>
-      <NextSeo
+      {/* <NextSeo
         titleTemplate="JS Template - %s "
         title="Top of MERN Stack, React.js, Headless CMS, Frontity Themes"
         description="Buy Ready-Made JS Template Web Solution, Grow Your Business Faster. We developed best MERN Stack, Headless CMS, Tailwind CSS Themes, templates for your next project."
-      />
+      /> */}
+      <NextSeo noindex={true} />
       <section className="">
         <div className="bg-backgroundGray">
           <div className="header-part">

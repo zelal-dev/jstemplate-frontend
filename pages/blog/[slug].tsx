@@ -1,16 +1,16 @@
-import styled from "@emotion/styled";
-import Head from "next/head";
-import Image from "next/image";
-import Link from "next/link";
-import React from "react";
-import { BsArrowRightShort } from "react-icons/bs";
-import useSWR from "swr";
-import Thumbnail from "../../src/components/Blog/Thumbnail";
-import FooterWithoutSolution from "../../src/components/FooterWithoutSolution";
-import Navbar from "../../src/components/Navbar";
-import NotFound404 from "../../src/components/NotFound";
+import styled from '@emotion/styled'
+import Head from 'next/head'
+import Image from 'next/image'
+import Link from 'next/link'
+import React from 'react'
+import { BsArrowRightShort } from 'react-icons/bs'
+import useSWR from 'swr'
+import Thumbnail from '../../src/components/Blog/Thumbnail'
+import FooterWithoutSolution from '../../src/components/FooterWithoutSolution'
+import Navbar from '../../src/components/Navbar'
+import NotFound404 from '../../src/components/NotFound'
 
-const fetcher = (url: any) => fetch(url).then((r) => r.json());
+const fetcher = (url: any) => fetch(url).then((r) => r.json())
 
 const Details = ({
   getData,
@@ -18,10 +18,10 @@ const Details = ({
   status,
   slug,
 }: {
-  getData: any;
-  latestPosts: any;
-  status: any;
-  slug: any;
+  getData: any
+  latestPosts: any
+  status: any
+  slug: any
 }) => {
   const { data, error } = useSWR(
     `https://api-blog.jstemplate.net/wp-json/wp/v2/posts?slug=${slug}`,
@@ -29,7 +29,7 @@ const Details = ({
     {
       fallbackData: getData,
     }
-  );
+  )
   // latestPosts data fetching
   const { data: latestPostsData, error: latestPostsError } = useSWR(
     `https://api-blog.jstemplate.net/wp-json/wp/v2/posts?per_page=5`,
@@ -37,7 +37,7 @@ const Details = ({
     {
       fallbackData: latestPosts,
     }
-  );
+  )
 
   if (status === 404) {
     return (
@@ -51,7 +51,7 @@ const Details = ({
         <NotFound404 />
         <FooterWithoutSolution />
       </>
-    );
+    )
   }
 
   return (
@@ -60,7 +60,10 @@ const Details = ({
         <title>
           {data[0]?.yoast_head_json?.title && data[0]?.yoast_head_json?.title}
         </title>
-        <meta
+
+        {/* not allow robots */}
+        <meta name="robots" content="noindex, nofollow" />
+        {/* <meta
           name="description"
           content={
             data[0]?.yoast_head_json?.og_description &&
@@ -89,7 +92,7 @@ const Details = ({
           property="og:site_name"
           content={data[0]?.yoast_head_json?.og_site_name}
         />
-        <meta property="article:published_time" content={data[0]?.date} />
+        <meta property="article:published_time" content={data[0]?.date} /> */}
       </Head>
       <div className="shadow-md">
         <Navbar.SecondaryDefaultNavbar />
@@ -158,12 +161,12 @@ const Details = ({
               </h1>
               {latestPostsData &&
                 latestPostsData.map((item: any, index: any) => {
-                  const date = new Date(item.date);
-                  const postDate = date.toLocaleDateString("en-US", {
-                    day: "numeric",
-                    month: "long",
-                    year: "numeric",
-                  });
+                  const date = new Date(item.date)
+                  const postDate = date.toLocaleDateString('en-US', {
+                    day: 'numeric',
+                    month: 'long',
+                    year: 'numeric',
+                  })
                   return (
                     <div
                       key={index}
@@ -197,7 +200,7 @@ const Details = ({
                         </Link>
                       </div>
                     </div>
-                  );
+                  )
                 })}
             </div>
           </div>
@@ -205,21 +208,21 @@ const Details = ({
       </section>
       <FooterWithoutSolution />
     </>
-  );
-};
+  )
+}
 
 // getServerSideProps function for fetching data from external API
 export async function getServerSideProps(context: any) {
-  const slug = context.query.slug;
+  const slug = context.query.slug
   const res = await fetch(
     `https://api-blog.jstemplate.net/wp-json/wp/v2/posts?slug=${slug}`
-  );
-  const data = await res.json();
+  )
+  const data = await res.json()
 
   const resTwo = await fetch(
-    "https://api-blog.jstemplate.net/wp-json/wp/v2/posts?per_page=5"
-  );
-  const latestPosts = await resTwo.json();
+    'https://api-blog.jstemplate.net/wp-json/wp/v2/posts?per_page=5'
+  )
+  const latestPosts = await resTwo.json()
 
   if (data.length > 0) {
     return {
@@ -229,7 +232,7 @@ export async function getServerSideProps(context: any) {
         status: 200,
         slug: slug,
       },
-    };
+    }
   } else {
     // return 404 page
     return {
@@ -239,11 +242,11 @@ export async function getServerSideProps(context: any) {
         status: 404,
         slug: slug,
       },
-    };
+    }
   }
 }
 
-export default Details;
+export default Details
 
 const PostImage = ({ id }: { id: any }) => {
   const { data, error } = useSWR(
@@ -254,7 +257,7 @@ const PostImage = ({ id }: { id: any }) => {
     {
       refreshInterval: 0,
     }
-  );
+  )
 
   if (data) {
     if (data.length > 0) {
@@ -268,21 +271,21 @@ const PostImage = ({ id }: { id: any }) => {
             priority
           />
         </div>
-      );
+      )
     } else {
       return (
         <div className="w-[100px] h-[100px] bg-slate-200 rounded-lg overflow-hidden grid justify-center items-center text-gray-300 text-lg">
           No Image
         </div>
-      );
+      )
     }
   }
   return (
     <div className="w-[100px] animate-pulse h-[100px] bg-slate-100 rounded-lg overflow-hidden grid justify-center items-center text-gray-300 text-2xl">
       Loading...
     </div>
-  );
-};
+  )
+}
 
 const Comments = () => {
   return (
@@ -407,8 +410,8 @@ const Comments = () => {
         </button>
       </form>
     </div>
-  );
-};
+  )
+}
 
 const PostContent = styled.div`
   figcaption {
@@ -467,4 +470,4 @@ const PostContent = styled.div`
     height: auto;
     margin-bottom: 1rem;
   }
-`;
+`
