@@ -11,11 +11,9 @@ export default async function (req: NextApiRequest, res: NextApiResponse) {
     return res.status(400).json({ message: 'Method not allowed' })
 
   try {
-    const data = await Woocommerce.get('products', {
+    const {data} = await Woocommerce.get('products', {
       slug,
-      status: 'publish',
-    }).then((response) => response.data)
-
+    })
     // only return few fields
     const filteredData = data.map((item: any) => {
       return {

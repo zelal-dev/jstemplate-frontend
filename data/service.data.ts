@@ -82,7 +82,7 @@ export const productMenuData = [
         id: 2442,
         title: 'Jamuna- Multi-Purpose WordPress Blog Theme',
         description: 'Start coding with our pre-made Tailwind CSS components',
-        url: 'multi-purpose-wordpress-blog-theme',
+        url: 'jamuna-multi-purpose-wordpress-blog-theme',
         iconClass: '',
       },
       {
@@ -90,7 +90,7 @@ export const productMenuData = [
         title: 'Guten Builder- Gutenberg Page Builder, Blocks & Templates',
         description:
           'Download professional Ready-Made Tailwind CSS Landing Pages',
-        url: '',
+        url: 'gutenberg-page-builder-plugin',
         iconClass: '',
       },
     ],
@@ -114,14 +114,14 @@ export const productMenuData = [
         id: 2444,
         title: 'MetaShop- Headless WooCommerce Theme',
         description: 'Best React Admin Dashboard Template',
-        url: '#',
+        url: 'metashop-headless-woocommerce-theme',
         iconClass: '',
       },
       {
         id: 2437,
         title: 'Padma- Multipurpose Frontity Theme',
         description: 'Headless WordPress theme with Eementor and React',
-        url: '#',
+        url: 'padma-multipurpose-frontity-theme',
         iconClass: '',
       },
       {
