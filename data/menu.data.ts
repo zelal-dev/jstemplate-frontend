@@ -80,9 +80,9 @@ export const productMenuData = [
 		children: [
 			{
 				id: 2442,
-				title: 'elKits- Elementor Blocks, Landing Pages & Templates ',
+				title: 'ELkits- Elementor Template Kits & Blocks Library',
 				description: 'Start coding with our pre-made Tailwind CSS components',
-				url: 'jamuna-multi-purpose-wordpress-blog-theme',
+				url: 'elementor-template-kits-blocks-library',
 				iconClass: '',
 			},
 			{
@@ -93,13 +93,13 @@ export const productMenuData = [
 				url: 'gutenberg-page-builder-plugin',
 				iconClass: '',
 			},
-			{
-				id: 2442,
-				title: 'Jamuna- Multi-Purpose WordPress Blog Theme',
-				description: 'Start coding with our pre-made Tailwind CSS components',
-				url: 'jamuna-multi-purpose-wordpress-blog-theme',
-				iconClass: '',
-			},
+			// {
+			//  id: 2442,
+			//  title: 'Jamuna- Multi-Purpose WordPress Blog Theme',
+			//  description: 'Start coding with our pre-made Tailwind CSS components',
+			//  url: 'jamuna-multi-purpose-wordpress-blog-theme',
+			//  iconClass: '',
+			// },
 		],
 	},
 
@@ -142,23 +142,23 @@ export const productMenuData = [
 	},
 	{
 		id: 2435,
-		title: 'Template kits',
+		title: 'UI Kits & Templates',
 		menu_order: 4,
 		attr_title: 'headless',
 		url: '#',
 		children: [
 			{
-				id: 2437,
-				title: 'elKits- Elementor Blocks, Landing Pages & Templates',
-				description: 'Headless WordPress theme with Eementor and React',
-				url: '#',
+				id: 2436,
+				title: 'Tailwind CSS UI Components & Landing Pages',
+				description: 'Best Personal Portfolio Theme with WordPress and React',
+				url: 'portfo-frontity-personal-portfolio-theme',
 				iconClass: '',
 			},
 			{
-				id: 2436,
-				title: 'Free Tailwind CSS UI Components',
-				description: 'Best Personal Portfolio Theme with WordPress and React',
-				url: 'portfo-frontity-personal-portfolio-theme',
+				id: 2437,
+				title: 'MetaDash- Admin Dashboard Template',
+				description: 'Headless WordPress theme with Eementor and React',
+				url: '#',
 				iconClass: '',
 			},
 		],
