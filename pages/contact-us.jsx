@@ -1,5 +1,4 @@
 import React from "react";
-import { RiPhoneLine } from "react-icons/ri";
 import FooterWithoutSolution from "../src/components/FooterWithoutSolution";
 import Navbar from "../src/components/Navbar";
 
@@ -85,19 +84,19 @@ const ContactUs = () => {
 
                 <div className="pt-6">
                   <form className="grid">
-                    {/* <form className="grid gap-4" onSubmit={handleSubmit(onSubmitHandler)}> */}
+                    {/* <form className="grid gap-4" onSubmit={handleSubmit(onSubmitHandler)}> */ }
                     <div className="mb-4 ">
                       <input
                         className="w-full px-3 py-3 rounded border border-themeGrayLight focus:outline-none"
                         type="text"
                         placeholder="Your Name"
-                        // {...register("name", {
-                        //   required: "Name is required",
-                        //   minLength: {
-                        //     value: 3,
-                        //     message: "Name must be at least 3 characters",
-                        //   },
-                        // })}
+                      // {...register("name", {
+                      //   required: "Name is required",
+                      //   minLength: {
+                      //     value: 3,
+                      //     message: "Name must be at least 3 characters",
+                      //   },
+                      // })}
                       />
                     </div>
                     <div className="mb-4 ">
@@ -105,13 +104,13 @@ const ContactUs = () => {
                         className="w-full px-3 py-3 rounded border border-themeGrayLight focus:outline-none"
                         type="text"
                         placeholder="Your Email"
-                        // {...register("email", {
-                        //   required: "Email is required",
-                        //   pattern: {
-                        //     value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i,
-                        //     message: "Invalid email address",
-                        //   },
-                        // })}
+                      // {...register("email", {
+                      //   required: "Email is required",
+                      //   pattern: {
+                      //     value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i,
+                      //     message: "Invalid email address",
+                      //   },
+                      // })}
                       />
                     </div>
                     <div className="mb-4">
@@ -119,13 +118,13 @@ const ContactUs = () => {
                         className="w-full px-3 py-3 rounded border border-themeGrayLight focus:outline-none"
                         type="text"
                         placeholder="Your Phone"
-                        // {...register("mobile", {
-                        //   required: "Mobile is required",
-                        //   pattern: {
-                        //     value: /^[0-9]+$/,
-                        //     message: "Mobile must be numeric",
-                        //   },
-                        // })}
+                      // {...register("mobile", {
+                      //   required: "Mobile is required",
+                      //   pattern: {
+                      //     value: /^[0-9]+$/,
+                      //     message: "Mobile must be numeric",
+                      //   },
+                      // })}
                       />
                     </div>
                     <div className="mb-4">
@@ -133,9 +132,9 @@ const ContactUs = () => {
                         className="w-full h-24 p-3 rounded border border-themeGrayLight focus:outline-none"
                         type="text"
                         placeholder="How can we help you ..."
-                        // {...register("message", {
-                        //   required: "This field is required",
-                        // })}
+                      // {...register("message", {
+                      //   required: "This field is required",
+                      // })}
                       />
                     </div>
                     <button
@@ -143,7 +142,7 @@ const ContactUs = () => {
                       //   disabled={isSubmitting}
                       className="flex gap-2 items-center justify-center  w-full py-4 bg-blueTwo rounded-md text-base font-normal text-white"
                     >
-                      {/* {isSubmitting ? "Please wait..." : "Send Message"} */}
+                      {/* {isSubmitting ? "Please wait..." : "Send Message"} */ }
                       Send Message
                     </button>
                   </form>

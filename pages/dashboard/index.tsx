@@ -1,24 +1,22 @@
-import React from 'react'
-import Navbar from './../../src/components/Navbar'
-import { FaShoppingCart, FaReceipt } from 'react-icons/fa'
-import { BsFillFileDiffFill, BsCheckLg } from 'react-icons/bs'
+import { BsCheckLg, BsFillFileDiffFill } from 'react-icons/bs'
+import { FaReceipt, FaShoppingCart } from 'react-icons/fa'
 import { HiOutlineDownload } from 'react-icons/hi'
-import { UserNotLogin, useUser } from '../../src/lib/useUser'
 import { LoaderGrowing } from '../../src/lib/loader'
-import useSWR from 'swr'
+import { UserNotLogin, useUser } from '../../src/lib/useUser'
+import Navbar from './../../src/components/Navbar'
 
 const Dashboard = () => {
   const { loggedIn, user } = useUser()
 
-  if (!user && !loggedIn) {
+  if ( !user && !loggedIn ) {
     return <UserNotLogin />
   }
 
-  if (loggedIn && user) {
+  if ( loggedIn && user ) {
     return (
       <div className="bg-backgroundGrayOne min-h-screen">
         <Navbar.DashboardPrimaryNavbar />
-        {/* <Navbar.DashboardSecondaryNavbar /> */}
+        {/* <Navbar.DashboardSecondaryNavbar /> */ }
         <div className="container mx-auto py-10 px-5 sm:px-0">
           <h2 className="text-2xl font-bold text-gray-900">Dashboard</h2>
           <div className="grid xl:grid-cols-5 lg:grid-cols-4 md:grid-cols-3 sm:grid-cols-2 grid-cols-1 gap-7 container mt-10">

@@ -15,7 +15,10 @@ const nextConfig = {
       'h6.googleusercontent.com',
     ],
   },
-  // do not load admin dashboard pages on build command
+  eslint: {
+    dirs: [ 'pages', 'components' ],
+  }
 }
 
+// eslint-disable-next-line no-undef
 module.exports = nextConfig

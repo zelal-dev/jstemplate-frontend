@@ -1,3 +1,4 @@
+/* eslint-disable no-undef */
 module.exports = {
   content: [
     "./pages/**/*.{js,ts,jsx,tsx}",
@@ -18,7 +19,6 @@ module.exports = {
       "4xl": "2.25rem",
       "4xxl": "2.5rem",
       "5xl": "3rem",
-      "5xxl": "3.5rem",
       "6xl": "4rem",
       "7xl": "4.5rem",
       "7xxl": "5rem",
