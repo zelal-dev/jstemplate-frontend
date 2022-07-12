@@ -4,6 +4,7 @@ import { Woocommerce } from '../../../src/utils/woocommerce'
 
 export default async function ( req: NextApiRequest, res: NextApiResponse ) {
 	const { slug } = req.query
+	console.log( "slug", slug )
 	// allow only get request for this endpoint
 	if ( req.method !== 'GET' )
 		return res.status( 400 ).json( { message: 'Method not allowed' } )
@@ -18,12 +19,12 @@ export default async function ( req: NextApiRequest, res: NextApiResponse ) {
 				id: item.id,
 				name: item.name,
 				slug: item.slug,
-				image: item.images[ 0 ].src,
+				image: item.images[0].src,
 				short_description: item.short_description,
 			}
 		} )
 
-		const finalData = Object.assign( filteredData[ 0 ], {} )
+		const finalData = Object.assign( filteredData[0], {} )
 
 		// fetch again the variations to get the price
 		// const variationsData = await Woocommerce.get(
