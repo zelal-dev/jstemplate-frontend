@@ -1,22 +1,19 @@
-import { GetServerSideProps } from 'next'
-import React from 'react'
+import { FaHourglassHalf, FaNodeJs, FaReact } from 'react-icons/fa'
+import { MdHeadsetMic } from 'react-icons/md'
+import { RiUserFill } from 'react-icons/ri'
+import { SiExpress, SiMongodb } from 'react-icons/si'
+import { WiHumidity } from 'react-icons/wi'
+import useSWR from 'swr'
 import Footer from '../../src/components/Footer'
 import Navbar from '../../src/components/Navbar'
-import Header from '../../src/Sections/ProductSinglePage/Header'
 import Testimonials from '../../src/Sections/Homepage/Testimonials'
 import Hire from '../../src/Sections/PreSalePage/Hire'
 import MangeWebsite from '../../src/Sections/PreSalePage/ManageWebsite'
+import Header from '../../src/Sections/ProductSinglePage/Header'
 import Heading from '../../src/Sections/ProductSinglePage/Heading'
 import SimpleTitleThird from '../../src/Sections/ProductSinglePage/SimpleTitleThird'
-import { RiUserFill } from 'react-icons/ri'
-import { WiHumidity } from 'react-icons/wi'
-import { MdHeadsetMic } from 'react-icons/md'
-import { FaHourglassHalf, FaNodeJs, FaReact } from 'react-icons/fa'
-import { SiExpress, SiMongodb } from 'react-icons/si'
-import _ from 'lodash'
-import { Woocommerce } from '../../src/utils/woocommerce'
-import useSWR from 'swr'
 import { Axios } from '../../src/utils/axiosKits'
+import { Woocommerce } from '../../src/utils/woocommerce'
 
 // page primary colors
 const colors = {
@@ -321,8 +318,8 @@ const localData = {
     },
   },
 }
-const fetcher = (url: string) => Axios(url).then((res: any) => res.data) as any
-const MetaShopTheme = (props: any) => {
+const fetcher = ( url: string ) => Axios( url ).then( ( res: any ) => res.data ) as any
+const MetaShopTheme = ( props: any ) => {
   const slug = 'metashop-headless-woocommerce-theme'
   // call data using swr
   const { data: swrData, error: productError } = useSWR(
@@ -366,12 +363,12 @@ const MetaShopTheme = (props: any) => {
 
 export const getStaticProps = async () => {
   const slug = 'metashop-headless-woocommerce-theme'
-  const { data } = await Woocommerce.get('products', {
+  const { data } = await Woocommerce.get( 'products', {
     slug,
-  })
+  } )
 
   // only return few fields
-  const filteredData = data.map((item: any) => {
+  const filteredData = data.map( ( item: any ) => {
     return {
       id: item.id,
       name: item.name,
@@ -379,10 +376,10 @@ export const getStaticProps = async () => {
       image: item.images[0].src,
       short_description: item.short_description,
     }
-  })
-  console.log('filteredData', filteredData)
+  } )
+
   const finalData =
-    filteredData.length >= 1 ? Object.assign(filteredData[0], {}) : null
+    filteredData.length >= 1 ? Object.assign( filteredData[0], {} ) : null
 
   return {
     props: {

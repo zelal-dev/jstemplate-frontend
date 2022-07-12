@@ -1,30 +1,29 @@
-import _ from 'lodash'
+
 import { NextApiRequest, NextApiResponse } from 'next'
 import { Woocommerce } from '../../../src/utils/woocommerce'
 
-// eslint-disable-next-line import/no-anonymous-default-export
-export default async function (req: NextApiRequest, res: NextApiResponse) {
+export default async function ( req: NextApiRequest, res: NextApiResponse ) {
 	const { slug } = req.query
 	// allow only get request for this endpoint
-	if (req.method !== 'GET')
-		return res.status(400).json({ message: 'Method not allowed' })
+	if ( req.method !== 'GET' )
+		return res.status( 400 ).json( { message: 'Method not allowed' } )
 
 	try {
-		const { data } = await Woocommerce.get('products', {
+		const { data } = await Woocommerce.get( 'products', {
 			slug,
-		})
+		} )
 		// only return few fields
-		const filteredData = data.map((item: any) => {
+		const filteredData = data.map( ( item: any ) => {
 			return {
 				id: item.id,
 				name: item.name,
 				slug: item.slug,
-				image: item.images[0].src,
+				image: item.images[ 0 ].src,
 				short_description: item.short_description,
 			}
-		})
+		} )
 
-		const finalData = Object.assign(filteredData[0], {})
+		const finalData = Object.assign( filteredData[ 0 ], {} )
 
 		// fetch again the variations to get the price
 		// const variationsData = await Woocommerce.get(
@@ -78,11 +77,11 @@ export default async function (req: NextApiRequest, res: NextApiResponse) {
 		//   }
 		// })
 
-		return res.status(200).send({
+		return res.status( 200 ).send( {
 			message: 'Successfully fetched product',
 			data: finalData,
-		})
-	} catch (error: any) {
-		return res.status(500).send({ message: error })
+		} )
+	} catch ( error: any ) {
+		return res.status( 500 ).send( { message: error } )
 	}
 }

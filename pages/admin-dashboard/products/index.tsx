@@ -1,81 +1,81 @@
 import Link from 'next/link'
-import React, { useState } from 'react'
+import { useRouter } from 'next/router'
+import { useState } from 'react'
+import { useForm } from 'react-hook-form'
 import { BiSearchAlt2 } from 'react-icons/bi'
 import { BsThreeDotsVertical } from 'react-icons/bs'
 import { useToasts } from 'react-toast-notifications'
 import useSWR, { mutate } from 'swr'
-import { useRouter } from 'next/router'
 import Layout from '../../../src/components/Layout'
-import { authAxios } from '../../../src/utils/axiosKits'
-import { SubmitHandler, useForm } from 'react-hook-form'
 import { LoaderGrowing } from '../../../src/lib/loader'
-import { useUser, UserNotLogin } from '../../../src/lib/useUser'
+import { UserNotLogin, useUser } from '../../../src/lib/useUser'
+import { authAxios } from '../../../src/utils/axiosKits'
 
-const fetchProduct = (url: any) =>
-  authAxios(url).then((res) => res.data.products)
+const fetchProduct = ( url: any ) =>
+  authAxios( url ).then( ( res ) => res.data.products )
 
 const Products = () => {
   const { loggedIn, user } = useUser()
-  const [products, setProducts] = useState([])
+  const [products, setProducts] = useState( [] )
   const [action, setAction] = useState<number>()
-  const [loading, setLoading] = useState<boolean>(false)
-  const [editVisibility, setEditVisibility] = useState<boolean>(false)
+  const [loading, setLoading] = useState<boolean>( false )
+  const [editVisibility, setEditVisibility] = useState<boolean>( false )
   const router = useRouter()
   const { addToast } = useToasts()
-  const { data, error } = useSWR(`api/v1/product`, fetchProduct, {
+  const { data, error } = useSWR( `api/v1/product`, fetchProduct, {
     refreshInterval: 1000,
-  })
+  } )
 
-  const handleActionVisible = (value: number) => {
-    if (action === value) {
-      setAction(-1)
+  const handleActionVisible = ( value: number ) => {
+    if ( action === value ) {
+      setAction( -1 )
     } else {
-      setAction(value)
+      setAction( value )
     }
   }
 
-  const handleEditVisibility = (id: any) => {
-    router.push(`/admin-dashboard/products/${id}`)
+  const handleEditVisibility = ( id: any ) => {
+    router.push( `/admin-dashboard/products/${id}` )
   }
 
-  const handleProductDelete = async (id: number) => {
+  const handleProductDelete = async ( id: number ) => {
     // call swr to delete the component
-    setLoading(true)
-    await authAxios({
+    setLoading( true )
+    await authAxios( {
       method: 'DELETE',
       url: `/api/v1/product/${id}`,
-    })
-      .then((res) => {
-        mutate(`api/v1/product/`)
-        addToast(res.data.message, {
+    } )
+      .then( ( res ) => {
+        mutate( `api/v1/product/` )
+        addToast( res.data.message, {
           appearance: 'success',
           autoDismiss: true,
           autoDismissTimeout: 3000,
-        })
-        setAction(-1)
-        setLoading(false)
-      })
-      .catch((err) => {
-        setLoading(false)
+        } )
+        setAction( -1 )
+        setLoading( false )
+      } )
+      .catch( ( err ) => {
+        setLoading( false )
         err
-          ? addToast(err.response.data.message, {
-              appearance: 'error',
-              autoDismiss: true,
-              autoDismissTimeout: 3000,
-            })
-          : addToast('Something went wrong', {
-              appearance: 'error',
-              autoDismiss: true,
-              autoDismissTimeout: 3000,
-            })
-      })
+          ? addToast( err.response.data.message, {
+            appearance: 'error',
+            autoDismiss: true,
+            autoDismissTimeout: 3000,
+          } )
+          : addToast( 'Something went wrong', {
+            appearance: 'error',
+            autoDismiss: true,
+            autoDismissTimeout: 3000,
+          } )
+      } )
   }
 
-  if (!user && !loggedIn) {
+  if ( !user && !loggedIn ) {
     return <UserNotLogin />
   }
 
-  if (loggedIn && user) {
+  if ( loggedIn && user ) {
     return (
       <div>
         <Layout.AdminDashboard>
@@ -186,7 +186,7 @@ const Products = () => {
                     Action
                   </h3>
                 </div>
-                {data?.map((items: any, index: number) => (
+                {data?.map( ( items: any, index: number ) => (
                   <>
                     <div
                       key={index.toString()}
@@ -218,11 +218,10 @@ const Products = () => {
                     </div>
                     <div className="col-span-1 py-6 pl-3 my-auto ">
                       <h3
-                        className={`text-white py-0.5 px-2.5 rounded-full text-xs bg-gradient-to-br ${
-                          items.status.isPublished
-                            ? 'from-orangeOne to-orangeTwo'
-                            : 'from-[#67E5A3] to-[#08994D]'
-                        } inline`}
+                        className={`text-white py-0.5 px-2.5 rounded-full text-xs bg-gradient-to-br ${items.status.isPublished
+                          ? 'from-orangeOne to-orangeTwo'
+                          : 'from-[#67E5A3] to-[#08994D]'
+                          } inline`}
                       >
                         {items.status.isPublished ? 'Pre-Sale' : 'Completed'}
                       </h3>
@@ -231,20 +230,19 @@ const Products = () => {
                       <button
                         aria-label="Edit"
                         type="button"
-                        onClick={() => handleActionVisible(index)}
+                        onClick={() => handleActionVisible( index )}
                         className="border border-grayLight bg-backgroundGrayOne p-3 rounded-lg "
                       >
                         <BsThreeDotsVertical className="w-5 h-5" />
                       </button>
                       <div
-                        className={`absolute ${
-                          action === index ? 'block' : 'hidden'
-                        } right-0 shadow-xl p-2 rounded-lg flex flex-col bg-white`}
+                        className={`absolute ${action === index ? 'block' : 'hidden'
+                          } right-0 shadow-xl p-2 rounded-lg flex flex-col bg-white`}
                       >
                         <button
                           aria-label="Edit"
                           type="button"
-                          onClick={() => handleEditVisibility(items._id)}
+                          onClick={() => handleEditVisibility( items._id )}
                           className="py-2.5 px-8"
                         >
                           Edit
@@ -252,7 +250,7 @@ const Products = () => {
                         <button
                           aria-label="Delete"
                           type="button"
-                          onClick={() => handleProductDelete(items._id)}
+                          onClick={() => handleProductDelete( items._id )}
                           className="py-2.5 px-8 mt-1"
                         >
                           Delete
@@ -263,11 +261,11 @@ const Products = () => {
                       <hr className="w-full bg-backgroundGrayOne" />
                     </div>
                   </>
-                ))}
+                ) )}
               </div>
 
               <hr className="w-full mt-10 block 2xl:hidden" />
-              {data?.map((items: any, index: number) => (
+              {data?.map( ( items: any, index: number ) => (
                 <div
                   key={index}
                   className="grid grid-cols-12 container md:mt-5 mt-4 2xl:hidden"
@@ -317,11 +315,10 @@ const Products = () => {
                   </div>
                   <div className="col-span-8 p-4 ">
                     <h3
-                      className={`text-white py-0.5 px-2.5 rounded-full text-xs bg-gradient-to-br ${
-                        items.status.isPublished
-                          ? 'from-orangeOne to-orangeTwo'
-                          : 'from-[#67E5A3] to-[#08994D]'
-                      } inline`}
+                      className={`text-white py-0.5 px-2.5 rounded-full text-xs bg-gradient-to-br ${items.status.isPublished
+                        ? 'from-orangeOne to-orangeTwo'
+                        : 'from-[#67E5A3] to-[#08994D]'
+                        } inline`}
                     >
                       {items.status.isPublished ? 'Pre-Sale' : 'Completed'}
                     </h3>
@@ -333,20 +330,19 @@ const Products = () => {
                     <button
                       aria-label="Edit"
                       type="button"
-                      onClick={() => handleActionVisible(index)}
+                      onClick={() => handleActionVisible( index )}
                       className="border border-grayLight bg-backgroundGrayOne p-3 rounded-lg "
                     >
                       <BsThreeDotsVertical className="w-5 h-5" />
                     </button>
                     <div
-                      className={`absolute ${
-                        action === index ? 'block' : 'hidden'
-                      } shadow-xl p-2 rounded-lg flex flex-col bg-white`}
+                      className={`absolute ${action === index ? 'block' : 'hidden'
+                        } shadow-xl p-2 rounded-lg flex flex-col bg-white`}
                     >
                       <button
                         aria-label="Edit"
                         type="button"
-                        onClick={() => handleEditVisibility(items._id)}
+                        onClick={() => handleEditVisibility( items._id )}
                         className="py-2.5 px-8"
                       >
                         Edit
@@ -354,7 +350,7 @@ const Products = () => {
                       <button
                         aria-label="Delete"
                         type="button"
-                        onClick={() => handleProductDelete(items._id)}
+                        onClick={() => handleProductDelete( items._id )}
                         className="py-2.5 px-8 mt-1"
                       >
                         Delete
@@ -365,7 +361,7 @@ const Products = () => {
                     <hr className="w-full bg-backgroundGrayOne" />
                   </div>
                 </div>
-              ))}
+              ) )}
               <div className="flex sm:flex-row flex-col justify-between items-center mt-6">
                 <h2 className="tex-base font-bold text-gray-700">
                   Total 1234 Products
@@ -428,11 +424,11 @@ const ProductUpdate = () => {
     formState: { errors },
   } = useForm<Inputs>()
 
-  const [loading, setLoading] = useState<boolean>(false)
+  const [loading, setLoading] = useState<boolean>( false )
   //   const router = useRouter();
   const { addToast } = useToasts()
 
-  const onSubmit: SubmitHandler<Inputs> = async (data) => {}
+
   return (
     <div className="flex items-center justify-center">
       <div className=" lg:w-auto w-full md:p-10 sm:p-7 p-5 rounded-lg bg-white">
@@ -447,12 +443,11 @@ const ProductUpdate = () => {
           </Link>
         </div>
         <form
-          onSubmit={handleSubmit(onSubmit)}
           className="grid grid-cols-12 gap-5 mt-10"
         >
           <div className="sm:col-span-8 col-span-12">
             <input
-              {...register('title', { required: true })}
+              {...register( 'title', { required: true } )}
               className="border border-[#DDE6F5] p-4 rounded-md w-full text-sm outline-none"
               placeholder="Product Title"
             />
@@ -466,7 +461,7 @@ const ProductUpdate = () => {
             <div className="border border-[#DDE6F5] p-4 rounded-md ">
               <select
                 aria-label="status"
-                {...register('status', { required: true })}
+                {...register( 'status', { required: true } )}
                 className="w-full text-sm outline-none"
               >
                 <option value="pre-sale" className="text-sm">
@@ -485,7 +480,7 @@ const ProductUpdate = () => {
           </div>
           <div className="col-span-12">
             <textarea
-              {...register('description', { required: true })}
+              {...register( 'description', { required: true } )}
               className="border border-[#DDE6F5] p-4 rounded-md w-full text-sm outline-none h-24 resize-none"
               placeholder="Product Description"
             />
@@ -500,7 +495,7 @@ const ProductUpdate = () => {
               <input
                 aria-label="expectedDelivery"
                 type="date"
-                {...register('expectedDelivery', { required: true })}
+                {...register( 'expectedDelivery', { required: true } )}
                 className="w-full text-sm outline-none"
               />
             </div>
@@ -514,7 +509,7 @@ const ProductUpdate = () => {
             <div className="border border-[#DDE6F5] p-4 rounded-md ">
               <select
                 aria-label="category"
-                {...register('category', { required: true })}
+                {...register( 'category', { required: true } )}
                 className="w-full text-sm outline-none"
               >
                 <option value="MERN" className="text-sm">
@@ -538,7 +533,7 @@ const ProductUpdate = () => {
           <div className="md:col-span-4 sm:col-span-6 col-span-12">
             <input
               type="number"
-              {...register('standard', { required: true })}
+              {...register( 'standard', { required: true } )}
               className="border border-[#DDE6F5] p-4 rounded-md w-full text-sm outline-none"
               placeholder="Standard"
             />
@@ -551,7 +546,7 @@ const ProductUpdate = () => {
           <div className="md:col-span-4 sm:col-span-6 col-span-12">
             <input
               type="number"
-              {...register('standardPlus', { required: true })}
+              {...register( 'standardPlus', { required: true } )}
               className="border border-[#DDE6F5] p-4 rounded-md w-full text-sm outline-none"
               placeholder="Standard Plus"
             />
@@ -564,7 +559,7 @@ const ProductUpdate = () => {
           <div className="md:col-span-4 sm:col-span-6 col-span-12">
             <input
               type="number"
-              {...register('business', { required: true })}
+              {...register( 'business', { required: true } )}
               className="border border-[#DDE6F5] p-4 rounded-md w-full text-sm outline-none"
               placeholder="Business"
             />

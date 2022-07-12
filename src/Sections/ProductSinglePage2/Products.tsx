@@ -1,10 +1,9 @@
 import Image from 'next/image'
 import Link from 'next/link'
-import React from 'react'
 import { AiFillEye } from 'react-icons/ai'
 import { FaShoppingCart } from 'react-icons/fa'
 
-const Products = ({
+const Products = ( {
   children,
   info,
   colors,
@@ -12,8 +11,8 @@ const Products = ({
   children: any
   info: any
   colors: any
-}) => {
-  console.log('Information', info)
+} ) => {
+
   return (
     <>
       <div className="grid-cols-12 gap-7 container mx-auto -mt-72 hidden lg:grid">
@@ -72,7 +71,7 @@ const Products = ({
             <div className="flex items-center">
               <div className="flex items-end mr-5">
                 <h1 className="text-2xl text-gray-900 font-bold mr-3">
-                  ${info[0].price}.00
+                  {/* ${info[0].price}.00 */} 100.00
                 </h1>
                 <h5 className="text-sm text-[#FA4F58] pb-1">
                   {/* ${info?.pricing.regularPrice}.00 */}
@@ -162,7 +161,7 @@ const Products = ({
               <div className="flex items-start justify-between mt-5">
                 <h3 className="text-base text-gray-800">Tags</h3>
                 <article className="text-base text-gray-600 w-2/4">
-                  {info?.tags.toString().replace(/,/g, ', ')}
+                  {info?.tags.toString().replace( /,/g, ', ' )}
                 </article>
               </div>
             </>

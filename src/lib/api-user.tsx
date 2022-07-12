@@ -4,7 +4,7 @@ import { authAxios } from '../utils/axiosKits'
 authAxios.interceptors.request.use( ( config: any ) => {
 	const localData: any = localStorage.getItem( 'jst_u_info' )
 	const token = JSON.parse( localData )
-	config.headers.Authorization = `Bearer ${ token }`
+	config.headers.Authorization = `Bearer ${token}`
 	return config
 } )
 
@@ -18,11 +18,10 @@ export default async function fetcher () {
 	if ( localData ) {
 		// user logged in fetch user data
 
-		const { data, error } = await authAxios.get( '/api/user/self' )
+		const { data } = await authAxios.get( '/api/user/self' )
 
 		return {
 			user: data.data,
-			error: error,
 		}
 	} else {
 		return {

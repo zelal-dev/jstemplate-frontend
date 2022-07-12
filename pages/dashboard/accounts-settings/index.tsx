@@ -1,10 +1,10 @@
 import Image from 'next/image'
-import React, { useState } from 'react'
-import { SubmitHandler, useForm } from 'react-hook-form'
+import { useState } from 'react'
+import { useForm } from 'react-hook-form'
 import { FaCamera } from 'react-icons/fa'
 import Navbar from '../../../src/components/Navbar'
 import { LoaderGrowing } from '../../../src/lib/loader'
-import { useUser, UserNotLogin } from '../../../src/lib/useUser'
+import { UserNotLogin, useUser } from '../../../src/lib/useUser'
 
 type Inputs = {
   firstName: string
@@ -26,15 +26,14 @@ const AccountsSettings = () => {
     reset,
     formState: { errors },
   } = useForm<Inputs>()
-  const [loading, setLoading] = useState<boolean>(false)
+  const [loading, setLoading] = useState<boolean>( false )
 
-  const onSubmit: SubmitHandler<Inputs> = async (data) => {}
 
-  if (!user && !loggedIn) {
+  if ( !user && !loggedIn ) {
     return <UserNotLogin />
   }
 
-  if (loggedIn && user) {
+  if ( loggedIn && user ) {
     return (
       <div className="bg-backgroundGrayOne min-h-screen">
         <Navbar.DashboardPrimaryNavbar />
@@ -42,7 +41,7 @@ const AccountsSettings = () => {
         <div className="container mx-auto py-10 px-5 sm:px-0">
           <h2 className="text-2xl font-bold text-gray-900 mb-10">My Profile</h2>
           <div className="flex items-center gap-4 rounded-lg bg-white px-4 py-10 shadow">
-            <form className="w-full" onSubmit={handleSubmit(onSubmit)}>
+            <form className="w-full">
               <div className="!mx-5 grid grid-cols-12 items-center justify-center gap-8 xl:mx-10">
                 <div className="col-span-12 md:col-span-10 lg:col-span-3">
                   <div className="flex justify-center">
@@ -79,7 +78,7 @@ const AccountsSettings = () => {
                             // defaultValue={photoImage}
                             // ref={ImageFile.ref}
                             // onBlur={ImageFile.onBlur}
-                            onChange={(event) => {
+                            onChange={( event ) => {
                               //   ImageFile.onChange(event);
                               //   photoPreview(event);
                             }}
@@ -107,13 +106,12 @@ const AccountsSettings = () => {
                           </label>
                           <input
                             aria-label="gridFirstName"
-                            className={`block w-full appearance-none border text-planDetails ${
-                              errors.firstName
-                                ? '!border-red-500'
-                                : 'border-gray'
-                            } leading-tight rounded border-gray-300  py-2.5 px-3 focus:bg-white focus:outline-none `}
+                            className={`block w-full appearance-none border text-planDetails ${errors.firstName
+                              ? '!border-red-500'
+                              : 'border-gray'
+                              } leading-tight rounded border-gray-300  py-2.5 px-3 focus:bg-white focus:outline-none `}
                             id="gridFirstName"
-                            {...register('firstName', { required: true })}
+                            {...register( 'firstName', { required: true } )}
                             type="text"
                             placeholder="Jane"
                           />
@@ -131,13 +129,12 @@ const AccountsSettings = () => {
                             Last Name
                           </label>
                           <input
-                            className={`block w-full appearance-none border text-planDetails ${
-                              errors.lastName
-                                ? '!border-red-500'
-                                : 'border-gray'
-                            } leading-tight rounded border-gray-300 py-2.5 px-3 focus:bg-white focus:outline-none `}
+                            className={`block w-full appearance-none border text-planDetails ${errors.lastName
+                              ? '!border-red-500'
+                              : 'border-gray'
+                              } leading-tight rounded border-gray-300 py-2.5 px-3 focus:bg-white focus:outline-none `}
                             id="gridLastName"
-                            {...register('lastName', { required: true })}
+                            {...register( 'lastName', { required: true } )}
                             type="text"
                             placeholder="Ferdinand"
                           />
@@ -155,10 +152,9 @@ const AccountsSettings = () => {
                             Email
                           </label>
                           <input
-                            className={`block w-full appearance-none border text-planDetails ${
-                              errors.email ? '!border-red-500' : 'border-gray'
-                            } leading-tight focus:bg-white" id="grid-first-name rounded border-gray-300 py-2.5 px-3 focus:outline-none `}
-                            {...register('email', { required: true })}
+                            className={`block w-full appearance-none border text-planDetails ${errors.email ? '!border-red-500' : 'border-gray'
+                              } leading-tight focus:bg-white" id="grid-first-name rounded border-gray-300 py-2.5 px-3 focus:outline-none `}
+                            {...register( 'email', { required: true } )}
                             type="text"
                             placeholder="info@gmail.com"
                           />
@@ -178,10 +174,10 @@ const AccountsSettings = () => {
                           <input
                             className="leading-tight mb-3 block w-full appearance-none rounded border border-gray-300 py-2.5 px-3 text-planDetails focus:bg-white focus:outline-none "
                             id="phoneNumber"
-                            {...register('phoneNumber')}
+                            {...register( 'phoneNumber' )}
                             type="text"
                             placeholder="(406) 555-0120"
-                            // defaultValue={data?.phoneNumber}
+                          // defaultValue={data?.phoneNumber}
                           />
                         </div>
                       </div>
@@ -195,17 +191,17 @@ const AccountsSettings = () => {
                   <textarea
                     className="mt-3 h-36 w-full  rounded border border-gray-300 p-3 focus:bg-white focus:outline-none "
                     placeholder="Type something"
-                    // {...register("aboutMe")}
+                  // {...register("aboutMe")}
                   />
                   <div className="mt-6">
                     <button
                       type="submit"
-                      //   disabled={!isDirty || isSubmitting}
-                      //   className={`flex items-center gap-2 py-2.5 px-8 ${
-                      //     isSubmitting ? "bg-planDetails" : "bg-primary"
-                      //   } rounded-md shadow shadow-primary ${
-                      //     isDirty ? "opacity-100" : "opacity-30"
-                      //   }  font-medium text-white`}
+                    //   disabled={!isDirty || isSubmitting}
+                    //   className={`flex items-center gap-2 py-2.5 px-8 ${
+                    //     isSubmitting ? "bg-planDetails" : "bg-primary"
+                    //   } rounded-md shadow shadow-primary ${
+                    //     isDirty ? "opacity-100" : "opacity-30"
+                    //   }  font-medium text-white`}
                     >
                       {/* <Link href="#"> */}
                       {/* {isSubmitting ? "Please wait..." : "Save Changes"}
@@ -235,7 +231,7 @@ const AccountsSettings = () => {
                       id="password"
                       type="password"
                       placeholder="********"
-                      // {...register2("currentPassword", { required: true })}
+                    // {...register2("currentPassword", { required: true })}
                     />
                     {/* {errors2.currentPassword && (
                     <span className="text-sm italic text-red-400">
@@ -251,12 +247,12 @@ const AccountsSettings = () => {
                       New Password
                     </label>
                     <input
-                      className={`block w-full appearance-none border border-gray-300 text-planDetails dark:border-gray-500 dark:bg-transparent   
+                      className={`block w-full appearance-none border border-gray-300 text-planDetails dark:border-gray-500 dark:bg-transparent
                     leading-tight rounded py-2.5 px-3 focus:bg-white focus:outline-none`}
                       id="grid-first-name"
                       type="password"
                       placeholder="********"
-                      // {...register2("newPassword", { required: true })}
+                    // {...register2("newPassword", { required: true })}
                     />
                     {/* {errors2.newPassword && (
                     <span className="block text-sm italic text-red-400">

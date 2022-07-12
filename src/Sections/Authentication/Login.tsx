@@ -1,11 +1,10 @@
-import React, { useEffect, useState } from 'react'
+import { useEffect, useState } from 'react'
 import { SubmitHandler, useForm } from 'react-hook-form'
-import { ImCross } from 'react-icons/im'
 import { useToasts } from 'react-toast-notifications'
 import { useSWRConfig } from 'swr'
 import PopupModule from '../../components/PopupModal'
 import { Axios } from '../../utils/axiosKits'
-import { localGet, localRemove, localSave } from './../../utils/localStorage'
+import { localGet, localSave } from './../../utils/localStorage'
 
 type Inputs = {
 	email: string
@@ -13,7 +12,7 @@ type Inputs = {
 	remember: boolean
 }
 
-const Login = ({
+const Login = ( {
 	handleLoginModal,
 	handleRegModal,
 	handelForgetPassModal,
@@ -25,7 +24,7 @@ const Login = ({
 	handelForgetPassModal: any
 	handleUserImageShow: any
 	loginShow: boolean
-}) => {
+} ) => {
 	const {
 		register,
 		handleSubmit,
@@ -34,22 +33,22 @@ const Login = ({
 		reset,
 		formState: { errors },
 	} = useForm<Inputs>()
-	const [loading, setLoading] = useState<boolean>(false)
+	const [loading, setLoading] = useState<boolean>( false )
 	const { mutate } = useSWRConfig()
 	const { addToast } = useToasts()
 
-	useEffect(() => {
-		const local = localGet('jst_u_info')
-		if (local) {
+	useEffect( () => {
+		const local = localGet( 'jst_u_info' )
+		if ( local ) {
 			const { email, password } = local
-			setValue('email', email)
-			setValue('password', password)
-			setValue('remember', true)
+			setValue( 'email', email )
+			setValue( 'password', password )
+			setValue( 'remember', true )
 		}
-	}, [setValue])
+	}, [setValue] )
 
-	const onSubmit: SubmitHandler<Inputs> = async (data) => {
-		setLoading(true)
+	const onSubmit: SubmitHandler<Inputs> = async ( data ) => {
+		setLoading( true )
 
 		// fetch the token from the server and save it in localStorage
 		// Show a toast message
@@ -63,24 +62,24 @@ const Login = ({
 				}
 			)
 			const token = response.data.data.data.token || ''
-			localSave('jst_u_info', {
+			localSave( 'jst_u_info', {
 				token,
 				userId: response.data.data.data.id,
-			})
-			mutate('api/user/self', null, false)
-			addToast('Login Successful', {
+			} )
+			mutate( 'api/user/self', null, false )
+			addToast( 'Login Successful', {
 				appearance: 'success',
 				autoDismiss: true,
 				autoDismissTimeout: 3000,
-			})
-		} catch (error: any) {
-			addToast('Login Failed', {
+			} )
+		} catch ( error: any ) {
+			addToast( 'Login Failed', {
 				appearance: 'error',
 				autoDismiss: true,
 				autoDismissTimeout: 3000,
-			})
+			} )
 		}
-		setLoading(false)
+		setLoading( false )
 
 		// reset the form
 		reset()
@@ -98,7 +97,7 @@ const Login = ({
 	//   }
 	// )
 	// const resData = await response.data
-	// console.log('resData., ', resData)
+	//
 	// // extract token from resData
 
 	// // show toast if login success
@@ -130,7 +129,7 @@ const Login = ({
 
 	return (
 		<PopupModule title='Login' show={loginShow} onClose={handleLoginModal}>
-			<form onSubmit={handleSubmit(onSubmit)} className='flex flex-col'>
+			<form onSubmit={handleSubmit( onSubmit )} className='flex flex-col'>
 				<label className='md:text-base text-sm text-gray-600 font-medium md:mb-2 mb-1'>
 					Email
 				</label>
@@ -138,7 +137,7 @@ const Login = ({
 					type='text'
 					className='lg:p-3 md:p-2.5 p-2 border outline-none rounded-md w-full md:text-base text-sm'
 					placeholder='abc'
-					{...register('email', { required: true })}
+					{...register( 'email', { required: true } )}
 				/>
 				{errors?.email && (
 					<span className='text-xss italic text-red-500'>
@@ -152,7 +151,7 @@ const Login = ({
 					type='password'
 					className='lg:p-3 md:p-2.5 p-2 border outline-none rounded-md w-full md:text-base text-sm'
 					placeholder='******'
-					{...register('password', { required: true })}
+					{...register( 'password', { required: true } )}
 				/>
 				{errors?.password && (
 					<span className='text-xss italic text-red-500'>
@@ -161,7 +160,7 @@ const Login = ({
 				)}
 				<div className='xl:mt-6 md:mt-4 mt-3 flex items-center justify-between'>
 					<div className='flex items-center'>
-						<input id='remember_me' type='checkbox' {...register('remember')} />
+						<input id='remember_me' type='checkbox' {...register( 'remember' )} />
 						<label
 							htmlFor='remember_me'
 							className='md:text-sm text-xs text-gray-600 ml-3'>
@@ -172,9 +171,9 @@ const Login = ({
 						type='button'
 						onClick={() => {
 							handleLoginModal()
-							setTimeout(() => {
+							setTimeout( () => {
 								handelForgetPassModal()
-							}, 200)
+							}, 200 )
 						}}
 						className='md:text-sm text-xs text-blueTwo hover:underline'>
 						Forget Password?
@@ -193,9 +192,9 @@ const Login = ({
 					className='md:text-sm text-xs text-blueTwo cursor-pointer'
 					onClick={() => {
 						handleLoginModal()
-						setTimeout(() => {
+						setTimeout( () => {
 							handleRegModal()
-						}, 200)
+						}, 200 )
 					}}>
 					Create Account
 				</button>

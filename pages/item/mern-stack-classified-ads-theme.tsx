@@ -1,21 +1,18 @@
-import { GetServerSideProps } from 'next'
-import React from 'react'
+import { FaHourglassHalf, FaNodeJs, FaReact } from 'react-icons/fa'
+import { MdHeadsetMic } from 'react-icons/md'
+import { RiUserFill } from 'react-icons/ri'
+import { SiExpress, SiMongodb } from 'react-icons/si'
+import { WiHumidity } from 'react-icons/wi'
+import useSWR from 'swr'
 import Footer from '../../src/components/Footer'
 import Navbar from '../../src/components/Navbar'
-import Header from '../../src/Sections/ProductSinglePage/Header'
 import Testimonials from '../../src/Sections/Homepage/Testimonials'
 import Hire from '../../src/Sections/PreSalePage/Hire'
 import MangeWebsite from '../../src/Sections/PreSalePage/ManageWebsite'
+import Header from '../../src/Sections/ProductSinglePage/Header'
 import Heading from '../../src/Sections/ProductSinglePage/Heading'
 import SimpleTitleThird from '../../src/Sections/ProductSinglePage/SimpleTitleThird'
-import { RiUserFill } from 'react-icons/ri'
-import { WiHumidity } from 'react-icons/wi'
-import { MdHeadsetMic } from 'react-icons/md'
-import { FaHourglassHalf, FaNodeJs, FaReact } from 'react-icons/fa'
-import { SiMongodb, SiExpress } from 'react-icons/si'
-import _ from 'lodash'
 import { Axios } from '../../src/utils/axiosKits'
-import useSWR from 'swr'
 import { Woocommerce } from '../../src/utils/woocommerce'
 
 // page primary colors
@@ -318,9 +315,9 @@ const localData = {
     },
   },
 }
-const fetcher = (url: string) => Axios(url).then((res) => res.data) as any
+const fetcher = ( url: string ) => Axios( url ).then( ( res ) => res.data ) as any
 
-const MernStackAdsTheme = (props: { foreignData: any }) => {
+const MernStackAdsTheme = ( props: { foreignData: any } ) => {
   const slug = 'mern-stack-classified-ads-theme'
   // call data using swr
   const { data: swrData, error: productError } = useSWR(
@@ -360,13 +357,13 @@ const MernStackAdsTheme = (props: { foreignData: any }) => {
 
 export const getStaticProps = async () => {
   const slug = 'mern-stack-classified-ads-theme'
-  const { data } = await Woocommerce.get('products', {
+  const { data } = await Woocommerce.get( 'products', {
     slug,
     status: 'publish',
-  })
+  } )
 
   // only return few fields
-  const filteredData = data.map((item: any) => {
+  const filteredData = data.map( ( item: any ) => {
     return {
       id: item.id,
       name: item.name,
@@ -374,10 +371,10 @@ export const getStaticProps = async () => {
       image: item.images[0].src,
       short_description: item.short_description,
     }
-  })
+  } )
 
-  const finalData = Object.assign(filteredData[0], {})
-  console.log('finalData', finalData)
+  const finalData = Object.assign( filteredData[0], {} )
+
 
   return {
     props: {

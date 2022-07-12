@@ -1,10 +1,10 @@
 import axios from 'axios'
 import { NextApiRequest, NextApiResponse } from 'next'
 
-// eslint-disable-next-line import/no-anonymous-default-export
-export default async function (req: NextApiRequest, res: NextApiResponse) {
-	if (req.method !== 'GET')
-		return res.status(400).json({ message: 'You are not allowed' })
+
+export default async function ( req: NextApiRequest, res: NextApiResponse ) {
+	if ( req.method !== 'GET' )
+		return res.status( 400 ).json( { message: 'You are not allowed' } )
 
 	try {
 		// call wordpress login api and get token using axios
@@ -20,18 +20,18 @@ export default async function (req: NextApiRequest, res: NextApiResponse) {
 		const data = response.data
 
 		// return response
-		return res.status(200).send({
+		return res.status( 200 ).send( {
 			message: 'Successfully logged in',
 			data,
 			accesToken: process.env.ACCESS_TOKEN,
-		})
-	} catch (error: any) {
+		} )
+	} catch ( error: any ) {
 		// if login failed return error message
 
-		return res.status(500).send({
+		return res.status( 500 ).send( {
 			message: 'Login failed',
 			data: error.response.data,
 			accesToken: process.env.ACCESS_TOKEN,
-		})
+		} )
 	}
 }

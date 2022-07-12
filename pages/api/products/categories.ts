@@ -2,7 +2,6 @@ import _ from 'lodash'
 import { NextApiRequest, NextApiResponse } from 'next'
 import { Woocommerce } from '../../../src/utils/woocommerce'
 
-// eslint-disable-next-line import/no-anonymous-default-export
 export default async function (req: NextApiRequest, res: NextApiResponse) {
 	if (req.method !== 'GET')
 		return res.status(400).json({ message: 'Method not allowed' })

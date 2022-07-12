@@ -1,20 +1,9 @@
-import React from 'react'
-import { WiHumidity } from 'react-icons/wi'
 import {
-  FaHourglassHalf,
-  FaCheck,
-  FaCcPaypal,
-  FaCcVisa,
-  FaCcMastercard,
-  FaCcJcb,
-  FaCcDiscover,
+  FaCheck
 } from 'react-icons/fa'
-import { SiAmericanexpress } from 'react-icons/si'
-import { MdOutlineKeyboardArrowDown } from 'react-icons/md'
-import { MdHeadsetMic } from 'react-icons/md'
 import { ImCross } from 'react-icons/im'
 
-const Heading = (props: any) => {
+const Heading = ( props: any ) => {
   const { colors, info, data } = props
   return (
     <div
@@ -137,7 +126,7 @@ const Heading = (props: any) => {
 
 export default Heading
 
-const HeadingNormalCart = ({
+const HeadingNormalCart = ( {
   price,
   info,
   colors,
@@ -145,8 +134,8 @@ const HeadingNormalCart = ({
   price: any
   info: any
   colors: any
-}) => {
-  console.log('Price', price, 'info', info, 'Colors', colors)
+} ) => {
+
   return (
     <div
       className="p-7 my-auto bg-secondaryGrayLight rounded-lg border border-cartImageBgOne"
@@ -166,12 +155,11 @@ const HeadingNormalCart = ({
       </div>
       <hr className="w-full text-secondaryGrayLighter mt-6 mb-7" />
       <div>
-        {info?.list?.map((item: any, index: number) => (
+        {info?.list?.map( ( item: any, index: number ) => (
           <div className="flex items-center mb-4 last-of-type:mb-0" key={index}>
             <div
-              className={`${
-                item.checked ? colors.buttonPrimary : 'bg-gray-400'
-              } p-1.5 rounded-full`}
+              className={`${item.checked ? colors.buttonPrimary : 'bg-gray-400'
+                } p-1.5 rounded-full`}
             >
               {item.checked ? (
                 <FaCheck className="text-white w-2.5 h-2.5" />
@@ -181,7 +169,7 @@ const HeadingNormalCart = ({
             </div>
             <h3 className="text-base text-gray-700 ml-3">{item.title}</h3>
           </div>
-        ))}
+        ) )}
       </div>
       <button
         type="button"
@@ -202,7 +190,7 @@ const HeadingNormalCart = ({
   )
 }
 
-const HeadingPlusCart = ({
+const HeadingPlusCart = ( {
   price,
   info,
   colors,
@@ -210,7 +198,7 @@ const HeadingPlusCart = ({
   price: any
   info: any
   colors: any
-}) => {
+} ) => {
   return (
     <div
       className="p-7 my-auto bg-secondaryGrayLight rounded-lg border border-cartImageBgOne"
@@ -228,12 +216,11 @@ const HeadingPlusCart = ({
       </div>
       <hr className="w-full text-secondaryGrayLighter mt-6 mb-7" />
       <div>
-        {info.list.map((item: any, index: number) => (
+        {info.list.map( ( item: any, index: number ) => (
           <div className="flex items-center mb-4 last-of-type:mb-0" key={index}>
             <div
-              className={`${
-                item.checked ? colors.buttonPrimary : 'bg-gray-400'
-              } p-1.5 rounded-full`}
+              className={`${item.checked ? colors.buttonPrimary : 'bg-gray-400'
+                } p-1.5 rounded-full`}
             >
               {item.checked ? (
                 <FaCheck className="text-white w-2.5 h-2.5" />
@@ -243,7 +230,7 @@ const HeadingPlusCart = ({
             </div>
             <h3 className="text-base text-gray-700 ml-3">{item.title}</h3>
           </div>
-        ))}
+        ) )}
       </div>
       <button
         type="button"
@@ -264,7 +251,7 @@ const HeadingPlusCart = ({
   )
 }
 
-const HeadingExtendedCart = ({
+const HeadingExtendedCart = ( {
   price,
   info,
   colors,
@@ -272,7 +259,7 @@ const HeadingExtendedCart = ({
   price: any
   info: any
   colors: any
-}) => {
+} ) => {
   return (
     <div
       className={`rounded-lg relative overflow-hidden ${colors.bgPrimary} shadow-secondaryTemplate`}
@@ -301,7 +288,7 @@ const HeadingExtendedCart = ({
         </div>
         <hr className="w-full text-secondaryGrayLighter mt-6 mb-7 opacity-20" />
         <div>
-          {info.list.map((item: any, index: number) => (
+          {info.list.map( ( item: any, index: number ) => (
             <div
               className="flex items-center mb-4 last-of-type:mb-0"
               key={index}
@@ -317,7 +304,7 @@ const HeadingExtendedCart = ({
               </div>
               <h3 className="text-base text-gray-100 ml-3">{item.title}</h3>
             </div>
-          ))}
+          ) )}
         </div>
         <button
           type="button"
