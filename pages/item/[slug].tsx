@@ -40,10 +40,11 @@ const ProductSinglePage2 = ( props: any ) => {
   const router = useRouter()
   // get slug from url
   const slug = router.query.slug
-
+  console.log( "slug from PSR", slug )
   const { data: swrData, error: swrError } = useSWR( `${process.env.NEXT_PUBLIC_API_URL}/api/products/${slug}`, fetcher, {
     initialData: props.foreignData,
   } as any )
+
 
   return (
     <>
@@ -168,14 +169,13 @@ export const getStaticPaths = async () => {
     'metashop-headless-woocommerce-theme',
     'padma-multipurpose-frontity-theme',
     'gutenberg-page-builder-plugin'
-
   ]
 
   const filteredPaths = paths.filter( ( path: { params: { slug: string } } ) => !excludedPaths.includes( path.params.slug ) )
 
   return {
     paths: filteredPaths,
-    fallback: false,
+    fallback: true,
   }
 }
 
