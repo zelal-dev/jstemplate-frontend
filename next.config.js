@@ -17,7 +17,7 @@ const nextConfig = {
   },
   eslint: {
     dirs: [ 'pages', 'components' ],
-  }
+  },
 }
 
 // eslint-disable-next-line no-undef
