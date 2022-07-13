@@ -47,7 +47,7 @@ const ProductPage = ( {
 } ) => {
 	// fetch data using SWR
 	const { data, error } = SWR( '/api/products/shop', fetcher, {
-		initialData: productData,
+		fallbackData: productData,
 	} as any )
 
 	// fetch category data using SWR
@@ -56,7 +56,7 @@ const ProductPage = ( {
 		'/api/products/categories',
 		fetcher,
 		{
-			initialData: categoryData,
+			fallbackData: categoryData,
 		} as any
 	)
 

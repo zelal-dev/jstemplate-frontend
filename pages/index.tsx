@@ -18,7 +18,7 @@ const fetcher = ( url: string ) => Axios( url ).then( ( res ) => res.data.data )
 const Homepage = ( { productData }: { productData: ProductDocument } ) => {
 	// fetch data using SWR
 	const { data } = useSWR( '/api/products/retrives' as string, fetcher, {
-		initialData: productData
+		fallbackData: productData
 	} as any )
 
 	return (
@@ -28,7 +28,7 @@ const Homepage = ( { productData }: { productData: ProductDocument } ) => {
         title="Top of MERN Stack, React.js, Headless CMS, Frontity Themes"
         description="Buy Ready-Made JS Template Web Solution, Grow Your Business Faster. We developed best MERN Stack, Headless CMS, Tailwind CSS Themes, templates for your next project."
       /> */}
-			<NextSeo noindex={ true } />
+			<NextSeo noindex={true} />
 			<section className="">
 				<div className="bg-backgroundGray">
 					<div className="header-part">
@@ -36,11 +36,11 @@ const Homepage = ( { productData }: { productData: ProductDocument } ) => {
 						<Header />
 					</div>
 					<KnowUs />
-					<Solution data={ data } />
+					<Solution data={data} />
 				</div>
 				<ChooseUs />
 				<Customer />
-				{/* <Testimonials /> */ }
+				{/* <Testimonials /> */}
 				<Footer
 					boxToColor="blueTwo"
 					boxFromColor="blueOne"
@@ -68,7 +68,7 @@ export const getStaticProps: GetStaticProps = async () => {
 			id: item.id,
 			name: item.name,
 			slug: item.slug,
-			image: item.images[ 0 ].src,
+			image: item.images[0].src,
 			short_description: item.short_description,
 			type: item.type === 'simple' ? 'simple' : 'variable',
 			price: item.price,

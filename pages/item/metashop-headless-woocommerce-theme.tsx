@@ -326,7 +326,7 @@ const MetaShopTheme = ( props: any ) => {
     `/api/products/${slug}`,
     fetcher,
     {
-      initialData: props.foreignData,
+      fallbackData: props.foreignData,
     } as any
   )
   // detructure data from productData

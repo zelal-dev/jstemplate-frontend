@@ -43,8 +43,10 @@ const ProductSinglePage2 = ( props: any ) => {
   console.log( 'slug', slug )
 
   const { data: swrData, error: swrError } = useSWR( `/api/products/${slug}`, fetcher, {
-    initialData: props.foreignData,
+    fallbackData: props.foreignData
   } as any )
+
+  console.log( 'swrData', swrData, "props.foreignData", props.foreignData )
 
 
   return (
