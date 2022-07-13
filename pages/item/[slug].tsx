@@ -43,7 +43,7 @@ const ProductSinglePage2 = ( props: any ) => {
 
   console.log( 'slug', slug )
 
-  const { data: swrData, error: swrError } = useSWR( `${process.env.NEXT_PUBLIC_BASE_URL}/api/products/${slug}`, fetcher, {
+  const { data: swrData, error: swrError } = useSWR( `/api/products/${slug}`, fetcher, {
     initialData: props.foreignData,
   } as any )
 

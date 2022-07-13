@@ -323,7 +323,7 @@ const PadmaTheme = ( props: any ) => {
   const slug = 'padma-multipurpose-frontity-theme'
   // call data using swr
   const { data: swrData, error: productError } = useSWR(
-    `${process.env.NEXT_PUBLIC_BASE_URL}/api/products/${slug}`,
+    `/api/products/${slug}`,
     fetcher,
     {
       initialData: props.foreignData,
