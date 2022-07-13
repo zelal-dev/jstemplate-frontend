@@ -58,7 +58,7 @@ const ProductSinglePage2 = ( props: any ) => {
           <Navbar.SingleProductNavbar />
           <Header data={swrData?.data} />
         </div>
-        <Products info={data} colors={colors}>
+        <Products data={swrData?.data} info={data} colors={colors}>
           <div
             dangerouslySetInnerHTML={{ __html: swrData?.data?.description }}
 
