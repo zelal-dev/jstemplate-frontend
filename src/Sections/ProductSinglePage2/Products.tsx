@@ -7,11 +7,15 @@ const Products = ( {
   children,
   info,
   colors,
+  data
 }: {
   children: any
   info: any
   colors: any
+  data: any
 } ) => {
+
+  console.log( "Data from Products", data )
 
   return (
     <>
@@ -20,7 +24,7 @@ const Products = ( {
           <div className="rounded-lg bg-white p-5">
             <div className=" xl:h-[32.5rem] lg:h-[24rem] h-72 relative w-full">
               <Image
-                src="/productCartImg.svg"
+                src={data ? data.image : 'https://via.placeholder.com/600x600'}
                 alt=""
                 layout="fill"
                 objectFit="cover"
