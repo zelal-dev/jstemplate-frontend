@@ -41,7 +41,7 @@ const ProductSinglePage2 = ( props: any ) => {
   // get slug from url
   const slug = router.query.slug
   console.log( "slug from PSR", slug )
-  const { data: swrData, error: swrError } = useSWR( `${process.env.NEXT_PUBLIC_API_URL}/api/products/${slug}`, fetcher, {
+  const { data: swrData, error: swrError } = useSWR( `${process.env.NEXT_PUBLIC_BASE_URL}/api/products/${slug}`, fetcher, {
     initialData: props.foreignData,
   } as any )
 

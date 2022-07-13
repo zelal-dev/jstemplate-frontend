@@ -323,7 +323,7 @@ const MetaBlogTheme = ( props: any ) => {
   const slug = 'metablog-headless-wordpress-blog-theme'
   // call data using swr
   const { data: swrData, error: productError } = useSWR(
-    `${process.env.NEXT_PUBLIC_API_URL}/api/products/${slug}`,
+    `${process.env.NEXT_PUBLIC_BASE_URL}/api/products/${slug}`,
     fetcher,
     {
       initialData: props.foreignData,
