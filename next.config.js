@@ -6,6 +6,7 @@ const nextConfig = {
     domains: [
       'jstemplate.net',
       'res.cloudinary.com',
+      'via.placeholder.com',
       'api-blog.jstemplate.net',
       'lh1.googleusercontent.com',
       'lh2.googleusercontent.com',
