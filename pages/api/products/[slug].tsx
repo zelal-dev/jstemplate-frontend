@@ -1,14 +1,13 @@
 
 import { NextApiRequest, NextApiResponse } from 'next'
-import { useRouter } from 'next/router'
+
 import { Woocommerce } from '../../../src/utils/woocommerce'
 
 export default async function ( req: NextApiRequest, res: NextApiResponse ) {
 
-	const router = useRouter()
-	const { slug } = router.query
+	// extract slug from url
+	const { slug } = req.query
 
-	console.log( "Slug is: from ssr ", slug )
 
 	// allow only get request for this endpoint
 	if ( req.method !== 'GET' )
