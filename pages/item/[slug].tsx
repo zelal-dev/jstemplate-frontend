@@ -38,9 +38,9 @@ const fetcher = async ( url: string ) => Axios( url ).then( ( res ) => res.data 
 const ProductSinglePage2 = ( props: any ) => {
 
   const router = useRouter()
-  // get slug from url
-  const slug = router.query.slug
-  console.log( "slug from PSR", slug )
+
+  const { slug } = router.query
+
   const { data: swrData, error: swrError } = useSWR( `${process.env.NEXT_PUBLIC_BASE_URL}/api/products/${slug}`, fetcher, {
     initialData: props.foreignData,
   } as any )
