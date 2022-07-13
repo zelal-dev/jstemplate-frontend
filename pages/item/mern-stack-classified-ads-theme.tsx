@@ -370,6 +370,7 @@ export const getStaticProps = async () => {
       slug: item.slug,
       image: item.images[0].src,
       short_description: item.short_description,
+      description: item.description,
     }
   } )
 

@@ -1,4 +1,3 @@
-import Image from 'next/image'
 import { useRouter } from 'next/router'
 import useSWR from 'swr'
 import Navbar from '../../src/components/Navbar'
@@ -58,78 +57,10 @@ const ProductSinglePage2 = ( props: any ) => {
           <Header data={swrData?.data} />
         </div>
         <Products info={data} colors={colors}>
-          Product description under the Products box
-          <h1 className="text-2xl font-bold text-gray-900">Product Title</h1>
-          <article className="text-base text-gray-600 mt-5">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime,
-            corporis, esse nam inventore laboriosam nihil quasi rem facere ipsa
-            neque itaque optio eveniet nisi? Dolorem quod praesentium accusantium
-            harum nobis.
-          </article>
-          <article className="text-base text-gray-600 mt-5">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime,
-            corporis, esse nam inventore laboriosam nihil quasi rem facere ipsa
-            neque itaque optio eveniet nisi? Dolorem quod praesentium accusantium
-            harum nobis.
-          </article>
-          <h3 className="text-base font-bold text-gray-900 mt-5">FEATURES</h3>
-          <ul className="list-disc ml-5">
-            <li>Lorem, ipsum dolor.</li>
-            <li>Lorem, ipsum dolor.</li>
-            <li>Lorem, ipsum dolor.</li>
-            <li>Lorem, ipsum dolor.</li>
-            <li>Lorem, ipsum dolor.</li>
-          </ul>
-          <div className="grid grid-cols-2 gap-x-10 gap-y-5 mt-10">
-            <div className="w-full xl:h-64 lg:h-44 relative rounded-xl">
-              <Image
-                src="/productCartImg.svg"
-                alt=""
-                layout="fill"
-                objectFit="contain"
-              />
-            </div>
-            <div className="w-full xl:h-64 lg:h-44 relative rounded-xl">
-              <Image
-                src="/productCartImg.svg"
-                alt=""
-                layout="fill"
-                objectFit="contain"
-              />
-            </div>
-            <div className="w-full xl:h-64 lg:h-44 relative rounded-xl">
-              <Image
-                src="/productCartImg.svg"
-                alt=""
-                layout="fill"
-                objectFit="contain"
-              />
-            </div>
-            <div className="w-full xl:h-64 lg:h-44 relative rounded-xl">
-              <Image
-                src="/productCartImg.svg"
-                alt=""
-                layout="fill"
-                objectFit="contain"
-              />
-            </div>
-            <div className="w-full xl:h-64 lg:h-44 relative rounded-xl">
-              <Image
-                src="/productCartImg.svg"
-                alt=""
-                layout="fill"
-                objectFit="contain"
-              />
-            </div>
-            <div className="w-full xl:h-64 lg:h-44 relative rounded-xl">
-              <Image
-                src="/productCartImg.svg"
-                alt=""
-                layout="fill"
-                objectFit="contain"
-              />
-            </div>
-          </div>
+          <div
+            dangerouslySetInnerHTML={{ __html: swrData?.data?.description }}
+
+          />
         </Products>
         {/* <RelatedProduct data={ undefined } />
       <Testimonials /> */}
@@ -195,6 +126,7 @@ export const getStaticProps = async ( ctx: any ) => {
       slug: item.slug,
       image: item.images[0].src,
       short_description: item.short_description,
+      description: item.description,
     }
   } )
   const finalData =

@@ -74,14 +74,14 @@ const Products = ( {
                   {/* ${info[0].price}.00 */} 100.00
                 </h1>
                 <h5 className="text-sm text-[#FA4F58] pb-1">
-                  {/* ${info?.pricing.regularPrice}.00 */}
+                  {/* ${info?.pricing.regularPrice}.00 */} 50.00
                 </h5>
               </div>
-              {/* {info?.offer && (
+              {info?.offer && (
                 <h3 className="text-xs text-gray-100 py-0.5 px-2.5 rounded-full bg-gradient-to-br from-purpleLight to-purpleDark">
                   {info?.offer}
                 </h3>
-              )} */}
+              )}
             </div>
           </div>
           <hr className="w-full bg-cartImageBgOne my-6" />

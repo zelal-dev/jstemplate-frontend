@@ -21,6 +21,7 @@ export default async function ( req: NextApiRequest, res: NextApiResponse ) {
 			//show image if it is not empty
 			image: item.images.length > 0 ? item.images[0].src : '',
 			short_description: item.short_description,
+			description: item.description,
 			categories: item.categories.map( ( category: any ) => {
 				return {
 					id: category.id,

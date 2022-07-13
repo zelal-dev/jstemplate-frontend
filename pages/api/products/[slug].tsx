@@ -26,6 +26,7 @@ export default async function ( req: NextApiRequest, res: NextApiResponse ) {
 				slug: item.slug,
 				image: item.images[0].src,
 				short_description: item.short_description,
+				description: item.description,
 			}
 		} )
 

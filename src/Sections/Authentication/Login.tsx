@@ -55,7 +55,7 @@ const Login = ( {
 		// use try catch to handle the error
 		try {
 			const response = await Axios.post(
-				`${process.env.NEXT_PUBLIC_BASE_URL}/api/user/login`,
+				`/api/user/login`,
 				{
 					username: data.email,
 					password: data.password,

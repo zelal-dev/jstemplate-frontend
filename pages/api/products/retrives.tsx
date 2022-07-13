@@ -17,8 +17,9 @@ export default async function ( req: NextApiRequest, res: NextApiResponse ) {
 			id: item.id,
 			name: item.name,
 			slug: item.slug,
-			image: item.images[ 0 ].src,
+			image: item.images[0].src,
 			short_description: item.short_description,
+			description: item.description,
 			categories: item.categories.map( ( category: any ) => {
 				return {
 					id: category.id,
