@@ -377,6 +377,15 @@ export const getStaticProps = async () => {
       image: item.images[0].src,
       short_description: item.short_description,
       description: item.description,
+      sku: item.sku,
+      price: item.price,
+      regular_price: item.regular_price,
+      sale_price: item.sale_price,
+      date_on_sale_from: item.date_on_sale_from,
+      date_on_sale_from_gmt: item.date_on_sale_from_gmt,
+      date_on_sale_to: item.date_on_sale_to,
+      date_on_sale_to_gmt: item.date_on_sale_to_gmt,
+      on_sale: item.on_sale,
     }
   } )
 

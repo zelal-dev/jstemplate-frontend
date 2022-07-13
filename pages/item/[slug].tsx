@@ -1,8 +1,10 @@
 import { useRouter } from 'next/router'
 import useSWR from 'swr'
+import Footer from '../../src/components/Footer'
 import Navbar from '../../src/components/Navbar'
 import Header from '../../src/Sections/ProductSinglePage2/Header'
 import Products from '../../src/Sections/ProductSinglePage2/Products'
+import Testimonials from '../../src/Sections/ProductSinglePage2/Testimonials'
 import { Axios } from '../../src/utils/axiosKits'
 import { Woocommerce } from '../../src/utils/woocommerce'
 
@@ -64,16 +66,16 @@ const ProductSinglePage2 = ( props: any ) => {
 
           />
         </Products>
-        {/* <RelatedProduct data={ undefined } />
-      <Testimonials /> */}
-        {/* <Footer
-        boxToColor="secondaryTemplateColorDark"
-        boxFromColor="secondaryTemplateColorLight"
-        shadowBox="secondaryTemplate"
-        buttonToColor="secondaryTemplateColorDark"
-        buttonFromColor="secondaryTemplateColorLight"
-        shadowButton="secondaryTemplate"
-      /> */}
+        {/* <RelatedProduct data={undefined} /> */}
+        <Testimonials />
+        <Footer
+          boxToColor="secondaryTemplateColorDark"
+          boxFromColor="secondaryTemplateColorLight"
+          shadowBox="secondaryTemplate"
+          buttonToColor="secondaryTemplateColorDark"
+          buttonFromColor="secondaryTemplateColorLight"
+          shadowButton="secondaryTemplate"
+        />
       </div>
     </>
   )

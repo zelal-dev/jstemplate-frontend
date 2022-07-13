@@ -75,11 +75,13 @@ const Products = ( {
             <div className="flex items-center">
               <div className="flex items-end mr-5">
                 <h1 className="text-2xl text-gray-900 font-bold mr-3">
-                  {/* ${info[0].price}.00 */} 100.00
+                  {data.on_sale === false ? '$' + data.price : '$' + data.price}
                 </h1>
-                <h5 className="text-sm text-[#FA4F58] pb-1">
-                  {/* ${info?.pricing.regularPrice}.00 */} 50.00
-                </h5>
+                {( data.on_sale === true ) && (
+                  <h5 className="text-sm text-[#FA4F58] pb-1">
+                    {data.regular_price}
+                  </h5>
+                )}
               </div>
               {info?.offer && (
                 <h3 className="text-xs text-gray-100 py-0.5 px-2.5 rounded-full bg-gradient-to-br from-purpleLight to-purpleDark">
