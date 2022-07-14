@@ -109,18 +109,29 @@ const Products = ( {
             {
               data && (
                 data.meta_data.map( ( item: any ) => {
-                  if ( item.key === '_preview' || item.key === '_docs' ) {
+                  if ( item.key === 'buy_now' || item.key === 'button_link' ) {
 
                     return (
                       <>
-                        {item.button_text || item.value.button_url && (
-                          <Link href={item.value.button_url as string} key={item.id}>
+                        {item.key === 'buy_now' && (
+                          <Link href={item.value} key={item.id}>
                             <a
                               target="_blank"
                               className={`text-base font-semibold text-gray-100 py-3 rounded-lg ${colors.buttonPrimary} flex items-center justify-center shadow-3xl`}
                             >
                               <AiFillEye className="text-2xl mr-3" />
-                              <span>{item.value.button_text}</span>
+                              <span>Live Preview </span>
+                            </a>
+                          </Link>
+                        )}
+                        {item.key === 'buy_now' && (
+                          <Link href={item.value} key={item.id}>
+                            <a
+                              target="_blank"
+                              className={`text-base font-semibold text-gray-100 py-3 rounded-lg ${colors.buttonPrimary} flex items-center justify-center shadow-3xl`}
+                            >
+                              <AiFillEye className="text-2xl mr-3" />
+                              <span>Download</span>
                             </a>
                           </Link>
                         )}
