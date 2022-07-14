@@ -1,55 +1,54 @@
 import _ from 'lodash'
 import Link from 'next/link'
-import React, { useEffect, useState } from 'react'
+import { useEffect, useState } from 'react'
 import { FaShoppingCart } from 'react-icons/fa'
 import { HiOutlineArrowNarrowRight } from 'react-icons/hi'
-import useSWR from 'swr'
-import { productMenuData, productMenuDocument } from '../../../data/menu.data'
+import { productMenuData } from '../../../data/menu.data'
 
-const DropDownProduct = ({ handler }: { handler: any }) => {
-	const [activeSubmenu, setActiveSubmenu] = useState<Array<Object>>([])
-	const [activeID, setActiveID] = useState(1)
+const DropDownProduct = ( { handler }: { handler: any } ) => {
+	// eslint-disable-next-line @typescript-eslint/ban-types
+	const [activeSubmenu, setActiveSubmenu] = useState<Array<Object>>( [] )
+	const [activeID, setActiveID] = useState( 1 )
 
-	useEffect(() => {
+	useEffect( () => {
 		//  filter based on parent menu item and map the child using lodash
-		const submenu = _.filter(productMenuData, { menu_order: activeID })
+		const submenu = _.filter( productMenuData, { menu_order: activeID } )
 		// detructure the submenu
-		if (submenu[0]?.children.length > 0) {
+		if ( submenu[0]?.children.length > 0 ) {
 			const { children } = submenu[0] as any
-			setActiveSubmenu(children)
+			setActiveSubmenu( children )
 		}
 
-		// eslint-disable-next-line react-hooks/exhaustive-deps
-	}, [activeID, productMenuData])
+	}, [activeID, productMenuData] )
 
-	const clickHandler = (id: number) => {
-		setActiveID(id)
+	const clickHandler = ( id: number ) => {
+		setActiveID( id )
 	}
 
 	return (
 		<div className='bg-white xl:w-[55.625rem] w-10/12 h-auto drop-shadow-xl rounded-lg'>
 			<div className='pt-7'>
 				<div className=' lg:px-8 md:px-7 sm:px-6 flex items-center border-b-2 border-gray-200'>
-					{productMenuData?.map((item: any) => (
-						// eslint-disable-next-line react/jsx-key
+					{productMenuData?.map( ( item: any ) => (
+
 						<button
-							onClick={() => clickHandler(item.menu_order)}
+							onClick={() => clickHandler( item.menu_order )}
 							key={item.id}
-							className={`xl:pb-5 xl:px-8 lg:pb-3 lg:px-4 md:pb-2 md:px-3 sm:pb-2 sm:px-1 lg:text-base sm:text-xs ${
-								item.menu_order === activeID
-									? 'text-secondary'
-									: 'text-gray-700'
-							} peer cursor-pointer duration-200 ease-in`}>
+							className={`xl:pb-5 xl:px-8 lg:pb-3 lg:px-4 md:pb-2 md:px-3 sm:pb-2 sm:px-1 lg:text-base sm:text-xs ${item.menu_order === activeID
+								? 'text-secondary'
+								: 'text-gray-700'
+								} peer cursor-pointer duration-200 ease-in`}>
 							{item.title}
 						</button>
-					))}
+					) )}
 				</div>
 				<div
 					className='lg:px-8 md:px-7 sm:px-6  md:py-7 sm:py-6 grid
            xl:grid-cols-2 lg:grid-cols-1 container gap-2 '>
 					{activeSubmenu.length > 0 &&
-						activeSubmenu.map((item: any) => (
-							<>
+						activeSubmenu.map( ( item: any ) => (
+
+							<div>
 								<ButtonLayout
 									key={item.ID}
 									title={item.title}
@@ -67,8 +66,9 @@ const DropDownProduct = ({ handler }: { handler: any }) => {
 										className={`w-6 h-6 drop-shadow-lg text-orangeTwo`}
 									/>
 								</ButtonLayout>
-							</>
-						))}
+							</div>
+
+						) )}
 				</div>
 				<div className=' lg:px-8 md:px-7 sm:px-6 md:py-7 sm:py-6  bg-backgroundGrayOne flex flex-col xl:flex-row justify-between items-center rounded-b-lg'>
 					<div>
@@ -96,7 +96,7 @@ const DropDownProduct = ({ handler }: { handler: any }) => {
 
 export default DropDownProduct
 
-const ButtonLayout = ({
+const ButtonLayout = ( {
 	children,
 	title,
 	url,
@@ -106,7 +106,7 @@ const ButtonLayout = ({
 	title: string
 	url: string
 	shortDescription: string
-}) => {
+} ) => {
 	return (
 		<Link href={`/item/${url}`}>
 			<a>
