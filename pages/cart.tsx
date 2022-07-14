@@ -59,8 +59,13 @@ const Cart = () => {
             <div id="summary" className="w-1/4 px-8 py-10">
               <h1 className="font-semibold text-2xl border-b pb-8">Order Summary</h1>
               <div className="flex justify-between mt-10 mb-5">
-                <span className="font-semibold text-sm uppercase">Items 3</span>
-                <span className="font-semibold text-sm">590$</span>
+                {
+                  cartData && cartData.map( ( item: any ) => (
+                    <>
+                      <span className="font-semibold text-sm uppercase">{item.title}</span>
+                      <span className="font-semibold text-sm">{"$" + item.price}</span></>
+                  ) )
+                }
               </div>
               {/* <div>
                 <label className="font-medium inline-block mb-3 text-sm uppercase">Shipping</label>
