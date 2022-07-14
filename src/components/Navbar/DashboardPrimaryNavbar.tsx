@@ -4,6 +4,7 @@ import Link from 'next/link'
 import { useRouter } from 'next/router'
 import { useState } from 'react'
 import { BsList } from 'react-icons/bs'
+import { FaShoppingCart } from 'react-icons/fa'
 import { HiOutlineArrowNarrowRight, HiOutlineLogout } from 'react-icons/hi'
 import { ImCross } from 'react-icons/im'
 import { IoIosArrowDown } from 'react-icons/io'
@@ -137,11 +138,11 @@ const DashboardPrimaryNavbar = () => {
 				</div>
 				<div className='sm:flex items-center hidden'>
 					{/* cart icon hidden */}
-					{/* <Link href="/preSalePage">
-            <a className="w-10 h-10 grid justify-center items-center rounded-md bg-gradient-to-br from-orangeOne to-orangeTwo mr-4 shadow-4xl cursor-pointer">
-              <FaShoppingCart className="text-white text-xl" />
-            </a>
-          </Link> */}
+					<Link href="/preSalePage">
+						<a className="w-10 h-10 grid justify-center items-center rounded-md bg-gradient-to-br from-orangeOne to-orangeTwo mr-4 shadow-4xl cursor-pointer">
+							<FaShoppingCart className="text-white text-xl" />
+						</a>
+					</Link>
 					<button
 						type='button'
 						aria-label='User'
