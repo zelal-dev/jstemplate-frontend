@@ -63,13 +63,15 @@ const Login = ( {
 			} )
 
 			// mutate the user data instantly
-			mutate( '/api/user/self', null, false )
+			mutate( '/api/user/self' )
 
 
 			addToast( 'Login Successful', {
 				appearance: 'success',
 				autoDismiss: true,
 				autoDismissTimeout: 3000,
+
+
 			} )
 		} catch ( error: any ) {
 			addToast( 'Login Failed', {
