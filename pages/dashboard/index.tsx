@@ -8,6 +8,8 @@ import Navbar from './../../src/components/Navbar'
 const Dashboard = () => {
   const { loggedIn, user } = useUser()
 
+  console.log( "logged in ", loggedIn, "user", user )
+
   if ( !user && !loggedIn ) {
     return <UserNotLogin />
   }
@@ -16,7 +18,7 @@ const Dashboard = () => {
     return (
       <div className="bg-backgroundGrayOne min-h-screen">
         <Navbar.DashboardPrimaryNavbar />
-        {/* <Navbar.DashboardSecondaryNavbar /> */ }
+        {/* <Navbar.DashboardSecondaryNavbar /> */}
         <div className="container mx-auto py-10 px-5 sm:px-0">
           <h2 className="text-2xl font-bold text-gray-900">Dashboard</h2>
           <div className="grid xl:grid-cols-5 lg:grid-cols-4 md:grid-cols-3 sm:grid-cols-2 grid-cols-1 gap-7 container mt-10">

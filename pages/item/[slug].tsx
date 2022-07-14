@@ -60,7 +60,6 @@ const ProductSinglePage2 = ( props: any ) => {
         <Products data={swrData?.data} info={data} colors={colors}>
           <div
             dangerouslySetInnerHTML={{ __html: swrData?.data?.description }}
-
           />
         </Products>
         {/* <RelatedProduct data={undefined} /> */}
@@ -129,6 +128,8 @@ export const getStaticProps = async ( ctx: any ) => {
       short_description: item.short_description,
       description: item.description,
       sku: item.sku,
+      date_created_gmt: item.date_created_gmt,
+      date_modified_gmt: item.date_modified_gmt,
       price: item.price,
       regular_price: item.regular_price,
       sale_price: item.sale_price,
@@ -137,6 +138,9 @@ export const getStaticProps = async ( ctx: any ) => {
       date_on_sale_to: item.date_on_sale_to,
       date_on_sale_to_gmt: item.date_on_sale_to_gmt,
       on_sale: item.on_sale,
+      tags: item.tags,
+      attributes: item.attributes,
+      meta_data: item.meta_data,
     }
   } )
   const finalData =

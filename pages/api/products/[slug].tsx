@@ -28,6 +28,8 @@ export default async function ( req: NextApiRequest, res: NextApiResponse ) {
 				short_description: item.short_description,
 				description: item.description,
 				sku: item.sku,
+				date_created_gmt: item.date_created_gmt,
+				date_modified_gmt: item.date_modified_gmt,
 				price: item.price,
 				regular_price: item.regular_price,
 				sale_price: item.sale_price,
@@ -36,6 +38,9 @@ export default async function ( req: NextApiRequest, res: NextApiResponse ) {
 				date_on_sale_to: item.date_on_sale_to,
 				date_on_sale_to_gmt: item.date_on_sale_to_gmt,
 				on_sale: item.on_sale,
+				attributes: item.attributes,
+				tags: item.tags,
+				meta_data: item.meta_data,
 			}
 		} )
 

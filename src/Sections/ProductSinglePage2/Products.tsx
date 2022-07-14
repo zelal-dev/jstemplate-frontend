@@ -1,5 +1,7 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import Image from 'next/image'
 import Link from 'next/link'
+import { ReactChild, ReactFragment, ReactPortal } from 'react'
 import { AiFillEye } from 'react-icons/ai'
 import { FaShoppingCart } from 'react-icons/fa'
 
@@ -15,7 +17,6 @@ const Products = ( {
   data: any
 } ) => {
 
-  console.log( "Data from Products", data )
 
   return (
     <>
@@ -52,7 +53,7 @@ const Products = ( {
             </div>
             <div className="py-8 px-10">{children}</div>
           </div>
-          <div
+          {/* <div
             className={`sm:bg-[url("/products/hire-bg.svg")] bg-no-repeat bg-cover ${colors.bgPrimary} container mx-auto xl:p-12 p-8  flex flex-col items-center justify-center rounded-lg mt-10`}
           >
             <h3 className="xl:text-lg lg:text-base text-gray-100">
@@ -67,7 +68,7 @@ const Products = ( {
             >
               Buy Now
             </button>
-          </div>
+          </div> */}
         </div>
         <div className="col-span-4 p-8 rounded-lg bg-white mb-auto">
           <div className="flex items-center justify-between">
@@ -77,26 +78,26 @@ const Products = ( {
                 {
                   ( data && (
                     <h1 className="text-2xl text-gray-900 font-bold mr-3">
-                      {data?.onsale === true ? '$' + data?.sale_price : '$' + data?.price}
+                      {data.on_sale === true ? '$' + data?.sale_price : '$' + data?.price}
                     </h1>
                   ) )
                 }
                 {( data && (
                   <h5 className="text-sm text-[#FA4F58] pb-1">
-                    {data?.on_sale === true ? '$' + data?.regular_price : null}
+                    {data.on_sale === true ? '$' + data?.regular_price : null}
                   </h5>
                 ) )}
               </div>
-              {info?.offer && (
+              {data && (
                 <h3 className="text-xs text-gray-100 py-0.5 px-2.5 rounded-full bg-gradient-to-br from-purpleLight to-purpleDark">
-                  {info?.offer}
+                  {data.on_sale === true ? 'Limited Offer' : 'Regular Price'}
                 </h3>
               )}
             </div>
           </div>
           <hr className="w-full bg-cartImageBgOne my-6" />
           <div className="grid xl:grid-cols-2 grid-cols-1 gap-5">
-            <Link href="#">
+            {/* <Link href="#">
               <a
                 target="_blank"
                 className={`text-base font-semibold text-gray-100 py-3 rounded-lg ${colors.buttonPrimary} flex items-center justify-center shadow-3xl`}
@@ -104,14 +105,32 @@ const Products = ( {
                 <AiFillEye className="text-2xl mr-3" />
                 <span>Live Preview</span>
               </a>
-            </Link>
-            <button
-              type="button"
-              className="text-base font-semibold text-gray-100 py-3 rounded-lg bg-gradient-to-br from-orangeOne to-orangeTwo flex items-center justify-center shadow-4xl"
-            >
-              <FaShoppingCart className="text-lg mr-3" />
-              <span>Buy Now</span>
-            </button>
+            </Link> */}
+            {
+              data && (
+                data.meta_data.map( ( item: any ) => {
+                  if ( item.key === '_preview' || item.key === '_docs' ) {
+
+                    return (
+                      <>
+                        {item.button_text || item.value.button_url && (
+                          <Link href={item.value.button_url as string} key={item.id}>
+                            <a
+                              target="_blank"
+                              className={`text-base font-semibold text-gray-100 py-3 rounded-lg ${colors.buttonPrimary} flex items-center justify-center shadow-3xl`}
+                            >
+                              <AiFillEye className="text-2xl mr-3" />
+                              <span>{item.value.button_text}</span>
+                            </a>
+                          </Link>
+                        )}
+                      </>
+                    )
+                  }
+                }
+                )
+              )
+            }
           </div>
           <hr className="w-full bg-cartImageBgOne mt-6" />
           {/* Downloads hidden */}
@@ -121,29 +140,52 @@ const Products = ( {
           </div>
           <hr className="w-full bg-cartImageBgOne " /> */}
           <div className="flex items-center justify-between my-5">
-            <h3 className="text-base text-gray-800">Last Update</h3>
-            {/* <h3 className="text-base text-gray-600">{info?.updateAt}</h3> */}
+            <span className="text-base text-gray-800">Last Update</span>
+            {data && (
+              <span className="text-base text-gray-600"> {new Date( data.date_modified_gmt ).toLocaleDateString( 'en-US', {
+                year: 'numeric',
+                month: 'long',
+              } )}</span>
+            )}
           </div>
           <hr className="w-full bg-cartImageBgOne " />
-          {info?.released && (
+          <>
+            <div className="flex items-center justify-between my-5">
+              <h3 className="text-base text-gray-800">Released</h3>
+              {data && (
+                <span className="text-base text-gray-600">{
+                  // fromat date from response to only year and month
+                  new Date( data.date_created_gmt ).toLocaleDateString( 'en-US', {
+                    year: 'numeric',
+                    month: 'long',
+                  } )}
+
+                </span>
+              )}
+            </div>
+            <hr className="w-full bg-cartImageBgOne " />
+          </>
+
+          {data && ( data.attributes.map( ( item: {
+            id: string;
+            name: string
+            options: any
+            item: string
+          } ) => (
             <>
-              <div className="flex items-center justify-between my-5">
-                <h3 className="text-base text-gray-800">Released</h3>
-                {/* <h3 className="text-base text-gray-600">{info?.released}</h3> */}
+              <div key={item.id} className="flex items-center justify-between my-5">
+                <h3 className="text-base text-gray-800">{item.name}</h3>
+                {item.options.map( ( option: boolean | ReactChild | ReactFragment | ReactPortal | null | undefined ) => (
+                  <h3 className="text-base text-gray-600">{option}</h3>
+                ) )}
+
               </div>
               <hr className="w-full bg-cartImageBgOne " />
             </>
+          ) )
+
           )}
-          {info?.tools && (
-            <>
-              <div className="flex items-center justify-between my-5">
-                <h3 className="text-base text-gray-800">Tools</h3>
-                <h3 className="text-base text-gray-600">{info?.tools}</h3>
-              </div>
-              <hr className="w-full bg-cartImageBgOne " />
-            </>
-          )}
-          {info?.version && (
+          {/* {info?.version && (
             <>
               <div className="flex items-center justify-between my-5">
                 <h3 className="text-base text-gray-800">Software Version</h3>
@@ -151,21 +193,21 @@ const Products = ( {
               </div>
               <hr className="w-full bg-cartImageBgOne " />
             </>
-          )}
-          <div className="flex items-center justify-between my-5">
+          )} */}
+          {/* <div className="flex items-center justify-between my-5">
             <h3 className="text-base text-gray-800">Responsive</h3>
             <h3 className="text-base text-gray-600">
               {info?.responsive ? 'Yes' : 'No'}
             </h3>
-          </div>
-          <hr className="w-full bg-cartImageBgOne " />
+          </div> */}
+          {/* <hr className="w-full bg-cartImageBgOne " />
           <div className="flex items-center justify-between my-5">
             <h3 className="text-base text-gray-800">Documentation</h3>
             <h3 className="text-base text-gray-600">
               {info?.doc ? 'Yes' : 'No'}
             </h3>
-          </div>
-          <hr className="w-full bg-cartImageBgOne " />
+          </div> */}
+          {/* <hr className="w-full bg-cartImageBgOne " />
           {info?.tags && (
             <>
               <div className="flex items-start justify-between mt-5">
@@ -175,7 +217,7 @@ const Products = ( {
                 </article>
               </div>
             </>
-          )}
+          )} */}
         </div>
       </div>
 
