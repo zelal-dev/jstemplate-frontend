@@ -1,34 +1,32 @@
+import { deleteCookie } from 'cookies-next'
 import Image from 'next/image'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
-import React, { useEffect, useState } from 'react'
+import { useState } from 'react'
 import { BsList } from 'react-icons/bs'
-import { FaShoppingCart } from 'react-icons/fa'
 import { HiOutlineLogout } from 'react-icons/hi'
 import { IoIosArrowDown } from 'react-icons/io'
-import { RiLoginCircleLine, RiSettings3Fill, RiUserFill } from 'react-icons/ri'
-import { ToastProvider } from 'react-toast-notifications'
+import { RiSettings3Fill, RiUserFill } from 'react-icons/ri'
 import { useSWRConfig } from 'swr'
 import { useUser } from '../../lib/useUser'
 import ForgetPassword from '../../Sections/Authentication/ForgetPassword'
 import Login from '../../Sections/Authentication/Login'
 import Registration from '../../Sections/Authentication/Registration'
-import { localGet, localRemove } from '../../utils/localStorage'
 import DropDownProduct from '../DropDownProduct'
 import DropDownService from '../DropDownService'
 
 const ServiceNavbar = () => {
-  const [proDis, setProdDis] = useState<string>('hidden')
-  const [serDis, setSerDis] = useState<string>('hidden')
-  const [proColor, setProColor] = useState('text-gray-100')
-  const [serColor, setSerColor] = useState('text-gray-100')
-  const [loginShow, setLoginShow] = useState<boolean>(false)
-  const [registerShow, setRegisterShow] = useState<boolean>(false)
-  const [forgetPassShow, setForgetPassShow] = useState<boolean>(false)
+  const [proDis, setProdDis] = useState<string>( 'hidden' )
+  const [serDis, setSerDis] = useState<string>( 'hidden' )
+  const [proColor, setProColor] = useState( 'text-gray-100' )
+  const [serColor, setSerColor] = useState( 'text-gray-100' )
+  const [loginShow, setLoginShow] = useState<boolean>( false )
+  const [registerShow, setRegisterShow] = useState<boolean>( false )
+  const [forgetPassShow, setForgetPassShow] = useState<boolean>( false )
   const { user, loggedIn } = useUser()
   const { mutate } = useSWRConfig()
-  const [toggle, setToggle] = useState<boolean>(false)
-  const [profileDropdown, setProfileDropdown] = useState<string>('hidden')
+  const [toggle, setToggle] = useState<boolean>( false )
+  const [profileDropdown, setProfileDropdown] = useState<string>( 'hidden' )
   const router = useRouter()
 
   const styleDash =
@@ -41,68 +39,68 @@ const ServiceNavbar = () => {
       : 'text-sm text-gray-600 p-4 rounded-lg flex items-center'
 
   const handleLogout = () => {
-    localRemove('jst_u_info')
-    router.push('/')
-    mutate('api/user/self', null, false)
+    deleteCookie( 'token' );
+    router.push( '/' )
+    mutate( '/api/user/self', null, false )
   }
 
   const handleProfileDropdown = () => {
-    if (profileDropdown === 'hidden') {
-      setProfileDropdown('block')
+    if ( profileDropdown === 'hidden' ) {
+      setProfileDropdown( 'block' )
     } else {
-      setProfileDropdown('hidden')
+      setProfileDropdown( 'hidden' )
     }
   }
 
   const handleUserImageShow = () => {
-    if (toggle) {
-      setToggle(false)
+    if ( toggle ) {
+      setToggle( false )
     } else {
-      setToggle(true)
+      setToggle( true )
     }
   }
 
   // toggle login modal
   const toggleLoginModal = () => {
-    setLoginShow(!loginShow)
+    setLoginShow( !loginShow )
   }
 
   // toggle register modal
   const toggleRegModal = () => {
-    setRegisterShow(!registerShow)
+    setRegisterShow( !registerShow )
   }
 
   // forget password modal
   const handelForgetPassModal = () => {
-    setForgetPassShow(!forgetPassShow)
+    setForgetPassShow( !forgetPassShow )
   }
 
   const productDropdown = () => {
-    setSerDis('hidden')
-    setSerColor('text-gray-100')
-    if (proColor === 'text-gray-100') {
-      setProColor('text-secondary')
+    setSerDis( 'hidden' )
+    setSerColor( 'text-gray-100' )
+    if ( proColor === 'text-gray-100' ) {
+      setProColor( 'text-secondary' )
     } else {
-      setProColor('text-gray-100')
+      setProColor( 'text-gray-100' )
     }
-    if (proDis === 'hidden') {
-      setProdDis('block')
+    if ( proDis === 'hidden' ) {
+      setProdDis( 'block' )
     } else {
-      setProdDis('hidden')
+      setProdDis( 'hidden' )
     }
   }
   const serviceDropdown = () => {
-    setProdDis('hidden')
-    setProColor('text-gray-100')
-    if (serColor === 'text-gray-100') {
-      setSerColor('text-secondary')
+    setProdDis( 'hidden' )
+    setProColor( 'text-gray-100' )
+    if ( serColor === 'text-gray-100' ) {
+      setSerColor( 'text-secondary' )
     } else {
-      setSerColor('text-gray-100')
+      setSerColor( 'text-gray-100' )
     }
-    if (serDis === 'hidden') {
-      setSerDis('block')
+    if ( serDis === 'hidden' ) {
+      setSerDis( 'block' )
     } else {
-      setSerDis('hidden')
+      setSerDis( 'hidden' )
     }
   }
   return (

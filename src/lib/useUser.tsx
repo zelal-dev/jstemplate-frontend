@@ -1,35 +1,37 @@
 /* eslint-disable @typescript-eslint/ban-ts-comment */
+import { deleteCookie, getCookie } from 'cookies-next'
 import { useRouter } from 'next/router'
 import React from 'react'
 import useSWR, { useSWRConfig } from 'swr'
-import { localGet, localRemove } from '../utils/localStorage'
-import fetcher from './api-user'
+import { authAxios } from '../utils/axiosKits'
+// import fetcher from './api-user'
 import { LoaderGrowing } from './loader'
+
+const fetcher = async ( url: string ) => authAxios.get( url ).then( ( res ) => res.data.data )
 
 export const useUser = () => {
 	const { data, error } = useSWR( '/api/user/self', fetcher )
+
 	const { mutate } = useSWRConfig()
 	const loading = !data && !error
-	const loggedIn = localGet( 'jst_u_info' ) !== null
-	const loggedOut = localGet( 'jst_u_info' ) === null ? true : false
-	const localData = localGet( 'jst_u_info' )
+	const loggedIn = getCookie( 'token' ) !== null && data !== null
+	const loggedOut = getCookie( 'token' ) === null ? true : false
 
 	// auto logout if token is expired or not found in localStorage
 	if ( error && error?.response?.status === 401 ) {
-		localRemove( 'jst_u_info' )
-		mutate( '/api/user/self' )
+		deleteCookie( 'token' )
+		mutate( '/api/user/self', null, false )
 	}
 
-	React.useEffect( () => {
-		if ( localData ) {
-			const time = new Date( localData.expires_in ).getTime()
-			const now = new Date().getTime()
-			if ( time < now ) {
-				localRemove( 'jst_u_info' )
-				mutate( '/api/user/self' )
-			}
-		}
-	}, [ localData, mutate ] )
+	// React.useEffect( () => {
+	//  if ( token ) {
+
+	//    if ( time < now ) {
+	//      localRemove( 'jst_u_info' )
+	//      mutate( '/api/user/self' )
+	//    }
+	//  }
+	// }, [localData, mutate] )
 
 	// @ts-ignore
 	const isAdmin = data?.data?.role?.isAdmin
@@ -45,7 +47,7 @@ export const useUser = () => {
 		loggedIn,
 		loggedOut,
 		//  @ts-ignore
-		user: data?.user,
+		user: data,
 		mutate,
 		isAdmin,
 		isConfirmed,
@@ -62,7 +64,7 @@ export const UserNotLogin = () => {
 		if ( loggedOut ) {
 			router.push( '/' )
 		}
-	}, [ loggedOut, router ] )
+	}, [loggedOut, router] )
 
 	return <LoaderGrowing />
 }
@@ -75,7 +77,7 @@ export const UserGoBack = () => {
 		if ( loggedIn ) {
 			router.back()
 		}
-	}, [ loggedIn, router ] )
+	}, [loggedIn, router] )
 
 	return <LoaderGrowing />
 }
@@ -88,7 +90,7 @@ export const UserLogin = () => {
 		if ( loggedIn ) {
 			router.push( '/dashboard' )
 		}
-	}, [ loggedIn, router ] )
+	}, [loggedIn, router] )
 
 	return <LoaderGrowing />
 }

@@ -1,27 +1,22 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
+import { getCookie } from 'cookies-next'
+import useSWR from 'swr'
 import { authAxios } from '../utils/axiosKits'
-
-authAxios.interceptors.request.use( ( config: any ) => {
-	const localData: any = localStorage.getItem( 'jst_u_info' )
-	const token = JSON.parse( localData )
-	config.headers.Authorization = `Bearer ${token}`
-	return config
-} )
 
 export default async function fetcher () {
 	//sleep 400ms
 	await new Promise( ( resolve ) => setTimeout( resolve, 400 ) )
 
-	const localData = localStorage.getItem( 'jst_u_info' )
+	const token = getCookie( 'token' )
 
-
-	if ( localData ) {
+	if ( token ) {
 		// user logged in fetch user data
-
-		const { data } = await authAxios.get( '/api/user/self' )
-
+		const { data } = useSWR( '/api/user/self', ( url: string ) => authAxios.get( url ).then(
+			( res ) => res.data
+		) )
+		console.log( "data", data )
 		return {
-			user: data.data,
+			user: data,
 		}
 	} else {
 		return {

@@ -1,8 +1,8 @@
-/* eslint-disable jsx-a11y/aria-props */
-export const Loader = ({ bg }) => {
+
+export const Loader = ({bg}) => {
   return (
     <div id="preloader" className={bg ? bg : `bg-white`}>
-      <div className={`sk-three-bounce ${bg ? bg : `bg-white`}`}>
+      <div className={`sk-three-bounce ${ bg ? bg : `bg-white` }`}>
         <div className="sk-child sk-bounce1"></div>
         <div className="sk-child sk-bounce2"></div>
         <div className="sk-child sk-bounce3"></div>
@@ -12,7 +12,7 @@ export const Loader = ({ bg }) => {
 };
 
 export const LoaderGrowing = () => {
-  const itemLength = ["1", "2", "3", "4", "5"];
+  const itemLength = [ "1", "2", "3", "4", "5" ];
   return (
     <div className="absolute inset-0 z-40 flex items-center justify-center bg-[#ffffffd0]">
       <div className={`lds-ring`} aria-role="none">
@@ -24,10 +24,10 @@ export const LoaderGrowing = () => {
   );
 };
 
-export const FormLoader = ({ color }) => {
+export const FormLoader = ({color}) => {
   return (
     <svg
-      className={`ml-2 h-5 w-5 animate-spin ${color ? color : "text-blueTwo"}`}
+      className={`ml-2 h-5 w-5 animate-spin ${ color ? color : "text-blueTwo" }`}
       xmlns="http://www.w3.org/2000/svg"
       fill="none"
       viewBox="0 0 24 24"

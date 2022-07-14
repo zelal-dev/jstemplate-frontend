@@ -1,10 +1,11 @@
-import { useEffect, useState } from 'react'
+import { useState } from 'react'
 import { SubmitHandler, useForm } from 'react-hook-form'
 import { useToasts } from 'react-toast-notifications'
 import { useSWRConfig } from 'swr'
 import PopupModule from '../../components/PopupModal'
-import { Axios } from '../../utils/axiosKits'
-import { localGet, localSave } from './../../utils/localStorage'
+import { authAxios } from '../../utils/axiosKits'
+
+const fetcher = async ( url: string ) => authAxios.get( url ).then( ( res ) => res.data )
 
 type Inputs = {
 	email: string
@@ -37,15 +38,15 @@ const Login = ( {
 	const { mutate } = useSWRConfig()
 	const { addToast } = useToasts()
 
-	useEffect( () => {
-		const local = localGet( 'jst_u_info' )
-		if ( local ) {
-			const { email, password } = local
-			setValue( 'email', email )
-			setValue( 'password', password )
-			setValue( 'remember', true )
-		}
-	}, [setValue] )
+	// useEffect( () => {
+	//  const token = getCookie('token')
+	//  if ( token ) {
+	//    const { email, password } = localGet('jst_u_info')
+	//    setValue( 'email', email )
+	//    setValue( 'password', password )
+	//    setValue( 'remember', true )
+	//  }
+	// }, [setValue] )
 
 	const onSubmit: SubmitHandler<Inputs> = async ( data ) => {
 		setLoading( true )
@@ -54,19 +55,17 @@ const Login = ( {
 		// Show a toast message
 		// use try catch to handle the error
 		try {
-			const response = await Axios.post(
-				`/api/user/login`,
-				{
-					username: data.email,
-					password: data.password,
-				}
-			)
-			const token = response.data.data.data.token || ''
-			localSave( 'jst_u_info', {
-				token,
-				userId: response.data.data.data.id,
+
+			// call login api with user email and password
+			await authAxios.post( '/api/user/login', {
+				username: data.email,
+				password: data.password,
 			} )
-			mutate( 'api/user/self', null, false )
+
+			// mutate the user data instantly
+			mutate( '/api/user/self', null, false )
+
+
 			addToast( 'Login Successful', {
 				appearance: 'success',
 				autoDismiss: true,

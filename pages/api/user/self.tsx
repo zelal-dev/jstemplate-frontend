@@ -1,5 +1,5 @@
 import axios from 'axios'
-import { getCookie } from 'cookies-next'
+import { getCookies } from 'cookies-next'
 import { NextApiRequest, NextApiResponse } from 'next'
 
 
@@ -9,7 +9,7 @@ export default async function ( req: NextApiRequest, res: NextApiResponse ) {
 		return res.status( 400 ).json( { message: 'You are not allowed' } )
 
 	// get token from cookie
-	const returnToken = getCookie( 'token', {
+	const { token } = getCookies( {
 		req, res
 	} )
 	try {
@@ -20,7 +20,7 @@ export default async function ( req: NextApiRequest, res: NextApiResponse ) {
 			{
 				headers: {
 					'Content-Type': 'application/json',
-					Authorization: `Bearer ${returnToken}`,
+					Authorization: `Bearer ${token}`,
 				},
 			}
 		)
@@ -28,7 +28,7 @@ export default async function ( req: NextApiRequest, res: NextApiResponse ) {
 
 		// return response
 		return res.status( 200 ).send( {
-			message: 'Successfully logged in',
+			message: 'Successfully fetched user',
 			data
 		} )
 	} catch ( error: any ) {

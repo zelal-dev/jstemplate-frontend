@@ -18,6 +18,8 @@ type Inputs = {
 
 const AccountsSettings = () => {
   const { loggedIn, user } = useUser()
+
+  console.log( 'user logged in ?', loggedIn, user )
   const {
     register,
     handleSubmit,

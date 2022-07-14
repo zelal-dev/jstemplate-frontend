@@ -21,7 +21,6 @@ export default async function ( req: NextApiRequest, res: NextApiResponse ) {
         },
       }
     )
-
     // extract the token from data
     const { token } = data.data
 
@@ -32,12 +31,11 @@ export default async function ( req: NextApiRequest, res: NextApiResponse ) {
     // return response
     return res.status( 200 ).send( {
       message: 'Successfully logged in',
-      data,
     } )
   } catch ( error: any ) {
     return res.status( 500 ).send( {
       message: 'Login failed',
-      data: error.response.data,
+
     } )
   }
 }
