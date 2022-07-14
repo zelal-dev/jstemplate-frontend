@@ -176,7 +176,7 @@ const DefaultNavbar = () => {
       </div>
       <div className="sm:flex items-center hidden">
         {/* cart icon hidden */}
-        <Link href="#">
+        <Link href="/cart">
           <a className=" mr-10 w-10 h-10 grid justify-center items-center rounded-md bg-gradient-to-br from-orangeOne to-orangeTwo shadow-4xl cursor-pointer">
             <FaShoppingCart className="text-white text-xl" />
           </a>
