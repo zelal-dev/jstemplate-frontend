@@ -1,4 +1,3 @@
-import React from "react";
 import { FaUser } from "react-icons/fa";
 import Footer from "../../src/components/Footer";
 import Navbar from "../../src/components/Navbar";
@@ -8,9 +7,7 @@ import Get from "../../src/Sections/Servicepage/Get";
 import Header from "../../src/Sections/Servicepage/Header";
 import Heading from "../../src/Sections/Servicepage/Heading";
 import Hire from "../../src/Sections/Servicepage/Hire";
-import Products from "../../src/Sections/Servicepage/Products";
 import Promise from "../../src/Sections/Servicepage/Promise";
-import Question from "../../src/Sections/Servicepage/Question";
 import Works from "../../src/Sections/Servicepage/Works";
 
 // page primary colors
