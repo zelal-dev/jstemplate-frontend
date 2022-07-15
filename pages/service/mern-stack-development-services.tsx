@@ -1,17 +1,19 @@
-import React from 'react'
+import parse from 'html-react-parser'
+import { GetStaticProps } from 'next'
+import Head from 'next/head'
 import { FaUser } from 'react-icons/fa'
+import useSWR from 'swr'
 import Footer from '../../src/components/Footer'
 import Navbar from '../../src/components/Navbar'
-import Testimonials from '../../src/Sections/Homepage/Testimonials'
 import ChooseUs from '../../src/Sections/Servicepage/ChooseUs'
 import Get from '../../src/Sections/Servicepage/Get'
 import Header from '../../src/Sections/Servicepage/Header'
 import Heading from '../../src/Sections/Servicepage/Heading'
 import Hire from '../../src/Sections/Servicepage/Hire'
 import Promise from '../../src/Sections/Servicepage/Promise'
-import Question from '../../src/Sections/Servicepage/Question'
 import Works from '../../src/Sections/Servicepage/Works'
-import Products from '../admin-dashboard/products'
+import { seoFetcher, seoPageFetcher } from '../../src/utils/fetcher'
+
 
 // page primary colors
 const colors = {
@@ -228,36 +230,65 @@ const data = {
   },
 }
 
-const ServicePage = () => {
+const ServicePage = ( { seoData }: { seoData: any } ) => {
+  const slug = 'mern-stack-development-services'
+
+  const { data: seoSWRData } = useSWR( `/wp-json/rankmath/v1/getHead?url=${process.env.NEXT_PUBLIC_API_ENDPOINT}/${slug}`, seoFetcher, {
+    fallbackData: seoData
+  } )
+
+  const head = parse( seoSWRData.head )
+
+
   return (
-    <div className="">
-      <div
-        className={`sm:bg-[url('/serviceHeadBg.svg')] bg-no-repeat bg-cover ${colors.bgPrimary}`}
-      >
-        <Navbar.ServiceNavbar />
-        <Header colors={colors} data={data.heading} />
+    <>
+      <Head>
+        <title>MERN Stack Development Services by JS Template Team </title>
+        {head}
+      </Head>
+      <div className="">
+        <div
+          className={`sm:bg-[url('/serviceHeadBg.svg')] bg-no-repeat bg-cover ${colors.bgPrimary}`}
+        >
+          <Navbar.ServiceNavbar />
+          <Header colors={colors} data={data.heading} />
+        </div>
+        <ChooseUs colors={colors} data={data.whyChooseUs} />
+        <Promise colors={colors} data={data.ourPromise} />
+
+        <Works colors={colors} data={data.howItWork} />
+
+        <Get colors={colors} data={data.whatYouGet} />
+        <Heading colors={colors} data={data.productFeature} />
+        {/* <Products /> */}
+        {/* <Question /> */}
+        <Hire colors={colors} data={data.hire} />
+        {/* <Testimonials /> */}
+        <Footer
+          boxToColor="greenDark"
+          boxFromColor="greenLight"
+          shadowBox="green"
+          buttonToColor="greenDark"
+          buttonFromColor="greenLight"
+          shadowButton="green"
+        />
       </div>
-      <ChooseUs colors={colors} data={data.whyChooseUs} />
-      <Promise colors={colors} data={data.ourPromise} />
-
-      <Works colors={colors} data={data.howItWork} />
-
-      <Get colors={colors} data={data.whatYouGet} />
-      <Heading colors={colors} data={data.productFeature} />
-      {/* <Products /> */}
-      {/* <Question /> */}
-      <Hire colors={colors} data={data.hire} />
-      {/* <Testimonials /> */}
-      <Footer
-        boxToColor="greenDark"
-        boxFromColor="greenLight"
-        shadowBox="green"
-        buttonToColor="greenDark"
-        buttonFromColor="greenLight"
-        shadowButton="green"
-      />
-    </div>
+    </>
   )
 }
 
 export default ServicePage
+
+export const getStaticProps: GetStaticProps = async () => {
+  //slug
+  const slug = 'mern-stack-development-services'
+
+  const seoData = await seoPageFetcher( slug )
+  console.log( "seoData", seoData )
+  return {
+    props: {
+
+      seoData: seoData ?? {}
+    },
+  }
+}
