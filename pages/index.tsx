@@ -11,16 +11,12 @@ import Customer from '../src/Sections/Homepage/Customer'
 import Header from '../src/Sections/Homepage/Header'
 import KnowUs from '../src/Sections/Homepage/KnowUs'
 import Solution from '../src/Sections/Homepage/Solution'
-import { Axios, SeoAxios } from '../src/utils/axiosKits'
+import { fetcher, seoFetcher } from '../src/utils/fetcher'
 import { Woocommerce } from '../src/utils/woocommerce'
 import { ProductDocument } from './shop'
 
-
-const fetcher = ( url: string ) => Axios( url ).then( ( res ) => res.data.data )
-
-const seoFetcher = ( url: string ) => SeoAxios( url ).then( ( res ) => res.data )
-
-const Homepage = ( { productData, seoData }: { productData: ProductDocument, seoData: any } ) => {
+const Homepage = ( { productData, seoData }: { productData: ProductDocument, seoData: any } ) =>
+{
 
 	// fetch data using SWR
 	const { data } = useSWR( '/api/products/retrives' as string, fetcher, {
@@ -67,8 +63,8 @@ const Homepage = ( { productData, seoData }: { productData: ProductDocument, seo
 
 export default Homepage
 
-export const getStaticProps: GetStaticProps = async ( context ) => {
-
+export const getStaticProps: GetStaticProps = async ( context ) =>
+{
 
 	const data = await Woocommerce.get( 'products', {
 		per_page: 6,
@@ -76,7 +72,8 @@ export const getStaticProps: GetStaticProps = async ( context ) => {
 		featured: true,
 	} ).then( ( res ) => res.data )
 
-	const filteredData = data.map( ( item: any ) => {
+	const filteredData = data.map( ( item: any ) =>
+	{
 		return {
 			id: item.id,
 			name: item.name,
@@ -87,7 +84,8 @@ export const getStaticProps: GetStaticProps = async ( context ) => {
 			price: item.price,
 			regular_price: item.regular_price,
 			sale_price: item.sale_price,
-			categories: item.categories.map( ( category: any ) => {
+			categories: item.categories.map( ( category: any ) =>
+			{
 				return {
 					id: category.id,
 					name: category.name,
