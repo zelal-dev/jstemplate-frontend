@@ -1,3 +1,5 @@
+import parse from 'html-react-parser'
+import Head from 'next/head'
 import { useRouter } from 'next/router'
 import useSWR from 'swr'
 import Footer from '../../src/components/Footer'
@@ -5,9 +7,8 @@ import Navbar from '../../src/components/Navbar'
 import Header from '../../src/Sections/ProductSinglePage2/Header'
 import Products from '../../src/Sections/ProductSinglePage2/Products'
 import Testimonials from '../../src/Sections/ProductSinglePage2/Testimonials'
-import { Axios } from '../../src/utils/axiosKits'
+import { fetcher, seoFetcher } from '../../src/utils/fetcher'
 import { Woocommerce } from '../../src/utils/woocommerce'
-
 // page primary colors
 const colors = {
   textPrimary: 'text-[#250dae]',
@@ -34,20 +35,30 @@ const data = {
   tags: ['React', 'NextJS'],
 }
 
-const fetcher = async ( url: string ) => Axios( url ).then( ( res ) => res.data )
 
-const ProductSinglePage2 = ( props: any ) => {
+
+const ProductSinglePage2 = ( { foreignData, seoData }: { foreignData: any, seoData: any } ) => {
 
   const router = useRouter()
 
   const { slug } = router.query
 
-  const { data: swrData, error: swrError } = useSWR( `/api/products/${slug}`, fetcher, {
-    fallbackData: props.foreignData
+  const { data: swrData } = useSWR( `/api/products/${slug}`, fetcher, {
+    fallbackData: foreignData
   } as any )
+
+  const { data: seoSWRData } = useSWR( `/wp-json/rankmath/v1/getHead?url=${process.env.NEXT_PUBLIC_API_ENDPOINT}/item/${slug}`, seoFetcher, {
+    fallbackData: seoData
+  } )
+
+  const head = parse( seoSWRData.head )
 
   return (
     <>
+      <Head>
+        <title>JS Template- Top of Javascript Templates and Themes </title>
+        {head}
+      </Head>
       <div className="bg-[#E5E5E5]">
         <div
           className={`lg:bg-[url("/products/heading.svg")] bg-no-repeat bg-cover ${colors.bgPrimary}`}
@@ -116,6 +127,8 @@ export const getStaticProps = async ( ctx: any ) => {
     slug,
   } )
 
+  const seoData = await fetch( `${process.env.NEXT_PUBLIC_API_ENDPOINT}/wp-json/rankmath/v1/getHead?url=${process.env.NEXT_PUBLIC_API_ENDPOINT}/item/${slug}` ).then( ( res ) => res.json() )
+
   // only return few fields
   const filteredData = data.map( ( item: any ) => {
     return {
@@ -143,10 +156,13 @@ export const getStaticProps = async ( ctx: any ) => {
   } )
   const finalData =
     filteredData.length >= 1 ? Object.assign( filteredData[0], {} ) : null
+  // fetch seo data from wp rankmath plugin
+
 
   return {
     props: {
       foreignData: finalData,
+      seoData,
     },
   }
 }
