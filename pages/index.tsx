@@ -35,7 +35,8 @@ const Homepage = ( { productData, seoData }: { productData: ProductDocument, seo
 			<Head>
 				{/* get the attibute from response and print it head tag */}
 				<title>Home Page</title>
-				{seoSWRData.head}
+				{seoSWRData.head ? seoSWRData.head : <meta name="description" content="" />}
+				<meta name="keywords" content="Test" />
 			</Head>
 			<section className="">
 				<div className="bg-backgroundGray">
