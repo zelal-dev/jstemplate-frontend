@@ -386,7 +386,7 @@ export const getStaticProps = async () => {
 			on_sale: item.on_sale,
 		}
 	} )
-	console.log( 'filteredData', filteredData )
+
 	const finalData =
 		filteredData.length >= 1 ? Object.assign( filteredData[0], {} ) : null
 

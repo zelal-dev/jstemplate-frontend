@@ -7,8 +7,6 @@ export default async function ( req: NextApiRequest, res: NextApiResponse ) {
 
 	// extract slug from url
 	const { slug } = req.query
-
-
 	// allow only get request for this endpoint
 	if ( req.method !== 'GET' )
 		return res.status( 400 ).json( { message: 'Method not allowed' } )
@@ -51,7 +49,7 @@ export default async function ( req: NextApiRequest, res: NextApiResponse ) {
 			data: finalData,
 		} )
 	} catch ( error: any ) {
-		console.log( "error", error )
+
 		return res.status( 500 ).send( { message: error } )
 	}
 }

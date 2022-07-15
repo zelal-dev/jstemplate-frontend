@@ -7,9 +7,6 @@ import Navbar from './../../src/components/Navbar'
 
 const Dashboard = () => {
   const { loggedIn, user } = useUser()
-
-  console.log( "logged in ", loggedIn, "user", user )
-
   if ( !user && !loggedIn ) {
     return <UserNotLogin />
   }

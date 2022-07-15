@@ -14,7 +14,7 @@ export default async function fetcher () {
 		const { data } = useSWR( '/api/user/self', ( url: string ) => authAxios.get( url ).then(
 			( res ) => res.data
 		) )
-		console.log( "data", data )
+
 		return {
 			user: data,
 		}

@@ -42,8 +42,6 @@ const ProductSinglePage2 = ( props: any ) => {
 
   const { slug } = router.query
 
-  console.log( 'slug', slug )
-
   const { data: swrData, error: swrError } = useSWR( `/api/products/${slug}`, fetcher, {
     fallbackData: props.foreignData
   } as any )

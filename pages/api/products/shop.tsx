@@ -11,7 +11,7 @@ export default async function ( req: NextApiRequest, res: NextApiResponse ) {
 	} )
 		.then( ( res ) => res.data )
 		.catch( ( err ) => err.response.data )
-	console.log( data )
+
 
 	const filteredData = data.map( ( item: any ) => {
 		return {

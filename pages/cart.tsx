@@ -11,7 +11,7 @@ const Cart = () => {
   const { data: cartData, error: cartError } = useSWR( '/api/cart/getCart' as string, fetcher, {
     fallbackData: []
   } as any )
-  console.log( "cart Data", cartData, "cartError", cartError )
+
   return (
     <div className="bg-[#e2f0fe] pb-12">
       <div className="header-part">

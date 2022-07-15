@@ -1,6 +1,7 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
+
 import { GetStaticProps } from 'next'
-import { NextSeo } from 'next-seo'
+import Head from 'next/head'
 import useSWR from 'swr'
 import Footer from '../src/components/Footer'
 import Navbar from '../src/components/Navbar'
@@ -9,26 +10,33 @@ import Customer from '../src/Sections/Homepage/Customer'
 import Header from '../src/Sections/Homepage/Header'
 import KnowUs from '../src/Sections/Homepage/KnowUs'
 import Solution from '../src/Sections/Homepage/Solution'
-import { Axios } from '../src/utils/axiosKits'
+import { Axios, SeoAxios } from '../src/utils/axiosKits'
 import { Woocommerce } from '../src/utils/woocommerce'
 import { ProductDocument } from './shop'
 
 
 const fetcher = ( url: string ) => Axios( url ).then( ( res ) => res.data.data )
-const Homepage = ( { productData }: { productData: ProductDocument } ) => {
+
+const seoFetcher = ( url: string ) => SeoAxios( url ).then( ( res ) => res.data )
+
+const Homepage = ( { productData, seoData }: { productData: ProductDocument, seoData: any } ) => {
+
 	// fetch data using SWR
 	const { data } = useSWR( '/api/products/retrives' as string, fetcher, {
 		fallbackData: productData
 	} as any )
 
+	const { data: seoSWRData, error: seoError } = useSWR( `/wp-json/rankmath/v1/getHead?url=${process.env.NEXT_PUBLIC_API_ENDPOINT}`, seoFetcher, {
+		fallbackData: seoData
+	} )
+
 	return (
 		<>
-			{/* <NextSeo
-        titleTemplate="JS Template - %s "
-        title="Top of MERN Stack, React.js, Headless CMS, Frontity Themes"
-        description="Buy Ready-Made JS Template Web Solution, Grow Your Business Faster. We developed best MERN Stack, Headless CMS, Tailwind CSS Themes, templates for your next project."
-      /> */}
-			<NextSeo noindex={true} />
+			<Head>
+				{/* get the attibute from response and print it head tag */}
+				<title>Home Page</title>
+				{seoSWRData.head}
+			</Head>
 			<section className="">
 				<div className="bg-backgroundGray">
 					<div className="header-part">
@@ -56,7 +64,9 @@ const Homepage = ( { productData }: { productData: ProductDocument } ) => {
 
 export default Homepage
 
-export const getStaticProps: GetStaticProps = async () => {
+export const getStaticProps: GetStaticProps = async ( context ) => {
+
+
 	const data = await Woocommerce.get( 'products', {
 		per_page: 6,
 		status: 'publish',
@@ -84,9 +94,13 @@ export const getStaticProps: GetStaticProps = async () => {
 		}
 	} )
 
+	// fetch seo data from wp rankmath plugin
+	const seoData = await fetch( `${process.env.API_ENDPOINT}/wp-json/rankmath/v1/getHead?url=${process.env.API_ENDPOINT}` ).then( ( res ) => res.json() )
+
 	return {
 		props: {
 			productData: filteredData ?? [],
+			seoData: seoData ?? {}
 		},
 	}
 }

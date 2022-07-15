@@ -31,6 +31,7 @@ export default async function ( req: NextApiRequest, res: NextApiResponse ) {
     // return response
     return res.status( 200 ).send( {
       message: 'Successfully logged in',
+      token
     } )
   } catch ( error: any ) {
     return res.status( 500 ).send( {
