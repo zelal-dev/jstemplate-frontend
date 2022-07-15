@@ -1,5 +1,6 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 
+import parse from 'html-react-parser'
 import { GetStaticProps } from 'next'
 import Head from 'next/head'
 import useSWR from 'swr'
@@ -30,14 +31,15 @@ const Homepage = ( { productData, seoData }: { productData: ProductDocument, seo
 		fallbackData: seoData
 	} )
 
+	const head = parse( seoSWRData.head )
+
 	return (
 		<>
 			<Head>
-				{/* get the attibute from response and print it head tag */}
-				<title>Home Page</title>
-				{/* {seoSWRData.head ? seoSWRData.head : <meta name="description" content="" />} */}
-
+				<title>JS Template- Top of Javascript Templates and Themes </title>
+				{head}
 			</Head>
+
 			<section className="">
 				<div className="bg-backgroundGray">
 					<div className="header-part">
@@ -96,7 +98,7 @@ export const getStaticProps: GetStaticProps = async ( context ) => {
 	} )
 
 	// fetch seo data from wp rankmath plugin
-	const seoData = await fetch( `${process.env.API_ENDPOINT}/wp-json/rankmath/v1/getHead?url=${process.env.API_ENDPOINT}` ).then( ( res ) => res.json() )
+	const seoData = await fetch( `${process.env.NEXT_PUBLIC_API_ENDPOINT}/wp-json/rankmath/v1/getHead?url=${process.env.NEXT_PUBLIC_API_ENDPOINT}` ).then( ( res ) => res.json() )
 
 	return {
 		props: {
