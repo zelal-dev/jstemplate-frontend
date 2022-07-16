@@ -1,4 +1,5 @@
 import parse from 'html-react-parser'
+import { GetStaticPaths } from 'next'
 import Head from 'next/head'
 import { useRouter } from 'next/router'
 import useSWR from 'swr'
@@ -51,14 +52,16 @@ const ProductSinglePage2 = ( { foreignData, seoData }: { foreignData: any, seoDa
     fallbackData: seoData
   } )
 
-  const head = parse( seoSWRData.head )
+  const head = parse( seoSWRData.head ) || ''
 
   return (
     <>
-      <Head>
-        <title>JS Template- Top of Javascript Templates and Themes </title>
-        {head}
-      </Head>
+      {seoSWRData && (
+        <Head>
+          <title>JS Template- Top of Javascript Templates and Themes </title>
+          {head}
+        </Head>
+      )}
       <div className="bg-[#E5E5E5]">
         <div
           className={`lg:bg-[url("/products/heading.svg")] bg-no-repeat bg-cover ${colors.bgPrimary}`}
@@ -89,7 +92,7 @@ const ProductSinglePage2 = ( { foreignData, seoData }: { foreignData: any, seoDa
 export default ProductSinglePage2
 
 // export pages route and excludes some route by getStaticpath
-export const getStaticPaths = async () => {
+export const getStaticPaths: GetStaticPaths = async () => {
   const { data } = await Woocommerce.get( 'products' )
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const paths = data.map( ( product: { slug: any } ) => {
@@ -117,7 +120,8 @@ export const getStaticPaths = async () => {
 
   return {
     paths: filteredPaths,
-    fallback: true,
+    //fallback blocking
+    fallback: 'blocking',
   }
 }
 
@@ -161,8 +165,8 @@ export const getStaticProps = async ( ctx: any ) => {
 
   return {
     props: {
-      foreignData: finalData,
-      seoData,
+      foreignData: finalData ?? [],
+      seoData: seoData ?? {},
     },
   }
 }

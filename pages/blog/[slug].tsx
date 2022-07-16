@@ -10,7 +10,7 @@ import useSWR from 'swr'
 import Thumbnail from '../../src/components/Blog/Thumbnail'
 import FooterWithoutSolution from '../../src/components/FooterWithoutSolution'
 import Navbar from '../../src/components/Navbar'
-import { seoFetcher, singlePostPathFetcher, singlePostseoFetcher } from '../../src/utils/fetcher'
+import { seoFetcher, singlePostPathFetcher, singlePostSeoFetcher } from '../../src/utils/fetcher'
 const fetcher = ( url: any ) => fetch( url ).then( ( r ) => r.json() )
 
 const Details = ( {
@@ -36,7 +36,7 @@ const Details = ( {
   )
   // latestPosts data fetching
   const { data: latestPostsData, error: latestPostsError } = useSWR(
-    `https://api-blog.jstemplate.net/wp-json/wp/v2/posts?per_page=5`,
+    `${process.env.NEXT_PUBLIC_API_ENDPOINT}/wp-json/wp/v2/posts?per_page=5`,
     fetcher,
     {
       fallbackData: latestPosts,
@@ -48,13 +48,16 @@ const Details = ( {
     {
       fallbackData: seoForeignData
     } )
-  const head = parse( seoSwrData.head )
+  const head = parse( seoSwrData.head ) || ''
 
   return (
     <>
-      <Head>
-        {head}
-      </Head>
+      {seoSwrData && (
+        <Head>
+          {head}
+        </Head>
+      )}
+
       <div className="shadow-md">
         <Navbar.SecondaryDefaultNavbar />
       </div>
@@ -352,7 +355,7 @@ export const getStaticPaths = async () => {
   } ) )
   return {
     paths,
-    fallback: true,
+    fallback: 'blocking',
 
   }
 }
@@ -372,13 +375,13 @@ export const getStaticProps: GetStaticProps = async ( ctx: any ) => {
   const latestPosts = await resTwo.json()
 
   // get seo data from the api
-  const seoData = await singlePostseoFetcher( slug )
+  const seoData = await singlePostSeoFetcher( slug )
 
   return {
     props: {
-      singlePostForeignData: data,
-      latestPosts: latestPosts,
-      seoForeignData: seoData,
+      singlePostForeignData: data || {},
+      latestPosts: latestPosts || [],
+      seoForeignData: seoData || {},
     },
   }
 

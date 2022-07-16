@@ -33,7 +33,7 @@ export const singlePostPathFetcher = async () => {
 
 }
 
-export const singlePostseoFetcher = async ( slug: string ) => {
+export const singlePostSeoFetcher = async ( slug: string ) => {
   //  call seo fetcher
   // fetch seo data from wp rankmath plugin
   return await fetch( `${process.env.NEXT_PUBLIC_API_ENDPOINT}/wp-json/rankmath/v1/getHead?url=${process.env.NEXT_PUBLIC_API_ENDPOINT}/post/${slug}` ).then( ( res ) => res.json() )
