@@ -337,9 +337,6 @@ const MetaBlogTheme = ( { seoData, foreignData }: { seoData: any, foreignData: a
 
   const head = parse( seoSWRData.head )
 
-
-  // detructure data from productData
-  const { data } = swrData || {}
   return (
     <>
       <Head>
@@ -352,7 +349,7 @@ const MetaBlogTheme = ( { seoData, foreignData }: { seoData: any, foreignData: a
         >
           <Navbar.SingleProductNavbar />
           <Header
-            data={data}
+            data={swrData}
             icons={localData.buildWith}
             colors={colors}
             livePreview={livePreview}
@@ -360,7 +357,7 @@ const MetaBlogTheme = ( { seoData, foreignData }: { seoData: any, foreignData: a
         </div>
         <MangeWebsite colors={colors} data={localData.manageWebsite} />
         <SimpleTitleThird colors={colors} data={localData.sampleInfo} />
-        <Heading data={data} info={localData.preSale} colors={colors} />
+        <Heading data={swrData} info={localData.preSale} colors={colors} />
         <Hire colors={colors} />
         <Testimonials />
         <Footer

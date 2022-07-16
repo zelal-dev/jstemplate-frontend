@@ -327,8 +327,6 @@ const MernStackAdsTheme = ( { seoData, foreignData }: { seoData: any, foreignDat
       fallbackData: foreignData,
     } as any
   )
-  // detructure data from productData
-  const { data } = swrData || {}
 
   const { data: seoSWRData } = useSWR( `/wp-json/rankmath/v1/getHead?url=${process.env.NEXT_PUBLIC_API_ENDPOINT}/item/${slug}`, seoFetcher, {
     fallbackData: seoData
@@ -347,11 +345,11 @@ const MernStackAdsTheme = ( { seoData, foreignData }: { seoData: any, foreignDat
           className={`sm:bg-[url('/products/heading-one.svg')] bg-no-repeat bg-cover ${colors.bgPrimary}`}
         >
           <Navbar.SingleProductNavbar />
-          <Header data={data} icons={localData.buildWith} colors={colors} />
+          <Header data={swrData} icons={localData.buildWith} colors={colors} />
         </div>
         <MangeWebsite colors={colors} data={localData.manageWebsite} />
         <SimpleTitleThird colors={colors} data={localData.sampleInfo} />
-        <Heading data={data} info={localData.preSale} colors={colors} />
+        <Heading data={swrData} info={localData.preSale} colors={colors} />
         <Hire colors={colors} />
         <Testimonials />
         <Footer

@@ -336,8 +336,7 @@ const JamunaTheme = ( { seoData, foreignData }: { seoData: any, foreignData: any
 	} )
 
 	const head = parse( seoSWRData.head )
-	// detructure data from productData
-	const { data } = swrData || {}
+
 	return (
 		<>
 			<Head>
@@ -349,7 +348,7 @@ const JamunaTheme = ( { seoData, foreignData }: { seoData: any, foreignData: any
 					className={`sm:bg-[url('/products/heading-one.svg')] bg-no-repeat bg-cover ${colors.bgPrimary}`}>
 					<Navbar.SingleProductNavbar />
 					<Header
-						data={data}
+						data={swrData}
 						icons={localData.buildWith}
 						colors={colors}
 						livePreview={livePreview}
@@ -357,7 +356,7 @@ const JamunaTheme = ( { seoData, foreignData }: { seoData: any, foreignData: any
 				</div>
 				<MangeWebsite colors={colors} data={localData.manageWebsite} />
 				<SimpleTitleThird colors={colors} data={localData.sampleInfo} />
-				<Heading data={data} info={localData.preSale} colors={colors} />
+				<Heading data={swrData} info={localData.preSale} colors={colors} />
 				<Hire colors={colors} />
 				<Testimonials />
 				<Footer

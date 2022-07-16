@@ -355,7 +355,7 @@ export const getStaticPaths = async () => {
   } ) )
   return {
     paths,
-    fallback: 'blocking',
+    fallback: false,
 
   }
 }
@@ -368,6 +368,8 @@ export const getStaticProps: GetStaticProps = async ( ctx: any ) => {
     `${process.env.API_ENDPOINT}/wp-json/wp/v2/posts?slug=${slug}`
   )
   const data = await res.json()
+
+
 
   const resTwo = await fetch(
     `${process.env.API_ENDPOINT}/wp-json/wp/v2/posts?per_page=5`

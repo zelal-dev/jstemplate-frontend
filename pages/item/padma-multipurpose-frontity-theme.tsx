@@ -330,9 +330,6 @@ const PadmaTheme = ( { seoData, foreignData }: { seoData: any, foreignData: any 
       fallbackData: foreignData,
     } as any
   )
-  // detructure data from productData
-  const { data } = swrData || {}
-
 
   const { data: seoSWRData } = useSWR( `/wp-json/rankmath/v1/getHead?url=${process.env.NEXT_PUBLIC_API_ENDPOINT}/item/${slug}`, seoFetcher, {
     fallbackData: seoData
@@ -351,7 +348,7 @@ const PadmaTheme = ( { seoData, foreignData }: { seoData: any, foreignData: any 
         >
           <Navbar.SingleProductNavbar />
           <Header
-            data={data}
+            data={swrData}
             icons={localData.buildWith}
             colors={colors}
             livePreview={livePreview}
@@ -359,7 +356,7 @@ const PadmaTheme = ( { seoData, foreignData }: { seoData: any, foreignData: any 
         </div>
         <MangeWebsite colors={colors} data={localData.manageWebsite} />
         <SimpleTitleThird colors={colors} data={localData.sampleInfo} />
-        <Heading data={data} info={localData.preSale} colors={colors} />
+        <Heading data={swrData} info={localData.preSale} colors={colors} />
         <Hire colors={colors} />
         <Testimonials />
         <Footer

@@ -44,6 +44,8 @@ const ProductSinglePage2 = ( { foreignData, seoData }: { foreignData: any, seoDa
 
   const { slug } = router.query
 
+  console.log( "Foreign Data", foreignData )
+
   const { data: swrData } = useSWR( `/api/products/${slug}`, fetcher, {
     fallbackData: foreignData
   } as any )
@@ -51,6 +53,8 @@ const ProductSinglePage2 = ( { foreignData, seoData }: { foreignData: any, seoDa
   const { data: seoSWRData } = useSWR( `/wp-json/rankmath/v1/getHead?url=${process.env.NEXT_PUBLIC_API_ENDPOINT}/item/${slug}`, seoFetcher, {
     fallbackData: seoData
   } )
+
+  console.log( "Foreign Data", swrData )
 
   const head = parse( seoSWRData.head ) || ''
 
@@ -67,11 +71,11 @@ const ProductSinglePage2 = ( { foreignData, seoData }: { foreignData: any, seoDa
           className={`lg:bg-[url("/products/heading.svg")] bg-no-repeat bg-cover ${colors.bgPrimary}`}
         >
           <Navbar.SingleProductNavbar />
-          <Header data={swrData?.data} />
+          <Header data={swrData} />
         </div>
-        <Products data={swrData?.data} info={data} colors={colors}>
+        <Products data={swrData} info={data} colors={colors}>
           <div
-            dangerouslySetInnerHTML={{ __html: swrData?.data?.description }}
+            dangerouslySetInnerHTML={{ __html: swrData.description }}
           />
         </Products>
         {/* <RelatedProduct data={undefined} /> */}
@@ -121,7 +125,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
   return {
     paths: filteredPaths,
     //fallback blocking
-    fallback: 'blocking',
+    fallback: false,
   }
 }
 
@@ -130,6 +134,7 @@ export const getStaticProps = async ( ctx: any ) => {
   const { data } = await Woocommerce.get( 'products', {
     slug,
   } )
+
 
   const seoData = await productSeoFetcher( slug )
 
@@ -165,8 +170,9 @@ export const getStaticProps = async ( ctx: any ) => {
 
   return {
     props: {
-      foreignData: finalData ?? [],
+      foreignData: finalData ?? {},
       seoData: seoData ?? {},
     },
+
   }
 }

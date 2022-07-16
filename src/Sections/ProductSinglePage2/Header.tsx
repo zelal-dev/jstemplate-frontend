@@ -1,6 +1,8 @@
 
 const Header = ( { data }: { data: any } ) => {
 
+  console.log( "Header Data", data )
+
   return (
     <div className="xl:pt-32 lg:pt-28 md:pt-24 sm:pt-20 pt-16 xl:pb-[21.5rem] lg:pb-80 md:pb-72 sm:pb-60 pb-52 flex flex-col items-center">
       {data && (
