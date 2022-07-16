@@ -142,20 +142,25 @@ const SecondaryDefaultNavbar = () => {
         </a>
       </Link>
       <div className="sm:flex items-center hidden">
+        <Link href="/">
+          <a className=" lg:text-base sm:text-sm text-gray-700 cursor-pointer mx-3">
+            Home
+          </a>
+        </Link>
         <div
           onClick={productDropdown}
-          className={`flex items-center lg:text-base sm:text-sm ease-in duration-200 ${proColor} cursor-pointer`}
+          className={`flex items-center lg:text-base sm:text-sm ease-in duration-200 ${proColor} cursor-pointer mx-6`}
         >
           <span className="mr-3">Products</span>
           <IoIosArrowDown />
         </div>
-        <div
+        {/* <div
           onClick={serviceDropdown}
           className={`mx-7 flex items-center lg:text-base sm:text-sm ease-in duration-200 ${serColor} cursor-pointer`}
         >
           <span className="mr-3">Service</span>
           <IoIosArrowDown />
-        </div>
+        </div> */}
         <Link href="/resources">
           <a className=" lg:text-base sm:text-sm text-gray-700 cursor-pointer">
             Resources

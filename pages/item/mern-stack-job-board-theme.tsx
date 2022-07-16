@@ -1,3 +1,5 @@
+import parse from 'html-react-parser'
+import Head from 'next/head'
 import { FaHourglassHalf, FaNodeJs, FaReact } from 'react-icons/fa'
 import { MdHeadsetMic } from 'react-icons/md'
 import { RiUserFill } from 'react-icons/ri'
@@ -12,9 +14,8 @@ import MangeWebsite from '../../src/Sections/PreSalePage/ManageWebsite'
 import Header from '../../src/Sections/ProductSinglePage/Header'
 import Heading from '../../src/Sections/ProductSinglePage/Heading'
 import SimpleTitleThird from '../../src/Sections/ProductSinglePage/SimpleTitleThird'
-import { Axios } from '../../src/utils/axiosKits'
+import { fetcher, productSeoFetcher, seoFetcher } from '../../src/utils/fetcher'
 import { Woocommerce } from '../../src/utils/woocommerce'
-
 // page primary colors
 const colors = {
   textPrimary: 'text-[#209805]',
@@ -318,46 +319,58 @@ const localData = {
     },
   },
 }
-const fetcher = ( url: string ) => Axios( url ).then( ( res: any ) => res.data ) as any
-const MernStackDirectoryListingTheme = ( props: any ) => {
+
+const MernStackDirectoryListingTheme = ( { foreignData, seoData }: { foreignData: any, seoData: any } ) => {
   const slug = 'mern-stack-job-board-theme'
   // call data using swr
   const { data: swrData, error: productError } = useSWR(
     `/api/products/${slug}`,
     fetcher,
     {
-      fallbackData: props.foreignData,
+      fallbackData: foreignData,
     } as any
   )
+
+  const { data: seoSWRData } = useSWR( `/wp-json/rankmath/v1/getHead?url=${process.env.NEXT_PUBLIC_API_ENDPOINT}/item/${slug}`, seoFetcher, {
+    fallbackData: seoData
+  } )
+
+  const head = parse( seoSWRData.head )
   // detructure data from productData
   const { data } = swrData || {}
   return (
-    <div>
-      <div
-        className={`sm:bg-[url('/products/heading-one.svg')] bg-no-repeat bg-cover ${colors.bgPrimary}`}
-      >
-        <Navbar.SingleProductNavbar />
-        <Header
-          data={data}
-          icons={localData.buildWith}
-          colors={colors}
-          livePreview={livePreview}
+    <>
+      <Head>
+        <title> Mern Stack Job Board Theme by JS Template </title>
+        {head}
+      </Head>
+      <div>
+        <div
+          className={`sm:bg-[url('/products/heading-one.svg')] bg-no-repeat bg-cover ${colors.bgPrimary}`}
+        >
+          <Navbar.SingleProductNavbar />
+          <Header
+            data={data}
+            icons={localData.buildWith}
+            colors={colors}
+            livePreview={livePreview}
+          />
+        </div>
+        <MangeWebsite colors={colors} data={localData.manageWebsite} />
+        <SimpleTitleThird colors={colors} data={localData.sampleInfo} />
+        <Heading data={data} info={localData.preSale} colors={colors} />
+        <Hire colors={colors} />
+        <Testimonials />
+        <Footer
+          boxToColor="secondaryTemplateColorDark"
+          boxFromColor="secondaryTemplateColorLight"
+          shadowBox="secondaryTemplate"
+          buttonToColor="secondaryTemplateColorDark"
+          buttonFromColor="secondaryTemplateColorLight"
+          shadowButton="secondaryTemplate"
         />
       </div>
-      <MangeWebsite colors={colors} data={localData.manageWebsite} />
-      <SimpleTitleThird colors={colors} data={localData.sampleInfo} />
-      <Heading data={data} info={localData.preSale} colors={colors} />
-      <Hire colors={colors} />
-      <Testimonials />
-      <Footer
-        boxToColor="secondaryTemplateColorDark"
-        boxFromColor="secondaryTemplateColorLight"
-        shadowBox="secondaryTemplate"
-        buttonToColor="secondaryTemplateColorDark"
-        buttonFromColor="secondaryTemplateColorLight"
-        shadowButton="secondaryTemplate"
-      />
-    </div>
+    </>
   )
 }
 
@@ -367,6 +380,8 @@ export const getStaticProps = async () => {
     slug,
     status: 'publish',
   } ).then( ( response ) => response.data )
+
+  const seoData = await productSeoFetcher( slug )
 
   // only return few fields
   const filteredData = data.map( ( item: any ) => {
@@ -394,6 +409,7 @@ export const getStaticProps = async () => {
   return {
     props: {
       foreignData: finalData,
+      seoData,
     },
   }
 }

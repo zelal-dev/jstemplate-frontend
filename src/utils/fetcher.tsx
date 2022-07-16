@@ -11,3 +11,10 @@ export const seoPageFetcher = async ( slug: string ) => {
 
 }
 
+export const productSeoFetcher = async ( slug: string ) => {
+  //  call seo fetcher
+  // fetch seo data from wp rankmath plugin
+  return await fetch( `${process.env.NEXT_PUBLIC_API_ENDPOINT}/wp-json/rankmath/v1/getHead?url=${process.env.NEXT_PUBLIC_API_ENDPOINT}/item/${slug}` ).then( ( res ) => res.json() )
+
+}
+

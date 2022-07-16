@@ -16,14 +16,14 @@ export const serviceMenuData = [
 	},
 	{
 		id: uuidv4(),
-		title: 'Frontity Website Development',
+		title: 'Headless WoordPress Development Services',
 		description: 'Create lightning fast websites using WordPress and React.',
 		slug: 'frontity-website-development',
 	},
 
 	{
 		id: uuidv4(),
-		title: 'Convert Design to Pixel Perfect Code',
+		title: 'Figma to React.js Website Development',
 		description:
 			'We can help you to convert your design to pixel perfect code.',
 		slug: 'convert-design-to-code',
@@ -114,7 +114,7 @@ export const productMenuData = [
 				id: 2441,
 				title: 'MetaBlog- Headless WordPress Blog Theme',
 				description: 'Multipurpose frontity to buid your site quickly',
-				url: '#',
+				url: 'metablog-headless-wordpress-blog-theme',
 				iconClass: '',
 			},
 			{

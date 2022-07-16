@@ -7,7 +7,7 @@ import Navbar from '../../src/components/Navbar'
 import Header from '../../src/Sections/ProductSinglePage2/Header'
 import Products from '../../src/Sections/ProductSinglePage2/Products'
 import Testimonials from '../../src/Sections/ProductSinglePage2/Testimonials'
-import { fetcher, seoFetcher } from '../../src/utils/fetcher'
+import { fetcher, productSeoFetcher, seoFetcher } from '../../src/utils/fetcher'
 import { Woocommerce } from '../../src/utils/woocommerce'
 // page primary colors
 const colors = {
@@ -127,7 +127,7 @@ export const getStaticProps = async ( ctx: any ) => {
     slug,
   } )
 
-  const seoData = await fetch( `${process.env.NEXT_PUBLIC_API_ENDPOINT}/wp-json/rankmath/v1/getHead?url=${process.env.NEXT_PUBLIC_API_ENDPOINT}/item/${slug}` ).then( ( res ) => res.json() )
+  const seoData = await productSeoFetcher( slug )
 
   // only return few fields
   const filteredData = data.map( ( item: any ) => {
