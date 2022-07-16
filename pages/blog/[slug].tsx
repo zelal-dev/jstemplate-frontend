@@ -1,33 +1,37 @@
 import styled from '@emotion/styled'
+import parse from 'html-react-parser'
+import { GetStaticProps } from 'next'
 import Head from 'next/head'
 import Image from 'next/image'
 import Link from 'next/link'
-import React from 'react'
+import { useRouter } from 'next/router'
 import { BsArrowRightShort } from 'react-icons/bs'
 import useSWR from 'swr'
 import Thumbnail from '../../src/components/Blog/Thumbnail'
 import FooterWithoutSolution from '../../src/components/FooterWithoutSolution'
 import Navbar from '../../src/components/Navbar'
-import NotFound404 from '../../src/components/NotFound'
+import { seoFetcher, singlePostPathFetcher, singlePostseoFetcher } from '../../src/utils/fetcher'
+const fetcher = ( url: any ) => fetch( url ).then( ( r ) => r.json() )
 
-const fetcher = (url: any) => fetch(url).then((r) => r.json())
-
-const Details = ({
-  getData,
+const Details = ( {
+  singlePostForeignData,
   latestPosts,
-  status,
-  slug,
+  seoForeignData
 }: {
-  getData: any
+  singlePostForeignData: any
   latestPosts: any
-  status: any
-  slug: any
-}) => {
-  const { data, error } = useSWR(
-    `https://api-blog.jstemplate.net/wp-json/wp/v2/posts?slug=${slug}`,
+  seoForeignData: any
+} ) => {
+
+
+  const router = useRouter()
+  const { slug } = router.query
+
+  const { data: singlePostData, error: singlePostError } = useSWR(
+    `${process.env.NEXT_PUBLIC_API_ENDPOINT}/wp-json/wp/v2/posts?slug=${slug}`,
     fetcher,
     {
-      fallbackData: getData,
+      fallbackData: singlePostForeignData,
     }
   )
   // latestPosts data fetching
@@ -39,60 +43,17 @@ const Details = ({
     }
   )
 
-  if (status === 404) {
-    return (
-      <>
-        <Head>
-          <title>404 Page - JS Template</title>
-        </Head>
-        <div className="shadow-md">
-          <Navbar.SecondaryDefaultNavbar />
-        </div>
-        <NotFound404 />
-        <FooterWithoutSolution />
-      </>
-    )
-  }
+  // get seo data using swr and fetch
+  const { data: seoSwrData, error: seoSwrError } = useSWR( `${process.env.NEXT_PUBLIC_API_ENDPOINT}/wp-json/rankmath/v1/getHead?url=${process.env.NEXT_PUBLIC_API_ENDPOINT}/${slug}`, seoFetcher,
+    {
+      fallbackData: seoForeignData
+    } )
+  const head = parse( seoSwrData.head )
 
   return (
     <>
       <Head>
-        <title>
-          {data[0]?.yoast_head_json?.title && data[0]?.yoast_head_json?.title}
-        </title>
-
-        {/* not allow robots */}
-        <meta name="robots" content="noindex, nofollow" />
-        {/* <meta
-          name="description"
-          content={
-            data[0]?.yoast_head_json?.og_description &&
-            data[0]?.yoast_head_json?.og_description
-          }
-        />
-        <meta
-          name="robots"
-          content={`${data[0]?.yoast_head_json?.robots?.index}, ${data[0]?.yoast_head_json?.robots?.follow},`}
-        />
-        <meta property="og:title" content={data[0]?.yoast_head_json?.title} />
-        <meta
-          property="og:description"
-          content={data[0]?.yoast_head_json?.og_description}
-        />
-        <meta
-          property="og:image"
-          content={
-            data[0]?.yoast_head_json?.og_image &&
-            data[0]?.yoast_head_json?.og_image[0].url
-          }
-        />
-        <meta property="og:url" content={data[0]?.yoast_head_json?.og_url} />
-        <meta property="og:type" content={data[0]?.yoast_head_json?.og_type} />
-        <meta
-          property="og:site_name"
-          content={data[0]?.yoast_head_json?.og_site_name}
-        />
-        <meta property="article:published_time" content={data[0]?.date} /> */}
+        {head}
       </Head>
       <div className="shadow-md">
         <Navbar.SecondaryDefaultNavbar />
@@ -103,17 +64,17 @@ const Details = ({
             <div className="col-span-10 md:col-span-7">
               <div className="bg-white rounded-2xl p-7 shadow-[0_6px_24px_rgba(6, 129, 121, 0.08)]">
                 {/* post thumbnail image */}
-                <Thumbnail id={data[0].id} />
+                <Thumbnail id={singlePostData[0].id} />
                 <h1
                   className="text-3xl font-bold text-[#001324] truncate pt-8"
                   dangerouslySetInnerHTML={{
-                    __html: data[0].title.rendered,
+                    __html: singlePostData[0].title.rendered,
                   }}
                 />
                 <PostContent
                   className="pt-4 text-lg text-[#5D6D7E]"
                   dangerouslySetInnerHTML={{
-                    __html: data[0].content.rendered,
+                    __html: singlePostData[0].content.rendered,
                   }}
                 />
 
@@ -160,13 +121,13 @@ const Details = ({
                 Latest Topic
               </h1>
               {latestPostsData &&
-                latestPostsData.map((item: any, index: any) => {
-                  const date = new Date(item.date)
-                  const postDate = date.toLocaleDateString('en-US', {
+                latestPostsData.map( ( item: any, index: any ) => {
+                  const date = new Date( item.date )
+                  const postDate = date.toLocaleDateString( 'en-US', {
                     day: 'numeric',
                     month: 'long',
                     year: 'numeric',
-                  })
+                  } )
                   return (
                     <div
                       key={index}
@@ -201,7 +162,7 @@ const Details = ({
                       </div>
                     </div>
                   )
-                })}
+                } )}
             </div>
           </div>
         </div>
@@ -211,44 +172,7 @@ const Details = ({
   )
 }
 
-// getServerSideProps function for fetching data from external API
-export async function getServerSideProps(context: any) {
-  const slug = context.query.slug
-  const res = await fetch(
-    `https://api-blog.jstemplate.net/wp-json/wp/v2/posts?slug=${slug}`
-  )
-  const data = await res.json()
-
-  const resTwo = await fetch(
-    'https://api-blog.jstemplate.net/wp-json/wp/v2/posts?per_page=5'
-  )
-  const latestPosts = await resTwo.json()
-
-  if (data.length > 0) {
-    return {
-      props: {
-        getData: data,
-        latestPosts: latestPosts,
-        status: 200,
-        slug: slug,
-      },
-    }
-  } else {
-    // return 404 page
-    return {
-      props: {
-        getData: [],
-        latestPosts: [],
-        status: 404,
-        slug: slug,
-      },
-    }
-  }
-}
-
-export default Details
-
-const PostImage = ({ id }: { id: any }) => {
+const PostImage = ( { id }: { id: any } ) => {
   const { data, error } = useSWR(
     id
       ? `https://api-blog.jstemplate.net/wp-json/wp/v2/media?parent=${id}`
@@ -259,8 +183,8 @@ const PostImage = ({ id }: { id: any }) => {
     }
   )
 
-  if (data) {
-    if (data.length > 0) {
+  if ( data ) {
+    if ( data.length > 0 ) {
       return (
         <div className="w-[100px] h-[100px] bg-slate-200 rounded-lg overflow-hidden grid justify-center items-center text-gray-300 text-2xl">
           <Image
@@ -412,6 +336,55 @@ const Comments = () => {
     </div>
   )
 }
+
+export default Details
+
+// Export all the the paths from getStaticPaths as an array of objects
+export const getStaticPaths = async () => {
+
+  // call Api to get all the posts
+  const posts = await singlePostPathFetcher()
+
+  const paths = posts.map( ( post: any ) => ( {
+    params: {
+      slug: post.slug,
+    },
+  } ) )
+  return {
+    paths,
+    fallback: true,
+
+  }
+}
+
+
+// getServerSideProps function for fetching data from external API
+export const getStaticProps: GetStaticProps = async ( ctx: any ) => {
+  const { slug } = ctx.params
+  const res = await fetch(
+    `${process.env.API_ENDPOINT}/wp-json/wp/v2/posts?slug=${slug}`
+  )
+  const data = await res.json()
+
+  const resTwo = await fetch(
+    `${process.env.API_ENDPOINT}/wp-json/wp/v2/posts?per_page=5`
+  )
+  const latestPosts = await resTwo.json()
+
+  // get seo data from the api
+  const seoData = await singlePostseoFetcher( slug )
+
+  return {
+    props: {
+      singlePostForeignData: data,
+      latestPosts: latestPosts,
+      seoForeignData: seoData,
+    },
+  }
+
+}
+
+
 
 const PostContent = styled.div`
   figcaption {

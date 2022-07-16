@@ -1,49 +1,61 @@
 // import Image from '../../src/components/optimize/image';
+import parse from "html-react-parser";
+import Head from 'next/head';
 import Link from "next/link";
-import React from "react";
+import React, { useEffect } from "react";
 import { HiOutlineArrowNarrowRight } from "react-icons/hi";
 import useSWR, { useSWRConfig } from "swr";
 import FeaturedMedia from "../../src/components/Blog/FeaturedMedia";
 import FooterWithoutSolution from "../../src/components/FooterWithoutSolution";
 import Navbar from "../../src/components/Navbar";
 import { FormLoader } from "../../src/lib/loader";
+import { pageSeoFetcher, seoFetcher } from '../../src/utils/fetcher';
 
-const fetcher = (url: any) => fetch(url).then((r) => r.json());
+const fetcher = ( url: any ) => fetch( url ).then( ( response ) => response.json() );
 
-const News = ({ getData }: { getData: any }) => {
-  const [showPerPage, setShowPerPage] = React.useState(9);
-  const [posts, setPosts] = React.useState([]);
+const News = ( { postForeignData, seoData }: { postForeignData: any, seoData: any } ) => {
+
+  const slug = 'blog'
+  const [showPerPage, setShowPerPage] = React.useState( 9 );
+  const [posts, setPosts] = React.useState( [] );
   const { mutate } = useSWRConfig();
   const {
     data,
-    error: errorPosts,
     isValidating,
   } = useSWR(
-    `https://api-blog.jstemplate.net/wp-json/wp/v2/posts?per_page=${showPerPage}`,
+    `${process.env.API_ENDPOINT}/wp-json/wp/v2/posts?per_page=${showPerPage}`,
     fetcher,
     {
-      refreshInterval: 0,
-      fallbackData: getData,
+      fallbackData: postForeignData,
     }
   );
 
-  React.useEffect(() => {
-    if (data) {
-      setPosts(data);
+  useEffect( () => {
+    if ( data ) {
+      setPosts( data );
     }
-  }, [data]);
+  }, [data] );
 
   const showPerPageHandler = async () => {
-    setShowPerPage(showPerPage + 6);
+    setShowPerPage( showPerPage + 6 );
     await mutate(
-      `https://api-blog.jstemplate.net/wp-json/wp/v2/posts?per_page=${
-        showPerPage + 6
+      `${process.env.API_ENDPOINT}/wp-json/wp/v2/posts?per_page=${showPerPage + 6
       }`
     );
   };
 
+  const { data: seoSWRData } = useSWR( `/wp-json/rankmath/v1/getHead?url=${process.env.NEXT_PUBLIC_API_ENDPOINT}/${slug}`, seoFetcher, {
+    fallbackData: seoData
+  } )
+
+  const head = parse( seoSWRData.head )
+
   return (
     <>
+      <Head>
+        <title>Latest Blog and New by JS Template </title>
+        {head}
+      </Head>
       <div className="sm:bg-[url('/products/heading.svg')] bg-cover bg-no-repeat bg-[#038979]">
         <Navbar.SingleProductNavbar />
         <div className="container mx-auto">
@@ -59,13 +71,13 @@ const News = ({ getData }: { getData: any }) => {
           <div className="container mx-auto">
             <div className="grid grid-cols-6 gap-7 px-5 sm:px-0">
               {posts.length > 0 &&
-                posts.map((item: any, index: any) => {
-                  const date = new Date(item.date);
-                  const postDate = date.toLocaleDateString("en-US", {
+                posts.map( ( item: any, index: any ) => {
+                  const date = new Date( item.date );
+                  const postDate = date.toLocaleDateString( "en-US", {
                     day: "numeric",
                     month: "short",
                     year: "numeric",
-                  });
+                  } );
                   return (
                     <div
                       key={index}
@@ -105,7 +117,7 @@ const News = ({ getData }: { getData: any }) => {
                       </Link>
                     </div>
                   );
-                })}
+                } )}
             </div>
           </div>
         </div>
@@ -115,11 +127,10 @@ const News = ({ getData }: { getData: any }) => {
               type="button"
               disabled={isValidating}
               onClick={showPerPageHandler}
-              className={`text-base flex gap-1 ${
-                isValidating
-                  ? "opacity-60"
-                  : "hover:bg-blueOne hover:text-black"
-              } items-center py-3 px-6 rounded-lg bg-blueTwo text-white duration-200 mr-1`}
+              className={`text-base flex gap-1 ${isValidating
+                ? "opacity-60"
+                : "hover:bg-blueOne hover:text-black"
+                } items-center py-3 px-6 rounded-lg bg-blueTwo text-white duration-200 mr-1`}
             >
               Load More
               {isValidating && <FormLoader color={"text-white"} />}
@@ -140,24 +151,21 @@ const News = ({ getData }: { getData: any }) => {
 export default News;
 
 // getStaticProps function for fetching data from internal API
-export async function getStaticProps() {
+export async function getStaticProps ( ctx: any ) {
+
+  const slug = 'blog';
+
   const res = await fetch(
-    `https://api-blog.jstemplate.net/wp-json/wp/v2/posts?per_page=9`
+    `${process.env.API_ENDPOINT}/wp-json/wp/v2/posts?per_page=9`
   );
   const data = await res.json();
 
-  if (data.length > 0) {
-    return {
-      props: {
-        getData: data,
-      },
-    };
-  } else {
-    // return 404 page
-    return {
-      props: {
-        getData: [],
-      },
-    };
-  }
+  const seoData = await pageSeoFetcher( slug )
+
+  return {
+    props: {
+      postForeignData: data,
+      seoData,
+    },
+  };
 }
