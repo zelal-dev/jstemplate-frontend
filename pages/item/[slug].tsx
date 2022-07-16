@@ -125,7 +125,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
   return {
     paths: filteredPaths,
     //fallback blocking
-    fallback: false,
+    fallback: true,
   }
 }
 
