@@ -29,7 +29,7 @@ export const pageSeoFetcher = async ( slug: string ) => {
 export const singlePostPathFetcher = async () => {
   //  call seo fetcher
   // fetch seo data from wp rankmath plugin
-  return await fetch( `${process.env.API_ENDPOINT}/wp-json/wp/v2/posts` ).then( ( res ) => res.json() )
+  return await fetch( `${process.env.NEXT_PUBLIC_API_ENDPOINT}/wp-json/wp/v2/posts` ).then( ( res ) => res.json() )
 
 }
 
