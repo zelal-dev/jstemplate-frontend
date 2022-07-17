@@ -14,7 +14,6 @@ import { useUser } from '../../lib/useUser'
 import ForgetPassword from '../../Sections/Authentication/ForgetPassword'
 import Login from '../../Sections/Authentication/Login'
 import Registration from '../../Sections/Authentication/Registration'
-import { CustomImage } from '../../utils/imageLoader'
 import DropDownProduct from '../DropDownProduct'
 import DropDownService from '../DropDownService'
 
@@ -192,12 +191,11 @@ const SecondaryDefaultNavbar = () => {
             onClick={handleProfileDropdown}
           >
             <a className="cursor-pointer flex items-end">
-              <CustomImage
+              <Image
                 src={user.avatar_url}
                 alt="user"
                 width="40"
                 height="40"
-
               />
             </a>
           </button>

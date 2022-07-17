@@ -3,6 +3,7 @@ const nextConfig = {
   reactStrictMode: true,
   // image host name:
   images: {
+
     domains: [
       'jstemplate.net',
       'res.cloudinary.com',
@@ -14,7 +15,7 @@ const nextConfig = {
       'lh4.googleusercontent.com',
       'lh5.googleusercontent.com',
       'h6.googleusercontent.com',
-      "https://secure.gravatar.com",
+      "secure.gravatar.com",
     ],
   },
   eslint: {

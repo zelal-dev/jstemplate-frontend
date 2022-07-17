@@ -11,7 +11,6 @@ import { IoIosArrowDown } from 'react-icons/io'
 import { MdKeyboardArrowDown, MdKeyboardArrowUp } from 'react-icons/md'
 import { RiSettings3Fill, RiUserFill } from 'react-icons/ri'
 import { useUser } from '../../lib/useUser'
-import { CustomImage } from '../../utils/imageLoader'
 import DropDownProduct from '../DropDownProduct'
 import DropDownService from '../DropDownService'
 
@@ -157,12 +156,11 @@ const DashboardPrimaryNavbar = () => {
 						aria-label='User'
 						onClick={handleProfileDropdown}>
 						<a className='cursor-pointer flex items-end'>
-							<CustomImage
+							<Image
 								src={user.avatar_url}
 								alt="user"
 								width="40"
 								height="40"
-
 							/>
 						</a>
 					</button>
