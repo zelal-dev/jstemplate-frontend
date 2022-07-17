@@ -15,6 +15,7 @@ import { useUser } from '../../lib/useUser'
 import ForgetPassword from '../../Sections/Authentication/ForgetPassword'
 import Login from '../../Sections/Authentication/Login'
 import Registration from '../../Sections/Authentication/Registration'
+import { CustomImage } from '../../utils/imageLoader'
 import DropDownProduct from '../DropDownProduct'
 import DropDownService from '../DropDownService'
 
@@ -43,6 +44,7 @@ const DefaultNavbar = () => {
     router.asPath === '/dashboard/accounts-settings'
       ? 'text-sm text-white p-4 rounded-lg bg-blueTwo flex items-center'
       : 'text-sm text-gray-600 p-4 rounded-lg flex items-center'
+
 
   const handleLogout = () => {
     deleteCookie( 'token' );
@@ -194,7 +196,13 @@ const DefaultNavbar = () => {
             onClick={handleProfileDropdown}
           >
             <a className="cursor-pointer flex items-end">
-              <Image src="/man.svg" alt="" width="40" height="40" />
+              <CustomImage
+                src={user.avatar_url}
+                alt="user"
+                width="40"
+                height="40"
+
+              />
             </a>
           </button>
         ) : (
@@ -213,7 +221,7 @@ const DefaultNavbar = () => {
       >
         <div>
           <a className={`${styleDash}`}>
-            <RiUserFill className="w-5 h-5 mr-4" /> <span>Hi, JS Template</span>
+            <RiUserFill className="w-5 h-5 mr-4" /> <span>Hi, {user ? `${user.first_name} ${user.last_name}` : 'user not loaded correctly'}</span>
           </a>
         </div>
         <Link href="dashboard/downloads">

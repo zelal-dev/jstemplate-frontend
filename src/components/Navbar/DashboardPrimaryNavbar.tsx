@@ -10,10 +10,14 @@ import { ImCross } from 'react-icons/im'
 import { IoIosArrowDown } from 'react-icons/io'
 import { MdKeyboardArrowDown, MdKeyboardArrowUp } from 'react-icons/md'
 import { RiSettings3Fill, RiUserFill } from 'react-icons/ri'
+import { useUser } from '../../lib/useUser'
+import { CustomImage } from '../../utils/imageLoader'
 import DropDownProduct from '../DropDownProduct'
 import DropDownService from '../DropDownService'
 
 const DashboardPrimaryNavbar = () => {
+
+	const { user } = useUser()
 	const [proDis, setProdDis] = useState<string>( 'hidden' )
 	const [serDis, setSerDis] = useState<string>( 'hidden' )
 	const [proColor, setProColor] = useState( 'text-gray-700' )
@@ -153,7 +157,13 @@ const DashboardPrimaryNavbar = () => {
 						aria-label='User'
 						onClick={handleProfileDropdown}>
 						<a className='cursor-pointer flex items-end'>
-							<Image src='/man.svg' alt='' width='42' height='42' />
+							<CustomImage
+								src={user.avatar_url}
+								alt="user"
+								width="40"
+								height="40"
+
+							/>
 						</a>
 					</button>
 				</div>

@@ -3,8 +3,6 @@ import Link from 'next/link'
 const Header = ( props: any ) => {
   const { data, icons, colors, livePreview } = props
 
-  console.log( "Header Data Layout 1", data )
-
   return (
     <div className=" flex flex-col items-center xl:pt-36 lg:pt-32 md:pt-24 sm:pt-20 pt-16 lg:pb-[12rem] sm:pb-72 pb-72">
       <div className="relative w-2/3 sm:w-auto">

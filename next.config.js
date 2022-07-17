@@ -14,6 +14,7 @@ const nextConfig = {
       'lh4.googleusercontent.com',
       'lh5.googleusercontent.com',
       'h6.googleusercontent.com',
+      "https://secure.gravatar.com",
     ],
   },
   eslint: {

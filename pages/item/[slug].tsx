@@ -44,7 +44,6 @@ const ProductSinglePage2 = ( { foreignData, seoData }: { foreignData: any, seoDa
 
   const { slug } = router.query
 
-  console.log( "Foreign Data", foreignData )
 
   const { data: swrData } = useSWR( `/api/products/${slug}`, fetcher, {
     fallbackData: foreignData
@@ -53,8 +52,6 @@ const ProductSinglePage2 = ( { foreignData, seoData }: { foreignData: any, seoDa
   const { data: seoSWRData } = useSWR( `/wp-json/rankmath/v1/getHead?url=${process.env.NEXT_PUBLIC_API_ENDPOINT}/item/${slug}`, seoFetcher, {
     fallbackData: seoData
   } )
-
-  console.log( "Foreign Data", swrData )
 
   const head = parse( seoSWRData.head ) || ''
 
