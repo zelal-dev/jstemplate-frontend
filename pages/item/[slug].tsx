@@ -53,7 +53,7 @@ const ProductSinglePage2 = ( { foreignData, seoData }: { foreignData: any, seoDa
     fallbackData: seoData
   } )
 
-  const head = parse( seoSWRData.head ) || ''
+  const head = seoSWRData.head ? parse( seoSWRData.head ) : '<meta name="robots" content="nofollow, noindex">'
 
   return (
     <>
@@ -122,7 +122,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
   return {
     paths: filteredPaths,
     //fallback blocking
-    fallback: true,
+    fallback: false,
   }
 }
 

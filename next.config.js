@@ -3,7 +3,6 @@ const nextConfig = {
   reactStrictMode: true,
   // image host name:
   images: {
-
     domains: [
       'jstemplate.net',
       'res.cloudinary.com',

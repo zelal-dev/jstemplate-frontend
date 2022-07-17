@@ -48,7 +48,7 @@ const Details = ( {
     {
       fallbackData: seoForeignData
     } )
-  const head = parse( seoSwrData.head ) || ''
+  const head = seoSwrData.head ? parse( seoSwrData.head ) : '<meta name="robots" content="nofollow, noindex">'
 
   return (
     <>
