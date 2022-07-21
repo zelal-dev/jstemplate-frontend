@@ -1,0 +1,146 @@
+[
+  {
+    "name": "Front-End",
+    "icon": "",
+    "items": [
+      {
+        "name": "Bootstrap",
+        "icon": "/icons/icon-bootstrap.webp",
+        "url": "https://getbootstrap.com/",
+        "alt": "Bootstrap"
+      },
+      {
+        "name": "Angular",
+        "icon": "/icons/icon-angular.webp",
+        "url": "https://angular.io/",
+        "alt": "Angular"
+      },
+      {
+        "name": "React",
+        "icon": "/icons/icon-react.webp",
+        "url": "https://reactjs.org/",
+        "alt": "React"
+      },
+      {
+        "name": "Vuejs",
+        "icon": "/icons/icon-vue.webp",
+        "url": "https://vuejs.org/",
+        "alt": "Vuejs"
+      },
+      {
+        "name": "React Native",
+        "icon": "/icons/icon-react-native.webp",
+        "url": "https://facebook.github.io/react-native/",
+        "alt": "React Native"
+      },
+      {
+        "name": "Flutter",
+        "icon": "/icons/icon-flutter.webp",
+        "url": "https://flutter.dev/",
+        "alt": "Flutter"
+      },
+      {
+        "name": "Svelte",
+        "icon": "/icons/icon-svelte.webp",
+        "url": "https://svelte.dev/",
+        "alt": "Svelte"
+      }
+    ]
+  },
+  {
+    "name": "",
+    "icon": "",
+    "items": [
+      {
+        "name": "Material UI",
+        "icon": "/icons/icon-material-ui.webp",
+        "url": "https://material-ui.com/",
+        "alt": "Material UI"
+      },
+      {
+        "name": "Vuetify",
+        "icon": "/icons/icon-vuetify.webp",
+        "url": "https://vuetifyjs.com/",
+        "alt": "Vuetify"
+      },
+      {
+        "name": "Tailwind CSS",
+        "icon": "/icons/icon-tailwind.webp",
+        "url": "https://tailwindcss.com/",
+        "alt": "Tailwind CSS"
+      },
+      {
+        "name": "Vue Material",
+        "icon": "/icons/icon-vuematerial.webp",
+        "url": "https://vue-material.com/",
+        "alt": "Vue Material"
+      },
+      {
+        "name": "Reactstrap",
+        "icon": "/icons/icon-reactstrap.webp",
+        "url": "https://reactstrap.github.io/",
+        "alt": "Reactstrap"
+      },
+      {
+        "name": "React Bootstrap",
+        "icon": "/icons/icon-reactbootstrap.webp",
+        "url": "https://react-bootstrap.github.io/",
+        "alt": "React Bootstrap"
+      },
+      {
+        "name": "Vue Bootstrap",
+        "icon": "/icons/icon-vuebootstrap.webp",
+        "url": "https://bootstrap-vue.org/",
+        "alt": "Vue Bootstrap"
+      }
+    ]
+  },
+  {
+    "name": "Back-End",
+    "icon": "",
+    "items": [
+      {
+        "name": "Laravel",
+        "icon": "/icons/icon-laravel.webp",
+        "url": "https://laravel.com/",
+        "alt": "Laravel"
+      },
+      {
+        "name": "Django",
+        "icon": "/icons/icon-django.webp",
+        "url": "https://djangoproject.com/",
+        "alt": "Django"
+      },
+      {
+        "name": "Flask",
+        "icon": "/icons/icon-flask.webp",
+        "url": "https://flask.palletsprojects.com/",
+        "alt": "Flask"
+      },
+      {
+        "name": "Next",
+        "icon": "/icons/icon-nextjs.webp",
+        "url": "https://nextjs.org/",
+        "alt": "Next"
+      },
+      {
+        "name": "Nuxt",
+        "icon": "/icons/icon-nuxtjs.webp",
+        "url": "https://nuxtjs.org/",
+        "alt": "Nuxt"
+      },
+      {
+        "name": "Nodejs",
+        "icon": "/icons/icon-nodejs.webp",
+        "url": "https://nodejs.org/en/",
+        "alt": "Nodejs"
+      },
+      {
+        "name": "Aspnet",
+        "icon": "/icons/icon-aspnet.webp",
+        "url": "https://www.asp.net/",
+        "alt": "Aspnet"
+      }
+    ]
+  }
+]

@@ -1,150 +1,160 @@
-import { deleteCookie } from 'cookies-next'
-import Image from 'next/image'
-import Link from 'next/link'
-import { useRouter } from 'next/router'
-import { useState } from 'react'
-import { BsList } from 'react-icons/bs'
-import { FaShoppingCart } from 'react-icons/fa'
-import { HiOutlineArrowNarrowRight, HiOutlineLogout } from 'react-icons/hi'
-import { ImCross } from 'react-icons/im'
-import { IoIosArrowDown } from 'react-icons/io'
-import { MdKeyboardArrowDown, MdKeyboardArrowUp } from 'react-icons/md'
-import { RiSettings3Fill, RiUserFill } from 'react-icons/ri'
-import { useSWRConfig } from 'swr'
-import { useUser } from '../../lib/useUser'
-import ForgetPassword from '../../Sections/Authentication/ForgetPassword'
-import Login from '../../Sections/Authentication/Login'
-import Registration from '../../Sections/Authentication/Registration'
-import DropDownProduct from '../DropDownProduct'
-import DropDownService from '../DropDownService'
+import styled from "@emotion/styled";
+import { deleteCookie } from "cookies-next";
+import Image from "next/image";
+import Link from "next/link";
+import { useRouter } from "next/router";
+import { useState } from "react";
+import { BsList } from "react-icons/bs";
+import { FaShoppingCart } from "react-icons/fa";
+import { HiOutlineArrowNarrowRight, HiOutlineLogout } from "react-icons/hi";
+import { ImCross } from "react-icons/im";
+import { IoIosArrowDown } from "react-icons/io";
+import { MdKeyboardArrowDown, MdKeyboardArrowUp } from "react-icons/md";
+import { RiSettings3Fill, RiUserFill } from "react-icons/ri";
+import { useSWRConfig } from "swr";
+import ImageOpt from "../../lib/Image";
+import { useUser } from "../../lib/useUser";
+import ForgetPassword from "../../Sections/Authentication/ForgetPassword";
+import Login from "../../Sections/Authentication/Login";
+import Registration from "../../Sections/Authentication/Registration";
+import DropDownProduct from "../DropDownProduct";
+import DropDownService from "../DropDownService";
+// Resources json file import
+import resourcesData from "./resources.json";
 
 const DefaultNavbar = () => {
-  const [proDis, setProdDis] = useState<string>( 'hidden' )
-  const [serDis, setSerDis] = useState<string>( 'hidden' )
-  const [proColor, setProColor] = useState( 'text-gray-700' )
-  const [serColor, setSerColor] = useState( 'text-gray-700' )
-  const [loginShow, setLoginShow] = useState<boolean>( false )
-  const [registerShow, setRegisterShow] = useState<boolean>( false )
-  const [forgetPassShow, setForgetPassShow] = useState<boolean>( false )
-  const [sideBarContent, setSideBarContent] = useState<string>( 'hidden' )
-  const [profileDropdown, setProfileDropdown] = useState<string>( 'hidden' )
+  const [proDis, setProdDis] = useState<string>("hidden");
+  const [serDis, setSerDis] = useState<string>("hidden");
+  const [proColor, setProColor] = useState("text-gray-700");
+  const [serColor, setSerColor] = useState("text-gray-700");
+  const [loginShow, setLoginShow] = useState<boolean>(false);
+  const [registerShow, setRegisterShow] = useState<boolean>(false);
+  const [forgetPassShow, setForgetPassShow] = useState<boolean>(false);
+  const [sideBarContent, setSideBarContent] = useState<string>("hidden");
+  const [profileDropdown, setProfileDropdown] = useState<string>("hidden");
   const [sideBarServiceContent, setSideBarServiceContent] =
-    useState<string>( 'hidden' )
-  const [sideBar, setSideBar] = useState<string>( '-left-full' )
-  const { user, loggedIn } = useUser()
-  const { mutate } = useSWRConfig()
-  const [toggle, setToggle] = useState<boolean>( false )
-  const router = useRouter()
+    useState<string>("hidden");
+  const [sideBar, setSideBar] = useState<string>("-left-full");
+  const { user, loggedIn } = useUser();
+  const { mutate } = useSWRConfig();
+  const [toggle, setToggle] = useState<boolean>(false);
+  const router = useRouter();
   const styleDash =
-    router.asPath === '/dashboard'
-      ? 'text-sm text-white p-4 rounded-lg bg-blueTwo flex items-center'
-      : 'text-sm text-gray-600 p-4 rounded-lg flex items-center'
+    router.asPath === "/dashboard"
+      ? "text-sm text-white p-4 rounded-lg bg-blueTwo flex items-center"
+      : "text-sm text-gray-600 p-4 rounded-lg flex items-center";
   const styleSettings =
-    router.asPath === '/dashboard/accounts-settings'
-      ? 'text-sm text-white p-4 rounded-lg bg-blueTwo flex items-center'
-      : 'text-sm text-gray-600 p-4 rounded-lg flex items-center'
-
+    router.asPath === "/dashboard/accounts-settings"
+      ? "text-sm text-white p-4 rounded-lg bg-blueTwo flex items-center"
+      : "text-sm text-gray-600 p-4 rounded-lg flex items-center";
 
   const handleLogout = () => {
-    deleteCookie( 'token' );
-    setProfileDropdown( 'hidden' )
-    handleUserImageShow()
-    router.push( '/' )
-    mutate( '/api/user/self', null, false )
-  }
+    deleteCookie("token");
+    setProfileDropdown("hidden");
+    handleUserImageShow();
+    router.push("/");
+    mutate("/api/user/self", null, false);
+  };
 
   const handleProfileDropdown = () => {
-    if ( profileDropdown === 'hidden' ) {
-      setProfileDropdown( 'block' )
+    if (profileDropdown === "hidden") {
+      setProfileDropdown("block");
     } else {
-      setProfileDropdown( 'hidden' )
+      setProfileDropdown("hidden");
     }
-  }
+  };
 
   const handleUserImageShow = () => {
-    if ( toggle ) {
-      setToggle( false )
+    if (toggle) {
+      setToggle(false);
     } else {
-      setToggle( true )
+      setToggle(true);
     }
-  }
+  };
 
   // toggle login modal
   const toggleLoginModal = () => {
-    setLoginShow( !loginShow )
-  }
+    setLoginShow(!loginShow);
+  };
 
   // toggle register modal
   const toggleRegModal = () => {
-    setRegisterShow( !registerShow )
-  }
+    setRegisterShow(!registerShow);
+  };
 
   const handelForgetPassModal = () => {
-    setForgetPassShow( !forgetPassShow )
-  }
+    setForgetPassShow(!forgetPassShow);
+  };
 
   const productDropdown = () => {
-    setSerDis( 'hidden' )
-    setSerColor( 'text-gray-700' )
-    if ( proColor === 'text-gray-700' ) {
-      setProColor( 'text-secondary' )
+    setSerDis("hidden");
+    setSerColor("text-gray-700");
+    if (proColor === "text-gray-700") {
+      setProColor("text-secondary");
     } else {
-      setProColor( 'text-gray-700' )
+      setProColor("text-gray-700");
     }
-    if ( proDis === 'hidden' ) {
-      setProdDis( 'block' )
+    if (proDis === "hidden") {
+      setProdDis("block");
     } else {
-      setProdDis( 'hidden' )
+      setProdDis("hidden");
     }
-  }
+  };
   const serviceDropdown = () => {
-    setProdDis( 'hidden' )
-    setProColor( 'text-gray-700' )
-    if ( serColor === 'text-gray-700' ) {
-      setSerColor( 'text-secondary' )
+    setProdDis("hidden");
+    setProColor("text-gray-700");
+    if (serColor === "text-gray-700") {
+      setSerColor("text-secondary");
     } else {
-      setSerColor( 'text-gray-700' )
+      setSerColor("text-gray-700");
     }
-    if ( serDis === 'hidden' ) {
-      setSerDis( 'block' )
+    if (serDis === "hidden") {
+      setSerDis("block");
     } else {
-      setSerDis( 'hidden' )
+      setSerDis("hidden");
     }
-  }
+  };
 
   const handleSidebar = () => {
-    if ( sideBar === '-left-full' ) {
-      setSideBar( 'left-0' )
+    if (sideBar === "-left-full") {
+      setSideBar("left-0");
     } else {
-      setSideBar( '-left-full' )
+      setSideBar("-left-full");
     }
-  }
+  };
 
   const handleSidebarContent = () => {
-    if ( sideBarContent === 'hidden' ) {
-      setSideBarContent( 'block' )
-    } else if ( sideBarContent === 'block' ) {
-      setSideBarContent( 'hidden' )
+    if (sideBarContent === "hidden") {
+      setSideBarContent("block");
+    } else if (sideBarContent === "block") {
+      setSideBarContent("hidden");
     }
-  }
+  };
   const handleServiceSidebarContent = () => {
-    if ( sideBarServiceContent === 'hidden' ) {
-      setSideBarServiceContent( 'block' )
-    } else if ( sideBarServiceContent === 'block' ) {
-      setSideBarServiceContent( 'hidden' )
+    if (sideBarServiceContent === "hidden") {
+      setSideBarServiceContent("block");
+    } else if (sideBarServiceContent === "block") {
+      setSideBarServiceContent("hidden");
     }
-  }
+  };
+
+  console.log("resourcesData", resourcesData);
 
   return (
-    <div className="flex items-center container mx-auto justify-between xl:py-10 md:py-7 sm:py-6 py-5 px-5 sm:px-0 relative">
+    <GlobalStyled className="flex items-center container mx-auto justify-between xl:py-10 md:py-7 sm:py-6 py-5 px-5 sm:px-0 relative">
       {/* <Link href="/"><a className='lg:text-2xl sm:text-xl font-bold'>Brand <span className='text-blue-600'>Logo</span></a></Link> */}
       <Link href="/">
         <a>
-          <Image src="/brandLogo.svg" alt="js Template" width="136" height="42" />
+          <Image
+            src="/brandLogo.svg"
+            alt="js Template"
+            width="136"
+            height="42"
+          />
         </a>
       </Link>
 
-      <div className="sm:flex items-center hidden">
+      <div className="sm:flex items-center hidden menu__wrapper">
         <Link href="/">
           <a className=" lg:text-base sm:text-sm text-gray-700 cursor-pointer mx-3">
             Home
@@ -164,11 +174,54 @@ const DefaultNavbar = () => {
           <span className="mr-3">{"UI Kits & Templates"}</span>
           <IoIosArrowDown />
         </div> */}
-        <Link href="/resources">
-          <a className=" lg:text-base sm:text-sm text-gray-700 cursor-pointer">
+        <div className="menu__wrapper__item">
+          <span className=" lg:text-base sm:text-sm text-gray-700 cursor-pointer flex gap-2.5 items-center">
             Resources
-          </a>
-        </Link>
+            <IoIosArrowDown />
+          </span>
+          {/* Resources Sub Menu Items */}
+          <div className="menu__wrapper__item__sub">
+            <div className="menu__wrapper__item__sub__overlay flex justify-between">
+              {resourcesData.map((item, i) => (
+                <>
+                  <div className="w-[33.33%] pl-[15px] pr-[15px] relative">
+                    {item.name ? (
+                      <h3 className="title">{item.name}</h3>
+                    ) : (
+                      <div className="h-[22px] mb-[10px]" />
+                    )}
+                    {item.items.length > 0 && (
+                      <ul className="list">
+                        {item.items.map((subItem) => (
+                          <li className="item">
+                            <Link href={subItem.url}>
+                              <a>
+                                <ImageOpt
+                                  width={30}
+                                  height={30}
+                                  src={subItem.icon}
+                                  alt="image"
+                                  className="icon"
+                                  layout={undefined}
+                                  noPlaceholder={undefined}
+                                />
+                                {subItem.name}
+                              </a>
+                            </Link>
+                          </li>
+                        ))}
+                      </ul>
+                    )}
+                    {
+                      // last index of item array to add border to last item
+                      i === resourcesData.length - 1 && <hr className="hr" />
+                    }
+                  </div>
+                </>
+              ))}
+            </div>
+          </div>
+        </div>
 
         <Link href="/blog">
           <a className="mx-7 lg:text-base sm:text-sm text-gray-700 cursor-pointer">
@@ -195,12 +248,7 @@ const DefaultNavbar = () => {
             onClick={handleProfileDropdown}
           >
             <a className="cursor-pointer flex items-end">
-              <Image
-                src={user.avatar_url}
-                alt="user"
-                width="40"
-                height="40"
-              />
+              <Image src={user.avatar_url} alt="user" width="40" height="40" />
             </a>
           </button>
         ) : (
@@ -219,7 +267,13 @@ const DefaultNavbar = () => {
       >
         <div>
           <a className={`${styleDash}`}>
-            <RiUserFill className="w-5 h-5 mr-4" /> <span>Hi, {user ? `${user.first_name} ${user.last_name}` : 'user not loaded correctly'}</span>
+            <RiUserFill className="w-5 h-5 mr-4" />{" "}
+            <span>
+              Hi,{" "}
+              {user
+                ? `${user.first_name} ${user.last_name}`
+                : "user not loaded correctly"}
+            </span>
           </a>
         </div>
         <Link href="dashboard/downloads">
@@ -229,7 +283,7 @@ const DefaultNavbar = () => {
         </Link>
         <Link href="/dashboard/accounts-settings">
           <a className={`${styleSettings} mt-1.5`}>
-            <RiSettings3Fill className="w-5 h-5 mr-4" />{' '}
+            <RiSettings3Fill className="w-5 h-5 mr-4" />{" "}
             <span>Accounts Settings</span>
           </a>
         </Link>
@@ -245,7 +299,7 @@ const DefaultNavbar = () => {
         className="p-3 rounded-md bg-gradient-to-r from-blueOne to-blueTwo shadow-3xl sm:hidden block cursor-pointer"
         onClick={handleSidebar}
       >
-        <BsList style={{ color: 'white', width: '18px', height: '15.5px' }} />
+        <BsList style={{ color: "white", width: "18px", height: "15.5px" }} />
       </div>
       <div
         className={`absolute hidden top-24  lg:left-56 sm:left-28 z-20 ease-out duration-700 sm:${proDis}`}
@@ -301,7 +355,7 @@ const DefaultNavbar = () => {
               onClick={handleSidebarContent}
             >
               <h3 className="text-base text-gray-300">Product</h3>
-              {sideBarContent === 'hidden' ? (
+              {sideBarContent === "hidden" ? (
                 <MdKeyboardArrowDown className="text-base text-gray-300 cursor-pointer" />
               ) : (
                 <MdKeyboardArrowUp className="text-base text-gray-300 cursor-pointer" />
@@ -361,7 +415,7 @@ const DefaultNavbar = () => {
               onClick={handleServiceSidebarContent}
             >
               <h3 className="text-base text-gray-300">Product</h3>
-              {sideBarServiceContent === 'hidden' ? (
+              {sideBarServiceContent === "hidden" ? (
                 <MdKeyboardArrowDown className="text-base text-gray-300 cursor-pointer" />
               ) : (
                 <MdKeyboardArrowUp className="text-base text-gray-300 cursor-pointer" />
@@ -437,8 +491,112 @@ const DefaultNavbar = () => {
           </div>
         </div>
       </div>
-    </div>
-  )
-}
+    </GlobalStyled>
+  );
+};
 
-export default DefaultNavbar
+export default DefaultNavbar;
+const GlobalStyled = styled.div`
+  & .menu__wrapper {
+    &__item {
+      line-height: 48px;
+      position: relative;
+      &:hover {
+        & .menu__wrapper__item__sub {
+          opacity: 1;
+          visibility: visible;
+          transform: perspective(999px) rotateX(0deg) translateZ(25px)
+            translate3d(-44%, 15px, 5px) !important;
+        }
+      }
+      &__sub {
+        position: absolute;
+        max-width: 600px;
+        background: #fff;
+        width: 600px;
+        padding: 20px;
+        border-radius: 12px;
+        border: 1px solid rgba(0, 0, 0, 0.2);
+        transform: perspective(999px) rotateX(0deg) translateZ(25px)
+          translate3d(-44%, 15px, 5px);
+        opacity: 0;
+        visibility: hidden;
+        transition: all 0.3s ease-in-out;
+        box-shadow: 0 13px 27px -5px rgb(50 50 93 / 25%),
+          0 8px 16px -8px rgb(0 0 0 / 30%), 0 -6px 16px -6px rgb(0 0 0 / 3%);
+        top: 80%;
+        &::before {
+          border-bottom: 11px solid rgba(0, 0, 0, 0.2);
+          border-left: 11px solid transparent;
+          border-right: 11px solid transparent;
+          content: "";
+          display: inline-block;
+          position: absolute;
+          right: 0;
+          left: 0;
+          margin-right: auto;
+          margin-left: auto;
+          width: 1px;
+          top: -11px;
+        }
+        &::after {
+          border-bottom: 11px solid #fff;
+          border-left: 11px solid transparent;
+          border-right: 11px solid transparent;
+          content: "";
+          display: inline-block;
+          position: absolute;
+          right: 0;
+          left: 0;
+          margin-right: auto;
+          margin-left: auto;
+          width: 1px;
+          top: -10px;
+        }
+        &__overlay {
+          & .title {
+            font-size: 15px;
+            font-weight: 700;
+            color: #333;
+            margin: 0 0 10px 0;
+            line-height: 1.428571429;
+          }
+          & .list {
+            & .item {
+              margin-bottom: 7px;
+              & a {
+                color: #67748e;
+                display: flex;
+                align-items: center;
+                gap: 5px;
+                font-size: 14px;
+                font-weight: 300;
+                line-height: 1.428571429;
+                text-decoration: none;
+                text-align: left;
+                & .icon {
+                  width: 30px;
+                  height: 30px;
+                }
+              }
+            }
+          }
+          & .hr {
+            position: absolute;
+            background-color: transparent;
+            height: 100%;
+            left: 0;
+            top: 0;
+            width: 1px;
+            background-image: linear-gradient(
+              180deg,
+              transparent,
+              rgba(216, 216, 216, 0.66),
+              transparent
+            );
+          }
+        }
+      }
+    }
+  }
+`;
