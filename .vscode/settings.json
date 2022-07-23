@@ -1,6 +1,8 @@
 {
-	"cSpell.words": ["googleusercontent"],
-	"typescript.format.insertSpaceAfterConstructor": true,
-	"typescript.format.insertSpaceAfterOpeningAndBeforeClosingNonemptyParenthesis": true,
-	"files.trimTrailingWhitespace": true
+  "cSpell.words": [
+    "googleusercontent"
+  ],
+  "typescript.format.insertSpaceAfterConstructor": true,
+  "typescript.format.insertSpaceAfterOpeningAndBeforeClosingNonemptyParenthesis": true,
+  "files.trimTrailingWhitespace": true
 }
