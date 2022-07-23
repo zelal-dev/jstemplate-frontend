@@ -162,10 +162,15 @@ const DefaultNavbar = () => {
         </Link>
         <div
           onClick={productDropdown}
-          className={`flex items-center lg:text-base sm:text-sm ease-in duration-200 ${proColor} cursor-pointer mx-6`}
+          className={`flex group items-center lg:text-base sm:text-sm ease-in duration-200 hover:text-secondary text-gray-700 cursor-pointer mx-6`}
         >
-          <span className="mr-2">Products</span>
+          <span className="mr-2 leading-[48px]">Products</span>
           <IoIosArrowDown />
+          <div
+            className={`absolute hidden top-[5.5rem] group-hover:sm:block lg:left-56 sm:left-28 z-20 ease-out duration-700`}
+          >
+            <DropDownProduct handler={productDropdown} />
+          </div>
         </div>
         {/* <div
           onClick={serviceDropdown}
@@ -181,7 +186,7 @@ const DefaultNavbar = () => {
           </span>
           {/* Resources Sub Menu Items */}
           <div className="menu__wrapper__item__sub">
-            <div className="menu__wrapper__item__sub__overlay flex justify-between">
+            <div className="menu__wrapper__item__sub__header flex justify-between">
               {resourcesData.map((item, i) => (
                 <>
                   <div className="w-[33.33%] pl-[15px] pr-[15px] relative">
@@ -190,6 +195,14 @@ const DefaultNavbar = () => {
                     ) : (
                       <div className="h-[22px] mb-[10px]" />
                     )}
+                  </div>
+                </>
+              ))}
+            </div>
+            <div className="menu__wrapper__item__sub__overlay flex justify-between">
+              {resourcesData.map((item, i) => (
+                <>
+                  <div className="w-[33.33%] pl-[15px] pr-[15px] relative">
                     {item.items.length > 0 && (
                       <ul className="list">
                         {item.items.map((subItem) => (
@@ -220,6 +233,18 @@ const DefaultNavbar = () => {
                 </>
               ))}
             </div>
+            {/* <div className="menu__wrapper__item__sub__footer">
+              <div className="flex justify-between gap-2.5">
+                <div>
+                  <h4>You will love our solution</h4>
+                  <p>
+                    Lightning fast speed, secure and scale your website as you
+                    need
+                  </p>
+                </div>
+                <div>View All Solutions</div>
+              </div>
+            </div> */}
           </div>
         </div>
 
@@ -301,11 +326,11 @@ const DefaultNavbar = () => {
       >
         <BsList style={{ color: "white", width: "18px", height: "15.5px" }} />
       </div>
-      <div
+      {/* <div
         className={`absolute hidden top-24  lg:left-56 sm:left-28 z-20 ease-out duration-700 sm:${proDis}`}
       >
         <DropDownProduct handler={productDropdown} />
-      </div>
+      </div> */}
       <div
         className={`absolute hidden top-24 lg:left-56 sm:left-28 z-20 ease-out duration-700 sm:${serDis}`}
       >
@@ -313,10 +338,10 @@ const DefaultNavbar = () => {
       </div>
 
       {/* ProDis overlay function */}
-      <div
+      {/* <div
         className={`sm:${proDis} hidden fixed w-full h-full left-0 top-0 z-10`}
         onClick={productDropdown}
-      />
+      /> */}
 
       {/* SerDis overlay function */}
       <div
@@ -514,9 +539,8 @@ const GlobalStyled = styled.div`
         max-width: 600px;
         background: #fff;
         width: 600px;
-        padding: 20px;
         border-radius: 12px;
-        border: 1px solid rgba(0, 0, 0, 0.2);
+        /* border: 1px solid rgba(0, 0, 0, 0.2); */
         transform: perspective(999px) rotateX(0deg) translateZ(25px)
           translate3d(-44%, 15px, 5px);
         opacity: 0;
@@ -526,7 +550,7 @@ const GlobalStyled = styled.div`
           0 8px 16px -8px rgb(0 0 0 / 30%), 0 -6px 16px -6px rgb(0 0 0 / 3%);
         top: 80%;
         &::before {
-          border-bottom: 11px solid rgba(0, 0, 0, 0.2);
+          /* border-bottom: 11px solid rgba(0, 0, 0, 0.2); */
           border-left: 11px solid transparent;
           border-right: 11px solid transparent;
           content: "";
@@ -554,6 +578,7 @@ const GlobalStyled = styled.div`
           top: -10px;
         }
         &__overlay {
+          padding: 20px;
           & .title {
             font-size: 15px;
             font-weight: 700;
@@ -595,6 +620,14 @@ const GlobalStyled = styled.div`
               transparent
             );
           }
+        }
+        &__header {
+          padding: 7px 20px;
+          border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+        }
+        &__footer {
+          padding: 7px 20px;
+          background: #f7f8fc;
         }
       }
     }
