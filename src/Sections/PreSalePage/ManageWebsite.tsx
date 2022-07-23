@@ -1,62 +1,52 @@
-import Image from 'next/image'
-import React, { useState } from 'react'
-import { BiDollar } from 'react-icons/bi'
-import { HiBell } from 'react-icons/hi'
-import { IoChatbubbles } from 'react-icons/io5'
-import {
-  RiAppsFill,
-  RiLayoutMasonryFill,
-  RiSearchFill,
-  RiUserFill,
-} from 'react-icons/ri'
-import megaPhone from './../../../public/megaPhone.svg'
-import time from './../../../public/time.svg'
+import { useState } from 'react'
 
-const MangeWebsite = (props: any) => {
+const MangeWebsite = ( props: any ) => {
   const { colors, data } = props
 
+  console.log( "Colors", colors )
+
   const sample = [1, 2, 3]
-  const [boxShadowOne, setBoxShadowOne] = useState('')
-  const [boxShadowTwo, setBoxShadowTwo] = useState('')
-  const [boxShadowThree, setBoxShadowThree] = useState('')
-  const [boxShadowFour, setBoxShadowFour] = useState('')
-  const [boxShadowFive, setBoxShadowFive] = useState('')
-  const [boxShadowSix, setBoxShadowSix] = useState('')
+  const [boxShadowOne, setBoxShadowOne] = useState( '' )
+  const [boxShadowTwo, setBoxShadowTwo] = useState( '' )
+  const [boxShadowThree, setBoxShadowThree] = useState( '' )
+  const [boxShadowFour, setBoxShadowFour] = useState( '' )
+  const [boxShadowFive, setBoxShadowFive] = useState( '' )
+  const [boxShadowSix, setBoxShadowSix] = useState( '' )
   const handleMouseOverOne = () => {
-    setBoxShadowOne('')
+    setBoxShadowOne( '' )
   }
   const handleMouseOutOne = () => {
-    setBoxShadowOne('inset 0px 8px 4px -4px #E9F0FB')
+    setBoxShadowOne( 'inset 0px 8px 4px -4px #E9F0FB' )
   }
   const handleMouseOverTwo = () => {
-    setBoxShadowTwo('')
+    setBoxShadowTwo( '' )
   }
   const handleMouseOutTwo = () => {
-    setBoxShadowTwo('inset 0px 8px 4px -4px #E9F0FB')
+    setBoxShadowTwo( 'inset 0px 8px 4px -4px #E9F0FB' )
   }
   const handleMouseOverThree = () => {
-    setBoxShadowThree('')
+    setBoxShadowThree( '' )
   }
   const handleMouseOutThree = () => {
-    setBoxShadowThree('inset 0px 8px 4px -4px #E9F0FB')
+    setBoxShadowThree( 'inset 0px 8px 4px -4px #E9F0FB' )
   }
   const handleMouseOverFour = () => {
-    setBoxShadowFour('')
+    setBoxShadowFour( '' )
   }
   const handleMouseOutFour = () => {
-    setBoxShadowFour('inset 0px 8px 4px -4px #E9F0FB')
+    setBoxShadowFour( 'inset 0px 8px 4px -4px #E9F0FB' )
   }
   const handleMouseOverFive = () => {
-    setBoxShadowFive('')
+    setBoxShadowFive( '' )
   }
   const handleMouseOutFive = () => {
-    setBoxShadowFive('inset 0px 8px 4px -4px #E9F0FB')
+    setBoxShadowFive( 'inset 0px 8px 4px -4px #E9F0FB' )
   }
   const handleMouseOverSix = () => {
-    setBoxShadowSix('')
+    setBoxShadowSix( '' )
   }
   const handleMouseOutSix = () => {
-    setBoxShadowSix('inset 0px 8px 4px -4px #E9F0FB')
+    setBoxShadowSix( 'inset 0px 8px 4px -4px #E9F0FB' )
   }
   return (
     <div className="container mx-auto">
@@ -80,7 +70,7 @@ const MangeWebsite = (props: any) => {
         </article>
         {data && data.list.length > 0 && (
           <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-11 container mx-auto xl:my-16 md:mt-12 mt-8 px-5 lg:px-28 sm:px-16">
-            {data.list.map((item: any, index: number) => (
+            {data.list.map( ( item: any, index: number ) => (
               <div
                 className="bg-backgroundGrayOne p-10 rounded-lg flex flex-col items-center justify-center hover:bg-white cursor-pointer hover:drop-shadow-xl ease-in duration-200"
                 style={{ boxShadow: `${boxShadowOne}` }}
@@ -100,7 +90,7 @@ const MangeWebsite = (props: any) => {
                   {item.description}
                 </article>
               </div>
-            ))}
+            ) )}
           </div>
         )}
       </div>
