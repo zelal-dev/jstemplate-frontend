@@ -1,9 +1,11 @@
 import parse from 'html-react-parser'
 import Head from 'next/head'
-import { FaHourglassHalf, FaNodeJs, FaReact } from 'react-icons/fa'
+import { AiFillLayout, AiFillNotification, AiOutlineCode } from 'react-icons/ai'
+import { BsWordpress } from 'react-icons/bs'
+import { FaHourglassHalf, FaReact } from 'react-icons/fa'
+import { IoIosRocket } from 'react-icons/io'
 import { MdHeadsetMic } from 'react-icons/md'
-import { RiUserFill } from 'react-icons/ri'
-import { SiExpress, SiMongodb } from 'react-icons/si'
+import { SiGutenberg, SiMicrogenetics } from 'react-icons/si'
 import { WiHumidity } from 'react-icons/wi'
 import useSWR from 'swr'
 import Footer from '../../src/components/Footer'
@@ -18,9 +20,9 @@ import { fetcher, productSeoFetcher, seoFetcher } from '../../src/utils/fetcher'
 import { Woocommerce } from '../../src/utils/woocommerce'
 // page primary colors
 const colors = {
-  textPrimary: 'text-[#7f54b3]',
-  bgPrimary: 'bg-[#7f54b3]',
-  buttonPrimary: 'bg-gradient-to-br from-[#7f54b3] to-[##693e9d]',
+  textPrimary: 'text-[#65B639]',
+  bgPrimary: 'bg-[#65B639]',
+  buttonPrimary: 'bg-gradient-to-br from-[#65B639] to-[#30a117]',
 }
 const livePreview = {
   title: 'Live Preview',
@@ -34,48 +36,41 @@ const localData = {
     icons: [
       {
         icon: (
-          <FaNodeJs className="xl:w-6 md:w-5 w-[1.0625rem] xl:h-6 md:h-5 h-[1.0625rem] text-primaryGreen" />
+          <BsWordpress className="xl:w-6 md:w-5 w-[1.0625rem] xl:h-6 md:h-5 h-[1.0625rem] text-[#000] " />
         ),
       },
       {
         icon: (
-          <SiMongodb className="xl:w-6 md:w-5 w-[1.0625rem] xl:h-6 md:h-5 h-[1.0625rem] text-primaryGreen" />
+          <FaReact className="xl:w-6 md:w-5 w-[1.0625rem] xl:h-6 md:h-5 h-[1.0625rem] text-[#000]" />
         ),
       },
       {
         icon: (
-          <SiExpress className="xl:w-6 md:w-5 w-[1.0625rem] xl:h-6 md:h-5 h-[1.0625rem] text-black" />
+          <SiGutenberg className="xl:w-6 md:w-5 w-[1.0625rem] xl:h-6 md:h-5 h-[1.0625rem] text-black" />
         ),
       },
-      {
-        icon: (
-          <FaReact
-            className="xl:w-6 md:w-5 w-[1.0625rem] xl:h-6 md:h-5 h-[1.0625rem]"
-            style={{ color: '#00D8FF' }}
-          />
-        ),
-      },
+
     ],
   },
   manageWebsite: {
-    title: 'Everything You Need to Manage Your Job Portal Website',
+    title: 'Everything You Need to Build Your Headless Blog Website',
     description:
-      'Meta Jobs is the best job board theme powered by node.js, MongoDB, React.js, tailwind CSS. Here are the key features',
+      'MetaBlog is the best Headless WordPress blog theme to develop lighting fast website.',
     list: [
       {
-        title: 'Jobs Management',
+        title: 'SSG and SEO Friendly',
         icon: (
-          <RiUserFill
+          <SiMicrogenetics
             style={{ color: 'white', width: '30px', height: '30px' }}
           />
         ),
         description:
-          'Super admin, seller can manage their jobs from dashboard. Included everything you need',
+          'MetaBlog SSG and SEO Friendly. This approach works great for SEO. ',
       },
       {
-        title: 'Seller Profile',
+        title: 'Lightning Fast Loading',
         icon: (
-          <RiUserFill
+          <IoIosRocket
             style={{ color: 'white', width: '30px', height: '30px' }}
           />
         ),
@@ -83,9 +78,9 @@ const localData = {
           'Best layout of seller profile with seller total review, individual reviews and total Jobs.',
       },
       {
-        title: 'Advanced Search',
+        title: 'Gutenberg Ready',
         icon: (
-          <RiUserFill
+          <SiGutenberg
             style={{ color: 'white', width: '30px', height: '30px' }}
           />
         ),
@@ -93,18 +88,18 @@ const localData = {
           'Meta Jobs has advanced search and filter functionality in both frontend and backend',
       },
       {
-        title: 'Easy Super Admin',
+        title: 'Responsive Layout',
         icon: (
-          <RiUserFill
+          <AiFillLayout
             style={{ color: 'white', width: '30px', height: '30px' }}
           />
         ),
         description: 'Super Admin can manage everything from admin dashboard.',
       },
       {
-        title: 'Seller Dashboard',
+        title: 'Real Time Content Update',
         icon: (
-          <RiUserFill
+          <AiFillNotification
             style={{ color: 'white', width: '30px', height: '30px' }}
           />
         ),
@@ -112,54 +107,24 @@ const localData = {
           'Seller can buy, upgrade, downgrade packages and post their Jobs',
       },
       {
-        title: 'Real Time Notification',
+        title: 'Developer Friendly',
         icon: (
-          <RiUserFill
+          <AiOutlineCode
             style={{ color: 'white', width: '30px', height: '30px' }}
           />
         ),
         description:
           'Real Time jobs, message and all functionality work. Best Approch',
-      },
-      {
-        title: 'Pricing Plan for Seller',
-        icon: (
-          <RiUserFill
-            style={{ color: 'white', width: '30px', height: '30px' }}
-          />
-        ),
-        description:
-          'Pricing plan for seller can be controller from super admin dashboard.',
-      },
-      {
-        title: 'Jobs Alert Functionality',
-        icon: (
-          <RiUserFill
-            style={{ color: 'white', width: '30px', height: '30px' }}
-          />
-        ),
-        description:
-          'Best Jobs alert functionality to get disired jobs directly on buyer email',
-      },
-      {
-        title: 'Message Functionality',
-        icon: (
-          <RiUserFill
-            style={{ color: 'white', width: '30px', height: '30px' }}
-          />
-        ),
-        description:
-          'Lorem Ipsum has been the industrys standard dummy text ever since the 1500s',
-      },
+      }
     ],
   },
   sampleInfo: {
-    title: 'Pre-made unique layouts',
-    description: '',
+    title: 'Multipurpose Pre-Designed Layout',
+    description: 'There are many variation of pages to create blog your own style website quickly and easily. ',
     list: [
       {
         _id: '1',
-        name: 'Amazing Layout',
+        name: 'Multiple Home Page layouts',
         description:
           'The best job portal theme with amazing layout and features.Fully responsive and mobile friendly. You will love it',
         image: '/job-portal-theme.png',
@@ -168,7 +133,7 @@ const localData = {
       },
       {
         _id: '2',
-        name: 'Admin Dashboard',
+        name: 'Easy to Cutomize from Gutenberg',
         description:
           'Professionally designed admin dashboard with amazing features. You can manage everything from admin dashboard',
         image: '/headerBg.svg',
@@ -177,7 +142,7 @@ const localData = {
       },
       {
         _id: '3',
-        name: 'Employer Dashboard',
+        name: 'Multiple Others Page layouts',
         description:
           'Professionally designed for employer and integrated with employer features. Employer can manage their jobs from dashboard',
         image: '/job-portal-theme.png',
@@ -212,7 +177,7 @@ const localData = {
       standard: {
         title: 'Standard License',
         save: 99,
-        sale: 89,
+        sale: 69,
         regular: 149,
         list: [
           {
